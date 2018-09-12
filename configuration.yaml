@@ -24,7 +24,7 @@ frontend:
 # Enables configuration UI
 config:
 
-https:
+http:
   api_password: !secret api_password
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
@@ -43,7 +43,9 @@ updater:
 # Discover some devices automatically
 discovery:
   ignore:
-  - samsungtv
+    - samsung_tv
+  enable:
+    - homekit
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
