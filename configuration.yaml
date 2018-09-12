@@ -27,6 +27,8 @@ config:
 http:
   api_password: !secret api_password
 
+websocket_api:
+
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
 #   base_url: example.duckdns.org:8123
