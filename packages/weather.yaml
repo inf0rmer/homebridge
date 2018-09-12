@@ -1,0 +1,11 @@
+group:
+  Weather:
+    name: Weather
+    control: hidden
+    entities:
+      - weather.openweathermap
+
+weather:
+  - platform: openweathermap
+    api_key: !secret openweathermap
+    name: openweathermap
