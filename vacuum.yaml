@@ -1,6 +1,0 @@
-- platform: roomba
-  host: !secret roomba_ip
-  username: !secret roomba_username
-  password: !secret roomba_password
-  continuous: false
-  scan_interval: 3600

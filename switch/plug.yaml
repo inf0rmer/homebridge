@@ -1,2 +1,0 @@
-- platform: tplink
-  host: !secret plug_balcony_ip

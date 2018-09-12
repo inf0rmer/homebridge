@@ -1,0 +1,45 @@
+sensor:
+  - platform: hue
+    ip_address: !secret hue_ip
+    token: !secret hue_token
+
+  - platform: template
+    sensors:
+      hallway_light_level:
+        friendly_name: 'Hallway Light Level'
+        value_template: '{{states.sensor.hallway_motion_sensor.attributes.lx}}'
+        unit_of_measurement: lux
+
+      laundry_room_light_level:
+        friendly_name: 'Laundry Room Light Level'
+        value_template: '{{states.sensor.laundry_room_motion_sensor.attributes.lx}}'
+        unit_of_measurement: lux
+
+  - platform: template
+    sensors:
+      hallway_temperature:
+        friendly_name: 'Hallway Temperature'
+        value_template: '{{states.sensor.hallway_motion_sensor.attributes.temperature}}'
+        unit_of_measurement: °C
+        device_class: temperature
+
+      laundry_room_temperature:
+        friendly_name: 'Laundry Room Temperature'
+        value_template: '{{states.sensor.laundry_room_motion_sensor.attributes.temperature}}'
+        unit_of_measurement: °C
+        device_class: temperature
+
+binary_sensor:
+  - platform: template
+    sensors:
+      hallway_motion:
+        friendly_name: 'Hallway Motion'
+        value_template: "{{states.sensor.hallway_motion_sensor.state == 'on'}}"
+
+        device_class: motion
+
+      laundry_room_motion:
+        friendly_name: 'Laundry Room Motion'
+        value_template: "{{states.sensor.hallway_motion_sensor.state == 'on'}}"
+        device_class: motion
+

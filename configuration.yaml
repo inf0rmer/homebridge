@@ -55,32 +55,10 @@ map:
 # Track the sun
 sun:
 
-# Weather prediction
-#sensor:
-  #- platform: yr
-  #- platform: hue
-  #  ip_address: 192.168.86.27
-  #  token: 6BpF9CYt1j6ARU57V-Oux7FkqeT6mokzQmn1iOoq
-sensor: !include_dir_merge_list sensor
-binary_sensor: !include_dir_merge_list binary_sensor
-
 # Text to speech
 tts:
   - platform: google
 
-# Cloud
-cloud:
-  alexa: !include cloud/alexa.yaml
-
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
-homekit: !include homekit.yaml
-vacuum: !include vacuum.yaml
-switch: !include_dir_merge_list switch
-
-panel_iframe:
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: http://hassio.local:3218
