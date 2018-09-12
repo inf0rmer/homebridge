@@ -1,0 +1,9 @@
+#default_view:
+#  view: no
+#  entities:
+#    - group.Hue
+
+#Hue:
+#  entities:
+#    - sensor.hallway_motion_sensor
+#    - sensor.laundry_room_motion_sensor

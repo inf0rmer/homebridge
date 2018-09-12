@@ -1,0 +1,12 @@
+- platform: template
+  sensors:
+    hallway_motion:
+      friendly_name: 'Hallway Motion'
+      value_template: "{{states.sensor.hallway_motion_sensor.state == 'on'}}"
+
+      device_class: motion
+
+    laundry_room_motion:
+      friendly_name: 'Laundry Room Motion'
+      value_template: "{{states.sensor.hallway_motion_sensor.state == 'on'}}"
+      device_class: motion

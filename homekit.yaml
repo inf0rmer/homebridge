@@ -1,0 +1,24 @@
+filter:
+    include_domains:
+      - light
+      - media_player
+      - sensor
+      - binary_sensor
+      - switch
+    include_entities:
+      - binary_sensor.hallway_motion
+      - binary_sensor.laundry_room_motion
+      - sensor.laundry_room_light_level
+      - sensor.hallway_light_level
+      - sensor.laundry_room_temperature
+      - sensor.hallway_temperature
+    exclude_entities:
+      - light.hallway
+      - light.living_room
+      - light.dining_room
+      - light.master_bedroom
+      - light.emmas_bedroom
+      - light.laundry_room
+      - light.gaming_area
+      - light.gaming_area_2
+      - light.balcony
