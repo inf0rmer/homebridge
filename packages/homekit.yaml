@@ -3,8 +3,6 @@ homekit:
     include_domains:
       - light
       - media_player
-      - sensor
-      - binary_sensor
       - switch
     include_entities:
       - binary_sensor.hallway_motion
