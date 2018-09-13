@@ -15,9 +15,5 @@ cloud:
         - light.gaming_area
         - light.gaming_area_2
         - light.balcony
-    entity_config:
-      media_player.dining_room_speaker:
-        name: Dining Room Speaker
-        description: The Sonos One in the Dining Room
-        display_categories: SPEAKER
+        - media_player.dining_room_speaker
 
