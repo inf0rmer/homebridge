@@ -29,6 +29,9 @@ group:
     control: hidden
     entities:
       - weather.openweathermap
+      - sensor.dark_sky_daytime_high_apparent_temperature
+      - sensor.dark_sky_overnight_low_temperature
+      - sensor.dark_sky_precip_probability
 
 weather:
   - platform: openweathermap
