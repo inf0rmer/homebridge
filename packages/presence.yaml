@@ -1,0 +1,23 @@
+binary_sensor:
+  - platform: template
+    sensors:
+      hk_presence_bruno:
+        friendly_name: "Presence Bruno"
+        device_class: presence
+        value_template: >-
+          {{ is_state('input_boolean.bruno_present', 'on') }}
+  - platform: template
+    sensors:
+      hk_presence_sarah:
+        friendly_name: "Presence Sarah"
+        device_class: presence
+        value_template: >-
+          {{ is_state('input_boolean.sarah_present', 'on') }}
+
+input_boolean:
+  bruno_present:
+    name: bruno
+    icon: mdi:account
+  sarah_present:
+    name: sarah
+    icon: mdi:account
