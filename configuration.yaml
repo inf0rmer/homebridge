@@ -32,10 +32,6 @@ http:
 
 websocket_api:
 
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
-
 # Checks for available updates
 # Note: This component will send some information about your system to
 # the developers to assist with development of Home Assistant.
@@ -49,8 +45,8 @@ updater:
 discovery:
   ignore:
     - samsung_tv
-  enable:
-    - homekit
+  # enable:
+  #   - homekit
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
