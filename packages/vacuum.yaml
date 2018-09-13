@@ -4,4 +4,4 @@ vacuum:
     username: !secret roomba_username
     password: !secret roomba_password
     continuous: false
-    scan_interval: 3600
+    scan_interval: 600
