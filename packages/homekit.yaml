@@ -11,6 +11,10 @@ homekit:
       - sensor.hallway_light_level
       - sensor.laundry_room_temperature
       - sensor.hallway_temperature
+      - input_boolean.bruno_present
+      - input_boolean.sarah_present
+      - binary_sensor.hk_presence_bruno
+      - binary_sensor.hk_presence_sarah
     exclude_entities:
       - light.hallway
       - light.living_room
