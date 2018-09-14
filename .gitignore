@@ -52,7 +52,6 @@ python_scripts/waste_pickup_yard_waste.py
 known_devices.bak
 emulated_hue_ids.json
 __pycache__
-
 www/googlea02a5401c8e2879c.html
 packages/zones.yaml
 entity_registry.yaml

@@ -9,81 +9,101 @@ views:
     icon: mdi:home
     id: home
     cards:
-      - type: entity-filter
-        column_width: 30%
+      - type: entities
+        title: Who's Home
         entities:
           - entity: binary_sensor.hk_presence_bruno
             name: Bruno
           - entity: binary_sensor.hk_presence_sarah
             name: Sarah
-        state_filter:
-          - "on"
-        show_empty: false
-        card:
-          type: glance
-          title: Who's Home
+
+      - type: entities
+        title: Temperature (avg.)
+        entities:
+          - entity: sensor.temperature_average_home
+            name: Inside
+          - entity: sensor.dark_sky_apparent_temperature
+            name: Outside
 
       - type: weather-forecast
         name: Weather
         entity: weather.weather
 
-      - type: picture-glance
-        title: Living Room
-        image: /local/living_room.jpg
-        entities:
-          - entity: light.living_room
-            title: All Lights
+      - type: media-control
+        entity: media_player.dining_room_speaker
 
-      - type: picture-glance
-        title: Dining Room
-        image: /local/dining_room.jpg
-        entities:
-          - light.dining_room
-
-      - type: picture-glance
-        title: Master Bedroom
-        image: /local/master_bedroom.jpg
-        entities:
-          - light.master_bedroom
-
-      - type: picture-glance
-        title: Emma's Bedroom
-        image: /local/living_room.jpg
-        entities:
-          - light.emmas_bedroom
-
-      - type: picture-glance
-        title: Hallway
-        image: /local/living_room.jpg
-        entities:
-          - light.hallway
-          - binary_sensor.hallway_motion
-          - sensor.hallway_temperature
-
-      - type: picture-glance
-        title: Laundry Room
-        image: /local/living_room.jpg
-        entities:
-          - light.laundry_room
-          - binary_sensor.laundry_room_motion
-          - sensor.laundry_room_temperature
-
-  - title: Living Room
-    cards:
-        # Entities card will take a list of entities and show their state.
       - type: entities
-        # Title of the entities card
-        title: Example
+        title: Lights
+        show_header_toggle: false
         # The entities here will be shown in the same order as specified.
         # Each entry is an entity ID or a map with extra options.
         entities:
-          - light.living_room_ceiling_desk
-          - entity: living_room_ceiling_sofa
-            # Override the name to use
-            name: Sofa overridden
+          - entity: group.all_lights
+            name: All Lights
+          - light.living_room
+          - light.dining_room
+          - light.master_bedroom
+          - light.emmas_bedroom
+          - light.hallway
+          - light.laundry_room
 
-        # The markdown card will render markdown text.
-      - type: markdown
-        title: Lovelace
-        content: >
-          Welcome to your **Lovelace UI**.
+      # - type: picture-glance
+      #   title: Living Room
+      #   image: /local/living_room.jpg
+      #   entities:
+      #     - entity: light.living_room
+      #       title: All Lights
+
+      # - type: picture-glance
+      #   title: Dining Room
+      #   image: /local/dining_room.jpg
+      #   entities:
+      #     - light.dining_room
+
+      # - type: picture-glance
+      #   title: Master Bedroom
+      #   image: /local/master_bedroom.jpg
+      #   entities:
+      #     - light.master_bedroom
+
+      # - type: picture-glance
+      #   title: Emma's Bedroom
+      #   image: /local/living_room.jpg
+      #   entities:
+      #     - light.emmas_bedroom
+
+      # - type: picture-glance
+      #   title: Hallway
+      #   image: /local/living_room.jpg
+      #   entities:
+      #     - light.hallway
+      #     - binary_sensor.hallway_motion
+      #     - sensor.hallway_temperature
+
+      # - type: picture-glance
+      #   title: Laundry Room
+      #   image: /local/living_room.jpg
+      #   entities:
+      #     - light.laundry_room
+      #     - binary_sensor.laundry_room_motion
+      #     - sensor.laundry_room_temperature
+
+  # - title: Living Room
+  #   cards:
+  #       # Entities card will take a list of entities and show their state.
+  #     - type: entities
+  #       # Title of the entities card
+  #       title: Example
+  #       # The entities here will be shown in the same order as specified.
+  #       # Each entry is an entity ID or a map with extra options.
+  #       entities:
+  #         - light.living_room_ceiling_desk
+  #         - entity: living_room_ceiling_sofa
+  #           # Override the name to use
+  #           name: Sofa overridden
+
+  #       # The markdown card will render markdown text.
+  #     - type: markdown
+  #       title: Lovelace
+  #       content: >
+  #         Welcome to your **Lovelace UI**.

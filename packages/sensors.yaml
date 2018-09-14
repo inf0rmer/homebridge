@@ -29,6 +29,16 @@ sensor:
         unit_of_measurement: °C
         device_class: temperature
 
+  - platform: min_max
+    name: temperature_average_home
+    type: mean
+    round_digits: 1
+    unit_of_measurement: °C
+    device_class: temperature
+    entity_ids:
+    - sensor.hallway_temperature
+    - sensor.laundry_room_temperature
+
 binary_sensor:
   - platform: template
     sensors:
