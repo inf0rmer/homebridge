@@ -22,21 +22,21 @@ homeassistant:
     sensor.dark_sky_daily_summary:
       friendly_name: 'Daily Summary'
 
-###### STATE CARD
-group:
-  Weather:
-    name: Weather
-    control: hidden
-    entities:
-      - weather.openweathermap
-      - sensor.dark_sky_daytime_high_apparent_temperature
-      - sensor.dark_sky_overnight_low_temperature
-      - sensor.dark_sky_precip_probability
-
 weather:
-  - platform: openweathermap
-    api_key: !secret openweathermap
-    name: openweathermap
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    name: Weather
+    forecast:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+    monitored_conditions:
+      - summary
+      - icon
+      - apparent_temperature
+      - precip_probability
 
 sensor:
 ###### DARKSKY
