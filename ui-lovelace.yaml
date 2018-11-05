@@ -9,7 +9,8 @@ views:
     icon: mdi:home
     id: home
     cards:
-      - type: entities
+      - id: 3e3844b582b848f2bad65271f7a4a1b4  # Automatically created id
+        type: entities
         title: Who's Home
         entities:
           - entity: binary_sensor.hk_presence_bruno
@@ -17,7 +18,8 @@ views:
           - entity: binary_sensor.hk_presence_sarah
             name: Sarah
 
-      - type: entities
+      - id: 24e2a007c9b94955977b8c32376714a5  # Automatically created id
+        type: entities
         title: Temperature (avg.)
         entities:
           - entity: sensor.temperature_average_home
@@ -25,14 +27,17 @@ views:
           - entity: sensor.dark_sky_apparent_temperature
             name: Outside
 
-      - type: weather-forecast
+      - id: 658022c663454672ab82b14a31c78c2c  # Automatically created id
+        type: weather-forecast
         name: Weather
         entity: weather.weather
 
-      - type: media-control
+      - id: 38a1f34bea294210acf93e3f42ddee51  # Automatically created id
+        type: media-control
         entity: media_player.dining_room_speaker
 
-      - type: entities
+      - id: a504997c085c476d89f807f29efc7a59  # Automatically created id
+        type: entities
         title: Lights
         show_header_toggle: false
         # The entities here will be shown in the same order as specified.

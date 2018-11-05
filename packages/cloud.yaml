@@ -1,0 +1,38 @@
+cloud:
+  alexa:
+    filter:
+      include_domains:
+        - light
+        - media_player
+      exclude_entities:
+        - light.hallway
+        - light.living_room
+        - light.dining_room
+        - light.master_bedroom
+        - light.emmas_bedroom
+        - light.laundry_room
+        - light.gaming_area
+        - light.gaming_area_2
+        - light.balcony
+        - media_player.dining_room_speaker
+      include_entities:
+        - switch.balcony_plug
+
+  google_actions:
+    filter:
+      include_domains:
+        - light
+        - media_player
+      exclude_entities:
+        - light.hallway
+        - light.living_room
+        - light.dining_room
+        - light.master_bedroom
+        - light.emmas_bedroom
+        - light.laundry_room
+        - light.gaming_area
+        - light.gaming_area_2
+        - light.balcony
+      include_entities:
+        - switch.balcony_plug
+
