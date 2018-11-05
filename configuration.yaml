@@ -43,8 +43,6 @@ updater:
 
 # Discover some devices automatically
 discovery:
-  enable:
-    - samsungtv
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
