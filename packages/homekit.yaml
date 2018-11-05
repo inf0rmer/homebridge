@@ -15,6 +15,7 @@ homekit:
       - input_boolean.sarah_present
       - binary_sensor.hk_presence_bruno
       - binary_sensor.hk_presence_sarah
+      - media_player.living_room_tv
     exclude_entities:
       - light.hallway
       - light.living_room
