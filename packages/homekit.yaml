@@ -7,10 +7,13 @@ homekit:
     include_entities:
       - binary_sensor.hallway_motion
       - binary_sensor.laundry_room_motion
+      - binary_sensor.kitchen_motion
       - sensor.laundry_room_light_level
       - sensor.hallway_light_level
+      - sensor.kitchen_light_level
       - sensor.laundry_room_temperature
       - sensor.hallway_temperature
+      - sensor.kitchen_temperature
       - input_boolean.bruno_present
       - input_boolean.sarah_present
       - binary_sensor.hk_presence_bruno
@@ -26,6 +29,7 @@ homekit:
       - light.gaming_area
       - light.gaming_area_2
       - light.balcony
+      - light.kitchen
 
   entity_config:
     switch.balcony_plug:
