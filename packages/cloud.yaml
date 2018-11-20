@@ -14,6 +14,7 @@ cloud:
         - light.gaming_area
         - light.gaming_area_2
         - light.balcony
+        - light.kitchen
         - media_player.dining_room_speaker
       include_entities:
         - switch.balcony_plug
@@ -32,6 +33,7 @@ cloud:
         - light.laundry_room
         - light.gaming_area
         - light.gaming_area_2
+        - light.kitchen
         - light.balcony
       include_entities:
         - switch.balcony_plug
