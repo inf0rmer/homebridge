@@ -14,6 +14,11 @@ sensor:
         friendly_name: 'Laundry Room Light Level'
         value_template: '{{states.sensor.laundry_room_motion_sensor.attributes.lx}}'
         unit_of_measurement: lux
+      
+      kitchen_light_level:
+        friendly_name: 'Kitchen Light Level'
+        value_template: '{{states.sensor.kitchen_motion_sensor.attributes.lx}}'
+        unit_of_measurement: lux
 
   - platform: template
     sensors:
@@ -28,6 +33,12 @@ sensor:
         value_template: '{{states.sensor.laundry_room_motion_sensor.attributes.temperature}}'
         unit_of_measurement: °C
         device_class: temperature
+        
+      kitchen_temperature:
+        friendly_name: 'Kitchen Temperature'
+        value_template: '{{states.sensor.kitchen_motion_sensor.attributes.temperature}}'
+        unit_of_measurement: °C
+        device_class: temperature
 
   - platform: min_max
     name: temperature_average_home
@@ -38,6 +49,7 @@ sensor:
     entity_ids:
     - sensor.hallway_temperature
     - sensor.laundry_room_temperature
+    - sensor.kitchen_temperature
 
 binary_sensor:
   - platform: template
@@ -45,11 +57,15 @@ binary_sensor:
       hallway_motion:
         friendly_name: 'Hallway Motion'
         value_template: "{{states.sensor.hallway_motion_sensor.state == 'on'}}"
-
         device_class: motion
 
       laundry_room_motion:
         friendly_name: 'Laundry Room Motion'
-        value_template: "{{states.sensor.hallway_motion_sensor.state == 'on'}}"
+        value_template: "{{states.sensor.laundry_room_motion_sensor.state == 'on'}}"
+        device_class: motion
+        
+      kitchen_motion:
+        friendly_name: 'Kitchen Motion'
+        value_template: "{{states.sensor.kitchen_motion_sensor.state == 'on'}}"
         device_class: motion
 
