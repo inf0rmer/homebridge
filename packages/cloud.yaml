@@ -18,6 +18,7 @@ cloud:
         - media_player.dining_room_speaker
       include_entities:
         - switch.balcony_plug
+        - switch.dining_room_cabinet_plug
 
   google_actions:
     filter:
@@ -37,4 +38,5 @@ cloud:
         - light.balcony
       include_entities:
         - switch.balcony_plug
+        - switch.dining_room_cabinet_plug
 

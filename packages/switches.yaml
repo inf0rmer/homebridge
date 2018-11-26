@@ -1,3 +1,5 @@
 switch:
   - platform: tplink
     host: !secret plug_balcony_ip
+  - platform: tplink
+    host: !secret plug_dining_room_cabinet_ip
