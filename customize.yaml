@@ -2,3 +2,5 @@ sensor.hallway_light_level:
   device_class: illuminance
 sensor.laundry_room_light_level:
   device_class: illuminance
+sensor.kitchen_light_level:
+  device_class: illuminance
