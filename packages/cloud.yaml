@@ -19,6 +19,7 @@ cloud:
       include_entities:
         - switch.balcony_plug
         - switch.dining_room_cabinet_plug
+        - switch.christmas_tree_plug
 
   google_actions:
     filter:
@@ -39,4 +40,5 @@ cloud:
       include_entities:
         - switch.balcony_plug
         - switch.dining_room_cabinet_plug
+        - switch.christmas_tree_plug
 

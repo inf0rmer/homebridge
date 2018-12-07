@@ -3,3 +3,5 @@ switch:
     host: !secret plug_balcony_ip
   - platform: tplink
     host: !secret plug_dining_room_cabinet_ip
+  - platform: tplink
+    host: !secret plug_christmas_tree_ip

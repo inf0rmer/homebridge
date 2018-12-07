@@ -38,6 +38,9 @@ homekit:
     switch.dining_room_cabinet_plug:
       name: Dining Room Cabinet Plug
       type: outlet
+    switch.christmas_tree_plug:
+      name: Christmas Tree Plug
+      type: outlet
     media_player.living_room_tv:
       feature_list:
         - feature: on_off
