@@ -35,10 +35,10 @@ homekit:
     switch.balcony_plug:
       name: Balcony Plug
       type: outlet
-    switch.dining_room_cabinet_plug:
+    switch.dining_room_cabinet:
       name: Dining Room Cabinet Plug
       type: outlet
-    switch.christmas_tree_plug:
+    switch.christmas_tree:
       name: Christmas Tree Plug
       type: outlet
     media_player.living_room_tv:
