@@ -16,7 +16,7 @@ cloud:
         - light.gaming_area_2
         - light.balcony
         - light.kitchen
-        - media_player.dining_room_speaker
+        - media_player.master_bedroom
       include_entities:
         - switch.balcony_plug
         - switch.dining_room_cabinet

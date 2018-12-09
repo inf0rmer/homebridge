@@ -34,7 +34,7 @@ views:
 
       - id: 38a1f34bea294210acf93e3f42ddee51  # Automatically created id
         type: media-control
-        entity: media_player.dining_room_speaker
+        entity: media_player.master_bedroom
 
       - id: a504997c085c476d89f807f29efc7a59  # Automatically created id
         type: entities
