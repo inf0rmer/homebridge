@@ -4,6 +4,7 @@ cloud:
       include_domains:
         - light
         - media_player
+        - switch
       exclude_entities:
         - light.hallway
         - light.living_room
@@ -26,6 +27,7 @@ cloud:
       include_domains:
         - light
         - media_player
+        - switch
       exclude_entities:
         - light.hallway
         - light.living_room
