@@ -41,6 +41,9 @@ homekit:
     switch.christmas_tree:
       name: Christmas Tree Plug
       type: outlet
+    switch.emmas_bedroom_string_lights:
+      name: Emma's Bedroom String Lights
+      type: outlet
     media_player.living_room_tv:
       feature_list:
         - feature: on_off

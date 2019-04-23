@@ -3,3 +3,4 @@ tplink:
   - host: !secret plug_balcony_ip
   - host: !secret plug_dining_room_cabinet_ip
   - host: !secret plug_christmas_tree_ip
+  - host: !secret plug_emmas_bedroom_lights_ip
