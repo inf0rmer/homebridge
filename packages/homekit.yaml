@@ -8,12 +8,12 @@ homekit:
       - binary_sensor.hallway_motion
       - binary_sensor.laundry_room_motion
       - binary_sensor.kitchen_motion
-      - sensor.laundry_room_light_level
-      - sensor.hallway_light_level
-      - sensor.kitchen_light_level
-      - sensor.laundry_room_temperature
-      - sensor.hallway_temperature
-      - sensor.kitchen_temperature
+      - sensor.laundry_room_sensor_light_level
+      - sensor.hallway_sensor_light_level
+      - sensor.kitchen_sensor_light_level
+      - sensor.laundry_room_sensor_temperature
+      - sensor.hallway_sensor_temperature
+      - sensor.kitchen_sensor_temperature
       - input_boolean.bruno_present
       - input_boolean.sarah_present
       - binary_sensor.hk_presence_bruno

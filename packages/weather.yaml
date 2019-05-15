@@ -32,11 +32,6 @@ weather:
       - 3
       - 4
       - 5
-    monitored_conditions:
-      - summary
-      - icon
-      - apparent_temperature
-      - precip_probability
 
 sensor:
 ###### DARKSKY
