@@ -1,5 +1,4 @@
 homekit:
-  ip_address: 192.168.100.22
   filter:
     include_domains:
       - light
@@ -45,6 +44,3 @@ homekit:
     switch.emmas_bedroom_string_lights:
       name: Emma's Bedroom String Lights
       type: outlet
-    media_player.living_room_tv:
-      feature_list:
-        - feature: on_off

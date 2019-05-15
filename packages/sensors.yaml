@@ -1,11 +1,8 @@
 sensor:
   - platform: min_max
-    friendly_name: "Average Home Temperature"
     name: temperature_average_home
     type: mean
     round_digits: 1
-    unit_of_measurement: °C
-    device_class: temperature
     entity_ids:
       - sensor.hallway_sensor_temperature
       - sensor.laundry_sensor_room_temperature
