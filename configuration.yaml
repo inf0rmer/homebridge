@@ -31,8 +31,6 @@ config:
 
 http:
   base_url: !env_var HTTP_BASE_URL
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
 
 websocket_api:
 
