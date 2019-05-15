@@ -1,5 +1,6 @@
 sensor:
   - platform: min_max
+    friendly_name: "Average Home Temperature"
     name: temperature_average_home
     type: mean
     round_digits: 1
