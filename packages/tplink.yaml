@@ -1,6 +1,6 @@
 tplink:
   switch:
-  - host: !secret plug_balcony_ip
-  - host: !secret plug_dining_room_cabinet_ip
-  - host: !secret plug_christmas_tree_ip
-  - host: !secret plug_emmas_bedroom_lights_ip
+  - host: 192.168.86.152
+  - host: 192.168.86.213
+  - host: 192.168.86.216
+  - host: 192.168.86.248

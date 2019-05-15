@@ -24,7 +24,7 @@ homeassistant:
 
 weather:
   - platform: darksky
-    api_key: !secret darksky_api_key
+    api_key: !env_var DARKSKY_API_KEY
     name: Weather
     forecast:
       - 1
@@ -41,7 +41,7 @@ weather:
 sensor:
 ###### DARKSKY
   - platform: darksky
-    api_key: !secret darksky_api_key
+    api_key: !env_var DARKSKY_API_KEY
     monitored_conditions:
       - summary
       - icon
