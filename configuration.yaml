@@ -12,6 +12,7 @@ homeassistant:
   time_zone: !env_var TIMEZONE
 
   auth_providers:
+    - type: homeassistant
     - type: legacy_api_password
       api_password: !env_var HTTP_API_PASSWORD
 
