@@ -15,6 +15,10 @@ homeassistant:
     - type: homeassistant
     - type: legacy_api_password
       api_password: !env_var HTTP_API_PASSWORD
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.0.0/24
+        - 10.0.0.0/8
 
   # Customization file
   customize: !include customize.yaml
