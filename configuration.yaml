@@ -79,3 +79,6 @@ prometheus:
   namespace: home
 
 system_health:
+
+hacs:
+  token: !env_var GITHUB_TOKEN
