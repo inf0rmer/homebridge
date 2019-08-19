@@ -1,1 +1,18 @@
-[]
+- id: '1566204636758'
+  alias: Roomba
+  trigger:
+  - hours: '15'
+    minutes: '00'
+    platform: time_pattern
+    seconds: '00'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.hk_presence_bruno
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.hk_presence_sarah
+    state: 'off'
+  action:
+  - data:
+      entity_id: vacuum.roomba
+    service: vacuum.turn_on
