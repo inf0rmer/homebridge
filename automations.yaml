@@ -49,3 +49,39 @@
     to: 'on'
   action:
   - service: alarm_control_panel.alarm_arm_home
+- id: '1566215577982'
+  alias: Sarah comes home
+  trigger:
+  - entity_id: binary_sensor.hk_presence_sarah
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.hk_presence_bruno
+    state: 'on'
+  action:
+  - service: notify.alexa_media
+    data_template:
+      data:
+        type: announce
+      target: media_player.everywhere
+      message: 'Hi Bruno, Sarah will be home in a few minutes'
+- id: '1566215577981'
+  alias: Bruno comes home
+  trigger:
+  - entity_id: binary_sensor.hk_presence_bruno
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.hk_presence_sarah
+    state: 'on'
+  action:
+  - service: notify.alexa_media
+    data_template:
+      data:
+        type: announce
+      target: media_player.everywhere
+      message: 'Hi Sarah, Bruno will be home in a few minutes'
