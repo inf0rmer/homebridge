@@ -82,3 +82,9 @@ system_health:
 
 hacs:
   token: !env_var GITHUB_TOKEN
+
+alexa_media:
+  accounts:
+    - email: !env_var AMAZON_USER
+      password: !env_var AMAZON_PASSWORD
+      url: amazon.com
