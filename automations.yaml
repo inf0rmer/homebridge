@@ -16,3 +16,36 @@
   - data:
       entity_id: vacuum.roomba
     service: vacuum.turn_on
+- id: '1566215577974'
+  alias: Alexa Home Guard - Arm
+  trigger:
+  - entity_id: binary_sensor.hk_presence_bruno
+    from: 'on'
+    platform: state
+    to: 'off'
+  - entity_id: binary_sensor.hk_presence_sarah
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.hk_presence_bruno
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.hk_presence_sarah
+    state: 'off'
+  action:
+  - service: alarm_control_panel.alarm_arm_away
+- id: '1566215577979'
+  alias: Alexa Home Guard - Disarm
+  trigger:
+  - entity_id: binary_sensor.hk_presence_bruno
+    from: 'off'
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.hk_presence_sarah
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - service: alarm_control_panel.alarm_arm_home
