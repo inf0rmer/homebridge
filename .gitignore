@@ -56,3 +56,6 @@ www/googlea02a5401c8e2879c.html
 packages/zones.yaml
 entity_registry.yaml
 .config_entries.json
+.vscode
+.fuse*
+.Trash*
