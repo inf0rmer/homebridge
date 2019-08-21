@@ -1,4 +1,4 @@
-building_door:
+lock:
   - platform: nello
     username: !env_var NELLO_USERNAME
     password: !env_var NELLO_PASSWORD
