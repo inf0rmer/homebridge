@@ -85,3 +85,30 @@
         type: announce
       target: media_player.everywhere
       message: 'Hi Sarah, Bruno will be home in a few minutes'
+- id: '1566416394499'
+  alias: Leave House
+  trigger:
+  - entity_id: binary_sensor.hk_presence_bruno
+    from: 'on'
+    platform: state
+    to: 'off'
+  - entity_id: binary_sensor.hk_presence_sarah
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.hk_presence_bruno
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.hk_presence_sarah
+    state: 'off'
+  action:
+  - data:
+      data:
+        entity_id: group.all_lights
+    service: light.turn_off
+  - data:
+      data:
+        entity_id: group.all_light_switches
+    service: switch.turn_off

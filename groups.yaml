@@ -7,3 +7,9 @@
 #  entities:
 #    - sensor.hallway_motion_sensor
 #    - sensor.laundry_room_motion_sensor
+
+all_light_switches:
+  entities:
+    - switch.balcony_plug
+    - switch.dining_room_cabinet
+    - switch.emmas_bedroom_string_lights
