@@ -4,3 +4,5 @@ sensor.laundry_room_light_level:
   device_class: illuminance
 sensor.kitchen_light_level:
   device_class: illuminance
+lock.nello_ecf41382:
+  friendly_name: Building Door
