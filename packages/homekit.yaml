@@ -50,3 +50,5 @@ homekit:
     switch.emmas_bedroom_string_lights:
       name: Emma's Bedroom String Lights
       type: outlet
+    lock.nello_ecf41382:
+      name: Building Door
