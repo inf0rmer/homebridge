@@ -9,6 +9,7 @@
 #    - sensor.laundry_room_motion_sensor
 
 all_light_switches:
+  name: All Light Switches
   entities:
     - switch.balcony_plug
     - switch.dining_room_cabinet
