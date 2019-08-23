@@ -83,6 +83,8 @@ system_health:
 hacs:
   token: !env_var GITHUB_TOKEN
 
+circadian_lighting:
+
 alexa_media:
   accounts:
     - email: !env_var AMAZON_USER
