@@ -112,3 +112,32 @@
       data:
         entity_id: group.all_light_switches
     service: switch.turn_off
+- id: '1566632827470'
+  alias: Sunset
+  trigger:
+  - event: sunset
+    platform: sun
+  condition:
+    condition: or
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.hk_presence_bruno
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.hk_presence_sarah
+      state: 'on'
+  action:
+  - data:
+      data:
+        entity_id:
+        - switch.balcony_plug
+        - switch.dining_room_cabinet
+        - switch.emmas_bedroom_string_lights
+    service: switch.turn_on
+  - data:
+      data:
+        entity_id:
+        - light.gaming_area
+        brightness: 200
+        color_temp: 500
+        transition: 30
