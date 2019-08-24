@@ -5,6 +5,7 @@ cloud:
         - light
         - media_player
         - switch
+        - lock
       exclude_entities:
         - light.hallway
         - light.living_room
@@ -43,4 +44,3 @@ cloud:
         - switch.balcony_plug
         - switch.dining_room_cabinet
         - switch.christmas_tree
-
