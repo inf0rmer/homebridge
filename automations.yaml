@@ -166,11 +166,9 @@
   action:
   - data:
       entity_id: light.emmas_bedroom
-      transition: 5
     service: light.turn_off
   - data:
-      data:
-        entity_id: switch.emmas_bedroom_string_lights
+      entity_id: switch.emmas_bedroom_string_lights
     service: switch.turn_off
   - data:
       brightness: 30
@@ -183,10 +181,10 @@
     service: light.turn_on
   - data:
       entity_id: media_player.emma_s_bedroom_echo_dot
-      volume_level: 0.3
-    service: media_player.volume_set
-  - data:
-      entity_id: media_player.emma_s_bedroom_echo_dot
       media_content_id: lullabies
       media_content_type: routine
     service: media_player.play_media
+  - data:
+      entity_id: media_player.emma_s_bedroom_echo_dot
+      volume_level: 0.3
+    service: media_player.volume_set
