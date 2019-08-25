@@ -52,3 +52,5 @@ homekit:
       type: outlet
     lock.nello_ecf41382:
       name: Building Door
+    sensor.temperature_average_home:
+      name: Avg. Home Temperature
