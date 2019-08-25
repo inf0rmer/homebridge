@@ -7,10 +7,7 @@
     seconds: '00'
   condition:
   - condition: state
-    entity_id: binary_sensor.hk_presence_bruno
-    state: 'off'
-  - condition: state
-    entity_id: binary_sensor.hk_presence_sarah
+    entity_id: binary_sensor.someone_home
     state: 'off'
   action:
   - data:
@@ -19,31 +16,16 @@
 - id: '1566215577974'
   alias: Alexa Home Guard - Arm
   trigger:
-  - entity_id: binary_sensor.hk_presence_bruno
+  - entity_id: binary_sensor.someone_home
     from: 'on'
     platform: state
     to: 'off'
-  - entity_id: binary_sensor.hk_presence_sarah
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.hk_presence_bruno
-    state: 'off'
-  - condition: state
-    entity_id: binary_sensor.hk_presence_sarah
-    state: 'off'
   action:
   - service: alarm_control_panel.alarm_arm_away
 - id: '1566215577979'
   alias: Alexa Home Guard - Disarm
   trigger:
-  - entity_id: binary_sensor.hk_presence_bruno
-    from: 'off'
-    platform: state
-    to: 'on'
-  - entity_id: binary_sensor.hk_presence_sarah
+  - entity_id: binary_sensor.someone_home
     from: 'off'
     platform: state
     to: 'on'
@@ -88,21 +70,10 @@
 - id: '1566416394499'
   alias: Leave House
   trigger:
-  - entity_id: binary_sensor.hk_presence_bruno
+  - entity_id: binary_sensor.someone_home
     from: 'on'
     platform: state
     to: 'off'
-  - entity_id: binary_sensor.hk_presence_sarah
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.hk_presence_bruno
-    state: 'off'
-  - condition: state
-    entity_id: binary_sensor.hk_presence_sarah
-    state: 'off'
   action:
   - data:
       data:
@@ -119,13 +90,8 @@
     platform: sun
     offset: "-00:45:00"
   condition:
-    condition: or
-    conditions:
     - condition: state
-      entity_id: binary_sensor.hk_presence_bruno
-      state: 'on'
-    - condition: state
-      entity_id: binary_sensor.hk_presence_sarah
+      entity_id: binary_sensor.someone_home
       state: 'on'
   action:
   - data:
@@ -144,11 +110,7 @@
 - id: '1566718341458'
   alias: Anyone comes home after Sunset
   trigger:
-  - entity_id: binary_sensor.hk_presence_bruno
-    from: 'off'
-    platform: state
-    to: 'on'
-  - entity_id: binary_sensor.hk_presence_sarah
+  - entity_id: binary_sensor.someone_home
     from: 'off'
     platform: state
     to: 'on'
@@ -159,32 +121,3 @@
   - data:
       entity_id: automation.sunset
     service: automation.trigger
-- id: '1566753138862'
-  alias: Emma's Bedtime
-  trigger: []
-  condition: []
-  action:
-  - data:
-      entity_id: light.emmas_bedroom
-    service: light.turn_off
-  - data:
-      entity_id: switch.emmas_bedroom_string_lights
-    service: switch.turn_off
-  - data:
-      brightness: 30
-      entity_id: light.emmas_bedroom_nightlight
-      rgb_color:
-      - 255
-      - 30
-      - 30
-      transition: 5
-    service: light.turn_on
-  - data:
-      entity_id: media_player.emma_s_bedroom_echo_dot
-      media_content_id: lullabies
-      media_content_type: routine
-    service: media_player.play_media
-  - data:
-      entity_id: media_player.emma_s_bedroom_echo_dot
-      volume_level: 0.3
-    service: media_player.volume_set

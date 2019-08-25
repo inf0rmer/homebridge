@@ -1,5 +1,27 @@
 emma_bedtime:
   sequence:
-  - service: automation.trigger
-    entity_id: automation.emma_s_bedtime
+  - data:
+      entity_id: light.emmas_bedroom
+    service: light.turn_off
+  - data:
+      entity_id: switch.emmas_bedroom_string_lights
+    service: switch.turn_off
+  - data:
+      brightness: 30
+      entity_id: light.emmas_bedroom_nightlight
+      rgb_color:
+      - 255
+      - 30
+      - 30
+      transition: 5
+    service: light.turn_on
+  - data:
+      entity_id: media_player.emma_s_bedroom_echo_dot
+      media_content_id: lullabies
+      media_content_type: routine
+    service: media_player.play_media
+  - data:
+      entity_id: media_player.emma_s_bedroom_echo_dot
+      volume_level: 0.3
+    service: media_player.volume_set
   alias: Emma's Bedtime
