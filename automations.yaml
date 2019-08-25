@@ -158,3 +158,29 @@
   - data:
       entity_id: automation.sunset
     service: automation.trigger
+- id: '1566753138862'
+  alias: Emma's Bedtime
+  trigger: []
+  condition: []
+  action:
+  - data:
+      entity_id: light.emmas_bedroom
+    service: light.turn_off
+  - data:
+      brightness: 30
+      entity_id: light.emmas_bedroom_nightlight
+      rgb_color:
+      - 255
+      - 30
+      - 30
+      transition: 30
+    service: light.turn_on
+  - data:
+      entity_id: media_player.emma_s_bedroom_echo_dot
+      volume_level: 0.3
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.emma_s_bedroom_echo_dot
+      media_content_id: lullabies
+      media_content_type: routine
+    service: media_player.play_media
