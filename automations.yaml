@@ -169,6 +169,10 @@
       transition: 30
     service: light.turn_off
   - data:
+      data:
+        entity_id: switch.emmas_bedroom_string_lights
+    service: switch.turn_off
+  - data:
       brightness: 30
       entity_id: light.emmas_bedroom_nightlight
       rgb_color:
