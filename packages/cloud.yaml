@@ -6,6 +6,7 @@ cloud:
         - media_player
         - switch
         - lock
+        - script
       exclude_entities:
         - light.hallway
         - light.living_room

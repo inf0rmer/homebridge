@@ -117,6 +117,7 @@
   trigger:
   - event: sunset
     platform: sun
+    offset: "-00:45:00"
   condition:
     condition: or
     conditions:
@@ -165,6 +166,7 @@
   action:
   - data:
       entity_id: light.emmas_bedroom
+      transition: 30
     service: light.turn_off
   - data:
       brightness: 30

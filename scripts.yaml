@@ -1,0 +1,4 @@
+emma_bedtime:
+  sequence:
+    - service: automation.trigger
+      entity_id: automation.emma_s_bedtime
