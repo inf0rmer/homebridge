@@ -5,6 +5,7 @@ homekit:
       - media_player
       - switch
       - lock
+      - script
     include_entities:
       - binary_sensor.hallway_sensor_motion
       - binary_sensor.laundry_room_sensor_motion
