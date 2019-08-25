@@ -166,7 +166,7 @@
   action:
   - data:
       entity_id: light.emmas_bedroom
-      transition: 30
+      transition: 5
     service: light.turn_off
   - data:
       data:
@@ -179,7 +179,7 @@
       - 255
       - 30
       - 30
-      transition: 30
+      transition: 5
     service: light.turn_on
   - data:
       entity_id: media_player.emma_s_bedroom_echo_dot
