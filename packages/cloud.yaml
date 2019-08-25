@@ -14,7 +14,6 @@ cloud:
         - light.emmas_bedroom
         - light.laundry_room
         - light.gaming_area
-        - light.gaming_area_2
         - light.balcony
         - light.kitchen
         - media_player.master_bedroom
@@ -37,7 +36,6 @@ cloud:
         - light.emmas_bedroom
         - light.laundry_room
         - light.gaming_area
-        - light.gaming_area_2
         - light.kitchen
         - light.balcony
       include_entities:
