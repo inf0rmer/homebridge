@@ -1,14 +1,13 @@
 - id: "1566204636758"
   alias: Clean House
   trigger:
-    - hours: "15"
-      minutes: "00"
-      platform: time_pattern
-      seconds: "00"
-  condition:
-    - condition: state
-      entity_id: binary_sensor.someone_home
-      state: "off"
+    - entity_id: binary_sensor.someone_home
+      for:
+        minutes: "10"
+      from: "on"
+      platform: state
+      to: "off"
+  condition: []
   action:
     - data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
@@ -136,3 +135,17 @@
         message: Someone is at the downstairs door
         target: media_player.everywhere
       service: notify.alexa_media
+- id: "1566935796444"
+  alias: Stop Cleaning
+  trigger:
+    - entity_id: binary_sensor.someone_home
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: template
+      value_template: '{{not is_state("vacuum.xiaomi_vacuum_cleaner", "docked")}}'
+  action:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      service: vacuum.return_to_base
