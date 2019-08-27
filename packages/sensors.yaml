@@ -33,4 +33,3 @@ sensor:
 input_boolean:
   dnd_living_room:
     name: Do Not Disturb Living Room
-    hidden: true
