@@ -14,3 +14,11 @@ all_light_switches:
     - switch.balcony_plug
     - switch.dining_room_cabinet
     - switch.emmas_bedroom_string_lights
+
+harmony_hub:
+  name: Living Room Entertainment Control
+  control: hidden
+  entities:
+    - switch.watch_smart_tv
+    - switch.watch_netflix
+    - switch.watch_apple_tv

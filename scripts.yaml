@@ -1,44 +1,77 @@
 good_night:
   alias: Good Night
   sequence:
-  - data:
-      entity_id: group.all_lights
-    service: light.turn_off
-  - data:
-      entity_id: group.all_light_switches
-    service: switch.turn_off
-  - data:
-      brightness: 30
-      entity_id: light.emmas_bedroom_nightlight
-      rgb_color:
-      - 255
-      - 30
-      - 30
-    service: light.turn_on
+    - data:
+        entity_id: group.all_lights
+      service: light.turn_off
+    - data:
+        entity_id: group.all_light_switches
+      service: switch.turn_off
+    - data:
+        brightness: 30
+        entity_id: light.emmas_bedroom_nightlight
+        rgb_color:
+          - 255
+          - 30
+          - 30
+      service: light.turn_on
 emma_bedtime:
   sequence:
-  - data:
-      entity_id: light.emmas_bedroom
-    service: light.turn_off
-  - data:
-      entity_id: switch.emmas_bedroom_string_lights
-    service: switch.turn_off
-  - data:
-      brightness: 30
-      entity_id: light.emmas_bedroom_nightlight
-      rgb_color:
-      - 255
-      - 30
-      - 30
-      transition: 5
-    service: light.turn_on
-  - data:
-      entity_id: media_player.emma_s_bedroom_echo_dot
-      media_content_id: lullabies
-      media_content_type: routine
-    service: media_player.play_media
-  - data:
-      entity_id: media_player.emma_s_bedroom_echo_dot
-      volume_level: 0.3
-    service: media_player.volume_set
+    - data:
+        entity_id: light.emmas_bedroom
+      service: light.turn_off
+    - data:
+        entity_id: switch.emmas_bedroom_string_lights
+      service: switch.turn_off
+    - data:
+        brightness: 30
+        entity_id: light.emmas_bedroom_nightlight
+        rgb_color:
+          - 255
+          - 30
+          - 30
+        transition: 5
+      service: light.turn_on
+    - data:
+        entity_id: media_player.emma_s_bedroom_echo_dot
+        media_content_id: lullabies
+        media_content_type: routine
+      service: media_player.play_media
+    - data:
+        entity_id: media_player.emma_s_bedroom_echo_dot
+        volume_level: 0.3
+      service: media_player.volume_set
   alias: Emma's Bedtime
+start_watch_netflix:
+  alias: Netflix and Chill
+  sequence:
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_on
+    - data:
+        brightness: 20
+        entity_id: light.living_room
+      service: light.turn_on
+    - above: 25
+      condition: numeric_state
+      entity_id: sensor.living_room_sensor_temperature
+    - data:
+        command: PowerToggle
+        device: "64739991"
+        entity_id: remote.harmony_hub
+      service: remote.send_command
+stop_watch_netflix:
+  alias: Netflix and Chill
+  sequence:
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_off
+    - data:
+        brightness: 100
+        entity_id: light.living_room
+      service: light.turn_on
+    - data:
+        command: PowerToggle
+        device: "64739991"
+        entity_id: remote.harmony_hub
+      service: remote.send_command

@@ -16,28 +16,21 @@ sensor:
     sensors:
       homelab_amps:
         value_template: '{{ states.switch.homelab.attributes["current_a"] | replace(" A", "") | float }}'
-        unit_of_measurement: 'A'
+        unit_of_measurement: "A"
       homelab_watts:
         value_template: '{{ states.switch.homelab.attributes["current_power_w"] | replace(" W", "") | float }}'
-        unit_of_measurement: 'W'
+        unit_of_measurement: "W"
       homelab_total_kw:
         value_template: '{{ states.switch.homelab.attributes["total_energy_kwh"] | replace(" kW", "") | float }}'
-        unit_of_measurement: 'kW'
+        unit_of_measurement: "kW"
       homelab_volts:
         value_template: '{{ states.switch.homelab.attributes["voltage"] | replace(" V", "") | float }}'
-        unit_of_measurement: 'V'
+        unit_of_measurement: "V"
       homelab_today_kw:
         value_template: '{{ states.switch.homelab.attributes["today_energy_kwh"] | replace(" kW", "") | float }}'
-        unit_of_measurement: 'kW'
+        unit_of_measurement: "kW"
 
-binary_sensor:
-  - platform: template
-    sensors:
-      someone_home:
-        device_class: presence
-        friendly_name: Someone is home
-        entity_id:
-        - binary_sensor.hk_presence_bruno
-        - binary_sensor.hk_presence_sarah
-        value_template: >-
-          {{ is_state('binary_sensor.hk_presence_bruno', 'on') or is_state('binary_sensor.hk_presence_sarah', 'on') }}
+input_boolean:
+  dnd_living_room:
+    name: Do Not Disturb Living Room
+    hidden: true

@@ -13,6 +13,16 @@ binary_sensor:
         device_class: presence
         value_template: >-
           {{ is_state('input_boolean.sarah_present', 'on') }}
+  - platform: template
+    sensors:
+      someone_home:
+        device_class: presence
+        friendly_name: Someone is home
+        entity_id:
+          - binary_sensor.hk_presence_bruno
+          - binary_sensor.hk_presence_sarah
+        value_template: >-
+          {{ is_state('binary_sensor.hk_presence_bruno', 'on') or is_state('binary_sensor.hk_presence_sarah', 'on') }}
 
 input_boolean:
   bruno_present:
