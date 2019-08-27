@@ -1,5 +1,5 @@
 - id: '1566204636758'
-  alias: Roomba
+  alias: Clean House
   trigger:
   - hours: '15'
     minutes: '00'
@@ -11,7 +11,7 @@
     state: 'off'
   action:
   - data:
-      entity_id: vacuum.roomba
+      entity_id: vacuum.xiaomi_miio
     service: vacuum.turn_on
 - id: '1566215577974'
   alias: Alexa Home Guard - Arm
