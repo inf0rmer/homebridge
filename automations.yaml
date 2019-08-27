@@ -1,5 +1,5 @@
-- id: "1566204636758"
-  alias: Clean House
+- id: start_cleaning
+  alias: Start Cleaning
   trigger:
     - entity_id: binary_sensor.someone_home
       for:
@@ -12,7 +12,21 @@
     - data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.start
-- id: "1566215577974"
+- id: stop_cleaning
+  alias: Stop Cleaning
+  trigger:
+    - entity_id: binary_sensor.someone_home
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: template
+      value_template: '{{not is_state("vacuum.xiaomi_vacuum_cleaner", "docked")}}'
+  action:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      service: vacuum.return_to_base
+- id: alexa_guard_arm
   alias: Alexa Home Guard - Arm
   trigger:
     - entity_id: binary_sensor.someone_home
@@ -21,7 +35,7 @@
       to: "off"
   action:
     - service: alarm_control_panel.alarm_arm_away
-- id: "1566215577979"
+- id: alexa_guard_disarm
   alias: Alexa Home Guard - Disarm
   trigger:
     - entity_id: binary_sensor.someone_home
@@ -30,7 +44,7 @@
       to: "on"
   action:
     - service: alarm_control_panel.alarm_arm_home
-- id: "1566215577982"
+- id: sarah_arrive_home
   alias: Sarah comes home
   trigger:
     - entity_id: binary_sensor.hk_presence_sarah
@@ -48,7 +62,7 @@
           type: announce
         target: media_player.everywhere
         message: Hi Bruno, Sarah will be home in a few minutes
-- id: "1566215577981"
+- id: bruno_arrive_home
   alias: Bruno comes home
   trigger:
     - entity_id: binary_sensor.hk_presence_bruno
@@ -66,7 +80,7 @@
           type: announce
         target: media_player.everywhere
         message: Hi Sarah, Bruno will be home in a few minutes
-- id: "1566416394499"
+- id: all_leave_house
   alias: Leave House
   trigger:
     - entity_id: binary_sensor.someone_home
@@ -80,7 +94,7 @@
     - data:
         entity_id: group.all_light_switches
       service: switch.turn_off
-- id: "1566632827470"
+- id: sunset
   alias: Sunset
   trigger:
     - event: sunset
@@ -104,7 +118,7 @@
         color_temp: 500
         transition: 30
       service: light.turn_on
-- id: "1566718341458"
+- id: someone_comes_home_after_sunset
   alias: Anyone comes home after Sunset
   trigger:
     - entity_id: binary_sensor.someone_home
@@ -118,7 +132,7 @@
     - data:
         entity_id: automation.sunset
       service: automation.trigger
-- id: "1566829926805"
+- id: building_door_bell_ring
   alias: Building Door Bell Ring
   trigger:
     - event_data: {}
@@ -132,20 +146,135 @@
     - data:
         data:
           type: announce
-        message: Someone is at the downstairs door
+        message: Someone is at the door downstairs
         target: media_player.everywhere
       service: notify.alexa_media
-- id: "1566935796444"
-  alias: Stop Cleaning
+- id: watch_tv_lights_on
+  alias: Watch TV Lights On
   trigger:
-    - entity_id: binary_sensor.someone_home
-      from: "off"
+    - entity_id: sensor.watch_netflix
+      from: "False"
       platform: state
-      to: "on"
+      to: "True"
+    - entity_id: sensor.watch_smart_tv
+      from: "False"
+      platform: state
+      to: "True"
   condition:
-    - condition: template
-      value_template: '{{not is_state("vacuum.xiaomi_vacuum_cleaner", "docked")}}'
+    - above: 20
+      condition: numeric_state
+      entity_id: light.living_room
+      value_template: "{{states.light.living_room.attributes.brightness}}"
   action:
     - data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
-      service: vacuum.return_to_base
+        brightness: 20
+        entity_id: light.living_room
+      service: light.turn_on
+- id: watch_tv_lights_off_daytime
+  alias: Watch TV Lights Off (Daytime)
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "True"
+      platform: state
+      to: "False"
+    - entity_id: sensor.watch_smart_tv
+      from: "True"
+      platform: state
+      to: "False"
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: "above_horizon"
+  action:
+    - data:
+        entity_id: light.living_room
+      service: light.turn_off
+- id: watch_tv_lights_off_nighttime
+  alias: Watch TV Lights Off (Nighttime)
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "True"
+      platform: state
+      to: "False"
+    - entity_id: sensor.watch_smart_tv
+      from: "True"
+      platform: state
+      to: "False"
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: "below_horizon"
+  action:
+    - data:
+        entity_id: light.living_room
+        brightness: 100
+      service: light.turn_on
+- id: watch_tv_fan_on
+  alias: Watch TV Fan On
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "False"
+      platform: state
+      to: "True"
+    - entity_id: sensor.watch_smart_tv
+      from: "False"
+      platform: state
+      to: "True"
+  condition:
+    - above: 25
+      condition: numeric_state
+      entity_id: sensor.living_room_sensor_temperature
+      value_template: "{{states.sensor.living_room_sensor_temperature.state}}"
+  action:
+    - data:
+        command: PowerToggle
+        device: "64739991"
+        entity_id: remote.harmony_hub
+      service: remote.send_command
+- id: watch_tv_fan_off
+  alias: Watch TV Fan Off
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "True"
+      platform: state
+      to: "False"
+    - entity_id: sensor.watch_smart_tv
+      from: "True"
+      platform: state
+      to: "False"
+  action:
+    - data:
+        command: PowerToggle
+        device: "64739991"
+        entity_id: remote.harmony_hub
+      service: remote.send_command
+- id: watch_tv_dnd_on
+  alias: Watch TV DnD On
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "False"
+      platform: state
+      to: "True"
+    - entity_id: sensor.watch_smart_tv
+      from: "False"
+      platform: state
+      to: "True"
+  action:
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_on
+- id: watch_tv_dnd_off
+  alias: Watch TV DnD Off
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "True"
+      platform: state
+      to: "False"
+    - entity_id: sensor.watch_smart_tv
+      from: "True"
+      platform: state
+      to: "False"
+  action:
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_off

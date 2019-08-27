@@ -1,13 +1,3 @@
-#default_view:
-#  view: no
-#  entities:
-#    - group.Hue
-
-#Hue:
-#  entities:
-#    - sensor.hallway_motion_sensor
-#    - sensor.laundry_room_motion_sensor
-
 all_light_switches:
   name: All Light Switches
   entities:
@@ -19,6 +9,6 @@ harmony_hub:
   name: Living Room Entertainment Control
   control: hidden
   entities:
-    - switch.watch_smart_tv
-    - switch.watch_netflix
-    - switch.watch_apple_tv
+    - sensor.watch_smart_tv
+    - sensor.watch_netflix
+    - sensor.watch_apple_tv
