@@ -15,7 +15,6 @@ good_night:
       - 30
       - 30
     service: light.turn_on
-
 emma_bedtime:
   sequence:
   - data:

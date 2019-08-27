@@ -76,23 +76,21 @@
     to: 'off'
   action:
   - data:
-      data:
-        entity_id: group.all_lights
+      entity_id: group.all_lights
     service: light.turn_off
   - data:
-      data:
-        entity_id: group.all_light_switches
+      entity_id: group.all_light_switches
     service: switch.turn_off
 - id: '1566632827470'
   alias: Sunset
   trigger:
   - event: sunset
     platform: sun
-    offset: "-00:45:00"
+    offset: -00:45:00
   condition:
-    - condition: state
-      entity_id: binary_sensor.someone_home
-      state: 'on'
+  - condition: state
+    entity_id: binary_sensor.someone_home
+    state: 'on'
   action:
   - data:
       entity_id:
@@ -121,3 +119,20 @@
   - data:
       entity_id: automation.sunset
     service: automation.trigger
+- id: '1566829926805'
+  alias: Building Door Bell Ring
+  trigger:
+  - event_data: {}
+    event_type: nello_bell_ring
+    platform: event
+  condition:
+  - condition: state
+    entity_id: binary_sensor.someone_home
+    state: 'on'
+  action:
+  - data:
+      data:
+        type: announce
+      message: Someone is at the downstairs door
+      target: media_player.everywhere
+    service: notify.alexa_media
