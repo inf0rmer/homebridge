@@ -1,138 +1,138 @@
-- id: '1566204636758'
+- id: "1566204636758"
   alias: Clean House
   trigger:
-  - hours: '15'
-    minutes: '00'
-    platform: time_pattern
-    seconds: '00'
+    - hours: "15"
+      minutes: "00"
+      platform: time_pattern
+      seconds: "00"
   condition:
-  - condition: state
-    entity_id: binary_sensor.someone_home
-    state: 'off'
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "off"
   action:
-  - data:
-      entity_id: vacuum.xiaomi_miio
-    service: vacuum.turn_on
-- id: '1566215577974'
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      service: vacuum.start
+- id: "1566215577974"
   alias: Alexa Home Guard - Arm
   trigger:
-  - entity_id: binary_sensor.someone_home
-    from: 'on'
-    platform: state
-    to: 'off'
+    - entity_id: binary_sensor.someone_home
+      from: "on"
+      platform: state
+      to: "off"
   action:
-  - service: alarm_control_panel.alarm_arm_away
-- id: '1566215577979'
+    - service: alarm_control_panel.alarm_arm_away
+- id: "1566215577979"
   alias: Alexa Home Guard - Disarm
   trigger:
-  - entity_id: binary_sensor.someone_home
-    from: 'off'
-    platform: state
-    to: 'on'
+    - entity_id: binary_sensor.someone_home
+      from: "off"
+      platform: state
+      to: "on"
   action:
-  - service: alarm_control_panel.alarm_arm_home
-- id: '1566215577982'
+    - service: alarm_control_panel.alarm_arm_home
+- id: "1566215577982"
   alias: Sarah comes home
   trigger:
-  - entity_id: binary_sensor.hk_presence_sarah
-    from: 'off'
-    platform: state
-    to: 'on'
+    - entity_id: binary_sensor.hk_presence_sarah
+      from: "off"
+      platform: state
+      to: "on"
   condition:
-  - condition: state
-    entity_id: binary_sensor.hk_presence_bruno
-    state: 'on'
+    - condition: state
+      entity_id: binary_sensor.hk_presence_bruno
+      state: "on"
   action:
-  - service: notify.alexa_media
-    data:
+    - service: notify.alexa_media
       data:
-        type: announce
-      target: media_player.everywhere
-      message: Hi Bruno, Sarah will be home in a few minutes
-- id: '1566215577981'
+        data:
+          type: announce
+        target: media_player.everywhere
+        message: Hi Bruno, Sarah will be home in a few minutes
+- id: "1566215577981"
   alias: Bruno comes home
   trigger:
-  - entity_id: binary_sensor.hk_presence_bruno
-    from: 'off'
-    platform: state
-    to: 'on'
+    - entity_id: binary_sensor.hk_presence_bruno
+      from: "off"
+      platform: state
+      to: "on"
   condition:
-  - condition: state
-    entity_id: binary_sensor.hk_presence_sarah
-    state: 'on'
+    - condition: state
+      entity_id: binary_sensor.hk_presence_sarah
+      state: "on"
   action:
-  - service: notify.alexa_media
-    data:
+    - service: notify.alexa_media
       data:
-        type: announce
-      target: media_player.everywhere
-      message: Hi Sarah, Bruno will be home in a few minutes
-- id: '1566416394499'
+        data:
+          type: announce
+        target: media_player.everywhere
+        message: Hi Sarah, Bruno will be home in a few minutes
+- id: "1566416394499"
   alias: Leave House
   trigger:
-  - entity_id: binary_sensor.someone_home
-    from: 'on'
-    platform: state
-    to: 'off'
+    - entity_id: binary_sensor.someone_home
+      from: "on"
+      platform: state
+      to: "off"
   action:
-  - data:
-      entity_id: group.all_lights
-    service: light.turn_off
-  - data:
-      entity_id: group.all_light_switches
-    service: switch.turn_off
-- id: '1566632827470'
+    - data:
+        entity_id: group.all_lights
+      service: light.turn_off
+    - data:
+        entity_id: group.all_light_switches
+      service: switch.turn_off
+- id: "1566632827470"
   alias: Sunset
   trigger:
-  - event: sunset
-    platform: sun
-    offset: -00:45:00
+    - event: sunset
+      platform: sun
+      offset: -00:45:00
   condition:
-  - condition: state
-    entity_id: binary_sensor.someone_home
-    state: 'on'
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
-  - data:
-      entity_id:
-      - switch.balcony_plug
-      - switch.dining_room_cabinet
-      - switch.emmas_bedroom_string_lights
-    service: switch.turn_on
-  - data:
-      entity_id:
-      - light.gaming_area
-      brightness: 200
-      color_temp: 500
-      transition: 30
-    service: light.turn_on
-- id: '1566718341458'
+    - data:
+        entity_id:
+          - switch.balcony_plug
+          - switch.dining_room_cabinet
+          - switch.emmas_bedroom_string_lights
+      service: switch.turn_on
+    - data:
+        entity_id:
+          - light.gaming_area
+        brightness: 200
+        color_temp: 500
+        transition: 30
+      service: light.turn_on
+- id: "1566718341458"
   alias: Anyone comes home after Sunset
   trigger:
-  - entity_id: binary_sensor.someone_home
-    from: 'off'
-    platform: state
-    to: 'on'
+    - entity_id: binary_sensor.someone_home
+      from: "off"
+      platform: state
+      to: "on"
   condition:
-  - after: sunset
-    condition: sun
+    - after: sunset
+      condition: sun
   action:
-  - data:
-      entity_id: automation.sunset
-    service: automation.trigger
-- id: '1566829926805'
+    - data:
+        entity_id: automation.sunset
+      service: automation.trigger
+- id: "1566829926805"
   alias: Building Door Bell Ring
   trigger:
-  - event_data: {}
-    event_type: nello_bell_ring
-    platform: event
+    - event_data: {}
+      event_type: nello_bell_ring
+      platform: event
   condition:
-  - condition: state
-    entity_id: binary_sensor.someone_home
-    state: 'on'
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
-  - data:
-      data:
-        type: announce
-      message: Someone is at the downstairs door
-      target: media_player.everywhere
-    service: notify.alexa_media
+    - data:
+        data:
+          type: announce
+        message: Someone is at the downstairs door
+        target: media_player.everywhere
+      service: notify.alexa_media
