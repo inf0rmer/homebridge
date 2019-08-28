@@ -1,3 +1,7 @@
+###############
+# House #
+###############
+
 - id: house_start_cleaning
   alias: Start Cleaning
   trigger:
@@ -156,6 +160,11 @@
         message: Someone is at the door downstairs
         target: media_player.everywhere
       service: notify.alexa_media
+
+###############
+# Living Room #
+###############
+
 - id: living_room_watch_tv_lights_on
   alias: Watch TV Lights On
   trigger:
@@ -286,10 +295,72 @@
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_off
 
+- id: living_room_motion_start
+  alias: Living Room Motion Starts (Motion Toggle Off)
+  trigger:
+    - entity_id: binary_sensor.living_room_motion_sensor
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: light.living_room
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.motion_living_room
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_living_room
+      state: "off"
+  action:
+    # Hue bridge not fast enough
+    # - data_template:
+    #     brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+    #     entity_id: light.living_room
+    #   service: light.turn_on
+    - data:
+        entity_id: input_boolean.motion_living_room
+      service: input_boolean.turn_on
+
+- id: living_room_motion_end
+  alias: Living Room Motion Ends (Motion Toggle On)
+  trigger:
+    - entity_id: binary_sensor.living_room_motion_sensor
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.motion_living_room
+      state: "on"
+  action:
+    - data:
+        entity_id: light.living_room
+      service: light.turn_off
+    - data:
+        entity_id: input_boolean.motion_living_room
+      service: input_boolean.turn_off
+
+- id: living_room_motion_toggle_override
+  alias: Living Room Motion Toggle Override
+  trigger:
+    - entity_id: sensor.living_room_switch
+      platform: state
+  action:
+    - data:
+        entity_id: input_boolean.motion_living_room
+      service: input_boolean.turn_off
+
+###############
+# Dining Room #
+###############
+
 - id: dining_room_motion_start
   alias: Dining Room Motion Starts (Motion Toggle Off)
   trigger:
-    - entity_id: binary_sensor.dining_room_sensor_motion
+    - entity_id: binary_sensor.dining_room_motion_sensor
       from: "off"
       platform: state
       to: "on"
@@ -300,11 +371,15 @@
     - condition: state
       entity_id: input_boolean.motion_dining_room
       state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
   action:
-    - data_template:
-        brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
-        entity_id: light.dining_room
-      service: light.turn_on
+    # Hue bridge not fast enough
+    # - data_template:
+    #     brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+    #     entity_id: light.dining_room
+    #   service: light.turn_on
     - data:
         entity_id: input_boolean.motion_dining_room
       service: input_boolean.turn_on
@@ -312,12 +387,12 @@
 - id: dining_room_motion_end
   alias: Dining Room Motion Ends (Motion Toggle On)
   trigger:
-    - entity_id: binary_sensor.dining_room_sensor_motion
+    - entity_id: binary_sensor.dining_room_motion_sensor
       from: "on"
       platform: state
       to: "off"
       for:
-        minutes: 3
+        minutes: 5
   condition:
     - condition: state
       entity_id: input_boolean.motion_dining_room
@@ -333,14 +408,10 @@
 - id: dining_room_motion_toggle_override
   alias: Dining Room Motion Toggle Override
   trigger:
-    - entity_id: light.dining_room
+    - entity_id: sensor.dining_room_switch
       platform: state
-      from: "off"
-      to: "on"
-    - entity_id: light.dining_room
+    - entity_id: sensor.dining_room_switch_2
       platform: state
-      from: "on"
-      to: "off"
   action:
     - data:
         entity_id: input_boolean.motion_dining_room

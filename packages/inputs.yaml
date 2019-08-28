@@ -20,3 +20,5 @@ input_boolean:
 
   motion_dining_room:
     name: Dining Room Motion Active
+  motion_living_room:
+    name: Living Room Motion Active
