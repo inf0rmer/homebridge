@@ -1,4 +1,6 @@
 binary_sensor:
+  - platform: huesensor
+
   - platform: template
     sensors:
       hk_presence_bruno:

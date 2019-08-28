@@ -1,6 +1,8 @@
 sensor:
   - platform: google_wifi
 
+  - platform: huesensor
+
   - platform: min_max
     name: temperature_average_home
     type: mean
