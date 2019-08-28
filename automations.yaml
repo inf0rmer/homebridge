@@ -7,7 +7,10 @@
       from: "on"
       platform: state
       to: "off"
-  condition: []
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: above_horizon
   action:
     - data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
@@ -94,6 +97,9 @@
     - data:
         entity_id: group.all_light_switches
       service: switch.turn_off
+    - data:
+        entity_id: remote.harmony_hub
+      service: remote.turn_off
 - id: sunset
   alias: Sunset
   trigger:
@@ -126,8 +132,9 @@
       platform: state
       to: "on"
   condition:
-    - after: sunset
-      condition: sun
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
   action:
     - data:
         entity_id: automation.sunset
@@ -184,7 +191,7 @@
   condition:
     condition: state
     entity_id: sun.sun
-    state: "above_horizon"
+    state: above_horizon
   action:
     - data:
         entity_id: light.living_room
@@ -203,7 +210,7 @@
   condition:
     condition: state
     entity_id: sun.sun
-    state: "below_horizon"
+    state: below_horizon
   action:
     - data:
         entity_id: light.living_room
