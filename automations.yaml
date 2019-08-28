@@ -1,4 +1,4 @@
-- id: start_cleaning
+- id: house_start_cleaning
   alias: Start Cleaning
   trigger:
     - entity_id: binary_sensor.someone_home
@@ -15,7 +15,7 @@
     - data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.start
-- id: stop_cleaning
+- id: house_stop_cleaning
   alias: Stop Cleaning
   trigger:
     - entity_id: binary_sensor.someone_home
@@ -29,7 +29,7 @@
     - data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.return_to_base
-- id: alexa_guard_arm
+- id: house_alexa_guard_arm
   alias: Alexa Home Guard - Arm
   trigger:
     - entity_id: binary_sensor.someone_home
@@ -38,7 +38,7 @@
       to: "off"
   action:
     - service: alarm_control_panel.alarm_arm_away
-- id: alexa_guard_disarm
+- id: house_alexa_guard_disarm
   alias: Alexa Home Guard - Disarm
   trigger:
     - entity_id: binary_sensor.someone_home
@@ -47,7 +47,7 @@
       to: "on"
   action:
     - service: alarm_control_panel.alarm_arm_home
-- id: sarah_arrive_home
+- id: house_sarah_arrive_home
   alias: Sarah comes home
   trigger:
     - entity_id: binary_sensor.hk_presence_sarah
@@ -65,7 +65,7 @@
           type: announce
         target: media_player.everywhere
         message: Hi Bruno, Sarah will be home in a few minutes
-- id: bruno_arrive_home
+- id: house_bruno_arrive_home
   alias: Bruno comes home
   trigger:
     - entity_id: binary_sensor.hk_presence_bruno
@@ -83,7 +83,7 @@
           type: announce
         target: media_player.everywhere
         message: Hi Sarah, Bruno will be home in a few minutes
-- id: all_leave_house
+- id: house_all_leave
   alias: Leave House
   trigger:
     - entity_id: binary_sensor.someone_home
@@ -100,7 +100,7 @@
     - data:
         entity_id: remote.harmony_hub
       service: remote.turn_off
-- id: sunset
+- id: house_sunset
   alias: Sunset
   trigger:
     - event: sunset
@@ -124,7 +124,7 @@
         color_temp: 500
         transition: 30
       service: light.turn_on
-- id: someone_comes_home_after_sunset
+- id: house_someone_arrives_after_sunset
   alias: Anyone comes home after Sunset
   trigger:
     - entity_id: binary_sensor.someone_home
@@ -156,7 +156,7 @@
         message: Someone is at the door downstairs
         target: media_player.everywhere
       service: notify.alexa_media
-- id: watch_tv_lights_on
+- id: living_room_watch_tv_lights_on
   alias: Watch TV Lights On
   trigger:
     - entity_id: sensor.watch_netflix
@@ -177,7 +177,7 @@
         brightness: 20
         entity_id: light.living_room
       service: light.turn_on
-- id: watch_tv_lights_off_daytime
+- id: living_room_watch_tv_lights_off_daytime
   alias: Watch TV Lights Off (Daytime)
   trigger:
     - entity_id: sensor.watch_netflix
@@ -196,7 +196,7 @@
     - data:
         entity_id: light.living_room
       service: light.turn_off
-- id: watch_tv_lights_off_nighttime
+- id: living_room_watch_tv_lights_off_nighttime
   alias: Watch TV Lights Off (Nighttime)
   trigger:
     - entity_id: sensor.watch_netflix
@@ -216,7 +216,7 @@
         entity_id: light.living_room
         brightness: 100
       service: light.turn_on
-- id: watch_tv_fan_on
+- id: living_room_watch_tv_fan_on
   alias: Watch TV Fan On
   trigger:
     - entity_id: sensor.watch_netflix
@@ -238,7 +238,7 @@
         device: "64739991"
         entity_id: remote.harmony_hub
       service: remote.send_command
-- id: watch_tv_fan_off
+- id: living_room_watch_tv_fan_off
   alias: Watch TV Fan Off
   trigger:
     - entity_id: sensor.watch_netflix
@@ -255,7 +255,7 @@
         device: "64739991"
         entity_id: remote.harmony_hub
       service: remote.send_command
-- id: watch_tv_dnd_on
+- id: living_room_watch_tv_dnd_on
   alias: Watch TV DnD On
   trigger:
     - entity_id: sensor.watch_netflix
@@ -270,7 +270,7 @@
     - data:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_on
-- id: watch_tv_dnd_off
+- id: living_room_watch_tv_dnd_off
   alias: Watch TV DnD Off
   trigger:
     - entity_id: sensor.watch_netflix
@@ -284,4 +284,60 @@
   action:
     - data:
         entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_off
+
+- id: dining_room_motion_start
+  alias: Dining Room Motion Starts (Motion Toggle Off)
+  trigger:
+    - entity_id: binary_sensor.dining_room_sensor_motion
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: light.dining_room
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.motion_dining_room
+      state: "off"
+  action:
+    - data_template:
+        brightness: {% if now().hour > 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}
+        entity_id: light.dining_room
+      service: light.turn_on
+    - data:
+        entity_id: input_boolean.motion_dining_room
+      service: input_boolean.turn_on
+
+- id: dining_room_motion_end
+  alias: Dining Room Motion Ends (Motion Toggle On)
+  trigger:
+    - entity_id: binary_sensor.dining_room_sensor_motion
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 3
+  condition:
+    - condition: state
+      entity_id: input_boolean.motion_dining_room
+      state: "on"
+  action:
+    - data:
+        entity_id: light.dining_room
+      service: light.turn_off
+    - data:
+        entity_id: input_boolean.motion_dining_room
+      service: input_boolean.turn_off
+
+- id: dining_room_motion_toggle_override
+  alias: Dining Room Motion Toggle Override
+  trigger:
+    - entity_id: light.dining_room
+      platform: state
+      from: "off"
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.motion_dining_room
       service: input_boolean.turn_off

@@ -1,0 +1,22 @@
+input_boolean:
+  dnd_living_room:
+    name: Do Not Disturb Living Room
+  dnd_dining_room:
+    name: Do Not Disturb Dining Room
+  dnd_master_bedroom:
+    name: Do Not Disturb Master Bedroom
+  dnd_emma_bedroom:
+    name: Do Not Disturb Emma's Bedroom
+  dnd_kitchen:
+    name: Do Not Disturb Kitchen
+  dnd_hallway:
+    name: Do Not Disturb Hallway
+  dnd_laundry_room:
+    name: Do Not Disturb Laundry Room
+  dnd_bathroom:
+    name: Do Not Disturb Bathroom
+  dnd_balcony:
+    name: Do Not Disturb Balcony
+
+  motion_dining_room:
+    name: Dining Room Motion Active

@@ -41,7 +41,3 @@ sensor:
       homelab_today_kw:
         value_template: '{{ states.switch.homelab.attributes["today_energy_kwh"] | replace(" kW", "") | float }}'
         unit_of_measurement: "kW"
-
-input_boolean:
-  dnd_living_room:
-    name: Do Not Disturb Living Room

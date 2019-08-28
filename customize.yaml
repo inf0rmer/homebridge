@@ -64,3 +64,21 @@ switch.stereo_pair_shuffle_switch:
   hidden: true
 input_boolean.dnd_living_room:
   hidden: true
+input.dnd_dining_room:
+  hidden: true
+input.dnd_master_bedroom:
+  hidden: true
+input.dnd_emma_bedroom:
+  hidden: true
+input.dnd_kitchen:
+  hidden: true
+input.dnd_hallway:
+  hidden: true
+input.dnd_laundry_room:
+  hidden: true
+input.dnd_bathroom:
+  hidden: true
+input.dnd_balcony:
+  hidden: true
+input.motion_dining_room:
+  hidden: true
