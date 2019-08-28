@@ -302,7 +302,7 @@
       state: "off"
   action:
     - data_template:
-        brightness: {% if now().hour > 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}
+        brightness: "{% if now().hour > 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.dining_room
       service: light.turn_on
     - data:
