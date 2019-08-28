@@ -314,10 +314,10 @@
       state: "off"
   action:
     # Hue bridge not fast enough
-    # - data_template:
-    #     brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
-    #     entity_id: light.living_room
-    #   service: light.turn_on
+    - data_template:
+        brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        entity_id: light.living_room
+      service: light.turn_on
     - data:
         entity_id: input_boolean.motion_living_room
       service: input_boolean.turn_on
@@ -376,10 +376,10 @@
       state: "off"
   action:
     # Hue bridge not fast enough
-    # - data_template:
-    #     brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
-    #     entity_id: light.dining_room
-    #   service: light.turn_on
+    - data_template:
+        brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        entity_id: light.dining_room
+      service: light.turn_on
     - data:
         entity_id: input_boolean.motion_dining_room
       service: input_boolean.turn_on
