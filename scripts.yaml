@@ -15,6 +15,7 @@ good_night:
           - 30
           - 30
       service: light.turn_on
+
 emma_bedtime:
   sequence:
     - data:
@@ -42,3 +43,17 @@ emma_bedtime:
         volume_level: 0.3
       service: media_player.volume_set
   alias: Emma's Bedtime
+
+start_cleaning:
+  alias: Start Cleaning
+  sequence:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      service: vacuum.start
+
+stop_cleaning:
+  alias: Stop Cleaning
+  sequence:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      service: vacuum.return_to_base
