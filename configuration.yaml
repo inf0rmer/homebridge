@@ -30,6 +30,7 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+  themes: !include_dir_merge_named themes
 
 # Enables configuration UI
 config:
@@ -91,8 +92,8 @@ alexa_media:
       password: !env_var AMAZON_PASSWORD
       url: amazon.com
       exclude_devices:
-      - "This Device"
-      - "Sarah's Alexa Apps"
-      - "Bruno's Alexa Apps"
-      - "Bruno's Fire TV stick"
-      - "Living Room"
+        - "This Device"
+        - "Sarah's Alexa Apps"
+        - "Bruno's Alexa Apps"
+        - "Bruno's Fire TV stick"
+        - "Living Room"
