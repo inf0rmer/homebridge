@@ -111,6 +111,26 @@
         entity_id: remote.harmony_hub
       service: remote.turn_off
 
+- id: house_sunrise
+  alias: Sunrise
+  trigger:
+    - event: sunrise
+      platform: sun
+      offset: -00:45:00
+  action:
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_dining_room
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_emma_bedroom
+      service: input_boolean.turn_on
+
 - id: house_sunset
   alias: Sunset
   trigger:

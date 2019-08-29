@@ -2,6 +2,18 @@ good_night:
   alias: Good Night
   sequence:
     - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_dining_room
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_emma_bedroom
+      service: input_boolean.turn_on
+    - data:
         entity_id: group.all_lights
       service: light.turn_off
     - data:
