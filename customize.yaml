@@ -8,60 +8,6 @@ lock.nello_ecf41382:
   friendly_name: Building Door
 sensor.temperature_average_home:
   friendly_name: Avg. Home Temperature
-switch.bathroom_echo_dot_do_not_disturb_switch:
-  hidden: true
-switch.bathroom_echo_dot_repeat_switch:
-  hidden: true
-switch.bathroom_echo_dot_shuffle_switch:
-  hidden: true
-switch.bruno_s_sonos_one_do_not_disturb_switch:
-  hidden: true
-switch.bruno_s_sonos_one_repeat_switch:
-  hidden: true
-switch.bruno_s_sonos_one_shuffle_switch:
-  hidden: true
-switch.dining_room_echo_left_do_not_disturb_switch:
-  hidden: true
-switch.dining_room_echo_left_repeat_switch:
-  hidden: true
-switch.dining_room_echo_left_shuffle_switch:
-  hidden: true
-switch.dining_room_echo_right_do_not_disturb_switch:
-  hidden: true
-switch.dining_room_echo_right_repeat_switch:
-  hidden: true
-switch.dining_room_echo_right_shuffle_switch:
-  hidden: true
-switch.emma_s_bedroom_echo_dot_do_not_disturb_switch:
-  hidden: true
-switch.emma_s_bedroom_echo_dot_repeat_switch:
-  hidden: true
-switch.emma_s_bedroom_echo_dot_shuffle_switch:
-  hidden: true
-switch.everywhere_do_not_disturb_switch:
-  hidden: true
-switch.everywhere_repeat_switch:
-  hidden: true
-switch.everywhere_shuffle_switch:
-  hidden: true
-switch.kitchen_echo_dot_do_not_disturb_switch:
-  hidden: true
-switch.kitchen_echo_dot_repeat_switch:
-  hidden: true
-switch.kitchen_echo_dot_shuffle_switch:
-  hidden: true
-switch.master_bedroom_echo_dot_do_not_disturb_switch:
-  hidden: true
-switch.master_bedroom_echo_dot_repeat_switch:
-  hidden: true
-switch.master_bedroom_echo_dot_shuffle_switch:
-  hidden: true
-switch.stereo_pair_do_not_disturb_switch:
-  hidden: true
-switch.stereo_pair_repeat_switch:
-  hidden: true
-switch.stereo_pair_shuffle_switch:
-  hidden: true
 input_boolean.dnd_living_room:
   hidden: true
 input.dnd_dining_room:
