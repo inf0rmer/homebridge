@@ -130,6 +130,13 @@
     - data:
         entity_id: input_boolean.dnd_emma_bedroom
       service: input_boolean.turn_on
+    - data:
+        entity_id:
+          - media_player.bruno_s_sonos_one
+          - media_player.everywhere
+          - media_player.emma_s_bedroom_echo_dot
+        volume_level: 0.6
+      service: media_player.volume_set
 
 - id: house_sunset
   alias: Sunset

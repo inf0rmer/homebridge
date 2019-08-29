@@ -27,6 +27,13 @@ good_night:
           - 30
           - 30
       service: light.turn_on
+    - data:
+        entity_id:
+          - media_player.bruno_s_sonos_one
+          - media_player.everywhere
+          - media_player.emma_s_bedroom_echo_dot
+        volume_level: 0.2
+      service: media_player.volume_set
 
 emma_bedtime:
   sequence:
