@@ -343,11 +343,23 @@
         entity_id: input_boolean.motion_living_room
       service: input_boolean.turn_off
 
-- id: living_room_motion_toggle_override
-  alias: Living Room Motion Toggle Override
+- id: living_room_motion_toggle_override_off
+  alias: Living Room Motion Toggle Override Off
   trigger:
     - entity_id: sensor.living_room_switch
       platform: state
+  action:
+    - data:
+        entity_id: input_boolean.motion_living_room
+      service: input_boolean.turn_off
+
+- id: living_room_motion_toggle_override_on
+  alias: Living Room Motion Toggle Override On
+  trigger:
+    - entity_id: light.dining_room
+      from: "on"
+      platform: state
+      to: "off"
   action:
     - data:
         entity_id: input_boolean.motion_living_room
@@ -405,13 +417,29 @@
         entity_id: input_boolean.motion_dining_room
       service: input_boolean.turn_off
 
-- id: dining_room_motion_toggle_override
-  alias: Dining Room Motion Toggle Override
+- id: dining_room_motion_toggle_override_off
+  alias: Dining Room Motion Toggle Override Off
   trigger:
     - entity_id: sensor.dining_room_switch
       platform: state
     - entity_id: sensor.dining_room_switch_2
       platform: state
+    - entity_id: light.dining_room
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.motion_dining_room
+      service: input_boolean.turn_off
+
+- id: dining_room_motion_toggle_override_on
+  alias: Dining Room Motion Toggle Override On
+  trigger:
+    - entity_id: light.living_room
+      from: "on"
+      platform: state
+      to: "off"
   action:
     - data:
         entity_id: input_boolean.motion_dining_room
