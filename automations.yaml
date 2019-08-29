@@ -1,3 +1,27 @@
+#################
+# Home Assistant#
+#################
+- id: homeassistant_theme_switch
+  alias: Set Home Assistant theme for day and night
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: sun.sun
+      to: above_horizon
+    - platform: state
+      entity_id: sun.sun
+      to: below_horizon
+  action:
+    - service_template: frontend.set_theme
+      data_template:
+        name: >
+          {% if states.sun.sun.state == "above_horizon" %}
+            default
+          {% else %}
+            midnight
+          {% endif %}
+
 ###############
 # House #
 ###############
