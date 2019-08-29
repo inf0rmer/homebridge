@@ -1,0 +1,4 @@
+switch:
+  - platform: broadlink
+    host: 192.168.87.90
+    mac: "CC:50:E3:C2:E4:CE"
