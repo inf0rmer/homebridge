@@ -5,6 +5,15 @@ all_light_switches:
     - switch.dining_room_cabinet
     - switch.emmas_bedroom_string_lights
 
+all_motion_sensors:
+  name: All Motion Sensors
+  entities:
+    - binary_sensor.dining_room_sensor_motion
+    - binary_sensor.living_room_sensor_motion
+    - binary_sensor.hallway_sensor_motion
+    - binary_sensor.kitchen_sensor_motion
+    - binary_sensor.laundry_room_sensor_motion
+
 light_kitchen_ceiling:
   name: Light Kitchen Ceiling
   entities:

@@ -4,10 +4,12 @@ sensor.laundry_room_light_level:
   device_class: illuminance
 sensor.kitchen_light_level:
   device_class: illuminance
-lock.nello_ecf41382:
-  friendly_name: Building Door
 sensor.temperature_average_home:
   friendly_name: Avg. Home Temperature
+
+lock.nello_ecf41382:
+  friendly_name: Building Door
+
 input_boolean.dnd_living_room:
   hidden: true
 input.dnd_dining_room:
@@ -27,4 +29,10 @@ input.dnd_bathroom:
 input.dnd_balcony:
   hidden: true
 input.motion_dining_room:
+  hidden: true
+input.bruno_present:
+  hidden: true
+input.sarah_present:
+  hidden: true
+input.someone_present:
   hidden: true

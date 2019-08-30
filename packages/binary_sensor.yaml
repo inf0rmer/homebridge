@@ -8,15 +8,16 @@ binary_sensor:
         device_class: presence
         value_template: >-
           {{ is_state('input_boolean.bruno_present', 'on') }}
-  - platform: template
-    sensors:
       hk_presence_sarah:
         friendly_name: "Presence Sarah"
         device_class: presence
         value_template: >-
           {{ is_state('input_boolean.sarah_present', 'on') }}
-  - platform: template
-    sensors:
+      hk_presence_someone:
+        friendly_name: "Presence Someone"
+        device_class: presence
+        value_template: >-
+          {{ is_state('input_boolean.someone_present', 'on') }}
       someone_home:
         device_class: presence
         friendly_name: Someone is home
@@ -24,12 +25,15 @@ binary_sensor:
           - binary_sensor.hk_presence_bruno
           - binary_sensor.hk_presence_sarah
         value_template: >-
-          {{ is_state('binary_sensor.hk_presence_bruno', 'on') or is_state('binary_sensor.hk_presence_sarah', 'on') }}
+          {{ is_state('binary_sensor.hk_presence_bruno', 'on') or is_state('binary_sensor.hk_presence_sarah', 'on') or is_state('binary_sensor.hk_presence_someone', 'on') }}
 
 input_boolean:
   bruno_present:
-    name: bruno
+    name: Bruno
     icon: mdi:account
   sarah_present:
-    name: sarah
+    name: Sarah
+    icon: mdi:account
+  someone_present:
+    name: Someone
     icon: mdi:account
