@@ -425,7 +425,7 @@
       service: input_boolean.turn_on
 
 - id: living_room_motion_end
-  alias: [Living Room] Motion Ends (Motion Toggle On)
+  alias: "[Living Room] Motion Ends (Motion Toggle On)"
   trigger:
     - entity_id: binary_sensor.living_room_motion_sensor
       from: "on"
@@ -472,7 +472,7 @@
 ###############
 
 - id: dining_room_motion_start
-  alias: "[Dining Room] Dining Room Motion Starts (Motion Toggle Off)""
+  alias: "[Dining Room] Dining Room Motion Starts (Motion Toggle Off)"
   trigger:
     - entity_id: binary_sensor.dining_room_motion_sensor
       from: "off"
