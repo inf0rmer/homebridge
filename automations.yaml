@@ -147,6 +147,7 @@
       service: input_boolean.turn_off
     - data:
         entity_id: input_boolean.dnd_dining_room
+      service: input_boolean.turn_off
     - data:
         entity_id: input_boolean.dnd_master_bedroom
       service: input_boolean.turn_off
