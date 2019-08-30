@@ -378,6 +378,9 @@
     - condition: state
       entity_id: input_boolean.dnd_living_room
       state: "off"
+    - below: 35
+      condition: numeric_state
+      entity_id: sensor.living_room_sensor_light_level
   action:
     # Hue bridge not fast enough
     - data_template:
@@ -452,6 +455,9 @@
     - condition: state
       entity_id: input_boolean.dnd_dining_room
       state: "off"
+    - below: 35
+      condition: numeric_state
+      entity_id: sensor.dining_room_sensor_light_level
   action:
     # Hue bridge not fast enough
     - data_template:
