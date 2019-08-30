@@ -10,6 +10,8 @@ all_motion_sensors:
   entities:
     - binary_sensor.dining_room_sensor_motion
     - binary_sensor.living_room_sensor_motion
+    - binary_sensor.master_bedroom_sensor_motion
+    - binary_sensor.emmas_bedroom_sensor_motion
     - binary_sensor.hallway_sensor_motion
     - binary_sensor.kitchen_sensor_motion
     - binary_sensor.laundry_room_sensor_motion
