@@ -446,7 +446,7 @@
       service: input_boolean.turn_off
 
 - id: living_room_motion_toggle_override_off
-  alias: Living Room Motion Toggle Override Off
+  alias: "[Living Room] Motion Toggle Override Off"
   trigger:
     - entity_id: sensor.living_room_switch
       platform: state
