@@ -20,6 +20,14 @@ light_kitchen_ceiling:
     - light.hue_ambiance_spot_1
     - light.hue_ambiance_spot_2
 
+presence:
+  name: Someone is home
+  view: no
+  entities:
+    - binary_sensor.hk_presence_bruno
+    - binary_sensor.hk_presence_sarah
+    - binary_sensor.hk_presence_someone
+
 harmony_hub:
   name: Living Room Entertainment Control
   control: hidden
