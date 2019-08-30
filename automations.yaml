@@ -134,7 +134,7 @@
   trigger:
     - entity_id: group.all_motion_sensors
       for:
-        minutes: 30
+        minutes: 15
       from: "on"
       platform: state
       to: "off"
