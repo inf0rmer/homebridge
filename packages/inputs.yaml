@@ -24,3 +24,7 @@ input_boolean:
     name: Living Room Motion Active
   motion_kitchen:
     name: Kitchen Motion Active
+  motion_hallway:
+    name: Hallway Motion Active
+  motion_laundry_room:
+    name: Laundry Room Motion Active

@@ -536,7 +536,7 @@
       entity_id: input_boolean.motion_kitchen
       state: "off"
     - condition: state
-      entity_id: input_boolean.dnd_dining_room
+      entity_id: input_boolean.dnd_kitchen
       state: "off"
     - below: 35
       condition: numeric_state
@@ -574,4 +574,114 @@
       service: light.turn_off
     - data:
         entity_id: input_boolean.motion_kitchen
+      service: input_boolean.turn_off
+
+###########
+# Hallway #
+###########
+
+- id: hallway_motion_start
+  alias: Hallway Motion Starts (Motion Toggle Off)
+  trigger:
+    - entity_id: binary_sensor.hallway_motion_sensor
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: light.hallway
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.motion_hallway
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_hallway
+      state: "off"
+    - below: 35
+      condition: numeric_state
+      entity_id: sensor.hallway_sensor_light_level
+  action:
+    # Hue bridge not fast enough
+    - data_template:
+        brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        entity_id: light.hallway
+      service: light.turn_on
+    - data:
+        entity_id: input_boolean.motion_hallway
+      service: input_boolean.turn_on
+
+- id: hallway_motion_end
+  alias: Hallway Motion Ends (Motion Toggle On)
+  trigger:
+    - entity_id: binary_sensor.hallway_motion_sensor
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.motion_hallway
+      state: "on"
+  action:
+    - data:
+        entity_id: light.hallway
+      service: light.turn_off
+    - data:
+        entity_id: input_boolean.motion_hallway
+      service: input_boolean.turn_off
+
+################
+# Laundry Room #
+################
+
+- id: laundry_room_motion_start
+  alias: Laundry Room Motion Starts (Motion Toggle Off)
+  trigger:
+    - entity_id: binary_sensor.laundry_room_motion_sensor
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: light.laundry_room
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.motion_laundry_room
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_laundry_room
+      state: "off"
+    - below: 35
+      condition: numeric_state
+      entity_id: sensor.laundry_room_sensor_light_level
+  action:
+    # Hue bridge not fast enough
+    - data:
+        brightness: 250
+        entity_id: light.laundry_room
+      service: light.turn_on
+    - data:
+        entity_id: input_boolean.motion_laundry_room
+      service: input_boolean.turn_on
+
+- id: laundry_room_motion_end
+  alias: Laundry Room Motion Ends (Motion Toggle On)
+  trigger:
+    - entity_id: binary_sensor.laundry_room_motion_sensor
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 3
+  condition:
+    - condition: state
+      entity_id: input_boolean.motion_laundry_room
+      state: "on"
+  action:
+    - data:
+        entity_id: light.laundry_room
+      service: light.turn_off
+    - data:
+        entity_id: input_boolean.motion_laundry_room
       service: input_boolean.turn_off
