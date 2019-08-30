@@ -144,16 +144,15 @@
   action:
     - data:
         entity_id: input_boolean.dnd_living_room
-      service: input_boolean.turn_on
+      service: input_boolean.turn_off
     - data:
         entity_id: input_boolean.dnd_dining_room
-      service: input_boolean.turn_on
     - data:
         entity_id: input_boolean.dnd_master_bedroom
-      service: input_boolean.turn_on
+      service: input_boolean.turn_off
     - data:
         entity_id: input_boolean.dnd_emma_bedroom
-      service: input_boolean.turn_on
+      service: input_boolean.turn_off
     - data:
         entity_id:
           - media_player.bruno_s_sonos_one
@@ -246,6 +245,7 @@
         brightness: 20
         entity_id: light.living_room
       service: light.turn_on
+
 - id: living_room_watch_tv_lights_off_daytime
   alias: Watch TV Lights Off (Daytime)
   trigger:
@@ -265,6 +265,7 @@
     - data:
         entity_id: light.living_room
       service: light.turn_off
+
 - id: living_room_watch_tv_lights_off_nighttime
   alias: Watch TV Lights Off (Nighttime)
   trigger:
@@ -285,6 +286,7 @@
         entity_id: light.living_room
         brightness: 100
       service: light.turn_on
+
 - id: living_room_watch_tv_fan_on
   alias: Watch TV Fan On
   trigger:
@@ -307,6 +309,7 @@
         device: "64739991"
         entity_id: remote.harmony_hub
       service: remote.send_command
+
 - id: living_room_watch_tv_fan_off
   alias: Watch TV Fan Off
   trigger:
@@ -324,6 +327,7 @@
         device: "64739991"
         entity_id: remote.harmony_hub
       service: remote.send_command
+
 - id: living_room_watch_tv_dnd_on
   alias: Watch TV DnD On
   trigger:
@@ -339,6 +343,7 @@
     - data:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_on
+
 - id: living_room_watch_tv_dnd_off
   alias: Watch TV DnD Off
   trigger:
