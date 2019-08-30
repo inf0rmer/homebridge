@@ -56,6 +56,9 @@ emma_bedtime:
         transition: 5
       service: light.turn_on
     - data:
+        entity_id: input_boolean.dnd_emmas_bedroom
+      service: input_boolean.turn_on
+    - data:
         entity_id: media_player.emma_s_bedroom_echo_dot
         media_content_id: lullabies
         media_content_type: routine
