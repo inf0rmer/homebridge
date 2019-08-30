@@ -516,3 +516,62 @@
     - data:
         entity_id: input_boolean.motion_dining_room
       service: input_boolean.turn_off
+
+###########
+# Kitchen #
+###########
+
+- id: kitchen_motion_start
+  alias: Kitchen Motion Starts (Motion Toggle Off)
+  trigger:
+    - entity_id: binary_sensor.kitchen_motion_sensor
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: light.kitchen
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.motion_kitchen
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
+    - below: 35
+      condition: numeric_state
+      entity_id: sensor.kitchen_sensor_light_level
+  action:
+    # Hue bridge not fast enough
+    - data_template:
+        brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        entity_id: light.kitchen_counter
+      service: light.turn_on
+    - data_template:
+        brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}0{% else %}250{% endif %}"
+        entity_id: group.light_kitchen_ceiling
+      service: light.turn_on
+    - data:
+        entity_id: input_boolean.motion_kitchen
+      service: input_boolean.turn_on
+
+- id: kitchen_motion_end
+  alias: Kitchen Motion Ends (Motion Toggle On)
+  trigger:
+    - entity_id: binary_sensor.kitchen_motion_sensor
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.motion_kitchen
+      state: "on"
+  action:
+    - data:
+        entity_id: light.kitchen
+      service: light.turn_off
+    - data:
+        entity_id: input_boolean.motion_kitchen
+      service: input_boolean.turn_off
