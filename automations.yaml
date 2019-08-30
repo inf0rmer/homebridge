@@ -178,7 +178,7 @@
         entity_id: input_boolean.dnd_master_bedroom
       service: input_boolean.turn_off
     - data:
-        entity_id: input_boolean.dnd_emma_bedroom
+        entity_id: input_boolean.dnd_emmas_bedroom
       service: input_boolean.turn_off
     - data:
         entity_id:
@@ -541,6 +541,172 @@
   action:
     - data:
         entity_id: input_boolean.motion_dining_room
+      service: input_boolean.turn_off
+
+##################
+# Master Bedroom #
+##################
+
+- id: master_bedroom_motion_start
+  alias: Master Bedroom Motion Starts (Motion Toggle Off)
+  trigger:
+    - entity_id: binary_sensor.master_bedroom_motion_sensor
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: light.master_bedroom
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.motion_master_bedroom
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_master_bedroom
+      state: "off"
+    - below: 35
+      condition: numeric_state
+      entity_id: sensor.master_bedroom_sensor_light_level
+  action:
+    # Hue bridge not fast enough
+    - data_template:
+        brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        entity_id: light.master_bedroom
+      service: light.turn_on
+    - data:
+        entity_id: input_boolean.motion_master_bedroom
+      service: input_boolean.turn_on
+
+- id: master_bedroom_motion_end
+  alias: Master Bedroom Motion Ends (Motion Toggle On)
+  trigger:
+    - entity_id: binary_sensor.master_bedroom_motion_sensor
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.motion_master_bedroom
+      state: "on"
+  action:
+    - data:
+        entity_id: light.master_bedroom
+      service: light.turn_off
+    - data:
+        entity_id: input_boolean.motion_master_bedroom
+      service: input_boolean.turn_off
+
+- id: master_bedroom_motion_toggle_override_off
+  alias: Master Bedroom Motion Toggle Override Off
+  trigger:
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+    - entity_id: sensor.master_bedroom_switch_2
+      platform: state
+    - entity_id: light.master_bedroom
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.motion_master_bedroom
+      service: input_boolean.turn_off
+
+- id: master_bedroom_motion_toggle_override_on
+  alias: Master Bedroom Motion Toggle Override On
+  trigger:
+    - entity_id: light.living_room
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.motion_master_bedroom
+      service: input_boolean.turn_off
+
+##################
+# Emma's Bedroom #
+##################
+
+- id: emmas_bedroom_motion_start
+  alias: Emma's Bedroom Motion Starts (Motion Toggle Off)
+  trigger:
+    - entity_id: binary_sensor.emmas_bedroom_motion_sensor
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: light.emmas_bedroom
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.motion_emmas_bedroom
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_emmas_bedroom
+      state: "off"
+    - below: 35
+      condition: numeric_state
+      entity_id: sensor.emmas_bedroom_sensor_light_level
+  action:
+    # Hue bridge not fast enough
+    - data_template:
+        brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        entity_id: light.emmas_bedroom
+      service: light.turn_on
+    - data:
+        entity_id: input_boolean.motion_emmas_bedroom
+      service: input_boolean.turn_on
+
+- id: emmas_bedroom_motion_end
+  alias: Emma's Bedroom Motion Ends (Motion Toggle On)
+  trigger:
+    - entity_id: binary_sensor.emmas_bedroom_motion_sensor
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.motion_emmas_bedroom
+      state: "on"
+  action:
+    - data:
+        entity_id: light.emmas_bedroom
+      service: light.turn_off
+    - data:
+        entity_id: input_boolean.motion_emmas_bedroom
+      service: input_boolean.turn_off
+
+- id: emmas_bedroom_motion_toggle_override_off
+  alias: Emma's Bedroom Motion Toggle Override Off
+  trigger:
+    - entity_id: sensor.emmas_bedroom_switch
+      platform: state
+    - entity_id: sensor.emmas_bedroom_switch_2
+      platform: state
+    - entity_id: light.emmas_bedroom
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.motion_emmas_bedroom
+      service: input_boolean.turn_off
+
+- id: emmas_bedroom_motion_toggle_override_on
+  alias: Emma's Bedroom Motion Toggle Override On
+  trigger:
+    - entity_id: light.living_room
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.motion_emmas_bedroom
       service: input_boolean.turn_off
 
 ###########

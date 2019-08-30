@@ -16,7 +16,7 @@ input.dnd_dining_room:
   hidden: true
 input.dnd_master_bedroom:
   hidden: true
-input.dnd_emma_bedroom:
+input.dnd_emmas_bedroom:
   hidden: true
 input.dnd_kitchen:
   hidden: true

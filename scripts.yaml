@@ -11,7 +11,7 @@ good_night:
         entity_id: input_boolean.dnd_master_bedroom
       service: input_boolean.turn_on
     - data:
-        entity_id: input_boolean.dnd_emma_bedroom
+        entity_id: input_boolean.dnd_emmas_bedroom
       service: input_boolean.turn_on
     - data:
         entity_id: group.all_lights
@@ -110,7 +110,7 @@ clean_master_bedroom:
         repeats: 1
       service: vacuum.xiaomi_clean_zone
 
-clean_emma_bedroom:
+clean_emmas_bedroom:
   alias: Clean Emma's Bedroom
   sequence:
     - data:

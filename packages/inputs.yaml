@@ -5,7 +5,7 @@ input_boolean:
     name: Do Not Disturb Dining Room
   dnd_master_bedroom:
     name: Do Not Disturb Master Bedroom
-  dnd_emma_bedroom:
+  dnd_emmas_bedroom:
     name: Do Not Disturb Emma's Bedroom
   dnd_kitchen:
     name: Do Not Disturb Kitchen
