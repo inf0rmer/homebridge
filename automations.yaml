@@ -2,7 +2,7 @@
 # Home Assistant#
 #################
 - id: homeassistant_theme_switch
-  alias: Set Home Assistant theme for day and night
+  alias: "[HA] Set Home Assistant theme for day and night"
   trigger:
     - platform: homeassistant
       event: start
@@ -27,7 +27,7 @@
 ###############
 
 - id: house_start_cleaning
-  alias: Start Cleaning
+  alias: "[House] Start Cleaning"
   trigger:
     - entity_id: binary_sensor.someone_home
       for:
@@ -45,7 +45,7 @@
       service: vacuum.start
 
 - id: house_stop_cleaning
-  alias: Stop Cleaning
+  alias: "[House] Stop Cleaning"
   trigger:
     - entity_id: binary_sensor.someone_home
       from: "off"
@@ -60,7 +60,7 @@
       service: vacuum.return_to_base
 
 - id: house_alexa_guard_arm
-  alias: Alexa Home Guard - Arm
+  alias: "[House] Alexa Home Guard - Arm"
   trigger:
     - entity_id: binary_sensor.someone_home
       from: "on"
@@ -70,7 +70,7 @@
     - service: alarm_control_panel.alarm_arm_away
 
 - id: house_alexa_guard_disarm
-  alias: Alexa Home Guard - Disarm
+  alias: "[House] Alexa Home Guard - Disarm"
   trigger:
     - entity_id: binary_sensor.someone_home
       from: "off"
@@ -80,7 +80,7 @@
     - service: alarm_control_panel.alarm_arm_home
 
 - id: house_sarah_arrive_home
-  alias: Sarah comes home
+  alias: "[House] Sarah comes home"
   trigger:
     - entity_id: binary_sensor.hk_presence_sarah
       from: "off"
@@ -99,7 +99,7 @@
         message: Hi Bruno, Sarah will be home in a few minutes
 
 - id: house_bruno_arrive_home
-  alias: Bruno comes home
+  alias: "[House] Bruno comes home"
   trigger:
     - entity_id: binary_sensor.hk_presence_bruno
       from: "off"
@@ -118,7 +118,7 @@
         message: Hi Sarah, Bruno will be home in a few minutes
 
 - id: house_motion_presence_detected
-  alias: Motion Presence Detected
+  alias: "[House] Motion Presence Detected"
   trigger:
     - entity_id: group.all_motion_sensors
       from: "off"
@@ -130,7 +130,7 @@
       service: input_boolean.turn_on
 
 - id: house_motion_presence_not_detected
-  alias: Motion Presence Not Detected
+  alias: "[House] Motion Presence Not Detected"
   trigger:
     - entity_id: group.all_motion_sensors
       for:
@@ -144,7 +144,7 @@
       service: input_boolean.turn_off
 
 - id: house_all_leave
-  alias: Leave House
+  alias: "[House] Leave House"
   trigger:
     - entity_id: binary_sensor.someone_home
       from: "on"
@@ -162,7 +162,7 @@
       service: remote.turn_off
 
 - id: house_sunrise
-  alias: Sunrise
+  alias: "[House] Sunrise"
   trigger:
     - event: sunrise
       platform: sun
@@ -189,7 +189,7 @@
       service: media_player.volume_set
 
 - id: house_sunset
-  alias: Sunset
+  alias: "[House] Sunset"
   trigger:
     - event: sunset
       platform: sun
@@ -221,7 +221,7 @@
       service: media_player.volume_set
 
 - id: house_someone_arrives_after_sunset
-  alias: Anyone comes home after Sunset
+  alias: "[House] Anyone comes home after Sunset"
   trigger:
     - entity_id: binary_sensor.someone_home
       from: "off"
@@ -237,7 +237,7 @@
       service: automation.trigger
 
 - id: building_door_bell_ring
-  alias: Building Door Bell Ring
+  alias: "[House] Building Door Bell Ring"
   trigger:
     - event_data: {}
       event_type: nello_bell_ring
@@ -259,7 +259,7 @@
 ###############
 
 - id: living_room_watch_tv_lights_on
-  alias: Watch TV Lights On
+  alias: "[Living Room] Watch TV Lights On"
   trigger:
     - entity_id: sensor.watch_netflix
       from: "False"
@@ -281,7 +281,7 @@
       service: light.turn_on
 
 - id: living_room_watch_tv_lights_off_daytime
-  alias: Watch TV Lights Off (Daytime)
+  alias: "[Living Room] Watch TV Lights Off (Daytime)"
   trigger:
     - entity_id: sensor.watch_netflix
       from: "True"
@@ -301,7 +301,7 @@
       service: light.turn_off
 
 - id: living_room_watch_tv_lights_off_nighttime
-  alias: Watch TV Lights Off (Nighttime)
+  alias: "[Living Room] Watch TV Lights Off (Nighttime)"
   trigger:
     - entity_id: sensor.watch_netflix
       from: "True"
@@ -322,7 +322,7 @@
       service: light.turn_on
 
 - id: living_room_watch_tv_fan_on
-  alias: Watch TV Fan On
+  alias: "[Living Room] Watch TV Fan On"
   trigger:
     - entity_id: sensor.watch_netflix
       from: "False"
@@ -345,7 +345,7 @@
       service: remote.send_command
 
 - id: living_room_watch_tv_fan_off
-  alias: Watch TV Fan Off
+  alias: "[Living Room] Watch TV Fan Off"
   trigger:
     - entity_id: sensor.watch_netflix
       from: "True"
@@ -363,7 +363,7 @@
       service: remote.send_command
 
 - id: living_room_watch_tv_dnd_on
-  alias: Watch TV DnD On
+  alias: "[Living Room] Watch TV DnD On"
   trigger:
     - entity_id: sensor.watch_netflix
       from: "False"
@@ -379,7 +379,7 @@
       service: input_boolean.turn_on
 
 - id: living_room_watch_tv_dnd_off
-  alias: Watch TV DnD Off
+  alias: "[Living Room] Watch TV DnD Off"
   trigger:
     - entity_id: sensor.watch_netflix
       from: "True"
@@ -395,7 +395,7 @@
       service: input_boolean.turn_off
 
 - id: living_room_motion_start
-  alias: Living Room Motion Starts (Motion Toggle Off)
+  alias: "[Living Room] Motion Starts (Motion Toggle Off)"
   trigger:
     - entity_id: binary_sensor.living_room_motion_sensor
       from: "off"
@@ -425,7 +425,7 @@
       service: input_boolean.turn_on
 
 - id: living_room_motion_end
-  alias: Living Room Motion Ends (Motion Toggle On)
+  alias: [Living Room] Motion Ends (Motion Toggle On)
   trigger:
     - entity_id: binary_sensor.living_room_motion_sensor
       from: "on"
@@ -456,7 +456,7 @@
       service: input_boolean.turn_off
 
 - id: living_room_motion_toggle_override_on
-  alias: Living Room Motion Toggle Override On
+  alias: "[Living Room] Motion Toggle Override On"
   trigger:
     - entity_id: light.dining_room
       from: "on"
@@ -472,7 +472,7 @@
 ###############
 
 - id: dining_room_motion_start
-  alias: Dining Room Motion Starts (Motion Toggle Off)
+  alias: "[Dining Room] Dining Room Motion Starts (Motion Toggle Off)""
   trigger:
     - entity_id: binary_sensor.dining_room_motion_sensor
       from: "off"
@@ -502,7 +502,7 @@
       service: input_boolean.turn_on
 
 - id: dining_room_motion_end
-  alias: Dining Room Motion Ends (Motion Toggle On)
+  alias: "[Dining Room] Motion Ends (Motion Toggle On)"
   trigger:
     - entity_id: binary_sensor.dining_room_motion_sensor
       from: "on"
@@ -523,7 +523,7 @@
       service: input_boolean.turn_off
 
 - id: dining_room_motion_toggle_override_off
-  alias: Dining Room Motion Toggle Override Off
+  alias: "[Dining Room] Motion Toggle Override Off"
   trigger:
     - entity_id: sensor.dining_room_switch
       platform: state
@@ -539,7 +539,7 @@
       service: input_boolean.turn_off
 
 - id: dining_room_motion_toggle_override_on
-  alias: Dining Room Motion Toggle Override On
+  alias: "[Dining Room] Motion Toggle Override On"
   trigger:
     - entity_id: light.living_room
       from: "on"
@@ -555,7 +555,7 @@
 ##################
 
 - id: master_bedroom_motion_start
-  alias: Master Bedroom Motion Starts (Motion Toggle Off)
+  alias: "[Master Bedroom] Motion Starts (Motion Toggle Off)"
   trigger:
     - entity_id: binary_sensor.master_bedroom_motion_sensor
       from: "off"
@@ -585,7 +585,7 @@
       service: input_boolean.turn_on
 
 - id: master_bedroom_motion_end
-  alias: Master Bedroom Motion Ends (Motion Toggle On)
+  alias: "[Master Bedroom] Master Bedroom Motion Ends (Motion Toggle On)"
   trigger:
     - entity_id: binary_sensor.master_bedroom_motion_sensor
       from: "on"
@@ -606,7 +606,7 @@
       service: input_boolean.turn_off
 
 - id: master_bedroom_motion_toggle_override_off
-  alias: Master Bedroom Motion Toggle Override Off
+  alias: "[Master Bedroom] Motion Toggle Override Off"
   trigger:
     - entity_id: sensor.master_bedroom_switch
       platform: state
@@ -622,7 +622,7 @@
       service: input_boolean.turn_off
 
 - id: master_bedroom_motion_toggle_override_on
-  alias: Master Bedroom Motion Toggle Override On
+  alias: "[Master Bedroom] Motion Toggle Override On"
   trigger:
     - entity_id: light.living_room
       from: "on"
@@ -638,7 +638,7 @@
 ##################
 
 - id: emmas_bedroom_motion_start
-  alias: Emma's Bedroom Motion Starts (Motion Toggle Off)
+  alias: "[Emma's Bedroom] Motion Starts (Motion Toggle Off)"
   trigger:
     - entity_id: binary_sensor.emmas_bedroom_motion_sensor
       from: "off"
@@ -668,7 +668,7 @@
       service: input_boolean.turn_on
 
 - id: emmas_bedroom_motion_end
-  alias: Emma's Bedroom Motion Ends (Motion Toggle On)
+  alias: "[Emma's Bedroom] Motion Ends (Motion Toggle On)"
   trigger:
     - entity_id: binary_sensor.emmas_bedroom_motion_sensor
       from: "on"
@@ -689,7 +689,7 @@
       service: input_boolean.turn_off
 
 - id: emmas_bedroom_motion_toggle_override_off
-  alias: Emma's Bedroom Motion Toggle Override Off
+  alias: "[Emma's Bedroom] Motion Toggle Override Off"
   trigger:
     - entity_id: sensor.emmas_bedroom_switch
       platform: state
@@ -705,7 +705,7 @@
       service: input_boolean.turn_off
 
 - id: emmas_bedroom_motion_toggle_override_on
-  alias: Emma's Bedroom Motion Toggle Override On
+  alias: "[Emma's Bedroom] Motion Toggle Override On"
   trigger:
     - entity_id: light.living_room
       from: "on"
@@ -721,7 +721,7 @@
 ###########
 
 - id: kitchen_motion_start
-  alias: Kitchen Motion Starts (Motion Toggle Off)
+  alias: "[Kitchen] Motion Starts (Motion Toggle Off)"
   trigger:
     - entity_id: binary_sensor.kitchen_motion_sensor
       from: "off"
@@ -755,7 +755,7 @@
       service: input_boolean.turn_on
 
 - id: kitchen_motion_end
-  alias: Kitchen Motion Ends (Motion Toggle On)
+  alias: "[Kitchen] Motion Ends (Motion Toggle On)"
   trigger:
     - entity_id: binary_sensor.kitchen_motion_sensor
       from: "on"
@@ -780,7 +780,7 @@
 ###########
 
 - id: hallway_motion_start
-  alias: Hallway Motion Starts (Motion Toggle Off)
+  alias: "[Hallway] Motion Starts (Motion Toggle Off)"
   trigger:
     - entity_id: binary_sensor.hallway_motion_sensor
       from: "off"
@@ -810,7 +810,7 @@
       service: input_boolean.turn_on
 
 - id: hallway_motion_end
-  alias: Hallway Motion Ends (Motion Toggle On)
+  alias: "[Hallway] Motion Ends (Motion Toggle On)"
   trigger:
     - entity_id: binary_sensor.hallway_motion_sensor
       from: "on"
@@ -835,7 +835,7 @@
 ################
 
 - id: laundry_room_motion_start
-  alias: Laundry Room Motion Starts (Motion Toggle Off)
+  alias: "[Laundry Room] Motion Starts (Motion Toggle Off)"
   trigger:
     - entity_id: binary_sensor.laundry_room_motion_sensor
       from: "off"
@@ -865,7 +865,7 @@
       service: input_boolean.turn_on
 
 - id: laundry_room_motion_end
-  alias: Laundry Room Motion Ends (Motion Toggle On)
+  alias: "[Laundry Room] Motion Ends (Motion Toggle On)"
   trigger:
     - entity_id: binary_sensor.laundry_room_motion_sensor
       from: "on"
