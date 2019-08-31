@@ -117,31 +117,32 @@
         target: media_player.everywhere
         message: Hi Sarah, Bruno will be home in a few minutes
 
-- id: house_motion_presence_detected
-  alias: "[House] Motion Presence Detected"
-  trigger:
-    - entity_id: group.all_motion_sensors
-      from: "off"
-      platform: state
-      to: "on"
-  action:
-    - data:
-        entity_id: input_boolean.someone_present
-      service: input_boolean.turn_on
+# Vacuum turns on guest presence :/
+# - id: house_motion_presence_detected
+#   alias: "[House] Motion Presence Detected"
+#   trigger:
+#     - entity_id: group.all_motion_sensors
+#       from: "off"
+#       platform: state
+#       to: "on"
+#   action:
+#     - data:
+#         entity_id: input_boolean.someone_present
+#       service: input_boolean.turn_on
 
-- id: house_motion_presence_not_detected
-  alias: "[House] Motion Presence Not Detected"
-  trigger:
-    - entity_id: group.all_motion_sensors
-      for:
-        minutes: 15
-      from: "on"
-      platform: state
-      to: "off"
-  action:
-    - data:
-        entity_id: input_boolean.someone_present
-      service: input_boolean.turn_off
+# - id: house_motion_presence_not_detected
+#   alias: "[House] Motion Presence Not Detected"
+#   trigger:
+#     - entity_id: group.all_motion_sensors
+#       for:
+#         minutes: 15
+#       from: "on"
+#       platform: state
+#       to: "off"
+#   action:
+#     - data:
+#         entity_id: input_boolean.someone_present
+#       service: input_boolean.turn_off
 
 - id: house_all_leave
   alias: "[House] Leave House"

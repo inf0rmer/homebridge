@@ -4,7 +4,7 @@ sensor:
   - platform: huesensor
 
   - platform: min_max
-    name: temperature_average_home
+    name: home_sensor_average_temperature
     type: mean
     round_digits: 1
     entity_ids:
@@ -15,6 +15,19 @@ sensor:
       - sensor.dining_room_sensor_temperature
       - sensor.master_bedroom_sensor_temperature
       - sensor.emmas_bedroom_sensor_temperature
+
+  - platform: min_max
+    name: home_sensor_average_light_level
+    type: mean
+    round_digits: 1
+    entity_ids:
+      - sensor.hallway_sensor_light_level
+      - sensor.laundry_sensor_room_light_level
+      - sensor.kitchen_sensor_light_level
+      - sensor.living_room_sensor_light_level
+      - sensor.dining_room_sensor_light_level
+      - sensor.master_bedroom_sensor_light_level
+      - sensor.emmas_bedroom_sensor_light_level
 
   - platform: template
     sensors:

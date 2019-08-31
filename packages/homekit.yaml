@@ -29,7 +29,7 @@ homekit:
       - sensor.emmas_bedroom_sensor_temperature
       - sensor.emmas_bedroom_sensor_light_level
       - sensor.emmas_bedroom_sensor_motion
-      - sensor.temperature_average_home
+      - sensor.home_sensor_average_temperature
       - input_boolean.bruno_present
       - input_boolean.sarah_present
       - binary_sensor.hk_presence_bruno
@@ -62,5 +62,5 @@ homekit:
       type: outlet
     lock.nello_ecf41382:
       name: Building Door
-    sensor.temperature_average_home:
+    sensor.home_sensor_average_temperature:
       name: Avg. Home Temperature
