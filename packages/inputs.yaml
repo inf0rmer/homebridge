@@ -18,6 +18,16 @@ input_boolean:
   dnd_balcony:
     name: Do Not Disturb Balcony
 
+  bruno_present:
+    name: Bruno
+    icon: mdi:account
+  sarah_present:
+    name: Sarah
+    icon: mdi:account
+  someone_present:
+    name: Someone
+    icon: mdi:account
+
   motion_dining_room:
     name: Dining Room Motion Active
   motion_living_room:
