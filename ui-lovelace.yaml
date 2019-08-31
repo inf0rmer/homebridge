@@ -19,6 +19,7 @@ views:
           - entity: sensor.home_sensor_average_light_level
             name: Avg. Light Level
         type: "custom:mini-graph-card"
+        icon: "mdi:thermometer"
       - type: entity-filter
         entities:
           - input_boolean.bruno_present
