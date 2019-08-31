@@ -164,9 +164,10 @@
 - id: house_sunrise
   alias: "[House] Sunrise"
   trigger:
-    - event: sunrise
-      platform: sun
-      offset: -00:45:00
+    - platform: state
+      entity_id: sun.sun
+      from: below_horizon
+      to: above_horizon
   action:
     - data:
         entity_id: input_boolean.dnd_living_room
@@ -185,7 +186,7 @@
           - media_player.bruno_s_sonos_one
           - media_player.everywhere
           - media_player.emma_s_bedroom_echo_dot
-        volume_level: 0.6
+        volume_level: 0.5
       service: media_player.volume_set
 
 - id: house_sunset
