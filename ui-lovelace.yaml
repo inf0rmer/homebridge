@@ -14,7 +14,7 @@ views:
         cards:
           - type: horizontal-stack
             cards:
-              - entity: input_boolean.dnd_house
+              - entity: group.dnd_house
                 icon: "mdi:weather-night"
                 show_state: false
                 name: Do Not Disturb
