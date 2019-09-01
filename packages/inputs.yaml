@@ -34,7 +34,7 @@ input_boolean:
     name: Living Room Motion Active
   motion_master_bedroom:
     name: Master Bedroom Motion Active
-  motion_emmas_bedroom_room:
+  motion_emmas_bedroom:
     name: Emma's Motion Active
   motion_kitchen:
     name: Kitchen Motion Active
