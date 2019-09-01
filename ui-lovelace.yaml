@@ -83,7 +83,8 @@ views:
       - entities:
           - lock.home_door
           - lock.nello_ecf41382
-        title: Lock
+        title: Doors
+        show_header_toggle: false
         type: entities
       - entity: media_player.everywhere
         type: media-control
