@@ -9,8 +9,44 @@ resources:
   - url: /community_plugin/lovelace-xiaomi-vacuum-card/xiaomi-vacuum-card.js
     type: js
 views:
-  - badges: []
-    cards:
+  - cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.dnd_house
+                icon: "mdi:weather-night"
+                show_state: false
+                name: Do Not Disturb
+                size: 25%
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: group.dnd_house
+                type: "custom:button-card"
+              - entity: script.start_cleaning
+                icon: "mdi:broom"
+                show_state: false
+                name: Clean House
+                size: 25%
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.start_cleaning
+                type: "custom:button-card"
+              - entity: script.stop_cleaning
+                icon: "mdi:cancel"
+                show_state: false
+                name: Stop Cleaning
+                size: 25%
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.stop_cleaning
+                type: "custom:button-card"
       - entity: weather.weather
         type: "custom:weather-card"
       - entities:
@@ -56,7 +92,7 @@ views:
         image: false
         name: Robot Vacuum
     path: default_view
-    title: Home
+    title: House
   - cards:
       - type: vertical-stack
         cards:
@@ -64,10 +100,9 @@ views:
             cards:
               - entity: input_boolean.dnd_living_room
                 icon: "mdi:weather-night"
-                theme: backend-selected
                 show_state: false
                 name: Do Not Disturb
-                size: 15%
+                size: 25%
                 tap_action:
                   action: call-service
                   service: input_boolean.toggle
@@ -76,24 +111,33 @@ views:
                 type: "custom:button-card"
               - entity: script.clean_living_room
                 icon: "mdi:broom"
-                theme: backend-selected
                 show_state: false
-                name: Clean Living Room
-                size: 15%
+                name: Clean
+                size: 25%
                 tap_action:
                   action: call-service
                   service: script.turn_on
                   service_data:
                     entity_id: script.clean_living_room
                 type: "custom:button-card"
+              - entity: script.stop_cleaning
+                icon: "mdi:cancel"
+                show_state: false
+                name: Stop Cleaning
+                size: 25%
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.stop_cleaning
+                type: "custom:button-card"
           - type: horizontal-stack
             cards:
               - entity: sensor.watch_smart_tv
                 icon: "mdi:television"
-                theme: backend-selected
                 show_state: false
                 name: Watch TV
-                size: 15%
+                size: 25%
                 tap_action:
                   action: call-service
                   service: remote.turn_on
@@ -103,10 +147,9 @@ views:
                 type: "custom:button-card"
               - entity: sensor.watch_netflix
                 icon: "mdi:netflix"
-                theme: backend-selected
                 show_state: false
                 name: Watch Netflix
-                size: 15%
+                size: 25%
                 tap_action:
                   action: call-service
                   service: remote.turn_on
@@ -116,10 +159,9 @@ views:
                 type: "custom:button-card"
               - entity: sensor.watch_apple_tv
                 icon: "mdi:apple"
-                theme: backend-selected
                 show_state: false
                 name: Watch Cartoons
-                size: 15%
+                size: 25%
                 tap_action:
                   action: call-service
                   service: remote.turn_on
@@ -153,10 +195,9 @@ views:
         cards:
           - entity: input_boolean.dnd_dining_room
             icon: "mdi:weather-night"
-            theme: backend-selected
             show_state: false
             name: Do Not Disturb
-            size: 15%
+            size: 25%
             tap_action:
               action: call-service
               service: input_boolean.toggle
@@ -165,15 +206,25 @@ views:
             type: "custom:button-card"
           - entity: script.clean_dining_room
             icon: "mdi:broom"
-            theme: backend-selected
             show_state: false
-            name: Clean Dining Room
-            size: 15%
+            name: Clean
+            size: 25%
             tap_action:
               action: call-service
               service: script.turn_on
               service_data:
                 entity_id: script.clean_dining_room
+            type: "custom:button-card"
+          - entity: script.stop_cleaning
+            icon: "mdi:cancel"
+            show_state: false
+            name: Stop Cleaning
+            size: 25%
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.stop_cleaning
             type: "custom:button-card"
       - entity: light.dining_room
         name: All Lights
@@ -202,10 +253,9 @@ views:
         cards:
           - entity: input_boolean.dnd_master_bedroom
             icon: "mdi:weather-night"
-            theme: backend-selected
             show_state: false
             name: Do Not Disturb
-            size: 15%
+            size: 25%
             tap_action:
               action: call-service
               service: input_boolean.toggle
@@ -214,15 +264,25 @@ views:
             type: "custom:button-card"
           - entity: script.clean_master_bedroom
             icon: "mdi:broom"
-            theme: backend-selected
             show_state: false
-            name: Clean Master Bedroom
-            size: 15%
+            name: Clean
+            size: 25%
             tap_action:
               action: call-service
               service: script.turn_on
               service_data:
                 entity_id: script.clean_master_bedroom
+            type: "custom:button-card"
+          - entity: script.stop_cleaning
+            icon: "mdi:cancel"
+            show_state: false
+            name: Stop Cleaning
+            size: 25%
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.stop_cleaning
             type: "custom:button-card"
       - entity: light.master_bedroom
         name: All Lights
@@ -248,10 +308,9 @@ views:
         cards:
           - entity: input_boolean.dnd_emmas_bedroom
             icon: "mdi:weather-night"
-            theme: backend-selected
             show_state: false
             name: Do Not Disturb
-            size: 15%
+            size: 25%
             tap_action:
               action: call-service
               service: input_boolean.toggle
@@ -260,15 +319,25 @@ views:
             type: "custom:button-card"
           - entity: script.clean_emmas_bedroom
             icon: "mdi:broom"
-            theme: backend-selected
             show_state: false
-            name: Clean Emma's Bedroom
-            size: 15%
+            name: Clean
+            size: 25%
             tap_action:
               action: call-service
               service: script.turn_on
               service_data:
                 entity_id: script.clean_emmas_bedroom
+            type: "custom:button-card"
+          - entity: script.stop_cleaning
+            icon: "mdi:cancel"
+            show_state: false
+            name: Stop Cleaning
+            size: 25%
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.stop_cleaning
             type: "custom:button-card"
       - entity: light.emmas_bedroom
         name: All Lights
@@ -294,10 +363,9 @@ views:
         cards:
           - entity: input_boolean.dnd_kitchen
             icon: "mdi:weather-night"
-            theme: backend-selected
             show_state: false
             name: Do Not Disturb
-            size: 15%
+            size: 25%
             tap_action:
               action: call-service
               service: input_boolean.toggle
@@ -306,15 +374,25 @@ views:
             type: "custom:button-card"
           - entity: script.clean_kitchen
             icon: "mdi:broom"
-            theme: backend-selected
             show_state: false
-            name: Clean Kitchen
-            size: 15%
+            name: Clean
+            size: 25%
             tap_action:
               action: call-service
               service: script.turn_on
               service_data:
                 entity_id: script.clean_kitchen
+            type: "custom:button-card"
+          - entity: script.stop_cleaning
+            icon: "mdi:cancel"
+            show_state: false
+            name: Stop Cleaning
+            size: 25%
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.stop_cleaning
             type: "custom:button-card"
       - entity: light.kitchen
         name: All Lights
@@ -341,10 +419,9 @@ views:
         cards:
           - entity: input_boolean.dnd_hallway
             icon: "mdi:weather-night"
-            theme: backend-selected
             show_state: false
             name: Do Not Disturb
-            size: 15%
+            size: 25%
             tap_action:
               action: call-service
               service: input_boolean.toggle
@@ -353,15 +430,25 @@ views:
             type: "custom:button-card"
           - entity: script.clean_hallway
             icon: "mdi:broom"
-            theme: backend-selected
             show_state: false
-            name: Clean Hallway
-            size: 15%
+            name: Clean
+            size: 25%
             tap_action:
               action: call-service
               service: script.turn_on
               service_data:
                 entity_id: script.clean_hallway
+            type: "custom:button-card"
+          - entity: script.stop_cleaning
+            icon: "mdi:cancel"
+            show_state: false
+            name: Stop Cleaning
+            size: 25%
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.stop_cleaning
             type: "custom:button-card"
       - entity: light.hallway
         name: All Lights
