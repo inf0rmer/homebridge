@@ -40,6 +40,9 @@ sensor:
       watch_apple_tv:
         friendly_name: Watch Apple TV
         value_template: "{{ is_state_attr('remote.harmony_hub', 'current_activity', 'Watch Apple TV') }}"
+      listen_music:
+        friendly_name: Listen to Music
+        value_template: "{{ is_state_attr('remote.harmony_hub', 'current_activity', 'Listen to Music') }}"
 
   - platform: template
     sensors:
