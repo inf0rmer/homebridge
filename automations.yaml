@@ -410,7 +410,7 @@
   action:
     # Hue bridge not fast enough
     - data_template:
-        brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.living_room
       service: light.turn_on
     - data:
@@ -487,7 +487,7 @@
   action:
     # Hue bridge not fast enough
     - data_template:
-        brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.dining_room
       service: light.turn_on
     - data:
@@ -570,7 +570,7 @@
   action:
     # Hue bridge not fast enough
     - data_template:
-        brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.master_bedroom
       service: light.turn_on
     - data:
@@ -653,7 +653,7 @@
   action:
     # Hue bridge not fast enough
     - data_template:
-        brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.emmas_bedroom
         rgb_color: [255, 200, 120]
       service: light.turn_on
@@ -737,11 +737,11 @@
   action:
     # Hue bridge not fast enough
     - data_template:
-        brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.kitchen_counter
       service: light.turn_on
     - data_template:
-        brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}0{% else %}250{% endif %}"
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}0{% else %}250{% endif %}"
         entity_id: group.light_kitchen_ceiling
       service: light.turn_on
     - data:
@@ -796,7 +796,7 @@
   action:
     # Hue bridge not fast enough
     - data_template:
-        brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.hallway
       service: light.turn_on
     - data:
