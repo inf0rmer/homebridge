@@ -44,4 +44,4 @@ input_boolean:
     name: Laundry Room Motion Active
 
   living_room_watch_tv_fan_automation:
-    hide: true
+    name: Living Room Fan Automation Toggle
