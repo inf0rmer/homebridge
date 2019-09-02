@@ -43,6 +43,18 @@ cloud:
         - switch.stereo_pair_do_not_disturb_switch
         - switch.stereo_pair_repeat_switch
         - switch.stereo_pair_shuffle_switch
+        - switch.bruno_s_echo_show_do_not_disturb
+        - switch.bruno_s_echo_show_shuffle_switch
+        - switch.bruno_s_echo_show_repeat_switch
+        - switch.brunos_echo_show_do_not_disturb
+        - switch.brunos_echo_show_shuffle_switch
+        - switch.brunos_echo_show_repeat_switch
+        - switch.brunos_2_echo_show_do_not_disturb
+        - switch.brunos_2_echo_show_shuffle_switch
+        - switch.brunos_2_echo_show_repeat_switch
+        - switch.living_room_echo_input_do_not_disturb_switch
+        - switch.living_room_echo_input_repeat_switch
+        - switch.living_room_echo_input_shuffle_switch
 
       include_entities:
         - switch.balcony_plug
