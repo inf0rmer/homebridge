@@ -8,6 +8,10 @@ resources:
     type: module
   - url: /community_plugin/lovelace-xiaomi-vacuum-card/xiaomi-vacuum-card.js
     type: js
+  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+    type: module
+  - url: /community_plugin/calendar-card/calendar-card.js
+    type: js
 views:
   - cards:
       - type: vertical-stack
@@ -87,7 +91,7 @@ views:
         show_header_toggle: false
         type: entities
       - entity: media_player.everywhere
-        type: media-control
+        type: "custom:mini-media-player"
       - type: "custom:xiaomi-vacuum-card"
         entity: vacuum.xiaomi_vacuum_cleaner
         image: false
@@ -188,7 +192,7 @@ views:
             name: Light Level
         type: "custom:mini-graph-card"
       - entity: media_player.bruno_s_sonos_one
-        type: media-control
+        type: "custom:mini-media-player"
     path: living-room
     title: Living Room
   - cards:
@@ -245,7 +249,7 @@ views:
             name: Light Level
         type: "custom:mini-graph-card"
       - entity: media_player.stereo_pair
-        type: media-control
+        type: "custom:mini-media-player"
     panel: false
     path: dining-room
     title: Dining Room
@@ -301,7 +305,7 @@ views:
             name: Light Level
         type: "custom:mini-graph-card"
       - entity: media_player.master_bedroom_echo_dot
-        type: media-control
+        type: "custom:mini-media-player"
     path: master-bedroom
     title: Master Bedroom
   - cards:
@@ -356,7 +360,7 @@ views:
             name: Light Level
         type: "custom:mini-graph-card"
       - entity: media_player.emma_s_bedroom_echo_dot
-        type: media-control
+        type: "custom:mini-media-player"
     path: emmas-bedroom
     title: Emma's Bedroom
   - cards:
@@ -412,7 +416,7 @@ views:
             name: Light Level
         type: "custom:mini-graph-card"
       - entity: media_player.kitchen_echo_dot
-        type: media-control
+        type: "custom:mini-media-player"
     path: kitchen
     title: Kitchen
   - cards:
