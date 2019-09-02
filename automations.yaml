@@ -639,7 +639,7 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.emmas_bedroom
+      entity_id: light.emmas_bedroom_ceiling
       state: "off"
     - condition: state
       entity_id: input_boolean.motion_emmas_bedroom
@@ -655,6 +655,7 @@
     - data_template:
         brightness: "{% if now().hour >= 21 %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.emmas_bedroom
+        rgb_color: [255, 200, 120]
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_emmas_bedroom
