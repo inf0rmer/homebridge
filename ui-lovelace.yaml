@@ -315,7 +315,7 @@ views:
               - entity: sensor.living_room_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
-          - entity: media_player.bruno_s_sonos_one
+          - entity: media_player.living_room_speakers
             type: "custom:mini-media-player"
   - path: dining-room
     title: Dining Room
@@ -478,6 +478,8 @@ views:
             type: light
           - entities:
               - entity: light.master_bedroom_ceiling
+              - entity: light.master_bedroom_lightstrip_left
+              - entity: light.master_bedroom_lightstrip_right
             show_header_toggle: false
             title: Lights
             type: entities
@@ -487,7 +489,7 @@ views:
               - entity: sensor.master_bedroom_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
-          - entity: media_player.master_bedroom_echo_dot
+          - entity: media_player.bruno_s_echo_show
             type: "custom:mini-media-player"
   - path: emmas-bedroom
     title: Emma's Bedroom

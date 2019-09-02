@@ -55,6 +55,9 @@ cloud:
         - switch.living_room_echo_input_do_not_disturb_switch
         - switch.living_room_echo_input_repeat_switch
         - switch.living_room_echo_input_shuffle_switch
+        - switch.living_room_speakers_do_not_disturb_switch
+        - switch.living_room_speakers_repeat_switch
+        - switch.living_room_speakers_shuffle_switch
 
       include_entities:
         - switch.balcony_plug
