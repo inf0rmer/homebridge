@@ -171,7 +171,7 @@
       to: above_horizon
   action:
     - data:
-        entity_id: group.house_dnd
+        entity_id: group.dnd_house
       service: input_boolean.turn_off
     - data:
         entity_id:
