@@ -18,6 +18,8 @@ resources:
     type: js
   - url: /community_plugin/lovelace-layout-card/layout-card.js
     type: js
+  - url: /community_plugin/group-card/group-card.js
+    type: js
 cch:
   options: clock
   clock_format: 24
@@ -181,11 +183,12 @@ views:
               - light.emmas_bedroom
             title: Lights
             type: entities
-          - entities:
-              - group.house_alarm_clock
-            title: Alarm
-            show_header_toggle: false
-            type: entities
+          - type: custom:group-card
+            card:
+              type: entities
+              title: Alarm Clock
+            group: group.house_alarm_clock
+
   - path: living-room
     title: Living Room
     panel: true

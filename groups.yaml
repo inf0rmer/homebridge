@@ -64,8 +64,8 @@ dnd_house:
 house_alarm_clock:
   name: Wake Me Up
   entities:
-    - sensor.house_alarm_time
-    - input_number.house_alarm_hour
-    - input_number.house_alarm_minutes
-    - input_boolean.house_alarm_status
-    - input_boolean.house_alarm_weekdays
+    - sensor.house_alarm_clock_time
+    - input_number.house_alarm_clock_hour
+    - input_number.house_alarm_clock_minutes
+    - input_boolean.house_alarm_clock_status
+    - input_boolean.house_alarm_clock_weekdays
