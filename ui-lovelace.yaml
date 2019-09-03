@@ -71,9 +71,6 @@ views:
                       styles:
                         card:
                           - font-size: 12px
-                          - color: green
-                        icon:
-                          - color: green
                       tap_action:
                         action: call-service
                         service: script.turn_on
@@ -112,9 +109,6 @@ views:
                     styles:
                       card:
                         - font-size: 12px
-                        - color: green
-                      icon:
-                        - color: green
                     tap_action:
                       action: call-service
                       service: lock.open
@@ -129,9 +123,6 @@ views:
                     styles:
                       card:
                         - font-size: 12px
-                        - color: green
-                      icon:
-                        - color: green
                     tap_action:
                       action: call-service
                       service: lock.open
@@ -229,9 +220,6 @@ views:
                       styles:
                         card:
                           - font-size: 12px
-                          - color: green
-                        icon:
-                          - color: green
                       tap_action:
                         action: call-service
                         service: script.turn_on
@@ -363,9 +351,6 @@ views:
                   styles:
                     card:
                       - font-size: 12px
-                      - color: green
-                    icon:
-                      - color: green
                   tap_action:
                     action: call-service
                     service: script.turn_on
@@ -450,9 +435,6 @@ views:
                   styles:
                     card:
                       - font-size: 12px
-                      - color: green
-                    icon:
-                      - color: green
                   tap_action:
                     action: call-service
                     service: script.turn_on
@@ -537,9 +519,6 @@ views:
                   styles:
                     card:
                       - font-size: 12px
-                      - color: green
-                    icon:
-                      - color: green
                   tap_action:
                     action: call-service
                     service: script.turn_on
@@ -622,9 +601,6 @@ views:
                   styles:
                     card:
                       - font-size: 12px
-                      - color: green
-                    icon:
-                      - color: green
                   tap_action:
                     action: call-service
                     service: script.turn_on
@@ -708,9 +684,6 @@ views:
                   styles:
                     card:
                       - font-size: 12px
-                      - color: green
-                    icon:
-                      - color: green
                   tap_action:
                     action: call-service
                     service: script.turn_on
