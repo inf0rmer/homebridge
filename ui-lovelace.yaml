@@ -187,6 +187,7 @@ views:
             card:
               type: entities
               title: Alarm Clock
+              show_header_toggle: false
             group: group.house_alarm_clock
 
   - path: living-room
