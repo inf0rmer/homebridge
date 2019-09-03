@@ -181,6 +181,11 @@ views:
               - light.emmas_bedroom
             title: Lights
             type: entities
+          - entities:
+              - group.house_alarm_clock
+            title: Alarm
+            show_header_toggle: false
+            type: entities
   - path: living-room
     title: Living Room
     panel: true

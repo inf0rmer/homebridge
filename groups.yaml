@@ -61,11 +61,11 @@ dnd_house:
     - group.dnd_bedrooms
     - group.other_rooms
 
-house_alarmclock:
+house_alarm_clock:
   name: Wake Me Up
   entities:
-    - sensor.alarm_time
-    - input_slider.alarmhour
-    - input_slider.alarmminutes
+    - sensor.house_alarm_time
+    - input_number.alarmhour
+    - input_number.alarmminutes
     - input_boolean.alarmstatus
     - input_boolean.alarmweekday
