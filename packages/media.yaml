@@ -1,6 +1,4 @@
 media_player:
-  - platform: samsungtv
-    host: 192.168.86.170
-    port: 8001
-    name: Living Room TV
-    mac: 64:1c:b0:e2:bb:d4
+  - platform: spotify
+    client_id: !env SPOTIFY_CLIENT_ID
+    client_secret: !env SPOTIFY_CLIENT_SECRET
