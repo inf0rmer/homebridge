@@ -66,4 +66,4 @@ sensor:
     sensors:
       house_alarm_clock_time:
         friendly_name: "Alarm Time"
-        value_template: "{{ states.input_number.house_alarm_clock_hour.state | int }}:{% if states.input_number.house_alarm_clock_minutes.state|length == 1 %}0{% endif %}{{ states.input_number.house_alarm_clock_minutes.state | int }}"
+        value_template: "{{ states.input_number.house_alarm_clock_hour.state | int }}:{% if states.input_number.house_alarm_clock_minutes.state | int < 10 %}0{% endif %}{{ states.input_number.house_alarm_clock_minutes.state | int }}"
