@@ -171,11 +171,46 @@
       to: above_horizon
   action:
     - data:
-        entity_id: group.dnd_house
+        entity_id: group.dnd_other_rooms
+      service: input_boolean.turn_off
+
+- id: house_wake_up
+  alias: "[House] Wake Up"
+  trigger:
+    platform: template
+    value_template: '{{ now.time().strftime("%-H") == states.input_slider.house_alarm_hour.state and now.time().strftime("%-M") == states.input_slider.house_alarm_minutes.state }}'
+  condition:
+    condition: or
+    conditions:
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: input_boolean.house_alarm_status
+            state: "on"
+          - condition: state
+            entity_id: input_boolean.house_alarm_weekdays
+            state: "on"
+          - condition: time
+            weekday:
+              - mon
+              - tue
+              - wed
+              - thu
+              - fri
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: input_boolean.house_alarm_status
+            state: "on"
+          - condition: state
+            entity_id: input_boolean.house_alarm_weekdays
+            state: "off"
+  action:
+    - data:
+        entity_id: group.dnd_bedrooms
       service: input_boolean.turn_off
     - data:
         entity_id:
-          - media_player.bruno_s_sonos_one
           - media_player.everywhere
           - media_player.emma_s_bedroom_echo_dot
         volume_level: 0.5
@@ -207,7 +242,6 @@
       service: light.turn_on
     - data:
         entity_id:
-          - media_player.bruno_s_sonos_one
           - media_player.everywhere
           - media_player.emma_s_bedroom_echo_dot
         volume_level: 0.3
@@ -627,13 +661,25 @@
 - id: master_bedroom_motion_toggle_override_on
   alias: "[Master Bedroom] Motion Toggle Override On"
   trigger:
-    - entity_id: light.living_room
+    - entity_id: light.master_bedroom
       from: "on"
       platform: state
       to: "off"
   action:
     - data:
         entity_id: input_boolean.motion_master_bedroom
+      service: input_boolean.turn_off
+
+- id: master_bedroom_motion_toggle_dnd_off
+  alias: "[Master Bedroom] Motion Toggle DnD Off"
+  trigger:
+    - entity_id: light.master_bedroom
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.dnd_master_bedroom
       service: input_boolean.turn_off
 
 ##################
@@ -711,13 +757,25 @@
 - id: emmas_bedroom_motion_toggle_override_on
   alias: "[Emma's Bedroom] Motion Toggle Override On"
   trigger:
-    - entity_id: light.living_room
+    - entity_id: light.emmas_bedroom
       from: "on"
       platform: state
       to: "off"
   action:
     - data:
         entity_id: input_boolean.motion_emmas_bedroom
+      service: input_boolean.turn_off
+
+- id: emmas_bedroom_motion_toggle_dnd_off
+  alias: "[Emma's Bedroom] Motion Toggle DnD Off"
+  trigger:
+    - entity_id: light.emmas_bedroom
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.dnd_emmas_bedroom
       service: input_boolean.turn_off
 
 ###########

@@ -38,15 +38,34 @@ harmony_hub:
     - sensor.watch_netflix
     - sensor.watch_apple_tv
 
-dnd_house:
-  name: Do Not Disturb
+dnd_bedrooms:
+  name: Do Not Disturb Bedrooms
+  entities:
+    - input_boolean.dnd_master_bedroom
+    - input_boolean.dnd_emmas_bedroom
+
+dnd_other_rooms:
+  name: Do Not Disturb Other Rooms
   entities:
     - input_boolean.dnd_living_room
     - input_boolean.dnd_dining_room
-    - input_boolean.dnd_master_bedroom
-    - input_boolean.dnd_emmas_bedroom
     - input_boolean.dnd_kitchen
     - input_boolean.dnd_hallway
     - input_boolean.dnd_laundry_room
     - input_boolean.dnd_bathroom
     - input_boolean.dnd_balcony
+
+dnd_house:
+  name: Do Not Disturb
+  entities:
+    - group.dnd_bedrooms
+    - group.other_rooms
+
+house_alarmclock:
+  name: Wake Me Up
+  entities:
+    - sensor.alarm_time
+    - input_slider.alarmhour
+    - input_slider.alarmminutes
+    - input_boolean.alarmstatus
+    - input_boolean.alarmweekday

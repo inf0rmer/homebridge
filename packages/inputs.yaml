@@ -45,3 +45,31 @@ input_boolean:
 
   living_room_watch_tv_fan_automation:
     name: Living Room Fan Automation Toggle
+
+  house_alarm_status:
+    name: Wake Us Up
+    initial: "on"
+    icon: mdi:alarm-check
+
+  house_wake_up_weekdays:
+    name: Weekdays Only
+    initial: "on"
+    icon: mdi:calendar
+
+input_select:
+  house_alarm_hour:
+    name: Hour
+    mode: slider
+    min: 0
+    max: 23
+    initial: 7
+    step: 1
+    icon: mdi:timer
+  house_alarm_minute:
+    name: Minutes
+    mode: slider
+    min: 0
+    max: 59
+    step: 5
+    initial: 0
+    icon: mdi:timer
