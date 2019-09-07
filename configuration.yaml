@@ -78,6 +78,7 @@ tts:
 
 group: !include groups.yaml
 automation: !include automations.yaml
+scene: !include scenes.yaml
 script: !include scripts.yaml
 
 prometheus:

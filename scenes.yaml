@@ -1,0 +1,10 @@
+- name: Sunset
+  entities:
+    switch.balcony_plug: true
+    switch.dining_room_cabinet: true
+    switch.emmas_bedroom_string_lights: true
+    light.gaming_area:
+      state: true
+      brightness: 200
+      color_temp: 500
+      transition: 30
