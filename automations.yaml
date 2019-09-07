@@ -178,7 +178,7 @@
   alias: "[House] Wake Up"
   trigger:
     platform: template
-    value_template: '{{ now().time().strftime("%-H") == states.input_number.house_alarm_clock_hour.state and now().time().strftime("%-M") == states.input_number.house_alarm_clock_minutes.state }}'
+    value_template: "{{ now().time().hour == states.input_number.house_alarm_clock_hour.state | int and now().time().minute == states.input_number.house_alarm_clock_minutes.state | int }}"
   condition:
     condition: or
     conditions:
