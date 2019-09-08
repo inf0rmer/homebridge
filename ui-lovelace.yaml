@@ -54,7 +54,7 @@ views:
                         - font-size: 12px
                     tap_action:
                       action: call-service
-                      service: input_boolean.toggle
+                      service: homeassistant.toggle
                       service_data:
                         entity_id: group.dnd_house
                     type: "custom:button-card"
