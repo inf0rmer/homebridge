@@ -37,6 +37,7 @@ harmony_hub:
     - sensor.watch_smart_tv
     - sensor.watch_netflix
     - sensor.watch_apple_tv
+    - sensor.listen_music
 
 dnd_bedrooms:
   name: Do Not Disturb Bedrooms
