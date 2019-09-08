@@ -68,6 +68,19 @@ emma_bedtime:
       service: media_player.volume_set
   alias: Emma's Bedtime
 
+house_wake_up:
+  alias: "[House] Wake Up"
+  sequence:
+    - data:
+        entity_id: group.dnd_bedrooms
+      service: input_boolean.turn_off
+    - data:
+        entity_id:
+          - media_player.everywhere
+          - media_player.emma_s_bedroom_echo_dot
+        volume_level: 0.5
+      service: media_player.volume_set
+
 start_cleaning:
   alias: Start Cleaning
   sequence:

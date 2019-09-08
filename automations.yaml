@@ -229,17 +229,8 @@
   action:
     - data:
         entity_id:
-          - switch.balcony_plug
-          - switch.dining_room_cabinet
-          - switch.emmas_bedroom_string_lights
-      service: switch.turn_on
-    - data:
-        entity_id:
-          - light.gaming_area
-        brightness: 200
-        color_temp: 500
-        transition: 30
-      service: light.turn_on
+          - scene.sunset
+      service: scene.turn_on
     - data:
         entity_id:
           - media_player.everywhere
@@ -260,8 +251,15 @@
       state: below_horizon
   action:
     - data:
-        entity_id: automation.sunset
-      service: automation.trigger
+        entity_id:
+          - scene.sunset
+      service: scene.turn_on
+    - data:
+        entity_id:
+          - media_player.everywhere
+          - media_player.emma_s_bedroom_echo_dot
+        volume_level: 0.3
+      service: media_player.volume_set
 
 - id: building_door_bell_ring
   alias: "[House] Building Door Bell Ring"
