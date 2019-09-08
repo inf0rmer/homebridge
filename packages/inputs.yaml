@@ -62,7 +62,6 @@ input_number:
     mode: slider
     min: 0
     max: 23
-    initial: 7
     step: 1
     icon: mdi:timer
   house_alarm_clock_minutes:
@@ -71,5 +70,4 @@ input_number:
     min: 0
     max: 59
     step: 5
-    initial: 0
     icon: mdi:timer

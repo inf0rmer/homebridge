@@ -11,11 +11,11 @@ lock.nello_ecf41382:
   friendly_name: Building Door
 
 switch.emmas_bedroom_string_lights:
-  icon: mdi:light
+  icon: mdi:lightbulb
 switch.dining_room_cabinet:
-  icon: mdi:light
+  icon: mdi:lightbulb
 switch.balcony_plug:
-  icon: mdi:light
+  icon: mdi:lightbulb
 
 input_boolean.dnd_living_room:
   hidden: true
