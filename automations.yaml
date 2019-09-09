@@ -207,14 +207,8 @@
             state: "off"
   action:
     - data:
-        entity_id: group.dnd_bedrooms
-      service: input_boolean.turn_off
-    - data:
-        entity_id:
-          - media_player.everywhere
-          - media_player.emma_s_bedroom_echo_dot
-        volume_level: 0.5
-      service: media_player.volume_set
+        entity_id: script.house_wake_up
+      service: script.turn_on
 
 - id: house_sunset
   alias: "[House] Sunset"
