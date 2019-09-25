@@ -1,0 +1,14 @@
+---
+kind: pipeline
+type: docker
+name: homeassistant
+
+steps:
+  - name: test
+    image: homeassistant/amd64-homeassistant
+    commands:
+      - hass --script check_config -c .
+
+trigger:
+  event:
+    - push
