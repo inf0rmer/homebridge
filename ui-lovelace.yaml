@@ -111,7 +111,7 @@ views:
                         - font-size: 12px
                     tap_action:
                       action: call-service
-                      service: lock.open
+                      service: lock.unlock
                       service_data:
                         entity_id: lock.nello_ecf41382
                     type: "custom:button-card"
