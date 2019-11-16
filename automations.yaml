@@ -884,44 +884,40 @@
         entity_id: input_boolean.motion_hallway
       service: input_boolean.turn_off
 
-################
-# Laundry Room #
-################
-
-- id: laundry_room_motion_start
-  alias: "[Laundry Room] Motion Starts (Motion Toggle Off)"
+- id: hallway_kitchen_motion_start
+  alias: "[Hallway Kitchen] Motion Starts (Motion Toggle Off)"
   trigger:
-    - entity_id: binary_sensor.laundry_room_motion_sensor
+    - entity_id: binary_sensor.hallway_kitchen_motion_sensor
       from: "off"
       platform: state
       to: "on"
   condition:
     - condition: state
-      entity_id: light.laundry_room
+      entity_id: light.hallway_kitchen
       state: "off"
     - condition: state
-      entity_id: input_boolean.motion_laundry_room
+      entity_id: input_boolean.motion_hallway_kitchen
       state: "off"
     - condition: state
-      entity_id: input_boolean.dnd_laundry_room
+      entity_id: input_boolean.dnd_hallway_kitchen
       state: "off"
     - below: 35
       condition: numeric_state
-      entity_id: sensor.laundry_room_sensor_light_level
+      entity_id: sensor.hallway_kitchen_sensor_light_level
   action:
     # Hue bridge not fast enough
     - data:
         brightness: 250
-        entity_id: light.laundry_room
+        entity_id: light.hallway
       service: light.turn_on
     - data:
-        entity_id: input_boolean.motion_laundry_room
+        entity_id: input_boolean.motion_hallway_kitchen
       service: input_boolean.turn_on
 
-- id: laundry_room_motion_end
-  alias: "[Laundry Room] Motion Ends (Motion Toggle On)"
+- id: hallway_kitchen_motion_end
+  alias: "[Hallway Kitchen] Motion Ends (Motion Toggle On)"
   trigger:
-    - entity_id: binary_sensor.laundry_room_motion_sensor
+    - entity_id: binary_sensor.hallway_kitchen_motion_sensor
       from: "on"
       platform: state
       to: "off"
@@ -929,12 +925,12 @@
         minutes: 3
   condition:
     - condition: state
-      entity_id: input_boolean.motion_laundry_room
+      entity_id: input_boolean.motion_hallway_kitchen
       state: "on"
   action:
     - data:
-        entity_id: light.laundry_room
+        entity_id: light.hallway
       service: light.turn_off
     - data:
-        entity_id: input_boolean.motion_laundry_room
+        entity_id: input_boolean.motion_hallway_kitchen
       service: input_boolean.turn_off
