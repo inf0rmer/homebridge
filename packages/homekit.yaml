@@ -8,9 +8,9 @@ homekit:
       - script
       - vacuum
     include_entities:
-      - sensor.laundry_room_sensor_temperature
-      - sensor.laundry_room_sensor_light_level
-      - sensor.laundry_room_sensor_motion
+      - sensor.hallway_kitchen_sensor_temperature
+      - sensor.hallway_kitchen_sensor_light_level
+      - sensor.hallway_kitchen_sensor_motion
       - sensor.hallway_sensor_temperature
       - sensor.hallway_sensor_light_level
       - sensor.hallway_sensor_motion

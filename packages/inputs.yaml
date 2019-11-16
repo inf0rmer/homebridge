@@ -40,8 +40,8 @@ input_boolean:
     name: Kitchen Motion Active
   motion_hallway:
     name: Hallway Motion Active
-  motion_laundry_room:
-    name: Laundry Room Motion Active
+  motion_hallway_kitchen:
+    name: Hallway Kitchen Motion Active
 
   living_room_watch_tv_fan_automation:
     name: Living Room Fan Automation Toggle
