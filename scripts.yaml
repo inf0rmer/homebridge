@@ -59,7 +59,7 @@ emma_bedtime:
       service: input_boolean.turn_on
     - data:
         entity_id: media_player.emma_s_bedroom_echo_dot
-        media_content_id: lullabies
+        media_content_id: "baby sleep"
         media_content_type: routine
       service: media_player.play_media
     - data:
