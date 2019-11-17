@@ -899,7 +899,7 @@
       entity_id: input_boolean.motion_hallway_kitchen
       state: "off"
     - condition: state
-      entity_id: input_boolean.dnd_hallway_kitchen
+      entity_id: input_boolean.dnd_hallway
       state: "off"
     - below: 35
       condition: numeric_state
