@@ -842,7 +842,7 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.hallway
+      entity_id: light.hallway_ceiling_front_door
       state: "off"
     - condition: state
       entity_id: input_boolean.motion_hallway
