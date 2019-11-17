@@ -906,7 +906,7 @@
       entity_id: sensor.hallway_kitchen_sensor_light_level
   action:
     # Hue bridge not fast enough
-    - data:
+    - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.hallway_ceiling_bathroom
       service: light.turn_on
