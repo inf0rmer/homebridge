@@ -4,12 +4,28 @@ sensor:
   - platform: huesensor
 
   - platform: min_max
+    name: hallway_sensor_average_light_level
+    type: mean
+    round_digits: 1
+    entity_ids:
+      - sensor.hallway_sensor_light_level
+      - sensor.hallway_kitchen_sensor_light_level
+
+  - platform: min_max
+    name: hallway_sensor_average_temperature
+    type: mean
+    round_digits: 1
+    entity_ids:
+      - sensor.hallway_sensor_temperature
+      - sensor.hallway_kitchen_sensor_temperature
+
+  - platform: min_max
     name: home_sensor_average_temperature
     type: mean
     round_digits: 1
     entity_ids:
       - sensor.hallway_sensor_temperature
-      - sensor.laundry_sensor_room_temperature
+      - sensor.hallway_kitchen_sensor_temperature
       - sensor.kitchen_sensor_temperature
       - sensor.living_room_sensor_temperature
       - sensor.dining_room_sensor_temperature
@@ -22,7 +38,7 @@ sensor:
     round_digits: 1
     entity_ids:
       - sensor.hallway_sensor_light_level
-      - sensor.laundry_sensor_room_light_level
+      - sensor.hallway_kitchen_sensor_light_level
       - sensor.kitchen_sensor_light_level
       - sensor.living_room_sensor_light_level
       - sensor.dining_room_sensor_light_level

@@ -857,7 +857,7 @@
     # Hue bridge not fast enough
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
-        entity_id: light.hallway
+        entity_id: light.hallway_ceiling_front_door
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_hallway
@@ -878,7 +878,7 @@
       state: "on"
   action:
     - data:
-        entity_id: light.hallway
+        entity_id: light.hallway_ceiling_front_door
       service: light.turn_off
     - data:
         entity_id: input_boolean.motion_hallway
@@ -893,7 +893,7 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.hallway
+      entity_id: light.hallway_ceiling_bathroom
       state: "off"
     - condition: state
       entity_id: input_boolean.motion_hallway_kitchen
@@ -907,8 +907,8 @@
   action:
     # Hue bridge not fast enough
     - data:
-        brightness: 250
-        entity_id: light.hallway
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        entity_id: light.hallway_ceiling_bathroom
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_hallway_kitchen
@@ -929,7 +929,7 @@
       state: "on"
   action:
     - data:
-        entity_id: light.hallway
+        entity_id: light.hallway_ceiling_bathroom
       service: light.turn_off
     - data:
         entity_id: input_boolean.motion_hallway_kitchen

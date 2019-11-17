@@ -770,9 +770,9 @@ views:
             title: Lights
             type: entities
           - entities:
-            - entity: sensor.hallway_sensor_temperature
+            - entity: sensor.hallway_sensor_average_temperature
               name: Temperature
-            - entity: sensor.hallway_sensor_light_level
+            - entity: sensor.hallway_sensor_average_light_level
             name: Light Level
             type: "custom:mini-graph-card"
   - path: balcony
