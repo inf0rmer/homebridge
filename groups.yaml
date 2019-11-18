@@ -41,12 +41,14 @@ harmony_hub:
 
 dnd_bedrooms:
   name: Do Not Disturb Bedrooms
+  all: true
   entities:
     - input_boolean.dnd_master_bedroom
     - input_boolean.dnd_emmas_bedroom
 
 dnd_other_rooms:
   name: Do Not Disturb Other Rooms
+  all: true
   entities:
     - input_boolean.dnd_living_room
     - input_boolean.dnd_dining_room
@@ -58,6 +60,7 @@ dnd_other_rooms:
 
 dnd_house:
   name: Do Not Disturb
+  all: true
   entities:
     - group.dnd_bedrooms
     - group.other_rooms
