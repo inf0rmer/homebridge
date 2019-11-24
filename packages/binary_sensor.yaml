@@ -2,6 +2,12 @@ binary_sensor:
   - platform: huesensor
 
   - platform: template
+    name: hallway_combined_sensor_motion
+    sensors:
+      - binary_sensor.hallway_kitchen_sensor_motion
+      - binary_sensor.hallway_sensor_motion
+
+  - platform: template
     sensors:
       hk_presence_bruno:
         friendly_name: "Presence Bruno"
