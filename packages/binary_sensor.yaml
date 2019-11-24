@@ -2,10 +2,10 @@ binary_sensor:
   - platform: huesensor
 
   - platform: template
-    name: hallway_combined_sensor_motion
     sensors:
-      - binary_sensor.hallway_kitchen_sensor_motion
-      - binary_sensor.hallway_sensor_motion
+      hallway_combined_sensor_motion:
+        device_class: motion
+        value_template: "{{ is_state('binary_sensor.hallway_kitchen_sensor_motion', 'on') or is_state('binary_sensor.binary_sensor.hallway_sensor_motion', 'on') }}"
 
   - platform: template
     sensors:
