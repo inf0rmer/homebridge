@@ -89,5 +89,5 @@ sensor:
     type: mean
     round_digits: 1
     entity_ids:
-      - sensor.hallway_sensor_temperature
-      - sensor.hallway_kitchen_sensor_temperature
+      - sensor.hallway_sensor_light_level
+      - sensor.hallway_kitchen_sensor_light_level
