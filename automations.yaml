@@ -836,13 +836,13 @@
 - id: hallway_motion_start
   alias: "[Hallway] Motion Starts (Motion Toggle Off)"
   trigger:
-    - entity_id: binary_sensor.hallway_motion_sensor
+    - entity_id: binary_sensor.hallway_combined_sensor_motion
       from: "off"
       platform: state
       to: "on"
   condition:
     - condition: state
-      entity_id: light.hallway_ceiling_front_door
+      entity_id: light.hallway
       state: "off"
     - condition: state
       entity_id: input_boolean.motion_hallway
@@ -852,12 +852,12 @@
       state: "off"
     - below: 35
       condition: numeric_state
-      entity_id: sensor.hallway_sensor_light_level
+      entity_id: sensor.hallway_combined_sensor_light_level
   action:
     # Hue bridge not fast enough
     - data_template:
-        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
-        entity_id: light.hallway_ceiling_front_door
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        entity_id: light.hallway
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_hallway
@@ -866,7 +866,7 @@
 - id: hallway_motion_end
   alias: "[Hallway] Motion Ends (Motion Toggle On)"
   trigger:
-    - entity_id: binary_sensor.hallway_motion_sensor
+    - entity_id: binary_sensor.hallway_combined_sensor_motion
       from: "on"
       platform: state
       to: "off"
@@ -878,59 +878,8 @@
       state: "on"
   action:
     - data:
-        entity_id: light.hallway_ceiling_front_door
+        entity_id: light.hallway
       service: light.turn_off
     - data:
         entity_id: input_boolean.motion_hallway
-      service: input_boolean.turn_off
-
-- id: hallway_kitchen_motion_start
-  alias: "[Hallway Kitchen] Motion Starts (Motion Toggle Off)"
-  trigger:
-    - entity_id: binary_sensor.hallway_kitchen_motion_sensor
-      from: "off"
-      platform: state
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: light.hallway_ceiling_bathroom
-      state: "off"
-    - condition: state
-      entity_id: input_boolean.motion_hallway_kitchen
-      state: "off"
-    - condition: state
-      entity_id: input_boolean.dnd_hallway
-      state: "off"
-    - below: 35
-      condition: numeric_state
-      entity_id: sensor.hallway_kitchen_sensor_light_level
-  action:
-    # Hue bridge not fast enough
-    - data_template:
-        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
-        entity_id: light.hallway_ceiling_bathroom
-      service: light.turn_on
-    - data:
-        entity_id: input_boolean.motion_hallway_kitchen
-      service: input_boolean.turn_on
-
-- id: hallway_kitchen_motion_end
-  alias: "[Hallway Kitchen] Motion Ends (Motion Toggle On)"
-  trigger:
-    - entity_id: binary_sensor.hallway_kitchen_motion_sensor
-      from: "on"
-      platform: state
-      to: "off"
-      for:
-        minutes: 3
-  condition:
-    - condition: state
-      entity_id: input_boolean.motion_hallway_kitchen
-      state: "on"
-  action:
-    - data:
-        entity_id: light.hallway_ceiling_bathroom
-      service: light.turn_off
-    - data:
-        entity_id: input_boolean.motion_hallway_kitchen
       service: input_boolean.turn_off
