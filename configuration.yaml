@@ -25,6 +25,8 @@ homeassistant:
 
   packages: !include_dir_named packages
 
+default_config:
+
 # Show links to resources in log and frontend
 #introduction:
 
