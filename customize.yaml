@@ -16,6 +16,8 @@ switch.dining_room_cabinet:
   icon: mdi:lightbulb
 switch.balcony_plug:
   icon: mdi:lightbulb
+switch.christmas_tree:
+  icon: mdi:pine-tree
 
 input_boolean.dnd_living_room:
   hidden: true

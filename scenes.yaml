@@ -3,6 +3,7 @@
     switch.balcony_plug: true
     switch.dining_room_cabinet: true
     switch.emmas_bedroom_string_lights: true
+    switch.christmas_tree: true
     light.gaming_area:
       state: true
       brightness: 200
