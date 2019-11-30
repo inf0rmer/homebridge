@@ -350,6 +350,8 @@ views:
               - entity: light.living_room_ceiling_sofa
               - entity: light.living_room_ceiling_desk
               - entity: light.living_room_standing_lamp_desk
+              - entity: switch.christmas_tree
+                icon: "mdi:pine-tree"
             show_header_toggle: false
             title: Lights
             type: entities

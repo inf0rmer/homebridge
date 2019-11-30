@@ -55,8 +55,8 @@ homekit:
       name: Dining Room Cabinet Plug
       type: outlet
     switch.christmas_tree:
-      name: Christmas Tree Plug
-      type: outlet
+      name: Christmas Tree
+      type: light
     switch.emmas_bedroom_string_lights:
       name: Emma's Bedroom String Lights
       type: outlet
