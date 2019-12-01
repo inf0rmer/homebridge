@@ -7,9 +7,6 @@ binary_sensor:
         device_class: motion
         value_template: >-
           {{ is_state('binary_sensor.hallway_kitchen_sensor_motion', 'on') or is_state('binary_sensor.hallway_sensor_motion', 'on') }}
-
-  - platform: template
-    sensors:
       hk_presence_bruno:
         friendly_name: "Presence Bruno"
         device_class: presence
