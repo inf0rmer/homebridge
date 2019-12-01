@@ -6,11 +6,7 @@ binary_sensor:
       hallway_combined_sensor_motion:
         device_class: motion
         value_template: >-
-          {% if is_state('binary_sensor.hallway_kitchen_sensor_motion', 'on') or is_state('binary_sensor.hallway_sensor_motion', 'on') %}
-          on
-          {% else %}
-          off
-          {% endif %}
+          {% is_state('binary_sensor.hallway_kitchen_sensor_motion', 'on') or is_state('binary_sensor.hallway_sensor_motion', 'on') %}
 
   - platform: template
     sensors:
