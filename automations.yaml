@@ -850,9 +850,6 @@
     - condition: state
       entity_id: input_boolean.dnd_hallway
       state: "off"
-    - below: 35
-      condition: numeric_state
-      entity_id: sensor.hallway_combined_sensor_light_level
   action:
     # Hue bridge not fast enough
     - data_template:
