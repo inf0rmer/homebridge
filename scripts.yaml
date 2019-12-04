@@ -72,7 +72,7 @@ house_wake_up:
   alias: "[House] Wake Up"
   sequence:
     - data:
-        entity_id: group.dnd_bedrooms
+        entity_id: group.dnd_house
       service: input_boolean.turn_off
     - data:
         entity_id:
