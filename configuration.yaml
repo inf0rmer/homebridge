@@ -1,3 +1,5 @@
+default_config:
+
 homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
@@ -102,5 +104,3 @@ alexa_media:
         - "Bruno's Alexa Apps"
         - "Bruno's Fire TV stick"
         - "Living Room"
-
-mobile_app:
