@@ -26,7 +26,7 @@ input_boolean:
     icon: mdi:account
   someone_present:
     name: Guest
-    icon: mdi:account-multiple
+    icon: "mdi:account-multiple"
 
   motion_dining_room:
     name: Dining Room Motion Active
