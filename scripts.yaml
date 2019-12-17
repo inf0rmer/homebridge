@@ -2,11 +2,8 @@ good_night:
   alias: Good Night
   sequence:
     - data:
-        entity_id: input_boolean.dnd_living_room
-      service: input_boolean.turn_on
-    - data:
-        entity_id: input_boolean.dnd_dining_room
-      service: input_boolean.turn_on
+        entity_id: group.dnd_bedrooms
+      service: homeassistant.turn_on
     - data:
         entity_id: input_boolean.dnd_master_bedroom
       service: input_boolean.turn_on
@@ -15,10 +12,10 @@ good_night:
       service: input_boolean.turn_on
     - data:
         entity_id: group.all_lights
-      service: light.turn_off
+      service: homeassistant.turn_off
     - data:
         entity_id: group.all_light_switches
-      service: switch.turn_off
+      service: homeassistant.turn_off
     - data:
         entity_id: lock.home_door
       service: lock.lock
@@ -76,7 +73,8 @@ house_wake_up:
   sequence:
     - data:
         entity_id: group.dnd_house
-      service: input_boolean.turn_off
+      service: homeassistant.turn_off
+
     - data:
         entity_id:
           - media_player.everywhere
@@ -89,10 +87,10 @@ house_nobody_home:
   sequence:
     - data:
         entity_id: group.all_lights
-      service: light.turn_off
+      service: homeassistant.turn_off
     - data:
         entity_id: group.all_light_switches
-      service: switch.turn_off
+      service: homeassistant.turn_off
     - data:
         entity_id: remote.harmony_hub
       service: remote.turn_off
