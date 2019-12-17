@@ -274,7 +274,7 @@
 #       service: notify.alexa_media
 
 - id: home_door_unlocked
-  alias: "[House] Home Door Unlocked"
+  alias: "[House] Light Hallway when Home Door Unlocked"
   trigger:
     - entity_id: lock.home_door
       from: "locked"
@@ -289,6 +289,22 @@
     - data:
         entity_id: light.hallway
       service: light.turn_off
+
+- id: home_door_unlocked_guest_mode
+  alias: "[House] Turn on Guest Mode when Home Door Unlocked"
+  trigger:
+    - entity_id: lock.home_door
+      from: "locked"
+      platform: state
+      to: "unlocked"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "off"
+  action:
+    - data:
+        entity_id: input_booelan.someone_present
+      service: input_boolean.turn_on
 
 ###############
 # Living Room #
