@@ -20,6 +20,9 @@ good_night:
         entity_id: group.all_light_switches
       service: switch.turn_off
     - data:
+        entity_id: lock.home_door
+      service: lock.lock
+    - data:
         brightness: 30
         entity_id: light.emmas_bedroom_nightlight
         rgb_color:
@@ -80,6 +83,22 @@ house_wake_up:
           - media_player.emma_s_bedroom_echo_dot
         volume_level: 0.5
       service: media_player.volume_set
+
+house_nobody_home:
+  alias: "[House] Nobody Home"
+  sequence:
+    - data:
+        entity_id: group.all_lights
+      service: light.turn_off
+    - data:
+        entity_id: group.all_light_switches
+      service: switch.turn_off
+    - data:
+        entity_id: remote.harmony_hub
+      service: remote.turn_off
+    - data:
+        entity_id: lock.home_door
+      service: lock.lock
 
 start_cleaning:
   alias: Start Cleaning

@@ -153,14 +153,8 @@
       to: "off"
   action:
     - data:
-        entity_id: group.all_lights
-      service: light.turn_off
-    - data:
-        entity_id: group.all_light_switches
-      service: switch.turn_off
-    - data:
-        entity_id: remote.harmony_hub
-      service: remote.turn_off
+        entity_id: script.house_nobody_home
+      service: script.turn_on
 
 - id: house_sunrise
   alias: "[House] Sunrise"
@@ -273,7 +267,7 @@
 #         target: media_player.everywhere
 #       service: notify.alexa_media
 
-- id: home_door_unlocked
+- id: house_home_door_unlocked
   alias: "[House] Light Hallway when Home Door Unlocked"
   trigger:
     - entity_id: lock.home_door
@@ -290,8 +284,8 @@
         entity_id: light.hallway
       service: light.turn_off
 
-- id: home_door_unlocked_guest_mode
-  alias: "[House] Turn on Guest Mode when Home Door Unlocked"
+- id: house_guest_mode_on
+  alias: "[House] Turn on Guest Mode"
   trigger:
     - entity_id: lock.home_door
       from: "locked"
@@ -305,6 +299,20 @@
     - data:
         entity_id: input_booelan.someone_present
       service: input_boolean.turn_on
+
+- id: house_guest_mode_off
+  alias: "[House] Turn off Guest Mode"
+  trigger:
+    - entity_id: group.all_motion_sensors
+      for:
+        minutes: 10
+      from: "off"
+      platform: "state"
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.someone_present
+      service: input_boolean.turn_off
 
 ###############
 # Living Room #
