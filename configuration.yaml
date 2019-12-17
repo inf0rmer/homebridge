@@ -15,8 +15,6 @@ homeassistant:
 
   auth_providers:
     - type: homeassistant
-    - type: legacy_api_password
-      api_password: !env_var HTTP_API_PASSWORD
     - type: trusted_networks
       trusted_networks:
         - 192.168.0.0/24
