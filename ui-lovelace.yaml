@@ -129,6 +129,22 @@ views:
                       service_data:
                         entity_id: lock.home_door
                     type: "custom:button-card"
+              - type: horizontal-stack
+                cards:
+                  - entity: input_boolean.someone_present
+                    icon: "mdi:account-multiple"
+                    show_state: false
+                    name: Guest Mode
+                    size: 10%
+                    styles:
+                      card:
+                        - font-size: 12px
+                    tap_action:
+                      action: call-service
+                      service: input_boolean.toggle
+                      service_data:
+                        entity_id: input_boolean.someone_present
+                    type: "custom:button-card"
           - entity: weather.weather
             type: "custom:weather-card"
           - entity: alarm_control_panel.alexa_guard_a8bd5
@@ -144,6 +160,7 @@ views:
             entities:
               - input_boolean.bruno_present
               - input_boolean.sarah_present
+              - input_boolean.someone_present
             state_filter:
               - "on"
             card:
