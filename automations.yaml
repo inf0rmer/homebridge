@@ -67,7 +67,9 @@
       platform: state
       to: "off"
   action:
-    - service: alarm_control_panel.alarm_arm_away
+    - data:
+        entity_id: alarm_control_panel.alexa_guard_a8bd5
+      service: alarm_control_panel.alarm_arm_away
 
 - id: house_alexa_guard_disarm
   alias: "[House] Alexa Home Guard - Disarm"
@@ -77,7 +79,9 @@
       platform: state
       to: "on"
   action:
-    - service: alarm_control_panel.alarm_arm_home
+    - data:
+        entity_id: alarm_control_panel.alexa_guard_a8bd5
+      service: alarm_control_panel.alarm_arm_home
 
 - id: house_sarah_arrive_home
   alias: "[House] Sarah comes home"
