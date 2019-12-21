@@ -237,8 +237,8 @@
       state: "off"
   action:
     - data:
-        entity_id: media_player.everywhere
-        media_content_id: "family mix"
+        entity_id: media_player.living_room_echo_dot
+        media_content_id: "familymix"
         media_content_type: routine
       service: media_player.play_media
     - data:
