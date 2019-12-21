@@ -33,6 +33,11 @@ homekit:
       - input_boolean.bruno_present
       - input_boolean.sarah_present
       - input_boolean.someone_present
+      - input_boolean.dnd_living_room
+      - input_boolean.dnd_dining_room
+      - input_boolean.dnd_master_bedroom
+      - input_boolean.dnd_emmas_bedroom
+      - input_boolean.dnd_hallway
       - binary_sensor.hk_presence_bruno
       - binary_sensor.hk_presence_sarah
       - binary_sensor.hk_presence_someone
@@ -61,3 +66,13 @@ homekit:
       name: Building Door
     sensor.home_sensor_average_temperature:
       name: Avg. Home Temperature
+    input_boolean.dnd_living_room:
+      name: Living Room Do Not Disturb
+    input_boolean.dnd_dining_room:
+      name: Dining Room Do Not Disturb
+    input_boolean.dnd_master_bedroom:
+      name: Master Bedroom Do Not Disturb
+    input_boolean.dnd_emmas_bedroom:
+      name: Emma's Bedroom Do Not Disturb
+    input_boolean.dnd_hallway:
+      name: Hallway Do Not Disturb
