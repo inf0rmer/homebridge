@@ -63,6 +63,11 @@ cloud:
         - switch.balcony_plug
         - switch.dining_room_cabinet
         - switch.christmas_tree
+        - input_boolean.dnd_living_room
+        - input_boolean.dnd_dining_room
+        - input_boolean.dnd_master_bedroom
+        - input_boolean.dnd_emmas_bedroom
+        - input_boolean.dnd_hallway
 
   google_actions:
     filter:
