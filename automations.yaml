@@ -950,7 +950,7 @@
       platform: state
       to: "off"
       for:
-        minutes: 5
+        minutes: 3
   condition:
     - condition: state
       entity_id: input_boolean.motion_hallway
