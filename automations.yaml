@@ -382,6 +382,7 @@
   action:
     - data:
         entity_id: light.living_room
+        transition: 5
       service: light.turn_off
 
 - id: living_room_watch_tv_lights_off_nighttime
@@ -403,6 +404,7 @@
     - data:
         entity_id: light.living_room
         brightness: 100
+        transition: 5
       service: light.turn_on
 
 - id: living_room_watch_tv_fan_on
@@ -505,14 +507,14 @@
     - condition: state
       entity_id: input_boolean.dnd_living_room
       state: "off"
-    - below: 35
+    - below: 20
       condition: numeric_state
       entity_id: sensor.living_room_sensor_light_level
   action:
-    # Hue bridge not fast enough
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.living_room
+        transition: 5
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_living_room
@@ -534,6 +536,7 @@
   action:
     - data:
         entity_id: light.living_room
+        transition: 5
       service: light.turn_off
     - data:
         entity_id: input_boolean.motion_living_room
@@ -582,7 +585,7 @@
     - condition: state
       entity_id: input_boolean.dnd_dining_room
       state: "off"
-    - below: 35
+    - below: 20
       condition: numeric_state
       entity_id: sensor.dining_room_sensor_light_level
   action:
@@ -590,6 +593,7 @@
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.dining_room
+        transition: 5
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_dining_room
@@ -611,6 +615,7 @@
   action:
     - data:
         entity_id: light.dining_room
+        transition: 5
       service: light.turn_off
     - data:
         entity_id: input_boolean.motion_dining_room
@@ -665,7 +670,7 @@
     - condition: state
       entity_id: input_boolean.dnd_master_bedroom
       state: "off"
-    - below: 35
+    - below: 20
       condition: numeric_state
       entity_id: sensor.master_bedroom_sensor_light_level
   action:
@@ -673,6 +678,7 @@
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.master_bedroom
+        transition: 5
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_master_bedroom
@@ -694,6 +700,7 @@
   action:
     - data:
         entity_id: light.master_bedroom
+        transition: 5
       service: light.turn_off
     - data:
         entity_id: input_boolean.motion_master_bedroom
@@ -760,15 +767,15 @@
     - condition: state
       entity_id: input_boolean.dnd_emmas_bedroom
       state: "off"
-    - below: 35
+    - below: 20
       condition: numeric_state
       entity_id: sensor.emmas_bedroom_sensor_light_level
   action:
-    # Hue bridge not fast enough
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.emmas_bedroom
         rgb_color: [255, 200, 120]
+        transition: 5
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_emmas_bedroom
@@ -790,6 +797,7 @@
   action:
     - data:
         entity_id: light.emmas_bedroom
+        transition: 5
       service: light.turn_off
     - data:
         entity_id: input_boolean.motion_emmas_bedroom
@@ -856,18 +864,19 @@
     - condition: state
       entity_id: input_boolean.dnd_kitchen
       state: "off"
-    - below: 35
+    - below: 20
       condition: numeric_state
       entity_id: sensor.kitchen_sensor_light_level
   action:
-    # Hue bridge not fast enough
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.kitchen_counter
+        transition: 5
       service: light.turn_on
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}0{% else %}250{% endif %}"
         entity_id: group.light_kitchen_ceiling
+        transition: 5
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_kitchen
@@ -881,7 +890,7 @@
       platform: state
       to: "off"
       for:
-        minutes: 5
+        minutes: 3
   condition:
     - condition: state
       entity_id: input_boolean.motion_kitchen
@@ -889,6 +898,7 @@
   action:
     - data:
         entity_id: light.kitchen
+        transition: 5
       service: light.turn_off
     - data:
         entity_id: input_boolean.motion_kitchen
@@ -913,10 +923,10 @@
       entity_id: input_boolean.dnd_hallway
       state: "off"
   action:
-    # Hue bridge not fast enough
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.hallway
+        transition: 5
       service: light.turn_on
 
 - id: hallway_motion_end
@@ -935,4 +945,5 @@
   action:
     - data:
         entity_id: light.hallway
+        transition: 5
       service: light.turn_off
