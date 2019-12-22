@@ -490,7 +490,7 @@
 - id: living_room_motion_start
   alias: "[Living Room] Motion Starts (Motion Toggle Off)"
   trigger:
-    - entity_id: binary_sensor.hk_living_room_motion_sensor
+    - entity_id: binary_sensor.hk_living_room_sensor_motion
       from: "off"
       platform: state
       to: "on"
@@ -520,7 +520,7 @@
 - id: living_room_motion_end
   alias: "[Living Room] Motion Ends (Motion Toggle On)"
   trigger:
-    - entity_id: binary_sensor.hk_living_room_motion_sensor
+    - entity_id: binary_sensor.hk_living_room_sensor_motion
       from: "on"
       platform: state
       to: "off"
@@ -551,7 +551,7 @@
 - id: living_room_motion_toggle_override_on
   alias: "[Living Room] Motion Toggle Override On"
   trigger:
-    - entity_id: light.dining_room
+    - entity_id: light.living_room
       from: "on"
       platform: state
       to: "off"
@@ -650,7 +650,7 @@
 - id: master_bedroom_motion_start
   alias: "[Master Bedroom] Motion Starts (Motion Toggle Off)"
   trigger:
-    - entity_id: binary_sensor.hk_master_bedroom_motion_sensor
+    - entity_id: binary_sensor.hk_master_bedroom_sensor_motion
       from: "off"
       platform: state
       to: "on"
@@ -680,7 +680,7 @@
 - id: master_bedroom_motion_end
   alias: "[Master Bedroom] Master Bedroom Motion Ends (Motion Toggle On)"
   trigger:
-    - entity_id: binary_sensor.hk_master_bedroom_motion_sensor
+    - entity_id: binary_sensor.hk_master_bedroom_sensor_motion
       from: "on"
       platform: state
       to: "off"
@@ -745,7 +745,7 @@
 - id: emmas_bedroom_motion_start
   alias: "[Emma's Bedroom] Motion Starts (Motion Toggle Off)"
   trigger:
-    - entity_id: binary_sensor.hk_emmas_bedroom_motion_sensor
+    - entity_id: binary_sensor.hk_emmas_bedroom_sensor_motion
       from: "off"
       platform: state
       to: "on"
@@ -776,7 +776,7 @@
 - id: emmas_bedroom_motion_end
   alias: "[Emma's Bedroom] Motion Ends (Motion Toggle On)"
   trigger:
-    - entity_id: binary_sensor.hk_emmas_bedroom_motion_sensor
+    - entity_id: binary_sensor.hk_emmas_bedroom_sensor_motion
       from: "on"
       platform: state
       to: "off"
