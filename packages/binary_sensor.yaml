@@ -9,36 +9,37 @@ binary_sensor:
         value_template: >-
           {{ is_state('input_boolean.hk_motion_sensor_dining_room', 'on') }}
       hk_living_room_sensor_motion:
-        friendly_name: Motion Sensor Dining Room
+        friendly_name: Motion Sensor Living Room
         device_class: motion
         value_template: >-
           {{ is_state('input_boolean.hk_motion_sensor_living_room', 'on') }}
       hk_master_bedroom_sensor_motion:
-        friendly_name: Motion Sensor Dining Room
+        friendly_name: Motion Sensor Master Bedroom
         device_class: motion
         value_template: >-
           {{ is_state('input_boolean.hk_motion_sensor_master_bedroom', 'on') }}
       hk_emmas_bedroom_sensor_motion:
-        friendly_name: Motion Sensor Dining Room
+        friendly_name: Motion Sensor Emma's Bedroom
         device_class: motion
         value_template: >-
           {{ is_state('input_boolean.hk_motion_sensor_emmas_bedroom', 'on') }}
       hk_kitchen_sensor_motion:
-        friendly_name: Motion Sensor Dining Room
+        friendly_name: Motion Sensor Kitchen
         device_class: motion
         value_template: >-
           {{ is_state('input_boolean.hk_motion_sensor_kitchen', 'on') }}
       hk_hallway_sensor_motion:
-        friendly_name: Motion Sensor Dining Room
+        friendly_name: Motion Sensor Hallway
         device_class: motion
         value_template: >-
           {{ is_state('input_boolean.hk_motion_sensor_hallway', 'on') }}
       hk_hallway_kitchen_sensor_motion:
-        friendly_name: Motion Sensor Dining Room
+        friendly_name: Motion Sensor Hallway Kitchen
         device_class: motion
         value_template: >-
           {{ is_state('input_boolean.hk_motion_sensor_hallway_kitchen', 'on') }}
       hallway_combined_sensor_motion:
+        friendly_name: Motion Sensor Hallway Combined
         device_class: motion
         value_template: >-
           {{ is_state('binary_sensor.hk_hallway_kitchen_sensor_motion', 'on') or is_state('binary_sensor.hk_hallway_sensor_motion', 'on') }}
