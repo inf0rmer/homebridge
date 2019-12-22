@@ -22,6 +22,24 @@
             midnight
           {% endif %}
 
+- id: homeassistant_start_enable_automations
+  alias: "[HA] Enable Automations after HA starts"
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay:
+        minutes: 5
+    - data:
+        entity_id: automation.house_sarah_arrive_home
+      service: automation.turn_on
+    - data:
+        entity_id: automation.house_bruno_arrive_home
+      service: automation.turn_on
+    - data:
+        entity_id: automation.house_someone_arrives_from_work
+      service: automation.turn_on
+
 ###############
 # House #
 ###############
