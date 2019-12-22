@@ -223,23 +223,6 @@
         volume_level: 0.3
       service: media_player.volume_set
 
-- id: house_someone_arrives
-  alias: "[House] Bruno or Sarah come home"
-  trigger:
-    - entity_id: binary_sensor.hk_presence_bruno
-      from: "off"
-      platform: state
-      to: "on"
-    - entity_id: binary_sensor.hk_presence_sarah
-      from: "off"
-      platform: state
-      to: "on"
-  action:
-    - data:
-        entity_id:
-          - light.hallway
-      service: light.turn_on
-
 - id: house_someone_arrives_from_work
   alias: "[House] Bruno or Sarah come home before night when no one else is home"
   initial_state: false
@@ -916,7 +899,7 @@
 ###########
 
 - id: hallway_motion_start
-  alias: "[Hallway] Motion Starts (Motion Toggle Off)"
+  alias: "[Hallway] Motion Starts"
   trigger:
     - entity_id: binary_sensor.hallway_combined_sensor_motion
       from: "off"
@@ -937,7 +920,7 @@
       service: light.turn_on
 
 - id: hallway_motion_end
-  alias: "[Hallway] Motion Ends (Motion Toggle On)"
+  alias: "[Hallway] Motion Ends"
   trigger:
     - entity_id: binary_sensor.hallway_combined_sensor_motion
       from: "on"
