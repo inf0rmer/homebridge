@@ -43,6 +43,21 @@ input_boolean:
   motion_hallway_kitchen:
     name: Hallway Kitchen Motion Active
 
+  hk_motion_sensor_dining_room:
+    name: Motion Sensor Dining Room
+  hk_motion_sensor_living_room:
+    name: Motion Sensor Living Room
+  hk_motion_sensor_master_bedroom:
+    name: Motion Sensor Master Bedroom
+  hk_motion_sensor_emmas_bedroom:
+    name: Motion Sensor Emma's Bedroom
+  hk_motion_sensor_kitchen:
+    name: Motion Sensor Kitchen
+  hk_motion_sensor_hallway:
+    name: Motion Sensor Hallway
+  hk_motion_sensor_hallway_kitchen:
+    name: Motion Sensor Hallway Kitchen
+
   living_room_watch_tv_fan_automation:
     name: Living Room Fan Automation Toggle
 

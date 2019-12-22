@@ -38,6 +38,13 @@ homekit:
       - input_boolean.dnd_master_bedroom
       - input_boolean.dnd_emmas_bedroom
       - input_boolean.dnd_hallway
+      - motion_sensor_dining_room
+      - motion_sensor_living_room
+      - motion_sensor_master_bedroom
+      - motion_sensor_emmas_bedroom
+      - motion_sensor_kitchen
+      - motion_sensor_hallway
+      - motion_sensor_hallway_kitchen
       - binary_sensor.hk_presence_bruno
       - binary_sensor.hk_presence_sarah
       - binary_sensor.hk_presence_someone
