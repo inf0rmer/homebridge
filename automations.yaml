@@ -927,9 +927,6 @@
       entity_id: light.hallway
       state: "off"
     - condition: state
-      entity_id: input_boolean.motion_hallway
-      state: "off"
-    - condition: state
       entity_id: input_boolean.dnd_hallway
       state: "off"
   action:
@@ -938,9 +935,6 @@
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.hallway
       service: light.turn_on
-    - data:
-        entity_id: input_boolean.motion_hallway
-      service: input_boolean.turn_on
 
 - id: hallway_motion_end
   alias: "[Hallway] Motion Ends (Motion Toggle On)"
@@ -959,6 +953,3 @@
     - data:
         entity_id: light.hallway
       service: light.turn_off
-    - data:
-        entity_id: input_boolean.motion_hallway
-      service: input_boolean.turn_off
