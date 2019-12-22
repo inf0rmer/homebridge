@@ -120,7 +120,7 @@ clean_living_room:
         zone:
           - [29558, 24951, 33358, 32051]
         repeats: 1
-      service: vacuum.xiaomi_clean_zone
+      service: xiaomi_miio.vacuum_clean_zone
 
 clean_dining_room:
   alias: Clean the Dining Room
@@ -130,7 +130,7 @@ clean_dining_room:
         zone:
           - [23695, 25114, 30045, 27964]
         repeats: 1
-      service: vacuum.xiaomi_clean_zone
+      service: xiaomi_miio.vacuum_clean_zone
 
 clean_master_bedroom:
   alias: Clean the Master Bedroom
@@ -140,7 +140,7 @@ clean_master_bedroom:
         zone:
           - [25552, 28036, 29152, 32136]
         repeats: 1
-      service: vacuum.xiaomi_clean_zone
+      service: xiaomi_miio.vacuum_clean_zone
 
 clean_emmas_bedroom:
   alias: Clean Emma's Bedroom
@@ -149,7 +149,7 @@ clean_emmas_bedroom:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         zone:
           - [21332, 28462, 25382, 32162]
-      service: vacuum.xiaomi_clean_zone
+      service: xiaomi_miio.vacuum_clean_zone
 
 clean_kitchen:
   alias: Clean the Kitchen
@@ -159,7 +159,7 @@ clean_kitchen:
         zone:
           - [21748, 25168, 23648, 28518]
         repeats: 1
-      service: vacuum.xiaomi_clean_zone
+      service: xiaomi_miio.vacuum_clean_zone
 
 clean_bathroom:
   alias: Clean the Bathroom
@@ -169,7 +169,7 @@ clean_bathroom:
         zone:
           - [19423, 26426, 21273, 29976]
         repeats: 1
-      service: vacuum.xiaomi_clean_zone
+      service: xiaomi_miio.vacuum_clean_zone
 
 clean_hallway:
   alias: Clean the Hallway
@@ -180,4 +180,4 @@ clean_hallway:
           - [15810, 25203, 21560, 26453]
           - [16423, 26396, 17773, 27896]
         repeats: 1
-      service: vacuum.xiaomi_clean_zone
+      service: xiaomi_miio.vacuum_clean_zone
