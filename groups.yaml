@@ -9,13 +9,13 @@ all_light_switches:
 all_motion_sensors:
   name: All Motion Sensors
   entities:
-    - binary_sensor.dining_room_sensor_motion
-    - binary_sensor.living_room_sensor_motion
-    - binary_sensor.master_bedroom_sensor_motion
-    - binary_sensor.emmas_bedroom_sensor_motion
-    - binary_sensor.hallway_sensor_motion
-    - binary_sensor.kitchen_sensor_motion
-    - binary_sensor.hallway_kitchen_sensor_motion
+    - binary_sensor.hk_dining_room_motion_sensor
+    - binary_sensor.hk_living_room_motion_sensor
+    - binary_sensor.hk_master_bedroom_motion_sensor
+    - binary_sensor.hk_emmas_bedroom_motion_sensor
+    - binary_sensor.hk_hallway_motion_sensor
+    - binary_sensor.hk_kitchen_motion_sensor
+    - binary_sensor.hk_hallway_kitchen_motion_sensor
 
 light_kitchen_ceiling:
   name: Light Kitchen Ceiling
