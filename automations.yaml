@@ -841,7 +841,7 @@
 - id: kitchen_motion_start
   alias: "[Kitchen] Motion Starts (Motion Toggle Off)"
   trigger:
-    - entity_id: binary_sensor.hk_kitchen_motion_sensor
+    - entity_id: binary_sensor.hk_kitchen_sensor_motion
       from: "off"
       platform: state
       to: "on"
@@ -875,7 +875,7 @@
 - id: kitchen_motion_end
   alias: "[Kitchen] Motion Ends (Motion Toggle On)"
   trigger:
-    - entity_id: binary_sensor.hk_kitchen_motion_sensor
+    - entity_id: binary_sensor.hk_kitchen_sensor_motion
       from: "on"
       platform: state
       to: "off"
