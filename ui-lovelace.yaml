@@ -367,6 +367,12 @@ views:
               - entity: light.living_room_ceiling_sofa
               - entity: light.living_room_ceiling_desk
               - entity: light.living_room_standing_lamp_desk
+              - entity: light.tv_left
+                icon: "mdi:led-strip"
+              - entity: light.tv_right
+                icon: "mdi:led-strip"
+              - entity: light.tv_upper
+                icon: "mdi:led-strip"
               - entity: switch.christmas_tree
                 icon: "mdi:pine-tree"
             show_header_toggle: false
