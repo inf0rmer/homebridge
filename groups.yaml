@@ -23,6 +23,14 @@ light_kitchen_ceiling:
     - light.hue_ambiance_spot_1
     - light.hue_ambiance_spot_2
 
+light_tv:
+  name: Light TV
+  icon: "mdi:led-strip"
+  entities:
+    - light.tv_right
+    - light.tv_left
+    - light.tv_upper
+
 presence:
   name: Someone is home
   view: no
