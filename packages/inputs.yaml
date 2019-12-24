@@ -71,6 +71,12 @@ input_boolean:
     initial: "on"
     icon: mdi:calendar
 
+  sarah_good_night_pressed:
+    name: Sarah's Good Night Button Pressed
+
+  bruno_good_night_pressed:
+    name: Bruno's Good Night Button Pressed
+
 input_number:
   house_alarm_clock_hour:
     name: Hour

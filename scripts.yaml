@@ -30,6 +30,50 @@ good_night:
           - media_player.emma_s_bedroom_echo_dot
         volume_level: 0.2
       service: media_player.volume_set
+    - data:
+        entity_id: input_boolean.sarah_good_night_pressed
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.bruno_good_night_pressed
+      service: input_boolean.turn_off
+
+sarah_good_night:
+  alias: Sarah's Good Night
+  sequence:
+    - data:
+        entity_id: input_boolean.sarah_good_night_pressed
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: light.master_bedroom
+      service: light.turn_off
+    - condition: state
+      entity_id: input_boolean.bruno_good_night_pressed
+      state: "on"
+    - data:
+        entity_id: script.good_night
+      service: script.turn_on
+
+bruno_good_night:
+  alias: Bruno's Good Night
+  sequence:
+    - data:
+        entity_id: input_boolean.bruno_good_night_pressed
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: light.master_bedroom
+      service: light.turn_off
+    - condition: state
+      entity_id: input_boolean.sarah_good_night_pressed
+      state: "on"
+    - data:
+        entity_id: script.good_night
+      service: script.turn_on
 
 emma_bedtime:
   sequence:
