@@ -919,9 +919,6 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.hallway
-      state: "off"
-    - condition: state
       entity_id: input_boolean.dnd_hallway
       state: "off"
   action:
@@ -940,10 +937,6 @@
       to: "off"
       for:
         minutes: 3
-  condition:
-    - condition: state
-      entity_id: input_boolean.motion_hallway
-      state: "on"
   action:
     - data:
         entity_id: light.hallway
