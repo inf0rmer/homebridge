@@ -362,6 +362,7 @@
     - data:
         brightness: 20
         entity_id: light.living_room
+        rgb_color: [255, 200, 120]
       service: light.turn_on
 
 - id: living_room_watch_tv_lights_off_daytime
