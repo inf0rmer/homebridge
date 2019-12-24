@@ -554,6 +554,7 @@ views:
             type: "custom:mini-graph-card"
           - entity: media_player.spotify
             type: "custom:mini-media-player"
+
   - path: emmas-bedroom
     title: Emma's Bedroom
     panel: true
@@ -619,6 +620,20 @@ views:
                     service_data:
                       entity_id: script.stop_cleaning
                   type: "custom:button-card"
+              - entity: script.emma_bedtime
+                icon: "mdi:sleep"
+                show_state: false
+                name: Emma's Bedtime
+                size: 25%
+                styles:
+                  card:
+                    - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.emma_bedtime
+                type: "custom:button-card"
           - entity: light.emmas_bedroom
             name: All Lights
             type: light
