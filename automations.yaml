@@ -114,12 +114,10 @@
       entity_id: binary_sensor.hk_presence_bruno
       state: "on"
   action:
-    - service: notify.alexa_media
+    - service: notify.mobile_app_bruno_s_iphone
       data:
-        data:
-          type: announce
-        target: media_player.everywhere
-        message: Hi Bruno, Sarah will be home in a few minutes
+        title: Sarah is arriving
+        message: Hi Bruno, Sarah will be home in a few minutes.
 
 - id: house_bruno_arrive_home
   alias: "[House] Bruno comes home"
@@ -134,12 +132,10 @@
       entity_id: binary_sensor.hk_presence_sarah
       state: "on"
   action:
-    - service: notify.alexa_media
+    - service: notify.mobile_app_sarah_pimentels_iphone
       data:
-        data:
-          type: announce
-        target: media_player.everywhere
-        message: Hi Sarah, Bruno will be home in a few minutes
+        title: Bruno is arriving
+        message: Hi Sarah, Bruno will be home in a few minutes.
 
 - id: house_all_leave
   alias: "[House] Leave House"
