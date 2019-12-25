@@ -401,7 +401,7 @@
     - data:
         entity_id: light.living_room
         brightness: 100
-        transition: 5
+        transition: 3
       service: light.turn_on
 
 - id: living_room_watch_tv_fan_on
@@ -511,7 +511,7 @@
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.living_room
-        transition: 5
+        transition: 3
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_living_room
@@ -590,7 +590,7 @@
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.dining_room
-        transition: 5
+        transition: 3
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_dining_room
@@ -674,19 +674,19 @@
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.master_bedroom_ceiling
-        transition: 5
+        transition: 3
         rgb_color: [255, 200, 120]
       service: light.turn_on
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.master_bedroom_lightstrip_left
-        transition: 5
+        transition: 3
         color_temp: 444
       service: light.turn_on
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.master_bedroom_lightstrip_right
-        transition: 5
+        transition: 3
         color_temp: 444
       service: light.turn_on
     - data:
@@ -784,7 +784,7 @@
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.emmas_bedroom
         rgb_color: [255, 200, 120]
-        transition: 5
+        transition: 3
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_emmas_bedroom
@@ -880,12 +880,12 @@
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.kitchen_counter
-        transition: 5
+        transition: 3
       service: light.turn_on
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}0{% else %}250{% endif %}"
         entity_id: group.light_kitchen_ceiling
-        transition: 5
+        transition: 3
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_kitchen
@@ -932,7 +932,7 @@
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}100{% elif now().hour < 7 %}50{% else %}250{% endif %}"
         entity_id: light.hallway
-        transition: 5
+        transition: 3
       service: light.turn_on
 
 - id: hallway_motion_end
