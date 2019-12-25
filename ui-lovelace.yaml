@@ -288,7 +288,7 @@ views:
                       service: remote.turn_on
                       service_data:
                         entity_id: remote.harmony_hub
-                        activity: "Watch Smart TV"
+                        activity: "Watch TV"
                     type: "custom:button-card"
                   - entity: sensor.watch_netflix
                     icon: "mdi:netflix"
@@ -334,7 +334,7 @@ views:
                       service: remote.turn_on
                       service_data:
                         entity_id: remote.harmony_hub
-                        activity: "Watch Apple TV"
+                        activity: "Watch Cartoons"
                     type: "custom:button-card"
                   - entity: sensor.listen_music
                     icon: "mdi:music"
