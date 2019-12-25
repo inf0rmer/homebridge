@@ -675,12 +675,23 @@
       condition: numeric_state
       entity_id: sensor.master_bedroom_sensor_light_level
   action:
-    # Hue bridge not fast enough
     - data_template:
         brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
-        entity_id: light.master_bedroom
+        entity_id: light.master_bedroom_ceiling
         transition: 5
         rgb_color: [255, 200, 120]
+      service: light.turn_on
+    - data_template:
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        entity_id: light.master_bedroom_lightstrip_left
+        transition: 5
+        color_temp: 444
+      service: light.turn_on
+    - data_template:
+        brightness: "{% if is_state('sun.sun', 'below_horizon') %}170{% elif now().hour < 7 %}50{% else %}250{% endif %}"
+        entity_id: light.master_bedroom_lightstrip_right
+        transition: 5
+        color_temp: 444
       service: light.turn_on
     - data:
         entity_id: input_boolean.motion_master_bedroom
