@@ -1,0 +1,10 @@
+switch:
+  - platform: circadian_lighting
+    lights_ct:
+      - light.living_room
+      - light.dining_room
+      - light.master_bedroom
+      - light.emmas_bedroom
+      - light.kitchen
+      - light.hallway
+      - light.laundry_room
