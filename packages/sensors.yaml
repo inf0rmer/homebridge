@@ -61,7 +61,7 @@ sensor:
         value_template: "{{ is_state_attr('remote.harmony_hub', 'current_activity', 'Listen to Music') }}"
       tv_activity:
         friendly_name: TV Activity
-        value_template: "{{ is_state('sensor.watch_netflix', 'True') || is_state('sensor.watch_tv', 'True') || is_state('sensor.watch_cartoons', 'True') || is_state('sensor.listen_music', 'True') }}"
+        value_template: "{{ is_state('sensor.watch_netflix', 'True') or is_state('sensor.watch_tv', 'True') or is_state('sensor.watch_cartoons', 'True') or is_state('sensor.listen_music', 'True') }}"
 
   - platform: template
     sensors:
