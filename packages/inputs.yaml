@@ -18,6 +18,15 @@ input_boolean:
   dnd_balcony:
     name: Do Not Disturb Balcony
 
+  presence_living_room:
+  presence_dining_room:
+  presence_master_bedroom:
+  presence_emmas_bedroom:
+  presence_kitchen:
+  presence_hallway:
+  presence_laundry_room:
+  presence_balcony:
+
   bruno_present:
     name: Bruno
     icon: mdi:account
