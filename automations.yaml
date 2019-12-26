@@ -1153,6 +1153,11 @@
 
 - id: balcony_lights_on
   alias: "[Balcony] Lights On"
+  trigger:
+    - entity_id: binary_sensor.presence_balcony
+      from: "off"
+      platform: state
+      to: "on"
   action:
     - data:
         entity_id: switch.balcony_plug
@@ -1160,6 +1165,11 @@
 
 - id: balcony_lights_off
   alias: "[Balcony] Lights Off"
+  trigger:
+    - entity_id: binary_sensor.presence_balcony
+      from: "on"
+      platform: state
+      to: "off"
   action:
     - data:
         entity_id: switch.balcony_plug
