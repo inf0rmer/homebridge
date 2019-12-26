@@ -487,17 +487,14 @@
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_off
 
-- id: living_room_motion_start
-  alias: "[Living Room] Motion Starts (Motion Toggle Off)"
+- id: living_room_lights_on
+  alias: "[Living Room] Lights On"
   trigger:
-    - entity_id: binary_sensor.hk_living_room_sensor_motion
+    - entity_id: binary_sensor.presence_living_room
       from: "off"
       platform: state
       to: "on"
   condition:
-    - condition: state
-      entity_id: light.living_room
-      state: "off"
     - condition: state
       entity_id: input_boolean.motion_living_room
       state: "off"
@@ -517,15 +514,13 @@
         entity_id: input_boolean.motion_living_room
       service: input_boolean.turn_on
 
-- id: living_room_motion_end
-  alias: "[Living Room] Motion Ends (Motion Toggle On)"
+- id: living_room_lights_off
+  alias: "[Living Room] Lights Off"
   trigger:
-    - entity_id: binary_sensor.hk_living_room_sensor_motion
+    - entity_id: binary_sensor.presence_living_room
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 5
   condition:
     - condition: state
       entity_id: input_boolean.motion_living_room
@@ -561,8 +556,8 @@
         entity_id: input_boolean.motion_living_room
       service: input_boolean.turn_off
 
-- id: living_room_presence_on
-  alias: "[Living Room] Presence On"
+- id: living_room_presence_on_tv
+  alias: "[Living Room] Presence On (TV)"
   trigger:
     - entity_id: binary_sensor.hk_living_room_sensor_motion
       from: "off"
@@ -577,8 +572,32 @@
         entity_id: input_boolean.presence_living_room
       service: input_boolean.turn_on
 
-- id: living_room_presence_off_motion
-  alias: "[Living Room] Presence Off (Motion)"
+- id: living_room_presence_off_tv
+  alias: "[Living Room] Presence Off (TV)"
+  trigger:
+    - entity_id: sensor.tv_activity
+      from: "True"
+      platform: state
+      to: "False"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_off
+
+- id: living_room_presence_on_motion
+  alias: "[Living Room] Presence On (Motion)"
+  trigger:
+    - entity_id: binary_sensor.hk_living_room_sensor_motion
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_on
+
+- id: living_room_presence_off
+  alias: "[Living Room] Presence Off"
   trigger:
     - entity_id: binary_sensor.hk_living_room_sensor_motion
       from: "on"
@@ -595,26 +614,14 @@
         entity_id: input_boolean.presence_living_room
       service: input_boolean.turn_off
 
-- id: living_room_presence_off_tv
-  alias: "[Living Room] Presence Off (TV)"
-  trigger:
-    - entity_id: sensor.tv_activity
-      from: "True"
-      platform: state
-      to: "False"
-  action:
-    - data:
-        entity_id: input_boolean.presence_living_room
-      service: input_boolean.turn_off
-
 ###############
 # Dining Room #
 ###############
 
-- id: dining_room_motion_start
-  alias: "[Dining Room] Dining Room Motion Starts (Motion Toggle Off)"
+- id: dining_room_lights_on
+  alias: "[Dining Room] Lights On"
   trigger:
-    - entity_id: binary_sensor.hk_dining_room_sensor_motion
+    - entity_id: binary_sensor.presence_dining_room
       from: "off"
       platform: state
       to: "on"
@@ -642,15 +649,13 @@
         entity_id: input_boolean.motion_dining_room
       service: input_boolean.turn_on
 
-- id: dining_room_motion_end
-  alias: "[Dining Room] Motion Ends (Motion Toggle On)"
+- id: dining_room_lights_off
+  alias: "[Dining Room] Lights Off"
   trigger:
-    - entity_id: binary_sensor.hk_dining_room_sensor_motion
+    - entity_id: binary_sensor.presence_dining_room
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 5
   condition:
     - condition: state
       entity_id: input_boolean.motion_dining_room
@@ -692,8 +697,8 @@
         entity_id: input_boolean.motion_dining_room
       service: input_boolean.turn_off
 
-- id: dining_room_presence_on
-  alias: "[Dining Room] Presence On"
+- id: dining_room_presence_on_motion
+  alias: "[Dining Room] Presence On (Motion)"
   trigger:
     - entity_id: binary_sensor.hk_dining_room_sensor_motion
       from: "off"
@@ -722,10 +727,10 @@
 # Master Bedroom #
 ##################
 
-- id: master_bedroom_motion_start
-  alias: "[Master Bedroom] Motion Starts (Motion Toggle Off)"
+- id: master_bedroom_lights_on
+  alias: "[Master Bedroom] Lights On"
   trigger:
-    - entity_id: binary_sensor.hk_master_bedroom_sensor_motion
+    - entity_id: binary_sensor.presence_master_bedroom
       from: "off"
       platform: state
       to: "on"
@@ -765,15 +770,13 @@
         entity_id: input_boolean.motion_master_bedroom
       service: input_boolean.turn_on
 
-- id: master_bedroom_motion_end
-  alias: "[Master Bedroom] Master Bedroom Motion Ends (Motion Toggle On)"
+- id: master_bedroom_lights_off
+  alias: "[Master Bedroom] Lights Off"
   trigger:
-    - entity_id: binary_sensor.hk_master_bedroom_sensor_motion
+    - entity_id: binary_sensor.presence_master_bedroom
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 5
   condition:
     - condition: state
       entity_id: input_boolean.motion_master_bedroom
@@ -827,8 +830,8 @@
         entity_id: input_boolean.dnd_master_bedroom
       service: input_boolean.turn_off
 
-- id: master_bedroom_presence_on
-  alias: "[Master Bedroom] Presence On"
+- id: master_bedroom_presence_on_motion
+  alias: "[Master Bedroom] Presence On (Motion)"
   trigger:
     - entity_id: binary_sensor.hk_master_bedroom_sensor_motion
       from: "off"
@@ -857,10 +860,10 @@
 # Emma's Bedroom #
 ##################
 
-- id: emmas_bedroom_motion_start
-  alias: "[Emma's Bedroom] Motion Starts (Motion Toggle Off)"
+- id: emmas_bedroom_lights_on
+  alias: "[Emma's Bedroom] Lights On"
   trigger:
-    - entity_id: binary_sensor.hk_emmas_bedroom_sensor_motion
+    - entity_id: binary_sensor.presence_emmas_bedroom
       from: "off"
       platform: state
       to: "on"
@@ -888,15 +891,13 @@
         entity_id: input_boolean.motion_emmas_bedroom
       service: input_boolean.turn_on
 
-- id: emmas_bedroom_motion_end
-  alias: "[Emma's Bedroom] Motion Ends (Motion Toggle On)"
+- id: emmas_bedroom_lights_off
+  alias: "[Emma's Bedroom] Lights off"
   trigger:
-    - entity_id: binary_sensor.hk_emmas_bedroom_sensor_motion
+    - entity_id: binary_sensor.presence_emmas_bedroom
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 5
   condition:
     - condition: state
       entity_id: input_boolean.motion_emmas_bedroom
@@ -926,6 +927,30 @@
         entity_id: input_boolean.motion_emmas_bedroom
       service: input_boolean.turn_off
 
+- id: emmas_bedroom_motion_toggle_override_on
+  alias: "[Emma's Bedroom] Motion Toggle Override On"
+  trigger:
+    - entity_id: light.emmas_bedroom
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.motion_emmas_bedroom
+      service: input_boolean.turn_off
+
+- id: emmas_bedroom_motion_toggle_dnd_off
+  alias: "[Emma's Bedroom] Motion Toggle DnD Off"
+  trigger:
+    - entity_id: light.emmas_bedroom
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.dnd_emmas_bedroom
+      service: input_boolean.turn_off
+
 - id: emmas_bedroom_presence_on
   alias: "[Emma's Bedroom] Presence On"
   trigger:
@@ -952,38 +977,14 @@
         entity_id: input_boolean.presence_emmas_bedroom
       service: input_boolean.turn_off
 
-- id: emmas_bedroom_motion_toggle_override_on
-  alias: "[Emma's Bedroom] Motion Toggle Override On"
-  trigger:
-    - entity_id: light.emmas_bedroom
-      from: "on"
-      platform: state
-      to: "off"
-  action:
-    - data:
-        entity_id: input_boolean.motion_emmas_bedroom
-      service: input_boolean.turn_off
-
-- id: emmas_bedroom_motion_toggle_dnd_off
-  alias: "[Emma's Bedroom] Motion Toggle DnD Off"
-  trigger:
-    - entity_id: light.emmas_bedroom
-      from: "off"
-      platform: state
-      to: "on"
-  action:
-    - data:
-        entity_id: input_boolean.dnd_emmas_bedroom
-      service: input_boolean.turn_off
-
 ###########
 # Kitchen #
 ###########
 
-- id: kitchen_motion_start
-  alias: "[Kitchen] Motion Starts (Motion Toggle Off)"
+- id: kitchen_lights_on
+  alias: "[Kitchen] Lights On"
   trigger:
-    - entity_id: binary_sensor.hk_kitchen_sensor_motion
+    - entity_id: binary_sensor.presence_kitchen
       from: "off"
       platform: state
       to: "on"
@@ -1015,15 +1016,13 @@
         entity_id: input_boolean.motion_kitchen
       service: input_boolean.turn_on
 
-- id: kitchen_motion_end
-  alias: "[Kitchen] Motion Ends (Motion Toggle On)"
+- id: kitchen_lights_off
+  alias: "[Kitchen] Lights Off"
   trigger:
-    - entity_id: binary_sensor.hk_kitchen_sensor_motion
+    - entity_id: binary_sensor.presence_kitchen
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 3
   condition:
     - condition: state
       entity_id: input_boolean.motion_kitchen
@@ -1174,6 +1173,7 @@
     - data:
         entity_id: switch.balcony_plug
       service: switch.turn_off
+
 ################
 # Laundry Room #
 ################
