@@ -1,10 +1,12 @@
 switch:
   - platform: circadian_lighting
+    disable_brightness_adjust: true
+    sleep_entity: group.dnd_bedrooms
     lights_ct:
       - light.living_room
       - light.dining_room
       - light.master_bedroom
-      - light.emmas_bedroom
+      - light.emmas_bedroom_ceiling
       - light.kitchen
       - light.hallway
       - light.laundry_room
