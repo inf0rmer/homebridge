@@ -1067,8 +1067,8 @@
 # Hallway #
 ###########
 
-- id: hallway_motion_start
-  alias: "[Hallway] Motion Starts"
+- id: hallway_presence_on
+  alias: "[Hallway] Presence On"
   trigger:
     - entity_id: binary_sensor.hallway_combined_sensor_motion
       from: "off"
@@ -1079,8 +1079,8 @@
         entity_id: input_boolean.presence_hallway
       service: input_boolean.turn_on
 
-- id: hallway_motion_end
-  alias: "[Hallway] Motion Ends"
+- id: hallway_presence_off
+  alias: "[Hallway] Presence Off"
   trigger:
     - entity_id: binary_sensor.hallway_combined_sensor_motion
       from: "on"
@@ -1093,8 +1093,8 @@
         entity_id: input_boolean.presence_hallway
       service: input_boolean.turn_off
 
-- id: hallway_presence_on
-  alias: "[Hallway] Presence On"
+- id: hallway_lights_on
+  alias: "[Hallway] Lights On"
   trigger:
     - entity_id: binary_sensor.presence_hallway
       from: "off"
@@ -1111,8 +1111,8 @@
         transition: 3
       service: light.turn_on
 
-- id: hallway_presence_on
-  alias: "[Hallway] Presence Off"
+- id: hallway_lights_off
+  alias: "[Hallway] Lights Off"
   trigger:
     - entity_id: binary_sensor.presence_hallway
       from: "on"
@@ -1123,3 +1123,70 @@
         entity_id: light.hallway
         transition: 5
       service: light.turn_off
+
+###########
+# Balcony #
+###########
+- id: balcony_presence_on
+  alias: "[Balcony] Presence On"
+  trigger:
+    - entity_id: light.balcony_main
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_balcony
+      service: input_boolean.turn_on
+
+- id: balcony_presence_off
+  alias: "[Balcony] Presence Off"
+  trigger:
+    - entity_id: light.balcony_main
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_balcony
+      service: input_boolean.turn_off
+
+- id: balcony_lights_on
+  alias: "[Balcony] Lights On"
+  action:
+    - data:
+        entity_id: switch.balcony_plug
+      service: switch.turn_on
+
+- id: balcony_lights_off
+  alias: "[Balcony] Lights Off"
+  action:
+    - data:
+        entity_id: switch.balcony_plug
+      service: switch.turn_off
+################
+# Laundry Room #
+################
+- id: laundry_room_presence_on
+  alias: "[Laundry] Presence On"
+  trigger:
+    - entity_id: light.laundry_room
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_laundry_room
+      service: input_boolean.turn_on
+
+- id: laundry_room_presence_off
+  alias: "[Laundry] Presence Off"
+  trigger:
+    - entity_id: light.laundry_room
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_laundry_room
+      service: input_boolean.turn_off
