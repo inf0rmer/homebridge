@@ -43,9 +43,9 @@ harmony_hub:
   name: Living Room Entertainment Control
   control: hidden
   entities:
-    - sensor.watch_smart_tv
+    - sensor.watch_tv
     - sensor.watch_netflix
-    - sensor.watch_apple_tv
+    - sensor.watch_cartoons
     - sensor.listen_music
 
 dnd_bedrooms:

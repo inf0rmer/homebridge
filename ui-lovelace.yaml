@@ -267,7 +267,7 @@ views:
                       type: "custom:button-card"
               - type: horizontal-stack
                 cards:
-                  - entity: sensor.watch_smart_tv
+                  - entity: sensor.watch_tv
                     icon: "mdi:television"
                     show_state: false
                     name: Watch TV
@@ -313,7 +313,7 @@ views:
                         entity_id: remote.harmony_hub
                         activity: "Watch Netflix"
                     type: "custom:button-card"
-                  - entity: sensor.watch_apple_tv
+                  - entity: sensor.watch_cartoons
                     icon: "mdi:apple"
                     show_state: false
                     name: Watch Cartoons
