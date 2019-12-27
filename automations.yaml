@@ -341,7 +341,7 @@
     - data:
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_[...]', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
         transition: 3
       service: light.turn_on
 
@@ -385,7 +385,7 @@
     - data:
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_[...]', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
         transition: 3
       service: light.turn_on
 
@@ -493,7 +493,7 @@
     - data_template:
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_[...]', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
         transition: 3
       service: light.turn_on
     - data:
@@ -628,7 +628,7 @@
     - data_template:
         entity_id: light.dining_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_[...]', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
         transition: 3
       service: light.turn_on
     - data:
@@ -736,7 +736,7 @@
   action:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_[...]', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
         entity_id: light.master_bedroom
         transition: 3
       service: light.turn_on
@@ -857,7 +857,7 @@
   action:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_[...]', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
         entity_id: light.emmas_bedroom
         transition: 3
       service: light.turn_on
@@ -978,7 +978,7 @@
   action:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_[...]', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
         entity_id: light.kitchen
         transition: 3
       service: light.turn_on
@@ -1076,7 +1076,7 @@
   action:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_[...]', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
         entity_id: light.hallway
         transition: 3
       service: light.turn_on
