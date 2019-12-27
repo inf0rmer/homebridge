@@ -613,9 +613,6 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.dining_room
-      state: "off"
-    - condition: state
       entity_id: input_boolean.motion_dining_room
       state: "off"
     - condition: state
@@ -721,9 +718,6 @@
       platform: state
       to: "on"
   condition:
-    - condition: state
-      entity_id: light.master_bedroom
-      state: "off"
     - condition: state
       entity_id: input_boolean.motion_master_bedroom
       state: "off"
@@ -843,9 +837,6 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.emmas_bedroom_ceiling
-      state: "off"
-    - condition: state
       entity_id: input_boolean.motion_emmas_bedroom
       state: "off"
     - condition: state
@@ -963,9 +954,6 @@
       platform: state
       to: "on"
   condition:
-    - condition: state
-      entity_id: light.kitchen
-      state: "off"
     - condition: state
       entity_id: input_boolean.motion_kitchen
       state: "off"
