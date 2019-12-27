@@ -17,6 +17,18 @@ all_motion_sensors:
     - binary_sensor.hk_kitchen_motion_sensor
     - binary_sensor.hk_hallway_kitchen_motion_sensor
 
+all_occupancy_sensors:
+  name: All Occupancy Sensors
+  entities:
+    - binary_sensor.presence_living_room
+    - binary_sensor.presence_dining_room
+    - binary_sensor.presence_master_bedroom
+    - binary_sensor.presence_emmas_bedroom
+    - binary_sensor.presence_kitchen
+    - binary_sensor.presence_hallway
+    - binary_sensor.presence_balcony
+    - binary_sensor.presence_laundry_room
+
 light_kitchen_ceiling:
   name: Light Kitchen Ceiling
   entities:

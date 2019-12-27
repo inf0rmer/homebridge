@@ -49,7 +49,7 @@
   trigger:
     - entity_id: binary_sensor.someone_home
       for:
-        minutes: "10"
+        minutes: 10
       from: "on"
       platform: state
       to: "off"
@@ -323,12 +323,12 @@
 - id: house_guest_mode_off
   alias: "[House] Turn off Guest Mode"
   trigger:
-    - entity_id: group.all_motion_sensors
+    - entity_id: group.all_occupancy_sensors
       for:
         minutes: 10
-      from: "off"
+      from: "on"
       platform: "state"
-      to: "on"
+      to: "off"
   action:
     - data:
         entity_id: input_boolean.someone_present
@@ -521,8 +521,6 @@
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 3
   condition:
     - condition: state
       entity_id: input_boolean.motion_living_room
@@ -605,6 +603,8 @@
       from: "on"
       platform: state
       to: "off"
+      for:
+        minutes: 3
   condition:
     - condition: state
       entity_id: sensor.tv_activity
@@ -656,8 +656,6 @@
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 3
   condition:
     - condition: state
       entity_id: input_boolean.motion_dining_room
@@ -718,6 +716,8 @@
       from: "on"
       platform: state
       to: "off"
+      for:
+        minutes: 3
   action:
     - data:
         entity_id: input_boolean.presence_dining_room
@@ -777,8 +777,6 @@
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 3
   condition:
     - condition: state
       entity_id: input_boolean.motion_master_bedroom
@@ -851,6 +849,8 @@
       from: "on"
       platform: state
       to: "off"
+      for:
+        minutes: 3
   action:
     - data:
         entity_id: input_boolean.presence_master_bedroom
@@ -898,8 +898,6 @@
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 3
   condition:
     - condition: state
       entity_id: input_boolean.motion_emmas_bedroom
@@ -972,6 +970,8 @@
       from: "on"
       platform: state
       to: "off"
+      for:
+        minutes: 3
   action:
     - data:
         entity_id: input_boolean.presence_emmas_bedroom
@@ -1023,8 +1023,6 @@
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 3
   condition:
     - condition: state
       entity_id: input_boolean.motion_kitchen
@@ -1057,6 +1055,8 @@
       from: "on"
       platform: state
       to: "off"
+      for:
+        minutes: 3
   action:
     - data:
         entity_id: input_boolean.presence_kitchen
@@ -1085,6 +1085,8 @@
       from: "on"
       platform: state
       to: "off"
+      for:
+        minutes: 3
   action:
     - data:
         entity_id: input_boolean.presence_hallway
@@ -1115,8 +1117,6 @@
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 3
   action:
     - data:
         entity_id: light.hallway
