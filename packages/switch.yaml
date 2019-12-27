@@ -11,3 +11,5 @@ switch:
       - light.kitchen
       - light.hallway
       - light.laundry_room
+      - light.closet
+      - light.bathroom

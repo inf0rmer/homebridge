@@ -26,6 +26,8 @@ input_boolean:
   presence_hallway:
   presence_laundry_room:
   presence_balcony:
+  presence_bathroom:
+  presence_closet:
 
   bruno_present:
     name: Bruno

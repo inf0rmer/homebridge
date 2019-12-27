@@ -1094,6 +1094,33 @@
         transition: 5
       service: light.turn_off
 
+############
+# Bathroom #
+############
+- id: bathroom_presence_on
+  alias: "[Bathroom] Presence On"
+  trigger:
+    - entity_id: light.bathroom
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom
+      service: input_boolean.turn_on
+
+- id: bathroom_presence_off
+  alias: "[Bathroom] Presence Off"
+  trigger:
+    - entity_id: light.bathroom
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom
+      service: input_boolean.turn_off
+
 ###########
 # Balcony #
 ###########
@@ -1170,4 +1197,31 @@
   action:
     - data:
         entity_id: input_boolean.presence_laundry_room
+      service: input_boolean.turn_off
+
+##########
+# Closet #
+##########
+- id: closet_presence_on
+  alias: "[Closet] Presence On"
+  trigger:
+    - entity_id: light.closet
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_closet
+      service: input_boolean.turn_on
+
+- id: closet_presence_off
+  alias: "[Closet] Presence Off"
+  trigger:
+    - entity_id: light.closet
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_closet
       service: input_boolean.turn_off
