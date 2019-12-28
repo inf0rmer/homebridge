@@ -30,9 +30,6 @@ homekit:
       - sensor.emmas_bedroom_sensor_light_level
       - sensor.emmas_bedroom_sensor_motion
       - sensor.home_sensor_average_temperature
-      - input_boolean.bruno_present
-      - input_boolean.sarah_present
-      - input_boolean.someone_present
       - input_boolean.dnd_living_room
       - input_boolean.dnd_dining_room
       - input_boolean.dnd_master_bedroom
@@ -45,9 +42,9 @@ homekit:
       - input_boolean.hk_motion_sensor_kitchen
       - input_boolean.hk_motion_sensor_hallway
       - input_boolean.hk_motion_sensor_hallway_kitchen
-      - binary_sensor.hk_presence_bruno
-      - binary_sensor.hk_presence_sarah
-      - binary_sensor.hk_presence_someone
+      - binary_sensor.presence_bruno
+      - binary_sensor.presence_sarah
+      - binary_sensor.presence_someone
     exclude_entities:
       - light.hallway
       - light.living_room

@@ -131,7 +131,7 @@ views:
                     type: "custom:button-card"
               - type: horizontal-stack
                 cards:
-                  - entity: input_boolean.someone_present
+                  - entity: input_boolean.presence_someone
                     icon: "mdi:account-multiple"
                     show_state: false
                     name: Guest Mode
@@ -143,7 +143,7 @@ views:
                       action: call-service
                       service: input_boolean.toggle
                       service_data:
-                        entity_id: input_boolean.someone_present
+                        entity_id: input_boolean.presence_someone
                     type: "custom:button-card"
           - entity: weather.weather
             type: "custom:weather-card"
@@ -158,9 +158,9 @@ views:
             icon: "mdi:thermometer"
           - type: entity-filter
             entities:
-              - input_boolean.bruno_present
-              - input_boolean.sarah_present
-              - input_boolean.someone_present
+              - binary_sensor.presence_bruno
+              - binary_sensor.presence_sarah
+              - binary_sensor.presence_someone
             state_filter:
               - "on"
             card:

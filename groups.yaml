@@ -47,9 +47,9 @@ presence:
   name: Someone is home
   view: no
   entities:
-    - binary_sensor.hk_presence_bruno
-    - binary_sensor.hk_presence_sarah
-    - binary_sensor.hk_presence_someone
+    - binary_sensor.presence_bruno
+    - binary_sensor.presence_sarah
+    - binary_sensor.presence_someone
 
 harmony_hub:
   name: Living Room Entertainment Control

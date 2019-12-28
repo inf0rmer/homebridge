@@ -39,9 +39,5 @@ input.dnd_balcony:
   hidden: true
 input.motion_dining_room:
   hidden: true
-input.bruno_present:
-  hidden: true
-input.sarah_present:
-  hidden: true
-input.someone_present:
+input.presence_someone:
   hidden: true
