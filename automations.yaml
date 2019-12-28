@@ -479,7 +479,11 @@
       from: "off"
       platform: state
       to: "on"
+    - entity_id: sensor.living_room_sensor_light_level
   condition:
+    - condition: state
+      entity_id: binary_sensor.presence_living_room
+      state: "on"
     - condition: state
       entity_id: input_boolean.motion_living_room
       state: "off"
@@ -611,7 +615,11 @@
       from: "off"
       platform: state
       to: "on"
+    - entity_id: sensor.dining_room_sensor_light_level
   condition:
+    - condition: state
+      entity_id: binary_sensor.presence_dining_room
+      state: "on"
     - condition: state
       entity_id: input_boolean.motion_dining_room
       state: "off"
@@ -717,7 +725,11 @@
       from: "off"
       platform: state
       to: "on"
+    - entity_id: sensor.master_bedroom_sensor_light_level
   condition:
+    - condition: state
+      entity_id: binary_sensor.presence_master_bedroom
+      state: "on"
     - condition: state
       entity_id: input_boolean.motion_master_bedroom
       state: "off"
@@ -835,7 +847,11 @@
       from: "off"
       platform: state
       to: "on"
+    - entity_id: sensor.emmas_bedroom_sensor_light_level
   condition:
+    - condition: state
+      entity_id: binary_sensor.presence_emmas_bedroom
+      state: "on"
     - condition: state
       entity_id: input_boolean.motion_emmas_bedroom
       state: "off"
@@ -953,7 +969,11 @@
       from: "off"
       platform: state
       to: "on"
+    - entity_id: sensor.kitchen_sensor_light_level
   condition:
+    - condition: state
+      entity_id: binary_sensor.presence_kitchen
+      state: "on"
     - condition: state
       entity_id: input_boolean.motion_kitchen
       state: "off"
@@ -1057,7 +1077,11 @@
       from: "off"
       platform: state
       to: "on"
+    - entity_id: sensor.hallway_sensor_light_level
   condition:
+    - condition: state
+      entity_id: binary_sensor.presence_hallway
+      state: "on"
     - condition: state
       entity_id: input_boolean.dnd_hallway
       state: "off"
