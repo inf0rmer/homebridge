@@ -570,6 +570,8 @@
       platform: state
       to: "False"
   action:
+    - delay:
+        minutes: 5
     - data:
         entity_id: input_boolean.presence_living_room
       service: input_boolean.turn_off
