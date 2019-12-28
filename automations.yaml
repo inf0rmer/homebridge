@@ -103,7 +103,6 @@
 
 - id: house_sarah_arrive_home
   alias: "[House] Sarah comes home"
-  initial_state: false
   trigger:
     - entity_id: binary_sensor.hk_presence_sarah
       from: "off"
@@ -121,7 +120,6 @@
 
 - id: house_bruno_arrive_home
   alias: "[House] Bruno comes home"
-  initial_state: false
   trigger:
     - entity_id: binary_sensor.hk_presence_bruno
       from: "off"
@@ -221,7 +219,6 @@
 
 - id: house_someone_arrives_from_work
   alias: "[House] Bruno or Sarah come home before night when no one else is home"
-  initial_state: false
   trigger:
     - entity_id: binary_sensor.hk_presence_bruno
       from: "off"
