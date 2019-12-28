@@ -547,10 +547,6 @@
 - id: living_room_presence_on_tv
   alias: "[Living Room] Presence On (TV)"
   trigger:
-    - entity_id: binary_sensor.hk_living_room_sensor_motion
-      from: "off"
-      platform: state
-      to: "on"
     - entity_id: sensor.tv_activity
       from: "False"
       platform: state
@@ -595,6 +591,34 @@
       to: "off"
       for:
         minutes: 3
+  condition:
+    - condition: state
+      entity_id: sensor.tv_activity
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_off
+
+- id: living_room_presence_on_lights
+  alias: "[Living Room] Presence On (Lights)"
+  trigger:
+    - entity_id: light.living_room
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_on
+
+- id: living_room_presence_off_lights
+  alias: "[Living Room] Presence Off (Lights)"
+  trigger:
+    - entity_id: light.living_room
+      from: "on"
+      platform: state
+      to: "off"
   condition:
     - condition: state
       entity_id: sensor.tv_activity
@@ -710,6 +734,30 @@
       to: "off"
       for:
         minutes: 3
+  action:
+    - data:
+        entity_id: input_boolean.presence_dining_room
+      service: input_boolean.turn_off
+
+- id: dining_room_presence_on_lights
+  alias: "[Dining Room] Presence On (Lights)"
+  trigger:
+    - entity_id: light.dining_room
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_dining_room
+      service: input_boolean.turn_on
+
+- id: dining_room_presence_off_lights
+  alias: "[Dining Room] Presence Off (Lights)"
+  trigger:
+    - entity_id: light.dining_room
+      from: "on"
+      platform: state
+      to: "off"
   action:
     - data:
         entity_id: input_boolean.presence_dining_room
@@ -838,6 +886,30 @@
         entity_id: input_boolean.presence_master_bedroom
       service: input_boolean.turn_off
 
+- id: master_bedroom_presence_on_lights
+  alias: "[Master Bedroom] Presence On (Lights)"
+  trigger:
+    - entity_id: light.master_bedroom
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_on
+
+- id: master_bedroom_presence_off_lights
+  alias: "[Master Bedroom] Presence Off (Lights)"
+  trigger:
+    - entity_id: light.master_bedroom
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_off
+
 ##################
 # Emma's Bedroom #
 ##################
@@ -961,6 +1033,30 @@
         entity_id: input_boolean.presence_emmas_bedroom
       service: input_boolean.turn_off
 
+- id: emmas_bedroom_presence_on_lights
+  alias: "[Emma's Bedroom] Presence On (Lights)"
+  trigger:
+    - entity_id: light.emmas_bedroom
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_emmas_bedroom
+      service: input_boolean.turn_on
+
+- id: emmas_bedroom_presence_off_lights
+  alias: "[Emma's Bedroom] Presence Off (Lights)"
+  trigger:
+    - entity_id: light.emmas_bedroom
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_emmas_bedroom
+      service: input_boolean.turn_off
+
 ###########
 # Kitchen #
 ###########
@@ -1044,35 +1140,33 @@
         entity_id: input_boolean.presence_kitchen
       service: input_boolean.turn_off
 
-###########
-# Hallway #
-###########
-
-- id: hallway_presence_on
-  alias: "[Hallway] Presence On"
+- id: kitchen_presence_on_lights
+  alias: "[Kitchen] Presence On (Lights)"
   trigger:
-    - entity_id: binary_sensor.hallway_combined_sensor_motion
+    - entity_id: light.kitchen
       from: "off"
       platform: state
       to: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_hallway
+        entity_id: input_boolean.presence_kitchen
       service: input_boolean.turn_on
 
-- id: hallway_presence_off
-  alias: "[Hallway] Presence Off"
+- id: kitchen_presence_off_lights
+  alias: "[Kitchen] Presence Off (Lights)"
   trigger:
-    - entity_id: binary_sensor.hallway_combined_sensor_motion
+    - entity_id: light.kitchen
       from: "on"
       platform: state
       to: "off"
-      for:
-        minutes: 3
   action:
     - data:
-        entity_id: input_boolean.presence_hallway
+        entity_id: input_boolean.presence_kitchen
       service: input_boolean.turn_off
+
+###########
+# Hallway #
+###########
 
 - id: hallway_lights_on
   alias: "[Hallway] Lights On"
@@ -1110,6 +1204,56 @@
         entity_id: light.hallway
         transition: 5
       service: light.turn_off
+
+- id: hallway_presence_on
+  alias: "[Hallway] Presence On"
+  trigger:
+    - entity_id: binary_sensor.hallway_combined_sensor_motion
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_hallway
+      service: input_boolean.turn_on
+
+- id: hallway_presence_off
+  alias: "[Hallway] Presence Off"
+  trigger:
+    - entity_id: binary_sensor.hallway_combined_sensor_motion
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 3
+  action:
+    - data:
+        entity_id: input_boolean.presence_hallway
+      service: input_boolean.turn_off
+
+- id: hallway_presence_on_lights
+  alias: "[Hallway] Presence On (Lights)"
+  trigger:
+    - entity_id: light.hallway
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_hallway
+      service: input_boolean.turn_on
+
+- id: hallway_presence_off_lights
+  alias: "[Hallway] Presence Off (Lights)"
+  trigger:
+    - entity_id: light.hallway
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_hallway
+      service: input_boolean.turn_off
 
 ############
 # Bathroom #
