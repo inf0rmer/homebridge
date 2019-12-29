@@ -26,8 +26,8 @@
   alias: "[HA] Delay automations on restart"
   hide_entity: true
   trigger:
-     platform: homeassistant
-     event: start
+    platform: homeassistant
+    event: start
   action:
     - service: automation.turn_off
       data:
@@ -610,6 +610,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_living_room
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_living_room
@@ -625,6 +629,9 @@
   condition:
     - condition: state
       entity_id: sensor.tv_activity
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_living_room
       state: "off"
   action:
     - data:
@@ -749,6 +756,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_dining_room
@@ -761,6 +772,10 @@
       from: "on"
       platform: state
       to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_dining_room
@@ -896,6 +911,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_master_bedroom
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_master_bedroom
@@ -908,6 +927,10 @@
       from: "on"
       platform: state
       to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_master_bedroom
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_master_bedroom
@@ -1043,6 +1066,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_emmas_bedroom
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_emmas_bedroom
@@ -1055,6 +1082,10 @@
       from: "on"
       platform: state
       to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_emmas_bedroom
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_emmas_bedroom
@@ -1150,6 +1181,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_kitchen
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_kitchen
@@ -1162,6 +1197,10 @@
       from: "on"
       platform: state
       to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_kitchen
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_kitchen
@@ -1241,6 +1280,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_hallway
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_hallway
@@ -1253,6 +1296,10 @@
       from: "on"
       platform: state
       to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_hallway
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_hallway
