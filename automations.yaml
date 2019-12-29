@@ -341,7 +341,7 @@
     - data:
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
         transition: 3
       service: light.turn_on
 
@@ -385,7 +385,7 @@
     - data:
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
         transition: 3
       service: light.turn_on
 
@@ -498,7 +498,7 @@
     - data_template:
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
         transition: 3
       service: light.turn_on
     - data:
@@ -668,7 +668,7 @@
     - data_template:
         entity_id: light.dining_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_dining_room', 'brightness') | int }}"
         transition: 3
       service: light.turn_on
     - data:
@@ -810,7 +810,7 @@
   action:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_master_bedroom', 'brightness') | int }}"
         entity_id: light.master_bedroom
         transition: 3
       service: light.turn_on
@@ -965,7 +965,7 @@
   action:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_emmas_bedroom', 'brightness') | int }}"
         entity_id: light.emmas_bedroom
         transition: 3
       service: light.turn_on
@@ -1109,9 +1109,6 @@
       entity_id: binary_sensor.presence_kitchen
       state: "on"
     - condition: state
-      entity_id: input_boolean.motion_kitchen
-      state: "off"
-    - condition: state
       entity_id: input_boolean.dnd_kitchen
       state: "off"
     - below: 20
@@ -1120,13 +1117,10 @@
   action:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
-        entity_id: light.kitchen
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_kitchen', 'brightness') | int }}"
         transition: 3
+        entity_id: light.kitchen
       service: light.turn_on
-    - data:
-        entity_id: input_boolean.motion_kitchen
-      service: input_boolean.turn_on
 
 - id: kitchen_lights_off
   alias: "[Kitchen] Lights Off"
@@ -1144,9 +1138,6 @@
         entity_id: light.kitchen
         transition: 5
       service: light.turn_off
-    - data:
-        entity_id: input_boolean.motion_kitchen
-      service: input_boolean.turn_off
 
 - id: kitchen_presence_on
   alias: "[Kitchen] Presence On"
@@ -1157,7 +1148,9 @@
       to: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_kitchen
+        entity_id:
+          - input_boolean.presence_kitchen
+          - input_boolean.motion_kitchen
       service: input_boolean.turn_on
 
 - id: kitchen_presence_off
@@ -1171,7 +1164,9 @@
         minutes: 3
   action:
     - data:
-        entity_id: input_boolean.presence_kitchen
+        entity_id:
+          - input_boolean.presence_kitchen
+          - input_boolean.motion_kitchen
       service: input_boolean.turn_off
 
 - id: kitchen_presence_on_lights
@@ -1229,7 +1224,7 @@
   action:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_hallway', 'brightness') | int }}"
         entity_id: light.hallway
         transition: 3
       service: light.turn_on

@@ -2,9 +2,6 @@ switch:
   - platform: circadian_lighting
     name: living_room
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
-    sleep_brightness: 15
-    sleep_state: "on"
     disable_entity: input_boolean.dnd_living_room
     disable_state: "on"
     lights_ct:
@@ -13,9 +10,6 @@ switch:
   - platform: circadian_lighting
     name: dining_room
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
-    sleep_brightness: 15
-    sleep_state: "on"
     disable_entity: input_boolean.dnd_dining_room
     disable_state: "on"
     lights_ct:
@@ -24,9 +18,6 @@ switch:
   - platform: circadian_lighting
     name: kitchen
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
-    sleep_brightness: 15
-    sleep_state: "on"
     disable_entity: input_boolean.dnd_kitchen
     disable_state: "on"
     lights_ct:
@@ -35,9 +26,6 @@ switch:
   - platform: circadian_lighting
     name: bathroom
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
-    sleep_brightness: 15
-    sleep_state: "on"
     disable_entity: input_boolean.dnd_bathroom
     disable_state: "on"
     lights_ct:
@@ -46,9 +34,6 @@ switch:
   - platform: circadian_lighting
     name: hallway
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
-    sleep_brightness: 15
-    sleep_state: "on"
     disable_entity: input_boolean.dnd_hallway
     disable_state: "on"
     lights_ct:
@@ -57,9 +42,6 @@ switch:
   - platform: circadian_lighting
     name: master_bedroom
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
-    sleep_brightness: 15
-    sleep_state: "on"
     disable_entity: input_boolean.dnd_master_bedroom
     disable_state: "on"
     lights_ct:
@@ -68,9 +50,6 @@ switch:
   - platform: circadian_lighting
     name: emmas_bedroom
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
-    sleep_brightness: 15
-    sleep_state: "on"
     disable_entity: input_boolean.dnd_emmas_bedroom
     disable_state: "on"
     lights_ct:
@@ -79,9 +58,6 @@ switch:
   - platform: circadian_lighting
     name: others
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
-    sleep_brightness: 15
-    sleep_state: "on"
     lights_ct:
       - light.laundry_room
       - light.closet
