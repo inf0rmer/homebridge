@@ -235,6 +235,9 @@
     - condition: state
       entity_id: binary_sensor.someone_home
       state: "off"
+    - condition: time
+      before: "20:00"
+      after: "16:30"
   action:
     - data:
         entity_id: media_player.living_room_echo_dot
