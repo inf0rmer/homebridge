@@ -34,7 +34,7 @@
         entity_id:
           - group.all_automations
     - delay:
-        seconds: 30
+        seconds: 60
     - service: automation.turn_on
       data:
         entity_id:
