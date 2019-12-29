@@ -170,6 +170,9 @@
       - condition: and
         conditions:
           - condition: state
+            entity_id: binary_sensor.someone_home
+            state: "on"
+          - condition: state
             entity_id: input_boolean.house_alarm_clock_status
             state: "on"
           - condition: state

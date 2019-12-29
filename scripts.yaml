@@ -2,6 +2,9 @@ good_night:
   alias: Good Night
   sequence:
     - data:
+        entity_id: remote.harmony_hub
+      service: remote.turn_off
+    - data:
         entity_id: group.dnd_bedrooms
       service: homeassistant.turn_on
     - data:
@@ -19,9 +22,6 @@ good_night:
           - 30
       service: light.turn_on
     - data:
-        entity_id: remote.harmony_hub
-      service: remote.turn_off
-    - data:
         entity_id: lock.home_door
       service: lock.lock
     - data:
@@ -36,6 +36,12 @@ good_night:
     - data:
         entity_id: input_boolean.bruno_good_night_pressed
       service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: group.presence_other_rooms
+      service: homeassistant.turn_off
 
 sarah_good_night:
   alias: Sarah's Good Night
@@ -45,6 +51,9 @@ sarah_good_night:
       service: input_boolean.turn_on
     - data:
         entity_id: input_boolean.dnd_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
       service: input_boolean.turn_on
     - data:
         entity_id: light.master_bedroom
@@ -64,6 +73,9 @@ bruno_good_night:
       service: input_boolean.turn_on
     - data:
         entity_id: input_boolean.dnd_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
       service: input_boolean.turn_on
     - data:
         entity_id: light.master_bedroom
@@ -96,6 +108,9 @@ emma_bedtime:
         entity_id: input_boolean.dnd_emmas_bedroom
       service: input_boolean.turn_on
     - data:
+        entity_id: input_boolean.presence_emmas_bedroom
+      service: input_boolean.turn_on
+    - data:
         entity_id: media_player.emma_s_bedroom_echo_dot
         media_content_id: "lullabies"
         media_content_type: routine
@@ -112,13 +127,20 @@ house_wake_up:
     - data:
         entity_id: group.dnd_house
       service: homeassistant.turn_off
-
     - data:
         entity_id:
           - media_player.everywhere
           - media_player.emma_s_bedroom_echo_dot
         volume_level: 0.5
       service: media_player.volume_set
+    - data_template:
+        kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
+        entity_id:
+          - light.master_bedroom
+          - light.emmas_bedroom
+        transition: 10
+      service: light.turn_on
 
 house_nobody_home:
   alias: "[House] Nobody Home"

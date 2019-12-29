@@ -86,6 +86,24 @@ dnd_house:
     - group.dnd_bedrooms
     - group.other_rooms
 
+presence_bedrooms:
+  all: true
+  entities:
+    - input_boolean.presence_master_bedroom
+    - input_boolean.presence_emmas_bedroom
+
+presence_other_rooms:
+  all: true
+  entities:
+    - input_boolean.presence_kitchen
+    - input_boolean.presence_hallway
+    - input_boolean.presence_laundry_room
+    - input_boolean.presence_balcony
+    - input_boolean.presence_bathroom
+    - input_boolean.presence_closet
+    - input_boolean.presence_living_room
+    - input_boolean.presence_dining_room
+
 house_alarm_clock:
   name: Wake Me Up
   entities:
