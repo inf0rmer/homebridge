@@ -141,6 +141,11 @@ house_wake_up:
           - light.emmas_bedroom
         transition: 10
       service: light.turn_on
+    - delay:
+        minutes: 30
+    - data:
+        entity_id: group.presence_bedrooms
+      service: homeassistant.turn_off
 
 house_nobody_home:
   alias: "[House] Nobody Home"
