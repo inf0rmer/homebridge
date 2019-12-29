@@ -156,6 +156,12 @@ views:
                 name: Avg. Light Level
             type: "custom:mini-graph-card"
             icon: "mdi:thermometer"
+          - type: map
+            aspect_ratio: 16:9
+            entities:
+              - zone.home
+              - device_tracker.bruno_s_iphone
+              - device_tracker.sarah_pimentels_iphone
           - type: entity-filter
             entities:
               - binary_sensor.presence_bruno
