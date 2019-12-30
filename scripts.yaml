@@ -8,6 +8,18 @@ good_night:
         entity_id: group.dnd_bedrooms
       service: homeassistant.turn_on
     - data:
+        entity_id: input_boolean.sarah_good_night_pressed
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.bruno_good_night_pressed
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: group.presence_other_rooms
+      service: homeassistant.turn_off
+    - data:
         entity_id: group.all_lights
       service: homeassistant.turn_off
     - data:
@@ -30,18 +42,6 @@ good_night:
           - media_player.emma_s_bedroom_echo_dot
         volume_level: 0.2
       service: media_player.volume_set
-    - data:
-        entity_id: input_boolean.sarah_good_night_pressed
-      service: input_boolean.turn_off
-    - data:
-        entity_id: input_boolean.bruno_good_night_pressed
-      service: input_boolean.turn_off
-    - data:
-        entity_id: input_boolean.presence_master_bedroom
-      service: input_boolean.turn_on
-    - data:
-        entity_id: group.presence_other_rooms
-      service: homeassistant.turn_off
 
 sarah_good_night:
   alias: Sarah's Good Night
@@ -162,6 +162,12 @@ house_nobody_home:
     - data:
         entity_id: lock.home_door
       service: lock.lock
+    - data:
+        entity_id: group.presence_other_rooms
+      service: homeassistant.turn_off
+    - data:
+        entity_id: group.presence_bedrooms
+      service: homeassistant.turn_off
 
 start_cleaning:
   alias: Start Cleaning
