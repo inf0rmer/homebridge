@@ -522,6 +522,10 @@
       from: "False"
       platform: state
       to: "True"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_living_room
@@ -548,6 +552,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_living_room
@@ -582,6 +590,9 @@
     - condition: state
       entity_id: input_boolean.dnd_living_room
       state: "off"
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_living_room
@@ -657,6 +668,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_dining_room
@@ -687,6 +702,9 @@
     - condition: state
       entity_id: input_boolean.dnd_dining_room
       state: "off"
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_dining_room
@@ -771,6 +789,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_master_bedroom
@@ -801,6 +823,9 @@
     - condition: state
       entity_id: input_boolean.dnd_master_bedroom
       state: "off"
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_master_bedroom
@@ -885,6 +910,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_emmas_bedroom
@@ -915,6 +944,9 @@
     - condition: state
       entity_id: input_boolean.dnd_emmas_bedroom
       state: "off"
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_emmas_bedroom
@@ -987,6 +1019,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_kitchen
@@ -1017,6 +1053,9 @@
     - condition: state
       entity_id: input_boolean.dnd_kitchen
       state: "off"
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_kitchen
@@ -1086,6 +1125,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_hallway
@@ -1116,6 +1159,9 @@
     - condition: state
       entity_id: input_boolean.dnd_hallway
       state: "off"
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_hallway
@@ -1147,6 +1193,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_bathroom
@@ -1174,6 +1224,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_balcony
@@ -1225,6 +1279,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_laundry_room
@@ -1252,6 +1310,10 @@
       from: "off"
       platform: state
       to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
   action:
     - data:
         entity_id: input_boolean.presence_closet
