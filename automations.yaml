@@ -574,6 +574,9 @@
     - condition: state
       entity_id: sensor.tv_activity
       state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_living_room
@@ -686,6 +689,10 @@
       to: "off"
       for:
         minutes: 3
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_dining_room
@@ -807,6 +814,10 @@
       to: "off"
       for:
         minutes: 3
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_master_bedroom
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_master_bedroom
@@ -928,6 +939,10 @@
       to: "off"
       for:
         minutes: 3
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_emmas_bedroom
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_emmas_bedroom
@@ -1037,6 +1052,10 @@
       to: "off"
       for:
         minutes: 3
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_kitchen
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_kitchen
@@ -1143,6 +1162,10 @@
       to: "off"
       for:
         minutes: 3
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_hallway
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_hallway
@@ -1209,6 +1232,10 @@
       from: "on"
       platform: state
       to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_bathroom
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_bathroom
@@ -1240,6 +1267,10 @@
       from: "on"
       platform: state
       to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_balcony
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_balcony
@@ -1295,6 +1326,10 @@
       from: "on"
       platform: state
       to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_laundry_room
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_laundry_room
@@ -1326,6 +1361,10 @@
       from: "on"
       platform: state
       to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_closet
+      state: "off"
   action:
     - data:
         entity_id: input_boolean.presence_closet
