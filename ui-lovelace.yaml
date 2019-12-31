@@ -382,12 +382,11 @@ views:
             show_header_toggle: false
             title: Lights
             type: entities
-          - entity: cover.blinds_living_room
-            name: All Blinds
-            theme: Backend-selected
-            type: cover
           - entities:
+              - entity: cover.living_room_blinds
+                name: Whole Room
               - entity: cover.living_room_desk_blind
+                name: Desk
             show_header_toggle: false
             title: Blinds
             type: entities
