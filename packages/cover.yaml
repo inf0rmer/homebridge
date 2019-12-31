@@ -1,0 +1,5 @@
+cover:
+  - platform: group
+    name: Living Room Blinds
+    entities:
+      - cover.living_room_desk_blind
