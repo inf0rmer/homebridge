@@ -6,6 +6,5 @@
     switch.christmas_tree: true
     light.gaming_area:
       state: true
-      brightness: 200
-      color_temp: 500
-      transition: 30
+    group.all_covers:
+      state: "closed"
