@@ -777,18 +777,6 @@
         transition: 5
       service: light.turn_off
 
-- id: master_bedroom_motion_toggle_dnd_off
-  alias: "[Master Bedroom] Motion Toggle DnD Off"
-  trigger:
-    - entity_id: light.master_bedroom
-      from: "off"
-      platform: state
-      to: "on"
-  action:
-    - data:
-        entity_id: input_boolean.dnd_master_bedroom
-      service: input_boolean.turn_off
-
 - id: master_bedroom_presence_on
   alias: "[Master Bedroom] Presence On"
   trigger:
@@ -901,18 +889,6 @@
         entity_id: light.emmas_bedroom
         transition: 5
       service: light.turn_off
-
-- id: emmas_bedroom_motion_toggle_dnd_off
-  alias: "[Emma's Bedroom] Motion Toggle DnD Off"
-  trigger:
-    - entity_id: light.emmas_bedroom
-      from: "off"
-      platform: state
-      to: "on"
-  action:
-    - data:
-        entity_id: input_boolean.dnd_emmas_bedroom
-      service: input_boolean.turn_off
 
 - id: emmas_bedroom_presence_on
   alias: "[Emma's Bedroom] Presence On"
