@@ -6,6 +6,7 @@ cloud:
         - switch
         - lock
         - script
+        - cover
       exclude_entities:
         - light.hallway
         - light.living_room
