@@ -29,6 +29,11 @@ all_occupancy_sensors:
     - binary_sensor.presence_balcony
     - binary_sensor.presence_laundry_room
 
+blinds_living_room:
+  name: Blinds Living Room
+  entities:
+    - cover.living_room_desk_blind
+
 light_kitchen_ceiling:
   name: Light Kitchen Ceiling
   entities:
