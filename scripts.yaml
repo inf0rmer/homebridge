@@ -139,7 +139,7 @@ house_wake_up:
         entity_id:
           - light.master_bedroom
           - light.emmas_bedroom
-        transition: 10
+        transition: 120
       service: light.turn_on
     - delay:
         minutes: 30
