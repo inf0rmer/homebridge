@@ -249,6 +249,22 @@
         volume_level: 0.3
       service: media_player.volume_set
 
+- id: house_someone_arrives
+  alias: "[House] Anyone comes home before sunset"
+  trigger:
+    - entity_id: binary_sensor.someone_home
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: above_horizon
+  action:
+    - data:
+        entity_id: group.all_covers
+      service: cover.open_cover
+
 - id: house_someone_arrives_after_sunset
   alias: "[House] Anyone comes home after Sunset"
   trigger:
