@@ -1,0 +1,7 @@
+calendar:
+  - platform: caldav
+    username: !env_var ICLOUD_USERNAME
+    password: !env_var ICLOUD_PASSWORD
+    url: https://caldav.icloud.com
+    calendars:
+      - Home
