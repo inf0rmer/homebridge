@@ -2,4 +2,5 @@ device_tracker:
   - platform: huesensor
 
   - platform: ping
-    host: 192.168.88.28
+    hosts:
+      brunos_macbook: 192.168.88.28
