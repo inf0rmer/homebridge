@@ -51,34 +51,8 @@ input_boolean:
   living_room_watch_tv_fan_automation:
     name: Living Room Fan Automation Toggle
 
-  house_alarm_clock_status:
-    name: Wake Us Up
-    initial: "on"
-    icon: mdi:alarm-check
-
-  house_alarm_clock_weekdays:
-    name: Weekdays Only
-    initial: "on"
-    icon: mdi:calendar
-
   sarah_good_night_pressed:
     name: Sarah's Good Night Button Pressed
 
   bruno_good_night_pressed:
     name: Bruno's Good Night Button Pressed
-
-input_number:
-  house_alarm_clock_hour:
-    name: Hour
-    mode: slider
-    min: 0
-    max: 23
-    step: 1
-    icon: mdi:timer
-  house_alarm_clock_minutes:
-    name: Minutes
-    mode: slider
-    min: 0
-    max: 59
-    step: 5
-    icon: mdi:timer

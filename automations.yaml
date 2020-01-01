@@ -162,37 +162,12 @@
 - id: house_wake_up
   alias: "[House] Wake Up"
   trigger:
-    platform: template
-    value_template: "{{ now().time().hour == states.input_number.house_alarm_clock_hour.state | int and now().time().minute == states.input_number.house_alarm_clock_minutes.state | int }}"
+    platform: time
+    at: "10:00:00"
   condition:
-    condition: or
-    conditions:
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: binary_sensor.someone_home
-            state: "on"
-          - condition: state
-            entity_id: input_boolean.house_alarm_clock_status
-            state: "on"
-          - condition: state
-            entity_id: input_boolean.house_alarm_clock_weekdays
-            state: "on"
-          - condition: time
-            weekday:
-              - mon
-              - tue
-              - wed
-              - thu
-              - fri
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: input_boolean.house_alarm_clock_status
-            state: "on"
-          - condition: state
-            entity_id: input_boolean.house_alarm_clock_weekdays
-            state: "off"
+    - condition: state
+      entity_id: group.dnd_bedrooms
+      state: "off"
   action:
     - data:
         entity_id: script.house_wake_up

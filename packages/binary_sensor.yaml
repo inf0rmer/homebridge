@@ -1,6 +1,9 @@
 binary_sensor:
   - platform: huesensor
 
+  - platform: workday
+    country: DE
+
   - platform: template
     sensors:
       hk_dining_room_sensor_motion:

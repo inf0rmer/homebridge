@@ -60,6 +60,44 @@ views:
                     type: "custom:button-card"
                   - type: conditional
                     conditions:
+                      - entity: group.dnd_bedrooms
+                        state: "off"
+                    card:
+                      entity: script.good_night
+                      icon: "mdi:sleep"
+                      show_state: false
+                      name: Good Night
+                      size: 25%
+                      styles:
+                        card:
+                          - font-size: 12px
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.good_night
+                      type: "custom:button-card"
+                  - type: conditional
+                    conditions:
+                      - entity: group.dnd_bedrooms
+                        state: "on"
+                    card:
+                      entity: script.house_wake_up
+                      icon: "mdi:sleep-off"
+                      show_state: false
+                      name: Wake Up
+                      size: 25%
+                      styles:
+                        card:
+                          - font-size: 12px
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.house_wake_up
+                      type: "custom:button-card"
+                  - type: conditional
+                    conditions:
                       - entity: vacuum.xiaomi_vacuum_cleaner
                         state: docked
                     card:
@@ -191,12 +229,6 @@ views:
               - light.emmas_bedroom
             title: Lights
             type: entities
-          - type: custom:group-card
-            card:
-              type: entities
-              title: Alarm Clock
-              show_header_toggle: false
-            group: group.house_alarm_clock
 
   - path: living-room
     title: Living Room

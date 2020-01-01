@@ -81,12 +81,6 @@ sensor:
         value_template: '{{ states.switch.homelab.attributes["today_energy_kwh"] | replace(" kW", "") | float }}'
         unit_of_measurement: "kW"
 
-  - platform: template
-    sensors:
-      house_alarm_clock_time:
-        friendly_name: "Alarm Time"
-        value_template: "{{ states.input_number.house_alarm_clock_hour.state | int }}:{% if states.input_number.house_alarm_clock_minutes.state | int < 10 %}0{% endif %}{{ states.input_number.house_alarm_clock_minutes.state | int }}"
-
   - platform: min_max
     name: hallway_combined_sensor_light_level
     type: mean
