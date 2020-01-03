@@ -399,6 +399,11 @@ views:
                     styles:
                       card:
                         - font-size: 12px
+                    tap_action:
+                      action: call-service
+                      service: input_boolean.toggle
+                      service_data:
+                        entity_id: input_boolean.presence_living_room
                     type: "custom:button-card"
           - entity: light.living_room
             name: All Lights
@@ -596,6 +601,11 @@ views:
                 styles:
                   card:
                     - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.presence_master_bedroom
                 type: "custom:button-card"
           - entity: light.master_bedroom
             name: All Lights
@@ -709,6 +719,11 @@ views:
                 styles:
                   card:
                     - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.presence_emmas_bedroom
                 type: "custom:button-card"
           - entity: light.emmas_bedroom
             name: All Lights
@@ -800,6 +815,11 @@ views:
                 styles:
                   card:
                     - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.presence_kitchen
                 type: "custom:button-card"
           - entity: light.kitchen
             name: All Lights
@@ -892,6 +912,11 @@ views:
                 styles:
                   card:
                     - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.presence_hallway
                 type: "custom:button-card"
           - entity: light.hallway
             name: All Lights
@@ -923,6 +948,11 @@ views:
             styles:
               card:
                 - font-size: 12px
+            tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.presence_bathroom
             type: "custom:button-card"
           - entity: light.bathroom
             name: Light
@@ -941,6 +971,11 @@ views:
             styles:
               card:
                 - font-size: 12px
+            tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.presence_balcony
             type: "custom:button-card"
           - entity: light.balcony
             name: All Lights
@@ -960,12 +995,17 @@ views:
         layout: horizontal
         max_columns: 2
         cards:
-          - entity: binary_sensor.presence_balcony
+          - entity: binary_sensor.presence_laundry_room
             name: Occupied
             size: 10%
             styles:
               card:
                 - font-size: 12px
+            tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.presence_laundry_room
             type: "custom:button-card"
           - entity: light.laundry_room
             name: Light
@@ -985,6 +1025,11 @@ views:
             styles:
               card:
                 - font-size: 12px
+            tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.presence_closet
             type: "custom:button-card"
           - entity: light.closet
             name: Light
