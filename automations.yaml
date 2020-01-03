@@ -22,24 +22,6 @@
             midnight
           {% endif %}
 
-- id: homeassistant_delay_automations_on_restart
-  alias: "[HA] Delay automations on restart"
-  hide_entity: true
-  trigger:
-    platform: homeassistant
-    event: start
-  action:
-    - service: automation.turn_off
-      data:
-        entity_id:
-          - group.all_automations
-    - delay:
-        seconds: 60
-    - service: automation.turn_on
-      data:
-        entity_id:
-          - group.all_automations
-
 ###############
 # House #
 ###############
@@ -104,6 +86,54 @@
 - id: house_sarah_arrive_home
   alias: "[House] Sarah comes home"
   trigger:
+    - entity_id: device_tracker.sarah_pimentels_iphone
+      from: "away"
+      platform: state
+      to: "home"
+  action:
+    - data:
+        entity_id: input_boolean.presence_sarah
+      service: input_boolean.turn_on
+
+- id: house_sarah_leave_home
+  alias: "[House] Sarah leaves home"
+  trigger:
+    - entity_id: device_tracker.sarah_pimentels_iphone
+      from: "home"
+      platform: state
+      to: "away"
+  action:
+    - data:
+        entity_id: input_boolean.presence_sarah
+      service: input_boolean.turn_off
+
+- id: house_bruno_arrive_home
+  alias: "[House] Bruno comes home"
+  trigger:
+    - entity_id: device_tracker.bruno_s_iphone
+      from: "away"
+      platform: state
+      to: "home"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bruno
+      service: input_boolean.turn_on
+
+- id: house_bruno_leave_home
+  alias: "[House] Bruno leaves home"
+  trigger:
+    - entity_id: device_tracker.bruno_s_iphone
+      from: "home"
+      platform: state
+      to: "away"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bruno
+      service: input_boolean.turn_off
+
+- id: house_sarah_arrive_home_warn_bruno
+  alias: "[House] Warn Bruno when Sarah comes home"
+  trigger:
     - entity_id: binary_sensor.presence_sarah
       from: "off"
       platform: state
@@ -118,8 +148,8 @@
         title: Sarah is arriving
         message: Hi Bruno, Sarah will be home in a few minutes.
 
-- id: house_bruno_arrive_home
-  alias: "[House] Bruno comes home"
+- id: house_bruno_arrive_home_warn_sarah
+  alias: "[House] Warn Sarah when Bruno comes home"
   trigger:
     - entity_id: binary_sensor.presence_bruno
       from: "off"

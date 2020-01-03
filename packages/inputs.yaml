@@ -29,6 +29,12 @@ input_boolean:
   presence_bathroom:
   presence_closet:
 
+  presence_bruno:
+    name: Bruno
+    icon: "mdi:account"
+  presence_sarah:
+    name: Sarah
+    icon: "mdi:account"
   presence_someone:
     name: Guest
     icon: "mdi:account-multiple"

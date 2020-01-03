@@ -70,37 +70,37 @@ binary_sensor:
 
       presence_living_room:
         friendly_name: Presence Living Room
-        device_class: presence
+        device_class: occupancy
         value_template: >-
           {{ is_state('input_boolean.presence_living_room', 'on') }}
       presence_dining_room:
         friendly_name: Presence Dining Room
-        device_class: presence
+        device_class: occupancy
         value_template: >-
           {{ is_state('input_boolean.presence_dining_room', 'on') }}
       presence_master_bedroom:
         friendly_name: Presence Master Bedroom
-        device_class: presence
+        device_class: occupancy
         value_template: >-
           {{ is_state('input_boolean.presence_master_bedroom', 'on') }}
       presence_emmas_bedroom:
         friendly_name: Presence Emma's Bedroom
-        device_class: presence
+        device_class: occupancy
         value_template: >-
           {{ is_state('input_boolean.presence_emmas_bedroom', 'on') }}
       presence_kitchen:
         friendly_name: Presence Kitchen
-        device_class: presence
+        device_class: occupancy
         value_template: >-
           {{ is_state('input_boolean.presence_kitchen', 'on') }}
       presence_hallway:
         friendly_name: Presence Hallway
-        device_class: presence
+        device_class: occupancy
         value_template: >-
           {{ is_state('input_boolean.presence_hallway', 'on') }}
       presence_bathroom:
         friendly_name: Presence Bathroom
-        device_class: presence
+        device_class: occupancy
         value_template: >-
           {{ is_state('input_boolean.presence_bathroom', 'on') }}
       presence_laundry_room:
@@ -110,11 +110,11 @@ binary_sensor:
           {{ is_state('input_boolean.presence_laundry_room', 'on') }}
       presence_balcony:
         friendly_name: Presence Balcony
-        device_class: presence
+        device_class: occupancy
         value_template: >-
           {{ is_state('input_boolean.presence_balcony', 'on') }}
       presence_closet:
         friendly_name: Presence Closet
-        device_class: presence
+        device_class: occupancy
         value_template: >-
           {{ is_state('input_boolean.presence_closet', 'on') }}
