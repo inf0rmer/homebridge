@@ -1,6 +1,6 @@
 """Support for IKEA Tradfri."""
 import logging
-
+import asyncio
 import voluptuous as vol
 from pytradfri import Gateway, RequestError
 from pytradfri.api.aiocoap_api import APIFactory
@@ -136,5 +136,12 @@ async def async_setup_entry(hass, entry):
         hass.async_create_task(
             hass.config_entries.async_forward_entry_setup(entry, device)
         )
+
+    async def keepalive():
+        while True:
+            await api(gateway.get_gateway_info())
+            await asyncio.sleep(45)
+
+    asyncio.ensure_future(keepalive(), loop=asyncio.get_event_loop())
 
     return True
