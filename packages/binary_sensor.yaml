@@ -51,12 +51,12 @@ binary_sensor:
         friendly_name: "Presence Bruno"
         device_class: presence
         value_template: >-
-          {{ is_state('device_tracker.bruno_s_iphone', 'home') }}
+          {{ is_state('input_boolean.presence_bruno', 'on') }}
       presence_sarah:
         friendly_name: "Presence Sarah"
         device_class: presence
         value_template: >-
-          {{ is_state('device_tracker.sarah_pimentels_iphone', 'home') }}
+          {{ is_state('input_boolean.presence_sarah', 'on') }}
       presence_someone:
         friendly_name: "Presence Someone"
         device_class: presence
