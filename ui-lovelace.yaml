@@ -705,7 +705,7 @@ views:
                   entity: script.emma_bedtime
                   icon: "mdi:sleep"
                   show_state: false
-                  name: Emma's Bedtimr
+                  name: Emma's Bedtime
                   size: 25%
                   styles:
                     card:
