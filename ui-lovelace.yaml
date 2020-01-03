@@ -697,20 +697,44 @@ views:
                     service_data:
                       entity_id: script.stop_cleaning
                   type: "custom:button-card"
-              - entity: script.emma_bedtime
-                icon: "mdi:sleep"
-                show_state: false
-                name: Emma's Bedtime
-                size: 25%
-                styles:
+              - type: conditional
+                  conditions:
+                    - entity: input_boolean.dnd_emmas_bedroom
+                      state: "off"
                   card:
-                    - font-size: 12px
-                tap_action:
-                  action: call-service
-                  service: script.turn_on
-                  service_data:
-                    entity_id: script.emma_bedtime
-                type: "custom:button-card"
+                    entity: script.emma_bedtime
+                    icon: "mdi:sleep"
+                    show_state: false
+                    name: Emma's Bedtimr
+                    size: 25%
+                    styles:
+                      card:
+                        - font-size: 12px
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.emma_bedtime
+                    type: "custom:button-card"
+                - type: conditional
+                  conditions:
+                    - entity: input_boolean.dnd_emmas_bedroom
+                      state: "on"
+                  card:
+                    entity: input_boolean.dnd_emmas_bedroom
+                    icon: "mdi:sleep-off"
+                    show_state: false
+                    name: Wake Up Emma
+                    size: 25%
+                    styles:
+                      card:
+                        - font-size: 12px
+                    tap_action:
+                      action: call-service
+                      service: input_boolean.turn_off
+                      service_data:
+                        entity_id: input_boolean.dnd_emmas_bedroom
+                    type: "custom:button-card"
           - type: horizontal-stack
             cards:
               - entity: binary_sensor.presence_emmas_bedroom
