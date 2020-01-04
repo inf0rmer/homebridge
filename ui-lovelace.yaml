@@ -707,7 +707,7 @@ views:
                   type: "custom:button-card"
               - type: conditional
                 conditions:
-                  - entity: input_boolean.dnd_emmas_bedroom
+                  - entity: input_boolean.sleeping_emmas_bedroom
                     state: "off"
                 card:
                   entity: script.emma_bedtime
@@ -726,10 +726,10 @@ views:
                   type: "custom:button-card"
               - type: conditional
                 conditions:
-                  - entity: input_boolean.dnd_emmas_bedroom
+                  - entity: input_boolean.sleeping_emmas_bedroom
                     state: "on"
                 card:
-                  entity: input_boolean.dnd_emmas_bedroom
+                  entity: input_boolean.sleeping_emmas_bedroom
                   icon: "mdi:sleep-off"
                   show_state: false
                   name: Wake Up Emma
@@ -739,9 +739,9 @@ views:
                       - font-size: 12px
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_off
+                    service: script.turn_on
                     service_data:
-                      entity_id: input_boolean.dnd_emmas_bedroom
+                      entity_id: script.emma_wake_up
                   type: "custom:button-card"
           - type: horizontal-stack
             cards:

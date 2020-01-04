@@ -14,8 +14,11 @@ good_night:
         entity_id: input_boolean.bruno_good_night_pressed
       service: input_boolean.turn_off
     - data:
-        entity_id: input_boolean.presence_master_bedroom
-      service: input_boolean.turn_on
+        entity_id: group.presence_bedrooms
+      service: homeassistant.turn_on
+    - data:
+        entity_id: group.sleeping_bedrooms
+      service: homeassistant.turn_on
     - data:
         entity_id: group.presence_other_rooms
       service: homeassistant.turn_off
@@ -97,7 +100,11 @@ bruno_good_night:
       service: script.turn_on
 
 emma_bedtime:
+  alias: "[Emma's Bedroom] Bedtime"
   sequence:
+    - data:
+        entity_id: input_boolean.sleeping_emmas_bedroom
+      service: input_boolean.turn_on
     - data:
         entity_id: input_boolean.dnd_emmas_bedroom
       service: input_boolean.turn_on
@@ -128,13 +135,30 @@ emma_bedtime:
         entity_id: media_player.emma_s_bedroom_echo_dot
         volume_level: 0.3
       service: media_player.volume_set
-  alias: Emma's Bedtime
+
+emma_wake_up:
+  alias: "[Emma's Bedroom] Wake Up"
+  sequence:
+    - data:
+        entity_id: input_boolean.sleeping_emmas_bedroom
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.dnd_emmas_bedroom
+      service: input_boolean.turn_off
+    - delay:
+        minutes: 15
+    - data:
+        entity_id: input_boolean.presence_emmas_bedroom
+      service: input_boolean.turn_off
 
 house_wake_up:
   alias: "[House] Wake Up"
   sequence:
     - data:
         entity_id: group.dnd_house
+      service: homeassistant.turn_off
+    - data:
+        entity_id: group.sleeping_bedrooms
       service: homeassistant.turn_off
     - data:
         entity_id:

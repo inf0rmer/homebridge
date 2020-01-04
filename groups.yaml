@@ -103,3 +103,9 @@ presence_other_rooms:
     - input_boolean.presence_closet
     - input_boolean.presence_living_room
     - input_boolean.presence_dining_room
+
+sleeping_bedrooms:
+  all: true
+  entities:
+    - input_boolean.sleeping_master_bedroom
+    - input_boolean.sleeping_emmas_bedroom

@@ -62,3 +62,9 @@ input_boolean:
 
   bruno_good_night_pressed:
     name: Bruno's Good Night Button Pressed
+
+  sleeping_master_bedroom:
+    name: Sleeping Master Bedroom
+
+  sleeping_emmas_bedroom:
+    name: Sleeping Emma's Bedroom

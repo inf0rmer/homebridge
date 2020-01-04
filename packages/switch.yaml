@@ -2,7 +2,7 @@ switch:
   - platform: circadian_lighting
     name: living_room
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
+    sleep_entity: group.sleeping_bedrooms
     sleep_brightness: 15
     sleep_colortemp: 2000
     sleep_state: "on"
@@ -15,7 +15,7 @@ switch:
   - platform: circadian_lighting
     name: dining_room
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
+    sleep_entity: group.sleeping_bedrooms
     sleep_brightness: 15
     sleep_colortemp: 2000
     sleep_state: "on"
@@ -27,7 +27,7 @@ switch:
   - platform: circadian_lighting
     name: kitchen
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
+    sleep_entity: group.sleeping_bedrooms
     sleep_brightness: 15
     sleep_colortemp: 2000
     sleep_state: "on"
@@ -39,7 +39,7 @@ switch:
   - platform: circadian_lighting
     name: bathroom
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
+    sleep_entity: group.sleeping_bedrooms
     sleep_brightness: 15
     sleep_colortemp: 2000
     sleep_state: "on"
@@ -51,7 +51,7 @@ switch:
   - platform: circadian_lighting
     name: hallway
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
+    sleep_entity: group.sleeping_bedrooms
     sleep_brightness: 15
     sleep_colortemp: 2000
     sleep_state: "on"
@@ -63,7 +63,7 @@ switch:
   - platform: circadian_lighting
     name: master_bedroom
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
+    sleep_entity: group.sleeping_bedrooms
     sleep_brightness: 15
     sleep_colortemp: 2000
     sleep_state: "on"
@@ -75,7 +75,7 @@ switch:
   - platform: circadian_lighting
     name: emmas_bedroom
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
+    sleep_entity: group.sleeping_bedrooms
     sleep_brightness: 15
     sleep_colortemp: 2000
     sleep_state: "on"
@@ -87,7 +87,7 @@ switch:
   - platform: circadian_lighting
     name: others
     min_brightness: 35
-    sleep_entity: group.dnd_bedrooms
+    sleep_entity: group.sleeping_bedrooms
     sleep_brightness: 15
     sleep_colortemp: 2000
     sleep_state: "on"
