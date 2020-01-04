@@ -1,0 +1,34 @@
+############
+# Bathroom #
+############
+- id: bathroom_presence_on
+  alias: "[Bathroom] Presence On"
+  trigger:
+    - entity_id: light.bathroom
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom
+      service: input_boolean.turn_on
+
+- id: bathroom_presence_off
+  alias: "[Bathroom] Presence Off"
+  trigger:
+    - entity_id: light.bathroom
+      from: "on"
+      platform: state
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_bathroom
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom
+      service: input_boolean.turn_off

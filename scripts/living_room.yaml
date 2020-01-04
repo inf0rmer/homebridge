@@ -1,0 +1,9 @@
+clean_living_room:
+  alias: "[Living Room] Start Cleaning"
+  sequence:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        zone:
+          - [29558, 24951, 33358, 32051]
+        repeats: 1
+      service: xiaomi_miio.vacuum_clean_zone

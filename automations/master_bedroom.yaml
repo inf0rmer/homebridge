@@ -1,0 +1,181 @@
+##################
+# Master Bedroom #
+##################
+
+- id: master_bedroom_lights_on
+  alias: "[Master Bedroom] Lights On"
+  trigger:
+    - entity_id: binary_sensor.presence_master_bedroom
+      from: "off"
+      platform: state
+      to: "on"
+    - entity_id: sensor.master_bedroom_sensor_light_level
+      platform: state
+  condition:
+    - condition: state
+      entity_id: binary_sensor.presence_master_bedroom
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.dnd_master_bedroom
+      state: "off"
+    - below: 20
+      condition: numeric_state
+      entity_id: sensor.master_bedroom_sensor_light_level
+  action:
+    - data_template:
+        kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_master_bedroom', 'brightness') | int }}"
+        entity_id: light.master_bedroom
+        transition: 3
+      service: light.turn_on
+
+- id: master_bedroom_lights_off
+  alias: "[Master Bedroom] Lights Off"
+  trigger:
+    - entity_id: binary_sensor.presence_master_bedroom
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: light.master_bedroom
+        transition: 5
+      service: light.turn_off
+
+- id: master_bedroom_presence_on
+  alias: "[Master Bedroom] Presence On"
+  trigger:
+    - entity_id: binary_sensor.hk_master_bedroom_sensor_motion
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_on
+
+- id: master_bedroom_presence_off
+  alias: "[Master Bedroom] Presence Off"
+  trigger:
+    - entity_id: binary_sensor.hk_master_bedroom_sensor_motion
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 3
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_master_bedroom
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_off
+
+- id: master_bedroom_presence_on_lights
+  alias: "[Master Bedroom] Presence On (Lights)"
+  trigger:
+    - entity_id: light.master_bedroom
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_master_bedroom
+      state: "off"
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_on
+
+- id: master_bedroom_presence_off_lights
+  alias: "[Master Bedroom] Presence Off (Lights)"
+  trigger:
+    - entity_id: light.master_bedroom
+      from: "on"
+      platform: state
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_master_bedroom
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_off
+
+- id: master_bedroom_presence_on_manual_switch
+  alias: "[Master Bedroom] Presence On (Switch)"
+  trigger:
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+      to: "1_click_up"
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+      to: "1_hold_up"
+  action:
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_on
+
+- id: master_bedroom_presence_off_manual_switch
+  alias: "[Master Bedroom] Presence Off (Switch)"
+  trigger:
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+      to: "4_click_up"
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+      to: "4_hold_up"
+  action:
+    - data:
+        entity_id: input_boolean.dnd_master_bedroom
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_off
+    - data:
+        entity_id: light.master_bedroom
+      service: light.turn_off
+
+- id: master_bedroom_manual_switch_dnd_on
+  alias: "[Master Bedroom] Manual Switch Turn On DnD"
+  trigger:
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+      to: "1_click_up"
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+      to: "1_hold_up"
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+      to: "2_click_up"
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+      to: "2_hold_up"
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+      to: "3_click_up"
+    - entity_id: sensor.master_bedroom_switch
+      platform: state
+      to: "3_hold_up"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_master_bedroom
+      state: "off"
+  action:
+    - delay:
+        seconds: 3
+    - condition: state
+      entity_id: binary_sensor.presence_master_bedroom
+      state: "on"
+    - data:
+        entity_id: input_boolean.dnd_master_bedroom
+      service: input_boolean.turn_on

@@ -1,0 +1,211 @@
+###############
+# Dining Room #
+###############
+
+- id: dining_room_lights_on
+  alias: "[Dining Room] Lights On"
+  trigger:
+    - entity_id: binary_sensor.presence_dining_room
+      from: "off"
+      platform: state
+      to: "on"
+    - entity_id: sensor.dining_room_sensor_light_level
+      platform: state
+  condition:
+    - condition: state
+      entity_id: binary_sensor.presence_dining_room
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
+    - below: 20
+      condition: numeric_state
+      entity_id: sensor.dining_room_sensor_light_level
+  action:
+    - data_template:
+        entity_id: light.dining_room
+        kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_dining_room', 'brightness') | int }}"
+        transition: 3
+      service: light.turn_on
+
+- id: dining_room_lights_off
+  alias: "[Dining Room] Lights Off"
+  trigger:
+    - entity_id: binary_sensor.presence_dining_room
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: light.dining_room
+        transition: 5
+      service: light.turn_off
+
+- id: dining_room_presence_on
+  alias: "[Dining Room] Presence On (Motion)"
+  trigger:
+    - entity_id: binary_sensor.hk_dining_room_sensor_motion
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_dining_room
+      service: input_boolean.turn_on
+
+- id: dining_room_presence_off
+  alias: "[Dining Room] Presence Off"
+  trigger:
+    - entity_id: binary_sensor.hk_dining_room_sensor_motion
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 3
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_dining_room
+      service: input_boolean.turn_off
+
+- id: dining_room_presence_on_lights
+  alias: "[Dining Room] Presence On (Lights)"
+  trigger:
+    - entity_id: light.dining_room
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_dining_room
+      service: input_boolean.turn_on
+
+- id: dining_room_presence_off_lights
+  alias: "[Dining Room] Presence Off (Lights)"
+  trigger:
+    - entity_id: light.dining_room
+      from: "on"
+      platform: state
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_dining_room
+      service: input_boolean.turn_off
+
+- id: dining_room_presence_on_manual_switch
+  alias: "[Dining Room] Presence On (Switch)"
+  trigger:
+    - entity_id: sensor.dining_room_switch
+      platform: state
+      to: "1_click_up"
+    - entity_id: sensor.dining_room_switch
+      platform: state
+      to: "1_hold_up"
+    - entity_id: sensor.dining_room_switch_2
+      platform: state
+      to: "1_click_up"
+    - entity_id: sensor.dining_room_switch_2
+      platform: state
+      to: "1_hold_up"
+  action:
+    - data:
+        entity_id: input_boolean.presence_dining_room
+      service: input_boolean.turn_on
+
+- id: dining_room_presence_off_manual_switch
+  alias: "[Dining Room] Presence Off (Switch)"
+  trigger:
+    - entity_id: sensor.dining_room_switch
+      platform: state
+      to: "4_click_up"
+    - entity_id: sensor.dining_room_switch
+      platform: state
+      to: "4_hold_up"
+    - entity_id: sensor.dining_room_switch_2
+      platform: state
+      to: "4_click_up"
+    - entity_id: sensor.dining_room_switch_2
+      platform: state
+      to: "4_hold_up"
+  action:
+    - data:
+        entity_id: input_boolean.dnd_dining_room
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.presence_dining_room
+      service: input_boolean.turn_off
+    - data:
+        entity_id: light.dining_room
+      service: light.turn_off
+
+- id: dining_room_manual_switch_dnd_on
+  alias: "[Dining Room] Manual Switch Turn On DnD"
+  trigger:
+    - entity_id: sensor.dining_room_switch
+      platform: state
+      to: "1_click_up"
+    - entity_id: sensor.dining_room_switch
+      platform: state
+      to: "1_hold_up"
+    - entity_id: sensor.dining_room_switch
+      platform: state
+      to: "2_click_up"
+    - entity_id: sensor.dining_room_switch
+      platform: state
+      to: "2_hold_up"
+    - entity_id: sensor.dining_room_switch
+      platform: state
+      to: "3_click_up"
+    - entity_id: sensor.dining_room_switch
+      platform: state
+      to: "3_hold_up"
+    - entity_id: sensor.dining_room_switch_2
+      platform: state
+      to: "1_click_up"
+    - entity_id: sensor.dining_room_switch_2
+      platform: state
+      to: "1_hold_up"
+    - entity_id: sensor.dining_room_switch_2
+      platform: state
+      to: "2_click_up"
+    - entity_id: sensor.dining_room_switch_2
+      platform: state
+      to: "2_hold_up"
+    - entity_id: sensor.dining_room_switch_2
+      platform: state
+      to: "3_click_up"
+    - entity_id: sensor.dining_room_switch_2
+      platform: state
+      to: "3_hold_up"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
+  action:
+    - delay:
+        seconds: 3
+    - condition: state
+      entity_id: binary_sensor.presence_dining_room
+      state: "on"
+    - data:
+        entity_id: input_boolean.dnd_dining_room
+      service: input_boolean.turn_on

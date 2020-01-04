@@ -1,0 +1,59 @@
+sarah_good_night:
+  alias: "[Master Bedroom] Sarah's Good Night"
+  sequence:
+    - data:
+        entity_id: input_boolean.sarah_good_night_pressed
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: light.master_bedroom
+      service: light.turn_off
+    - data:
+        entity_id: cover.master_bedroom_blind
+      service: cover.close_cover
+    - condition: state
+      entity_id: input_boolean.bruno_good_night_pressed
+      state: "on"
+    - data:
+        entity_id: script.good_night
+      service: script.turn_on
+
+bruno_good_night:
+  alias: "[Master Bedroom] Bruno's Good Night"
+  sequence:
+    - data:
+        entity_id: input_boolean.bruno_good_night_pressed
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.presence_master_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: light.master_bedroom
+      service: light.turn_off
+    - data:
+        entity_id: cover.master_bedroom_blind
+      service: cover.close_cover
+    - condition: state
+      entity_id: input_boolean.sarah_good_night_pressed
+      state: "on"
+    - data:
+        entity_id: script.good_night
+      service: script.turn_on
+
+clean_master_bedroom:
+  alias: "[Master Bedroom] Start Cleaning"
+  sequence:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        zone:
+          - [25552, 28036, 29152, 32136]
+        repeats: 1
+      service: xiaomi_miio.vacuum_clean_zone

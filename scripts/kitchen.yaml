@@ -1,0 +1,9 @@
+clean_kitchen:
+  alias: "[Kitchen] Start Cleaning"
+  sequence:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        zone:
+          - [21748, 25168, 23648, 28518]
+        repeats: 1
+      service: xiaomi_miio.vacuum_clean_zone

@@ -101,7 +101,7 @@ views:
                       - entity: vacuum.xiaomi_vacuum_cleaner
                         state: docked
                     card:
-                      entity: script.start_cleaning
+                      entity: script.house_start_cleaning
                       icon: "mdi:broom"
                       show_state: false
                       name: Clean House
@@ -113,14 +113,14 @@ views:
                         action: call-service
                         service: script.turn_on
                         service_data:
-                          entity_id: script.start_cleaning
+                          entity_id: script.house_start_cleaning
                       type: "custom:button-card"
                   - type: conditional
                     conditions:
                       - entity: vacuum.xiaomi_vacuum_cleaner
                         state_not: docked
                     card:
-                      entity: script.stop_cleaning
+                      entity: script.house_stop_cleaning
                       icon: "mdi:cancel"
                       show_state: false
                       name: Stop Cleaning
@@ -135,7 +135,7 @@ views:
                         action: call-service
                         service: script.turn_on
                         service_data:
-                          entity_id: script.stop_cleaning
+                          entity_id: script.house_stop_cleaning
                       type: "custom:button-card"
               - type: horizontal-stack
                 cards:
@@ -280,7 +280,7 @@ views:
                       - entity: vacuum.xiaomi_vacuum_cleaner
                         state_not: docked
                     card:
-                      entity: script.stop_cleaning
+                      entity: script.house_stop_cleaning
                       icon: "mdi:cancel"
                       show_state: false
                       name: Stop Cleaning
@@ -295,7 +295,7 @@ views:
                         action: call-service
                         service: script.turn_on
                         service_data:
-                          entity_id: script.stop_cleaning
+                          entity_id: script.house_stop_cleaning
                       type: "custom:button-card"
               - type: horizontal-stack
                 cards:
@@ -486,7 +486,7 @@ views:
                   - entity: vacuum.xiaomi_vacuum_cleaner
                     state_not: docked
                 card:
-                  entity: script.stop_cleaning
+                  entity: script.house_stop_cleaning
                   icon: "mdi:cancel"
                   show_state: false
                   name: Stop Cleaning
@@ -501,7 +501,7 @@ views:
                     action: call-service
                     service: script.turn_on
                     service_data:
-                      entity_id: script.stop_cleaning
+                      entity_id: script.house_stop_cleaning
                   type: "custom:button-card"
           - type: horizontal-stack
             cards:
@@ -584,7 +584,7 @@ views:
                   - entity: vacuum.xiaomi_vacuum_cleaner
                     state_not: docked
                 card:
-                  entity: script.stop_cleaning
+                  entity: script.house_stop_cleaning
                   icon: "mdi:cancel"
                   show_state: false
                   name: Stop Cleaning
@@ -599,7 +599,7 @@ views:
                     action: call-service
                     service: script.turn_on
                     service_data:
-                      entity_id: script.stop_cleaning
+                      entity_id: script.house_stop_cleaning
                   type: "custom:button-card"
           - type: horizontal-stack
             cards:
@@ -688,7 +688,7 @@ views:
                   - entity: vacuum.xiaomi_vacuum_cleaner
                     state_not: docked
                 card:
-                  entity: script.stop_cleaning
+                  entity: script.house_stop_cleaning
                   icon: "mdi:cancel"
                   show_state: false
                   name: Stop Cleaning
@@ -703,7 +703,7 @@ views:
                     action: call-service
                     service: script.turn_on
                     service_data:
-                      entity_id: script.stop_cleaning
+                      entity_id: script.house_stop_cleaning
                   type: "custom:button-card"
               - type: conditional
                 conditions:
@@ -822,7 +822,7 @@ views:
                   - entity: vacuum.xiaomi_vacuum_cleaner
                     state_not: docked
                 card:
-                  entity: script.stop_cleaning
+                  entity: script.house_stop_cleaning
                   icon: "mdi:cancel"
                   show_state: false
                   name: Stop Cleaning
@@ -837,7 +837,7 @@ views:
                     action: call-service
                     service: script.turn_on
                     service_data:
-                      entity_id: script.stop_cleaning
+                      entity_id: script.house_stop_cleaning
                   type: "custom:button-card"
           - type: horizontal-stack
             cards:
@@ -919,7 +919,7 @@ views:
                   - entity: vacuum.xiaomi_vacuum_cleaner
                     state_not: docked
                 card:
-                  entity: script.stop_cleaning
+                  entity: script.house_stop_cleaning
                   icon: "mdi:cancel"
                   show_state: false
                   name: Stop Cleaning
@@ -934,7 +934,7 @@ views:
                     action: call-service
                     service: script.turn_on
                     service_data:
-                      entity_id: script.stop_cleaning
+                      entity_id: script.house_stop_cleaning
                   type: "custom:button-card"
           - type: horizontal-stack
             cards:

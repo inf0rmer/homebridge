@@ -1,0 +1,34 @@
+##########
+# Closet #
+##########
+- id: closet_presence_on
+  alias: "[Closet] Presence On"
+  trigger:
+    - entity_id: light.closet
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_closet
+      service: input_boolean.turn_on
+
+- id: closet_presence_off
+  alias: "[Closet] Presence Off"
+  trigger:
+    - entity_id: light.closet
+      from: "on"
+      platform: state
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_closet
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_closet
+      service: input_boolean.turn_off

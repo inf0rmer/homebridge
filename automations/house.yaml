@@ -1,0 +1,317 @@
+###############
+# House #
+###############
+- id: house_start_cleaning
+  alias: "[House] Start Cleaning"
+  trigger:
+    - entity_id: binary_sensor.someone_home
+      for:
+        minutes: 10
+      from: "on"
+      platform: state
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: above_horizon
+  action:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      service: vacuum.start
+
+- id: house_stop_cleaning
+  alias: "[House] Stop Cleaning"
+  trigger:
+    - entity_id: binary_sensor.someone_home
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: template
+      value_template: '{{not is_state("vacuum.xiaomi_vacuum_cleaner", "docked")}}'
+  action:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      service: vacuum.return_to_base
+
+- id: house_alexa_guard_arm
+  alias: "[House] Alexa Home Guard - Arm"
+  trigger:
+    - entity_id: binary_sensor.someone_home
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: alarm_control_panel.alexa_guard_a8bd5
+      service: alarm_control_panel.alarm_arm_away
+
+- id: house_alexa_guard_disarm
+  alias: "[House] Alexa Home Guard - Disarm"
+  trigger:
+    - entity_id: binary_sensor.someone_home
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: alarm_control_panel.alexa_guard_a8bd5
+      service: alarm_control_panel.alarm_disarm
+
+- id: house_sarah_arrive_home
+  alias: "[House] Sarah comes home"
+  trigger:
+    - entity_id: device_tracker.sarah_pimentels_iphone
+      from: "not_home"
+      platform: state
+      to: "home"
+  action:
+    - data:
+        entity_id: input_boolean.presence_sarah
+      service: input_boolean.turn_on
+
+- id: house_sarah_leave_home
+  alias: "[House] Sarah leaves home"
+  trigger:
+    - entity_id: device_tracker.sarah_pimentels_iphone
+      from: "home"
+      platform: state
+      to: "not_home"
+  action:
+    - data:
+        entity_id: input_boolean.presence_sarah
+      service: input_boolean.turn_off
+
+- id: house_bruno_arrive_home
+  alias: "[House] Bruno comes home"
+  trigger:
+    - entity_id: device_tracker.bruno_s_iphone
+      from: "not_home"
+      platform: state
+      to: "home"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bruno
+      service: input_boolean.turn_on
+
+- id: house_bruno_leave_home
+  alias: "[House] Bruno leaves home"
+  trigger:
+    - entity_id: device_tracker.bruno_s_iphone
+      from: "home"
+      platform: state
+      to: "not_home"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bruno
+      service: input_boolean.turn_off
+
+- id: house_sarah_arrive_home_warn_bruno
+  alias: "[House] Warn Bruno when Sarah comes home"
+  trigger:
+    - entity_id: binary_sensor.presence_sarah
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.presence_bruno
+      state: "on"
+  action:
+    - service: notify.mobile_app_bruno_s_iphone
+      data:
+        title: Sarah is arriving
+        message: Hi Bruno, Sarah will be home in a few minutes.
+
+- id: house_bruno_arrive_home_warn_sarah
+  alias: "[House] Warn Sarah when Bruno comes home"
+  trigger:
+    - entity_id: binary_sensor.presence_bruno
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.presence_sarah
+      state: "on"
+  action:
+    - service: notify.mobile_app_sarah_pimentels_iphone
+      data:
+        title: Bruno is arriving
+        message: Hi Sarah, Bruno will be home in a few minutes.
+
+- id: house_all_leave
+  alias: "[House] Leave House"
+  trigger:
+    - entity_id: binary_sensor.someone_home
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: script.house_nobody_home
+      service: script.turn_on
+
+- id: house_sunrise
+  alias: "[House] Sunrise"
+  trigger:
+    - platform: state
+      entity_id: sun.sun
+      from: below_horizon
+      to: above_horizon
+  action:
+    - data:
+        entity_id: group.dnd_other_rooms
+      service: input_boolean.turn_off
+
+- id: house_wake_up
+  alias: "[House] Wake Up"
+  trigger:
+    platform: time
+    at: "10:00:00"
+  condition:
+    - condition: state
+      entity_id: group.dnd_bedrooms
+      state: "off"
+  action:
+    - data:
+        entity_id: script.house_wake_up
+      service: script.turn_on
+
+- id: house_sunset
+  alias: "[House] Sunset"
+  trigger:
+    - event: sunset
+      platform: sun
+      offset: -00:45:00
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id:
+          - scene.sunset
+      service: scene.turn_on
+    - data:
+        entity_id:
+          - media_player.everywhere
+          - media_player.emma_s_bedroom_echo_dot
+        volume_level: 0.3
+      service: media_player.volume_set
+
+- id: house_someone_arrives_from_work
+  alias: "[House] Bruno or Sarah come home before night when no one else is home"
+  trigger:
+    - entity_id: binary_sensor.presence_bruno
+      from: "off"
+      platform: state
+      to: "on"
+    - entity_id: binary_sensor.presence_sarah
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "off"
+    - condition: time
+      before: "20:00"
+      after: "16:30"
+  action:
+    - data:
+        entity_id: media_player.living_room_echo_dot
+        media_content_id: "welcomehome"
+        media_content_type: routine
+      service: media_player.play_media
+    - data:
+        entity_id: media_player.everywhere
+        volume_level: 0.3
+      service: media_player.volume_set
+
+- id: house_someone_arrives
+  alias: "[House] Anyone comes home before sunset"
+  trigger:
+    - entity_id: binary_sensor.someone_home
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: above_horizon
+  action:
+    - data:
+        entity_id: group.all_covers
+      service: cover.open_cover
+
+- id: house_someone_arrives_after_sunset
+  alias: "[House] Anyone comes home after Sunset"
+  trigger:
+    - entity_id: binary_sensor.someone_home
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+  action:
+    - data:
+        entity_id:
+          - scene.sunset
+      service: scene.turn_on
+    - data:
+        entity_id:
+          - media_player.everywhere
+          - media_player.emma_s_bedroom_echo_dot
+        volume_level: 0.3
+      service: media_player.volume_set
+
+# - id: building_door_bell_ring
+#   alias: "[House] Building Door Bell Ring"
+#   trigger:
+#     - event_data: {}
+#       event_type: nello_bell_ring
+#       platform: event
+#   condition:
+#     - condition: state
+#       entity_id: binary_sensor.someone_home
+#       state: "on"
+#   action:
+#     - data:
+#         data:
+#           type: announce
+#         message: Someone is at the door downstairs
+#         target: media_player.everywhere
+#       service: notify.alexa_media
+
+- id: house_guest_mode_on
+  alias: "[House] Turn on Guest Mode"
+  trigger:
+    - entity_id: lock.home_door
+      from: "locked"
+      platform: state
+      to: "unlocked"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_someone
+      service: input_boolean.turn_on
+
+- id: house_guest_mode_off
+  alias: "[House] Turn off Guest Mode"
+  trigger:
+    - entity_id: group.all_occupancy_sensors
+      for:
+        minutes: 10
+      from: "on"
+      platform: "state"
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_someone
+      service: input_boolean.turn_off

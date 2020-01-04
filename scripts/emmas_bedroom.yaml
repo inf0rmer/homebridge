@@ -1,0 +1,60 @@
+emma_bedtime:
+  alias: "[Emma's Bedroom] Bedtime"
+  sequence:
+    - data:
+        entity_id: input_boolean.sleeping_emmas_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_emmas_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: light.emmas_bedroom
+      service: light.turn_off
+    - data:
+        entity_id: switch.emmas_bedroom_string_lights
+      service: switch.turn_off
+    - data:
+        brightness: 30
+        entity_id: light.emmas_bedroom_nightlight
+        rgb_color:
+          - 255
+          - 30
+          - 30
+        transition: 5
+      service: light.turn_on
+    - data:
+        entity_id: input_boolean.presence_emmas_bedroom
+      service: input_boolean.turn_on
+    - data:
+        entity_id: media_player.emma_s_bedroom_echo_dot
+        media_content_id: "lullabies"
+        media_content_type: routine
+      service: media_player.play_media
+    - data:
+        entity_id: media_player.emma_s_bedroom_echo_dot
+        volume_level: 0.3
+      service: media_player.volume_set
+
+emma_wake_up:
+  alias: "[Emma's Bedroom] Wake Up"
+  sequence:
+    - data:
+        entity_id: input_boolean.sleeping_emmas_bedroom
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.dnd_emmas_bedroom
+      service: input_boolean.turn_off
+    - delay:
+        minutes: 15
+    - data:
+        entity_id: input_boolean.presence_emmas_bedroom
+      service: input_boolean.turn_off
+
+clean_emmas_bedroom:
+  alias: "[Emma's Bedroom] Start Cleaning"
+  sequence:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        zone:
+          - [21332, 28462, 25382, 32162]
+      service: xiaomi_miio.vacuum_clean_zone

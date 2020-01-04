@@ -1,0 +1,10 @@
+clean_hallway:
+  alias: "[Hallway] Start Cleaning"
+  sequence:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        zone:
+          - [15810, 25203, 21560, 26453]
+          - [16423, 26396, 17773, 27896]
+        repeats: 1
+      service: xiaomi_miio.vacuum_clean_zone

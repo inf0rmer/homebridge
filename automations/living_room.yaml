@@ -1,0 +1,323 @@
+###############
+# Living Room #
+###############
+- id: living_room_watch_tv_lights_on
+  alias: "[Living Room] Watch TV Lights On"
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "False"
+      platform: state
+      to: "True"
+    - entity_id: sensor.watch_tv
+      from: "False"
+      platform: state
+      to: "True"
+  condition:
+    - above: 20
+      condition: numeric_state
+      entity_id: light.living_room
+      value_template: "{{states.light.living_room.attributes.brightness}}"
+  action:
+    - data:
+        entity_id: light.living_room
+        kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
+        transition: 3
+      service: light.turn_on
+
+- id: living_room_watch_tv_fan_on
+  alias: "[Living Room] Watch TV Fan On"
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "False"
+      platform: state
+      to: "True"
+    - entity_id: sensor.watch_tv
+      from: "False"
+      platform: state
+      to: "True"
+  condition:
+    - above: 25
+      condition: numeric_state
+      entity_id: sensor.living_room_sensor_temperature
+      value_template: "{{states.sensor.living_room_sensor_temperature.state}}"
+  action:
+    - data:
+        command: PowerToggle
+        device: "64739991"
+        entity_id: remote.harmony_hub
+      service: remote.send_command
+    - data:
+        entity_id: input_boolean.living_room_watch_tv_fan_automation
+      service: input_boolean.turn_on
+
+- id: living_room_watch_tv_fan_off
+  alias: "[Living Room] Watch TV Fan Off"
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "True"
+      platform: state
+      to: "False"
+    - entity_id: sensor.watch_tv
+      from: "True"
+      platform: state
+      to: "False"
+  condition:
+    - condition: state
+      entity_id: input_boolean.living_room_watch_tv_fan_automation
+      state: "on"
+  action:
+    - data:
+        command: PowerToggle
+        device: "64739991"
+        entity_id: remote.harmony_hub
+      service: remote.send_command
+    - data:
+        entity_id: input_boolean.living_room_watch_tv_fan_automation
+      service: input_boolean.turn_off
+
+- id: living_room_watch_tv_dnd_on
+  alias: "[Living Room] Watch TV DnD On"
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "False"
+      platform: state
+      to: "True"
+    - entity_id: sensor.watch_tv
+      from: "False"
+      platform: state
+      to: "True"
+  action:
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_on
+
+- id: living_room_watch_tv_dnd_off
+  alias: "[Living Room] Watch TV DnD Off"
+  trigger:
+    - entity_id: sensor.watch_netflix
+      from: "True"
+      platform: state
+      to: "False"
+    - entity_id: sensor.watch_tv
+      from: "True"
+      platform: state
+      to: "False"
+  action:
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_off
+
+- id: living_room_lights_on
+  alias: "[Living Room] Lights On"
+  trigger:
+    - entity_id: binary_sensor.presence_living_room
+      from: "off"
+      platform: state
+      to: "on"
+    - entity_id: sensor.living_room_sensor_light_level
+      platform: state
+  condition:
+    - condition: state
+      entity_id: binary_sensor.presence_living_room
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.dnd_living_room
+      state: "off"
+    - below: 20
+      condition: numeric_state
+      entity_id: sensor.living_room_sensor_light_level
+  action:
+    - data_template:
+        entity_id: light.living_room
+        kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
+        transition: 3
+      service: light.turn_on
+
+- id: living_room_lights_off
+  alias: "[Living Room] Lights Off"
+  trigger:
+    - entity_id: binary_sensor.presence_living_room
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: light.living_room
+        transition: 5
+      service: light.turn_off
+
+- id: living_room_presence_on_tv
+  alias: "[Living Room] Presence On (TV)"
+  trigger:
+    - entity_id: sensor.tv_activity
+      from: "False"
+      platform: state
+      to: "True"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_on
+
+- id: living_room_presence_off_tv
+  alias: "[Living Room] Presence Off (TV)"
+  trigger:
+    - entity_id: sensor.tv_activity
+      from: "True"
+      platform: state
+      to: "False"
+  action:
+    - delay:
+        minutes: 5
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_off
+
+- id: living_room_presence_on
+  alias: "[Living Room] Presence On (Motion)"
+  trigger:
+    - entity_id: binary_sensor.hk_living_room_sensor_motion
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_on
+
+- id: living_room_presence_off
+  alias: "[Living Room] Presence Off"
+  trigger:
+    - entity_id: binary_sensor.hk_living_room_sensor_motion
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 3
+  condition:
+    - condition: state
+      entity_id: sensor.tv_activity
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_dining_room
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_off
+
+- id: living_room_presence_on_lights
+  alias: "[Living Room] Presence On (Lights)"
+  trigger:
+    - entity_id: light.living_room
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_living_room
+      state: "off"
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_on
+
+- id: living_room_presence_off_lights
+  alias: "[Living Room] Presence Off (Lights)"
+  trigger:
+    - entity_id: light.living_room
+      from: "on"
+      platform: state
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: sensor.tv_activity
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.dnd_living_room
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_off
+
+- id: living_room_presence_on_manual_switch
+  alias: "[Living Room] Presence On (Switch)"
+  trigger:
+    - entity_id: sensor.living_room_switch
+      platform: state
+      to: "1_click_up"
+    - entity_id: sensor.living_room_switch
+      platform: state
+      to: "1_hold_up"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_on
+
+- id: living_room_presence_off_manual_switch
+  alias: "[Living Room] Presence Off (Switch)"
+  trigger:
+    - entity_id: sensor.living_room_switch
+      platform: state
+      to: "4_click_up"
+    - entity_id: sensor.living_room_switch
+      platform: state
+      to: "4_hold_up"
+  action:
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.presence_living_room
+      service: input_boolean.turn_off
+    - data:
+        entity_id: light.living_room
+      service: light.turn_off
+
+- id: living_room_manual_switch_dnd_on
+  alias: "[Living Room] Manual Switch Turn On DnD"
+  trigger:
+    - entity_id: sensor.living_room_switch
+      platform: state
+      to: "1_click_up"
+    - entity_id: sensor.living_room_switch
+      platform: state
+      to: "1_hold_up"
+    - entity_id: sensor.living_room_switch
+      platform: state
+      to: "2_click_up"
+    - entity_id: sensor.living_room_switch
+      platform: state
+      to: "2_hold_up"
+    - entity_id: sensor.living_room_switch
+      platform: state
+      to: "3_click_up"
+    - entity_id: sensor.living_room_switch
+      platform: state
+      to: "3_hold_up"
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_living_room
+      state: "off"
+  action:
+    - delay:
+        seconds: 3
+    - condition: state
+      entity_id: binary_sensor.presence_living_room
+      state: "on"
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_on
