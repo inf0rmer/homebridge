@@ -48,9 +48,6 @@ views:
                     styles:
                       card:
                         - font-size: 12px
-                    styles:
-                      card:
-                        - font-size: 12px
                     tap_action:
                       action: call-service
                       service: homeassistant.toggle
