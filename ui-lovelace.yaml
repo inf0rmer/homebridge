@@ -418,7 +418,10 @@ views:
                 icon: "mdi:pine-tree"
             show_header_toggle: false
             title: Lights
-            type: entities
+            type: entity-filter
+            state_filter:
+              - operator: "!="
+                value: "unavailable"
           - entities:
               - entity: cover.living_room_blinds
                 name: Whole Room
