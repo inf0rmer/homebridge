@@ -109,13 +109,13 @@
 - id: house_sarah_arrive_home_warn_bruno
   alias: "[House] Warn Bruno when Sarah comes home"
   trigger:
-    - entity_id: binary_sensor.presence_sarah
+    - entity_id: input_boolean.presence_sarah
       from: "off"
       platform: state
       to: "on"
   condition:
     - condition: state
-      entity_id: binary_sensor.presence_bruno
+      entity_id: input_boolean.presence_bruno
       state: "on"
   action:
     - service: notify.mobile_app_bruno_s_iphone
@@ -126,13 +126,13 @@
 - id: house_bruno_arrive_home_warn_sarah
   alias: "[House] Warn Sarah when Bruno comes home"
   trigger:
-    - entity_id: binary_sensor.presence_bruno
+    - entity_id: input_boolean.presence_bruno
       from: "off"
       platform: state
       to: "on"
   condition:
     - condition: state
-      entity_id: binary_sensor.presence_sarah
+      entity_id: input_boolean.presence_sarah
       state: "on"
   action:
     - service: notify.mobile_app_sarah_pimentels_iphone
@@ -203,11 +203,11 @@
 - id: house_someone_arrives_from_work
   alias: "[House] Bruno or Sarah come home before night when no one else is home"
   trigger:
-    - entity_id: binary_sensor.presence_bruno
+    - entity_id: input_boolean.presence_bruno
       from: "off"
       platform: state
       to: "on"
-    - entity_id: binary_sensor.presence_sarah
+    - entity_id: input_boolean.presence_sarah
       from: "off"
       platform: state
       to: "on"
