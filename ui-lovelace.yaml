@@ -508,6 +508,11 @@ views:
                 styles:
                   card:
                     - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.presence_dining_room
                 type: "custom:button-card"
           - entity: light.dining_room
             name: All Lights
