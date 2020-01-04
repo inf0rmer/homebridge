@@ -619,6 +619,8 @@ views:
               - entity: light.master_bedroom_ceiling
               - entity: light.master_bedroom_lightstrip_left
               - entity: light.master_bedroom_lightstrip_right
+              - entity: light.master_bedroom_bedside_lamp_1
+              - entity: light.master_bedroom_bedside_lamp_2
             show_header_toggle: false
             title: Lights
             type: entities

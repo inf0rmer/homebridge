@@ -70,7 +70,12 @@ switch:
     disable_entity: input_boolean.dnd_master_bedroom
     disable_state: "on"
     lights_ct:
-      - light.master_bedroom
+      - light.master_bedroom_ceiling
+      - light.master_bedroom_lightstrip_left
+      - light.master_bedroom_lightstrip_right
+    lights_rgb:
+      - light.master_bedroom_bedside_lamp_1
+      - light.master_bedroom_bedside_lamp_2
 
   - platform: circadian_lighting
     name: emmas_bedroom
