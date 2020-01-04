@@ -206,7 +206,7 @@
   condition:
     - condition: state
       entity_id: sensor.tv_activity
-      state: "off"
+      state: "False"
     - condition: state
       entity_id: input_boolean.dnd_dining_room
       state: "off"
@@ -244,7 +244,7 @@
   condition:
     - condition: state
       entity_id: sensor.tv_activity
-      state: "off"
+      state: "False"
     - condition: state
       entity_id: input_boolean.dnd_living_room
       state: "off"
