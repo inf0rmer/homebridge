@@ -502,14 +502,14 @@ views:
           - type: horizontal-stack
             cards:
               - entity: binary_sensor.presence_dining_room
-                name: Occupied
+                name: "Occupied ([[[return entity.state.attributes.reason]]])"
                 size: 10%
                 styles:
                   card:
                     - font-size: 12px
                 tap_action:
                   action: call-service
-                  service: input_boolean.toggle
+                  service: homeassistant.toggle
                   service_data:
                     entity_id: group.presence_dining_room
                 type: "custom:button-card"
@@ -959,10 +959,10 @@ views:
             title: Lights
             type: entities
           - entities:
-            - entity: sensor.hallway_sensor_average_temperature
-              name: Temperature
-            - entity: sensor.hallway_sensor_average_light_level
-              name: Light Level
+              - entity: sensor.hallway_sensor_average_temperature
+                name: Temperature
+              - entity: sensor.hallway_sensor_average_light_level
+                name: Light Level
             type: "custom:mini-graph-card"
   - path: bathroom
     title: Bathroom
