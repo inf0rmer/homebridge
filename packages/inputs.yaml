@@ -20,7 +20,6 @@ input_boolean:
 
   presence_living_room:
   presence_dining_room_motion:
-  presence_dining_room_lights:
   presence_dining_room_switch:
   presence_master_bedroom:
   presence_emmas_bedroom:

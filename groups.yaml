@@ -89,7 +89,6 @@ dnd_house:
 presence_dining_room:
   entities:
     - input_boolean.presence_dining_room_motion
-    - input_boolean.presence_dining_room_lights
     - input_boolean.presence_dining_room_switch
 
 presence_bedrooms:

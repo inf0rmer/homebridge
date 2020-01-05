@@ -1,7 +1,6 @@
 ###############
 # Dining Room #
 ###############
-
 - id: dining_room_lights_on
   alias: "[Dining Room] Lights On"
   trigger:
@@ -74,41 +73,6 @@
   action:
     - data:
         entity_id: input_boolean.presence_dining_room_motion
-      service: input_boolean.turn_off
-
-- id: dining_room_presence_on_lights
-  alias: "[Dining Room] Presence On (Lights)"
-  trigger:
-    - entity_id: light.dining_room
-      from: "off"
-      platform: state
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: input_boolean.dnd_dining_room
-      state: "off"
-    - condition: state
-      entity_id: binary_sensor.someone_home
-      state: "on"
-  action:
-    - data:
-        entity_id: input_boolean.presence_dining_room_lights
-      service: input_boolean.turn_on
-
-- id: dining_room_presence_off_lights
-  alias: "[Dining Room] Presence Off (Lights)"
-  trigger:
-    - entity_id: light.dining_room
-      from: "on"
-      platform: state
-      to: "off"
-  condition:
-    - condition: state
-      entity_id: input_boolean.dnd_dining_room
-      state: "off"
-  action:
-    - data:
-        entity_id: input_boolean.presence_dining_room_lights
       service: input_boolean.turn_off
 
 - id: dining_room_presence_on_manual_switch
