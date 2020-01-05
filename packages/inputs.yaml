@@ -24,7 +24,7 @@ input_boolean:
   presence_master_bedroom:
   presence_emmas_bedroom:
   presence_kitchen_motion:
-  presence_hallway:
+  presence_hallway_motion:
   presence_laundry_room:
   presence_balcony:
   presence_bathroom:

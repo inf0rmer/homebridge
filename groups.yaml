@@ -95,6 +95,10 @@ presence_kitchen:
   entities:
     - input_boolean.presence_kitchen_motion
 
+presence_hallway:
+  entities:
+    - input_boolean.presence_kitchen_motion
+
 presence_bedrooms:
   all: true
   entities:

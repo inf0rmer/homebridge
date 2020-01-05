@@ -52,7 +52,7 @@
       state: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_hallway
+        entity_id: input_boolean.presence_hallway_motion
       service: input_boolean.turn_on
 
 - id: hallway_presence_off
@@ -70,46 +70,5 @@
       state: "off"
   action:
     - data:
-        entity_id: input_boolean.presence_hallway
-      service: input_boolean.turn_off
-
-- id: hallway_presence_on_lights
-  alias: "[Hallway] Presence On (Lights)"
-  trigger:
-    - entity_id: light.hallway
-      from: "off"
-      platform: state
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: binary_sensor.presence_hallway
-      state: "off"
-    - condition: state
-      entity_id: input_boolean.dnd_hallway
-      state: "off"
-    - condition: state
-      entity_id: binary_sensor.someone_home
-      state: "on"
-  action:
-    - data:
-        entity_id: input_boolean.presence_hallway
-      service: input_boolean.turn_on
-
-- id: hallway_presence_off_lights
-  alias: "[Hallway] Presence Off (Lights)"
-  trigger:
-    - entity_id: light.hallway
-      from: "on"
-      platform: state
-      to: "off"
-  condition:
-    - condition: state
-      entity_id: binary_sensor.presence_hallway
-      state: "on"
-    - condition: state
-      entity_id: input_boolean.dnd_hallway
-      state: "off"
-  action:
-    - data:
-        entity_id: input_boolean.presence_hallway
+        entity_id: input_boolean.presence_hallway_motion
       service: input_boolean.turn_off
