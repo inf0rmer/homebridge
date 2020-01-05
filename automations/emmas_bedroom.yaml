@@ -1,7 +1,6 @@
 ##################
 # Emma's Bedroom #
 ##################
-
 - id: emmas_bedroom_lights_on
   alias: "[Emma's Bedroom] Lights On"
   trigger:
@@ -42,8 +41,8 @@
         transition: 5
       service: light.turn_off
 
-- id: emmas_bedroom_presence_on
-  alias: "[Emma's Bedroom] Presence On"
+- id: emmas_bedroom_presence_on_motion
+  alias: "[Emma's Bedroom] Presence On (Motion)"
   trigger:
     - entity_id: binary_sensor.hk_emmas_bedroom_sensor_motion
       from: "off"
@@ -55,11 +54,11 @@
       state: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_emmas_bedroom
+        entity_id: input_boolean.presence_emmas_bedroom_motion
       service: input_boolean.turn_on
 
-- id: emmas_bedroom_presence_off
-  alias: "[Emma's Bedroom] Presence Off"
+- id: emmas_bedroom_presence_off_motion
+  alias: "[Emma's Bedroom] Presence Off (Motion)"
   trigger:
     - entity_id: binary_sensor.hk_emmas_bedroom_sensor_motion
       from: "on"
@@ -73,42 +72,7 @@
       state: "off"
   action:
     - data:
-        entity_id: input_boolean.presence_emmas_bedroom
-      service: input_boolean.turn_off
-
-- id: emmas_bedroom_presence_on_lights
-  alias: "[Emma's Bedroom] Presence On (Lights)"
-  trigger:
-    - entity_id: light.emmas_bedroom
-      from: "off"
-      platform: state
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: input_boolean.dnd_emmas_bedroom
-      state: "off"
-    - condition: state
-      entity_id: binary_sensor.someone_home
-      state: "on"
-  action:
-    - data:
-        entity_id: input_boolean.presence_emmas_bedroom
-      service: input_boolean.turn_on
-
-- id: emmas_bedroom_presence_off_lights
-  alias: "[Emma's Bedroom] Presence Off (Lights)"
-  trigger:
-    - entity_id: light.emmas_bedroom
-      from: "on"
-      platform: state
-      to: "off"
-  condition:
-    - condition: state
-      entity_id: input_boolean.dnd_emmas_bedroom
-      state: "off"
-  action:
-    - data:
-        entity_id: input_boolean.presence_emmas_bedroom
+        entity_id: input_boolean.presence_emmas_bedroom_motion
       service: input_boolean.turn_off
 
 - id: emmas_bedroom_presence_on_manual_switch
@@ -122,7 +86,7 @@
       to: "1_hold_up"
   action:
     - data:
-        entity_id: input_boolean.presence_emmas_bedroom
+        entity_id: input_boolean.presence_emmas_bedroom_switch
       service: input_boolean.turn_on
 
 - id: emmas_bedroom_presence_off_manual_switch
@@ -139,7 +103,7 @@
         entity_id: input_boolean.dnd_emmas_bedroom
       service: input_boolean.turn_off
     - data:
-        entity_id: input_boolean.presence_emmas_bedroom
+        entity_id: input_boolean.presence_emmas_bedroom_switch
       service: input_boolean.turn_off
     - data:
         entity_id: light.emmas_bedroom
@@ -179,3 +143,29 @@
     - data:
         entity_id: input_boolean.dnd_emmas_bedroom
       service: input_boolean.turn_on
+
+- id: emmas_bedroom_presence_on_sleeping
+  alias: "[Emma's Bedroom] Presence On (Sleeping)"
+  trigger:
+    - entity_id: input_boolean.sleeping_emmas_bedroom
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_emmas_bedroom_sleeping
+      service: input_boolean.turn_on
+
+- id: emmas_bedroom_presence_off_sleeping
+  alias: "[Emma's Bedroom] Presence Off (Sleeping)"
+  trigger:
+    - entity_id: input_boolean.sleeping_emmas_bedroom
+      from: "on"
+      platform: state
+      to: "off"
+      for:
+        minutes: 30
+  action:
+    - data:
+        entity_id: input_boolean.sleeping_emmas_bedroom
+      service: input_boolean.turn_off
