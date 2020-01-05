@@ -27,6 +27,7 @@ custom_header:
   hide_unused: true
   voice_hide: true
   options_hide: true
+  chevrons: false
 views:
   - path: default_view
     title: House
@@ -620,6 +621,7 @@ views:
                   service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                   service_data:
                     entity_id: group.presence_master_bedroom
+                type: "custom:button-card"
           - entity: light.master_bedroom
             name: All Lights
             theme: Backend-selected
