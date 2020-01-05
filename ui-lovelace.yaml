@@ -605,17 +605,21 @@ views:
           - type: horizontal-stack
             cards:
               - entity: binary_sensor.presence_master_bedroom
-                name: Occupied
+                name: "Occupied"
+                label: "[[[return entity.attributes.reason]]]"
+                show_label: true
                 size: 10%
                 styles:
                   card:
                     - font-size: 12px
+                  label:
+                    - color: "#666"
+                    - font-size: 10px
                 tap_action:
                   action: call-service
-                  service: input_boolean.toggle
+                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                   service_data:
-                    entity_id: input_boolean.presence_master_bedroom
-                type: "custom:button-card"
+                    entity_id: group.presence_master_bedroom
           - entity: light.master_bedroom
             name: All Lights
             theme: Backend-selected
