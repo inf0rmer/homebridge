@@ -988,16 +988,21 @@ views:
         max_columns: 2
         cards:
           - entity: binary_sensor.presence_bathroom
-            name: Occupied
+            name: "Occupied"
+            label: "[[[return entity.attributes.reason]]]"
+            show_label: true
             size: 10%
             styles:
               card:
                 - font-size: 12px
+              label:
+                - color: "#666"
+                - font-size: 10px
             tap_action:
               action: call-service
-              service: input_boolean.toggle
+              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
               service_data:
-                entity_id: input_boolean.presence_bathroom
+                entity_id: group.presence_bathroom
             type: "custom:button-card"
           - entity: light.bathroom
             name: Light
@@ -1011,16 +1016,21 @@ views:
         max_columns: 2
         cards:
           - entity: binary_sensor.presence_balcony
-            name: Occupied
+            name: "Occupied"
+            label: "[[[return entity.attributes.reason]]]"
+            show_label: true
             size: 10%
             styles:
               card:
                 - font-size: 12px
+              label:
+                - color: "#666"
+                - font-size: 10px
             tap_action:
               action: call-service
-              service: input_boolean.toggle
+              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
               service_data:
-                entity_id: input_boolean.presence_balcony
+                entity_id: group.presence_balcony
             type: "custom:button-card"
           - entity: light.balcony
             name: All Lights
@@ -1041,16 +1051,21 @@ views:
         max_columns: 2
         cards:
           - entity: binary_sensor.presence_laundry_room
-            name: Occupied
+            name: "Occupied"
+            label: "[[[return entity.attributes.reason]]]"
+            show_label: true
             size: 10%
             styles:
               card:
                 - font-size: 12px
+              label:
+                - color: "#666"
+                - font-size: 10px
             tap_action:
               action: call-service
-              service: input_boolean.toggle
+              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
               service_data:
-                entity_id: input_boolean.presence_laundry_room
+                entity_id: group.presence_laundry_room
             type: "custom:button-card"
           - entity: light.laundry_room
             name: Light
@@ -1065,16 +1080,21 @@ views:
         max_columns: 2
         cards:
           - entity: binary_sensor.presence_closet
-            name: Occupied
+            name: "Occupied"
+            label: "[[[return entity.attributes.reason]]]"
+            show_label: true
             size: 10%
             styles:
               card:
                 - font-size: 12px
+              label:
+                - color: "#666"
+                - font-size: 10px
             tap_action:
               action: call-service
-              service: input_boolean.toggle
+              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
               service_data:
-                entity_id: input_boolean.presence_closet
+                entity_id: group.presence_closet
             type: "custom:button-card"
           - entity: light.closet
             name: Light

@@ -25,10 +25,10 @@ input_boolean:
   presence_emmas_bedroom:
   presence_kitchen_motion:
   presence_hallway_motion:
-  presence_laundry_room:
-  presence_balcony:
-  presence_bathroom:
-  presence_closet:
+  presence_laundry_room_light:
+  presence_balcony_light:
+  presence_bathroom_light:
+  presence_closet_light:
 
   presence_bruno:
     name: Bruno

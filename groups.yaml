@@ -97,7 +97,23 @@ presence_kitchen:
 
 presence_hallway:
   entities:
-    - input_boolean.presence_kitchen_motion
+    - input_boolean.presence_hallway_motion
+
+presence_laundry_room:
+  entities:
+    - input_boolean.presence_laundry_room_light
+
+presence_balcony:
+  entities:
+    - input_boolean.presence_balcony_light
+
+presence_bathroom:
+  entities:
+    - input_boolean.presence_bathroom_light
+
+presence_closet:
+  entities:
+    - input_boolean.presence_closet_light
 
 presence_bedrooms:
   all: true

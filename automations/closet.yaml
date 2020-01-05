@@ -14,7 +14,7 @@
       state: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_closet
+        entity_id: input_boolean.presence_closet_light
       service: input_boolean.turn_on
 
 - id: closet_presence_off
@@ -30,5 +30,5 @@
       state: "off"
   action:
     - data:
-        entity_id: input_boolean.presence_closet
+        entity_id: input_boolean.presence_closet_light
       service: input_boolean.turn_off

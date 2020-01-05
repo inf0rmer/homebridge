@@ -14,7 +14,7 @@
       state: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_laundry_room
+        entity_id: input_boolean.presence_laundry_room_light
       service: input_boolean.turn_on
 
 - id: laundry_room_presence_off
@@ -30,5 +30,5 @@
       state: "off"
   action:
     - data:
-        entity_id: input_boolean.presence_laundry_room
+        entity_id: input_boolean.presence_laundry_room_light
       service: input_boolean.turn_off
