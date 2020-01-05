@@ -86,6 +86,12 @@ dnd_house:
     - group.dnd_bedrooms
     - group.other_rooms
 
+presence_dining_room:
+  entities:
+    - input_boolean.presence_dining_room_motion
+    - input_boolean.presence_dining_room_lights
+    - input_boolean.presence_dining_room_switch
+
 presence_bedrooms:
   all: true
   entities:
@@ -102,7 +108,7 @@ presence_other_rooms:
     - input_boolean.presence_bathroom
     - input_boolean.presence_closet
     - input_boolean.presence_living_room
-    - input_boolean.presence_dining_room
+    - group.presence_dining_room
 
 sleeping_bedrooms:
   all: true

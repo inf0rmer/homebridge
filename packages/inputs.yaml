@@ -19,7 +19,9 @@ input_boolean:
     name: Do Not Disturb Balcony
 
   presence_living_room:
-  presence_dining_room:
+  presence_dining_room_motion:
+  presence_dining_room_lights:
+  presence_dining_room_switch:
   presence_master_bedroom:
   presence_emmas_bedroom:
   presence_kitchen:

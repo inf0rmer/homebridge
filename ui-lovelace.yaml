@@ -511,7 +511,7 @@ views:
                   action: call-service
                   service: input_boolean.toggle
                   service_data:
-                    entity_id: input_boolean.presence_dining_room
+                    entity_id: group.presence_dining_room
                 type: "custom:button-card"
           - entity: light.dining_room
             name: All Lights

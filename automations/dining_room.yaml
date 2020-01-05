@@ -42,7 +42,7 @@
         transition: 5
       service: light.turn_off
 
-- id: dining_room_presence_on
+- id: dining_room_presence_on_motion
   alias: "[Dining Room] Presence On (Motion)"
   trigger:
     - entity_id: binary_sensor.hk_dining_room_sensor_motion
@@ -55,11 +55,11 @@
       state: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_dining_room
+        entity_id: input_boolean.presence_dining_room_motion
       service: input_boolean.turn_on
 
-- id: dining_room_presence_off
-  alias: "[Dining Room] Presence Off"
+- id: dining_room_presence_off_motion
+  alias: "[Dining Room] Presence Off (Motion)"
   trigger:
     - entity_id: binary_sensor.hk_dining_room_sensor_motion
       from: "on"
@@ -73,7 +73,7 @@
       state: "off"
   action:
     - data:
-        entity_id: input_boolean.presence_dining_room
+        entity_id: input_boolean.presence_dining_room_motion
       service: input_boolean.turn_off
 
 - id: dining_room_presence_on_lights
@@ -92,7 +92,7 @@
       state: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_dining_room
+        entity_id: input_boolean.presence_dining_room_lights
       service: input_boolean.turn_on
 
 - id: dining_room_presence_off_lights
@@ -108,7 +108,7 @@
       state: "off"
   action:
     - data:
-        entity_id: input_boolean.presence_dining_room
+        entity_id: input_boolean.presence_dining_room_lights
       service: input_boolean.turn_off
 
 - id: dining_room_presence_on_manual_switch
@@ -128,7 +128,7 @@
       to: "1_hold_up"
   action:
     - data:
-        entity_id: input_boolean.presence_dining_room
+        entity_id: input_boolean.presence_dining_room_switch
       service: input_boolean.turn_on
 
 - id: dining_room_presence_off_manual_switch
@@ -151,7 +151,7 @@
         entity_id: input_boolean.dnd_dining_room
       service: input_boolean.turn_off
     - data:
-        entity_id: input_boolean.presence_dining_room
+        entity_id: input_boolean.presence_dining_room_switch
       service: input_boolean.turn_off
     - data:
         entity_id: light.dining_room
