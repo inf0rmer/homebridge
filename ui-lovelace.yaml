@@ -503,7 +503,7 @@ views:
           - type: horizontal-stack
             cards:
               - entity: binary_sensor.presence_dining_room
-                name: "Occupied"
+                name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
                 label: "[[[return entity.attributes.reason]]]"
                 show_label: true
                 size: 10%
@@ -606,7 +606,7 @@ views:
           - type: horizontal-stack
             cards:
               - entity: binary_sensor.presence_master_bedroom
-                name: "Occupied"
+                name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
                 label: "[[[return entity.attributes.reason]]]"
                 show_label: true
                 size: 10%
@@ -755,7 +755,7 @@ views:
           - type: horizontal-stack
             cards:
               - entity: binary_sensor.presence_emmas_bedroom
-                name: "Occupied"
+                name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
                 label: "[[[return entity.attributes.reason]]]"
                 show_label: true
                 size: 10%
@@ -856,7 +856,7 @@ views:
           - type: horizontal-stack
             cards:
               - entity: binary_sensor.presence_kitchen
-                name: "Occupied"
+                name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
                 label: "[[[return entity.attributes.reason]]]"
                 show_label: true
                 size: 10%
@@ -958,7 +958,7 @@ views:
           - type: horizontal-stack
             cards:
               - entity: binary_sensor.presence_hallway
-                name: "Occupied"
+                name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
                 label: "[[[return entity.attributes.reason]]]"
                 show_label: true
                 size: 10%
@@ -999,7 +999,7 @@ views:
         max_columns: 2
         cards:
           - entity: binary_sensor.presence_bathroom
-            name: "Occupied"
+            name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
             label: "[[[return entity.attributes.reason]]]"
             show_label: true
             size: 10%
@@ -1027,7 +1027,7 @@ views:
         max_columns: 2
         cards:
           - entity: binary_sensor.presence_balcony
-            name: "Occupied"
+            name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
             label: "[[[return entity.attributes.reason]]]"
             show_label: true
             size: 10%
@@ -1062,7 +1062,7 @@ views:
         max_columns: 2
         cards:
           - entity: binary_sensor.presence_laundry_room
-            name: "Occupied"
+            name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
             label: "[[[return entity.attributes.reason]]]"
             show_label: true
             size: 10%
@@ -1091,7 +1091,7 @@ views:
         max_columns: 2
         cards:
           - entity: binary_sensor.presence_closet
-            name: "Occupied"
+            name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
             label: "[[[return entity.attributes.reason]]]"
             show_label: true
             size: 10%
