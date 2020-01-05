@@ -391,16 +391,21 @@ views:
               - type: horizontal-stack
                 cards:
                   - entity: binary_sensor.presence_living_room
-                    name: Occupied
+                    name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
+                    label: "[[[return entity.attributes.reason]]]"
+                    show_label: true
                     size: 10%
                     styles:
                       card:
                         - font-size: 12px
+                      label:
+                        - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
+                        - font-size: 10px
                     tap_action:
                       action: call-service
-                      service: input_boolean.toggle
+                      service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                       service_data:
-                        entity_id: input_boolean.presence_living_room
+                        entity_id: group.presence_living_room
                     type: "custom:button-card"
           - entity: light.living_room
             name: All Lights
@@ -511,7 +516,7 @@ views:
                   card:
                     - font-size: 12px
                   label:
-                    - color: "#666"
+                    - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
                     - font-size: 10px
                 tap_action:
                   action: call-service
@@ -614,7 +619,7 @@ views:
                   card:
                     - font-size: 12px
                   label:
-                    - color: "#666"
+                    - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
                     - font-size: 10px
                 tap_action:
                   action: call-service
@@ -763,7 +768,7 @@ views:
                   card:
                     - font-size: 12px
                   label:
-                    - color: "#666"
+                    - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
                     - font-size: 10px
                 tap_action:
                   action: call-service
@@ -864,7 +869,7 @@ views:
                   card:
                     - font-size: 12px
                   label:
-                    - color: "#666"
+                    - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
                     - font-size: 10px
                 tap_action:
                   action: call-service
@@ -966,7 +971,7 @@ views:
                   card:
                     - font-size: 12px
                   label:
-                    - color: "#666"
+                    - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
                     - font-size: 10px
                 tap_action:
                   action: call-service
@@ -1007,7 +1012,7 @@ views:
               card:
                 - font-size: 12px
               label:
-                - color: "#666"
+                - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
                 - font-size: 10px
             tap_action:
               action: call-service
@@ -1035,7 +1040,7 @@ views:
               card:
                 - font-size: 12px
               label:
-                - color: "#666"
+                - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
                 - font-size: 10px
             tap_action:
               action: call-service
@@ -1070,7 +1075,7 @@ views:
               card:
                 - font-size: 12px
               label:
-                - color: "#666"
+                - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
                 - font-size: 10px
             tap_action:
               action: call-service
@@ -1099,7 +1104,7 @@ views:
               card:
                 - font-size: 12px
               label:
-                - color: "#666"
+                - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
                 - font-size: 10px
             tap_action:
               action: call-service
