@@ -42,8 +42,8 @@
         transition: 5
       service: light.turn_off
 
-- id: kitchen_presence_on
-  alias: "[Kitchen] Presence On"
+- id: kitchen_presence_on_motion
+  alias: "[Kitchen] Presence On (Motion)"
   trigger:
     - entity_id: binary_sensor.hk_kitchen_sensor_motion
       from: "off"
@@ -55,11 +55,11 @@
       state: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_kitchen
+        entity_id: input_boolean.presence_kitchen_motion
       service: input_boolean.turn_on
 
-- id: kitchen_presence_off
-  alias: "[Kitchen] Presence Off"
+- id: kitchen_presence_off_motion
+  alias: "[Kitchen] Presence Off (Motion)"
   trigger:
     - entity_id: binary_sensor.hk_kitchen_sensor_motion
       from: "on"
@@ -73,40 +73,5 @@
       state: "off"
   action:
     - data:
-        entity_id: input_boolean.presence_kitchen
-      service: input_boolean.turn_off
-
-- id: kitchen_presence_on_lights
-  alias: "[Kitchen] Presence On (Lights)"
-  trigger:
-    - entity_id: light.kitchen
-      from: "off"
-      platform: state
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: input_boolean.dnd_kitchen
-      state: "off"
-    - condition: state
-      entity_id: binary_sensor.someone_home
-      state: "on"
-  action:
-    - data:
-        entity_id: input_boolean.presence_kitchen
-      service: input_boolean.turn_on
-
-- id: kitchen_presence_off_lights
-  alias: "[Kitchen] Presence Off (Lights)"
-  trigger:
-    - entity_id: light.kitchen
-      from: "on"
-      platform: state
-      to: "off"
-  condition:
-    - condition: state
-      entity_id: input_boolean.dnd_kitchen
-      state: "off"
-  action:
-    - data:
-        entity_id: input_boolean.presence_kitchen
+        entity_id: input_boolean.presence_kitchen_motion
       service: input_boolean.turn_off

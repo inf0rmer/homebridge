@@ -103,7 +103,16 @@ binary_sensor:
         friendly_name: Presence Kitchen
         device_class: occupancy
         value_template: >-
-          {{ is_state('input_boolean.presence_kitchen', 'on') }}
+          {{ is_state('group.presence_kitchen', 'on') }}
+        entity_id:
+          - input_boolean.presence_kitchen_motion
+          - group.kitchen
+        attribute_templates:
+          reason: >
+            {% for entity in states.group.presence_kitchen.attributes.entity_id if is_state(entity, 'on') %}
+            {%- if loop.first %}{% elif loop.last %} and {% else %}, {% endif -%}
+            {{ states[entity.split('.')[0]][entity.split('.')[1]].name.split(' ') | last }}
+            {%- endfor %}
       presence_hallway:
         friendly_name: Presence Hallway
         device_class: occupancy
