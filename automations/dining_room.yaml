@@ -115,8 +115,8 @@
         entity_id: input_boolean.dnd_dining_room
       service: input_boolean.turn_off
     - data:
-        entity_id: input_boolean.presence_dining_room_switch
-      service: input_boolean.turn_off
+        entity_id: group.presence_dining_room
+      service: homeassistant.turn_off
     - data:
         entity_id: light.dining_room
       service: light.turn_off
