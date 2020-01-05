@@ -81,6 +81,7 @@ binary_sensor:
         entity_id:
           - input_boolean.presence_dining_room_motion
           - input_boolean.presence_dining_room_switch
+          - group.presence_dining_room
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_dining_room.attributes.entity_id if is_state(entity, 'on') %}
