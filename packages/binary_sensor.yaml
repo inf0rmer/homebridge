@@ -106,7 +106,7 @@ binary_sensor:
           {{ is_state('group.presence_kitchen', 'on') }}
         entity_id:
           - input_boolean.presence_kitchen_motion
-          - group.kitchen
+          - group.presence_kitchen
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_kitchen.attributes.entity_id if is_state(entity, 'on') %}
@@ -120,7 +120,7 @@ binary_sensor:
           {{ is_state('group.presence_hallway', 'on') }}
         entity_id:
           - input_boolean.presence_hallway_motion
-          - group.hallway
+          - group.presence_hallway
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_hallway.attributes.entity_id if is_state(entity, 'on') %}
@@ -134,7 +134,7 @@ binary_sensor:
           {{ is_state('group.presence_bathroom', 'on') }}
         entity_id:
           - input_boolean.presence_bathroom_motion
-          - group.bathroom
+          - group.presence_bathroom
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_bathroom.attributes.entity_id if is_state(entity, 'on') %}
@@ -148,7 +148,7 @@ binary_sensor:
           {{ is_state('group.presence_laundry_room', 'on') }}
         entity_id:
           - input_boolean.presence_laundry_room_motion
-          - group.laundry_room
+          - group.presence_laundry_room
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_laundry_room.attributes.entity_id if is_state(entity, 'on') %}
@@ -162,7 +162,7 @@ binary_sensor:
           {{ is_state('group.presence_balcony', 'on') }}
         entity_id:
           - input_boolean.presence_balcony_motion
-          - group.balcony
+          - group.presence_balcony
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_balcony.attributes.entity_id if is_state(entity, 'on') %}
@@ -176,7 +176,7 @@ binary_sensor:
           {{ is_state('group.presence_closet', 'on') }}
         entity_id:
           - input_boolean.presence_closet_motion
-          - group.closet
+          - group.presence_closet
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_closet.attributes.entity_id if is_state(entity, 'on') %}
