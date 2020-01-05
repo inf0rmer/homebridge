@@ -770,6 +770,7 @@ views:
                   service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                   service_data:
                     entity_id: group.presence_emmas_bedroom
+                type: "custom:button-card"
           - entity: light.emmas_bedroom
             name: All Lights
             type: light
