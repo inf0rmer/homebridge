@@ -14,7 +14,7 @@
       state: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_balcony
+        entity_id: input_boolean.presence_balcony_light
       service: input_boolean.turn_on
 
 - id: balcony_presence_off
@@ -42,6 +42,9 @@
       to: "on"
   action:
     - data:
+        entity_id: light.balcony
+      service: light.turn_on
+    - data:
         entity_id: switch.balcony_plug
       service: switch.turn_on
 
@@ -53,6 +56,9 @@
       platform: state
       to: "off"
   action:
+    - data:
+        entity_id: light.balcony
+      service: light.turn_off
     - data:
         entity_id: switch.balcony_plug
       service: switch.turn_off
