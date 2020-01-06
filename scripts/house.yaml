@@ -62,24 +62,24 @@ house_wake_up:
         entity_id:
           - media_player.everywhere
           - media_player.emma_s_bedroom_echo_dot
-        volume_level: 0.5
+        volume_level: 0.4
       service: media_player.volume_set
-    - data:
-        entity_id: group.all_covers
-      service: cover.open_cover
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
         entity_id:
           - light.master_bedroom
           - light.emmas_bedroom
-        transition: 120
+        transition: 60
       service: light.turn_on
     - delay:
-        minutes: 30
+        minutes: 45
     - data:
         entity_id: group.presence_bedrooms
       service: homeassistant.turn_off
+    - data:
+        entity_id: group.all_covers
+      service: cover.open_cover
 
 house_nobody_home:
   alias: "[House] Nobody Home"
