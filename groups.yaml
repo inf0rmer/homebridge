@@ -130,18 +130,18 @@ presence_closet:
 presence_bedrooms:
   all: true
   entities:
-    - input_boolean.presence_master_bedroom
-    - input_boolean.presence_emmas_bedroom
+    - group.presence_master_bedroom
+    - group.presence_emmas_bedroom
 
 presence_other_rooms:
   all: true
   entities:
-    - input_boolean.presence_kitchen
-    - input_boolean.presence_hallway
-    - input_boolean.presence_laundry_room
-    - input_boolean.presence_balcony
-    - input_boolean.presence_bathroom
-    - input_boolean.presence_closet
+    - group.presence_kitchen
+    - group.presence_hallway
+    - group.presence_laundry_room
+    - group.presence_balcony
+    - group.presence_bathroom
+    - group.presence_closet
     - input_boolean.presence_living_room
     - group.presence_dining_room
 
