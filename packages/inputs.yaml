@@ -18,7 +18,9 @@ input_boolean:
   dnd_balcony:
     name: Do Not Disturb Balcony
 
-  presence_living_room:
+  presence_living_room_motion:
+  presence_living_room_switch:
+  presence_living_room_tv:
   presence_dining_room_motion:
   presence_dining_room_switch:
   presence_master_bedroom_motion:

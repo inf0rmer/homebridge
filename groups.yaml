@@ -86,6 +86,12 @@ dnd_house:
     - group.dnd_bedrooms
     - group.other_rooms
 
+presence_living_room:
+  entities:
+    - input_boolean.presence_living_room_motion
+    - input_boolean.presence_living_room_switch
+    - input_boolean.presence_living_room_tv
+
 presence_dining_room:
   entities:
     - input_boolean.presence_dining_room_motion
