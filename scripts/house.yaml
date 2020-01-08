@@ -66,11 +66,18 @@ house_wake_up:
       service: media_player.volume_set
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_circadian_lighting', 'brightness') | int }}"
+        brightness_pct: 1
         entity_id:
           - light.master_bedroom
           - light.emmas_bedroom
-        transition: 60
+      service: light.turn_on
+    - data_template:
+        kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_master_bedroom', 'brightness') | int }}"
+        entity_id:
+          - light.master_bedroom
+          - light.emmas_bedroom
+        transition: 120
       service: light.turn_on
     - delay:
         minutes: 45
