@@ -215,15 +215,17 @@ views:
             image: false
             name: Robot Vacuum
           - entities:
-              - light.kitchen
-              - light.dining_room
               - light.living_room
+              - light.dining_room
               - light.master_bedroom
+              - light.emmas_bedroom
+              - light.kitchen
               - light.balcony
               - light.laundry_room
               - light.hallway
               - light.gaming_area
-              - light.emmas_bedroom
+              - light.bathroom
+              - light.closet
             title: Lights
             type: entities
 
