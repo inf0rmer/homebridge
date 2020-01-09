@@ -53,12 +53,6 @@ house_wake_up:
   alias: "[House] Wake Up"
   sequence:
     - data:
-        entity_id: group.dnd_house
-      service: homeassistant.turn_off
-    - data:
-        entity_id: group.sleeping_bedrooms
-      service: homeassistant.turn_off
-    - data:
         entity_id:
           - media_player.everywhere
           - media_player.emma_s_bedroom_echo_dot
@@ -79,6 +73,12 @@ house_wake_up:
           - light.emmas_bedroom
         transition: 120
       service: light.turn_on
+    - data:
+        entity_id: group.dnd_house
+      service: homeassistant.turn_off
+    - data:
+        entity_id: group.sleeping_bedrooms
+      service: homeassistant.turn_off
     - delay:
         minutes: 45
     - data:
