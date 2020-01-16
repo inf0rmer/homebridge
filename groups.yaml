@@ -123,7 +123,7 @@ presence_laundry_room:
 
 presence_balcony:
   entities:
-    - input_boolean.presence_balcony_light
+    - input_boolean.presence_balcony_door
 
 presence_bathroom:
   entities:
@@ -131,7 +131,7 @@ presence_bathroom:
 
 presence_closet:
   entities:
-    - input_boolean.presence_closet_light
+    - input_boolean.presence_closet_door
 
 presence_bedrooms:
   all: true

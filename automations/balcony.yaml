@@ -14,7 +14,7 @@
       state: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_balcony_light
+        entity_id: input_boolean.presence_balcony_door
       service: input_boolean.turn_on
 
 - id: balcony_presence_off
@@ -30,7 +30,7 @@
       state: "off"
   action:
     - data:
-        entity_id: input_boolean.presence_balcony_light
+        entity_id: input_boolean.presence_balcony_door
       service: input_boolean.turn_off
 
 - id: balcony_lights_on
@@ -51,7 +51,7 @@
 - id: balcony_lights_off
   alias: "[Balcony] Lights Off"
   trigger:
-    - entity_id: binary_sensor.presence_balcony_light
+    - entity_id: binary_sensor.presence_balcony_door
       from: "on"
       platform: state
       to: "off"

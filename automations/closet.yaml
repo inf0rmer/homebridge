@@ -14,7 +14,7 @@
       state: "on"
   action:
     - data:
-        entity_id: input_boolean.presence_closet_light
+        entity_id: input_boolean.presence_closet_door
       service: input_boolean.turn_on
 
 - id: closet_presence_off
@@ -30,7 +30,7 @@
       state: "off"
   action:
     - data:
-        entity_id: input_boolean.presence_closet_light
+        entity_id: input_boolean.presence_closet_door
       service: input_boolean.turn_off
 
 - id: closet_lights_on
@@ -48,7 +48,7 @@
 - id: closet_lights_off
   alias: "[Closet] Lights Off"
   trigger:
-    - entity_id: binary_sensor.presence_closet_light
+    - entity_id: binary_sensor.presence_closet_door
       from: "on"
       platform: state
       to: "off"
