@@ -48,7 +48,7 @@
 - id: closet_lights_off
   alias: "[Closet] Lights Off"
   trigger:
-    - entity_id: binary_sensor.presence_closet_door
+    - entity_id: binary_sensor.presence_closet
       from: "on"
       platform: state
       to: "off"
