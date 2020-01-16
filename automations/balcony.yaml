@@ -4,7 +4,7 @@
 - id: balcony_presence_on
   alias: "[Balcony] Presence On"
   trigger:
-    - entity_id: light.balcony_main
+    - entity_id: binary_sensor.balcony_door_sensor
       from: "off"
       platform: state
       to: "on"
@@ -20,7 +20,7 @@
 - id: balcony_presence_off
   alias: "[Balcony] Presence Off"
   trigger:
-    - entity_id: light.balcony_main
+    - entity_id: binary_sensor.balcony_door_sensor
       from: "on"
       platform: state
       to: "off"
