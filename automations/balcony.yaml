@@ -63,3 +63,21 @@
     - data:
         entity_id: light.balcony
       service: light.turn_off
+
+- id: balcony_lights_on_sun
+  alias: "[Balcony] Lights On (Sun)"
+  trigger:
+    - entity_id: sun.sun
+      platform: state
+      to: below_horizon
+  condition:
+    - condition: state
+      entity_id: binary_sensor.presence_balcony
+      state: "on"
+  action:
+    - data:
+        entity_id: light.balcony
+      service: light.turn_on
+    - data:
+        entity_id: switch.balcony_plug
+      service: switch.turn_on
