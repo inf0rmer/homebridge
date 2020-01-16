@@ -17,6 +17,8 @@ input_boolean:
     name: Do Not Disturb Bathroom
   dnd_balcony:
     name: Do Not Disturb Balcony
+  dnd_closet:
+    name: Do Not Disturb Closet
 
   presence_living_room_motion:
   presence_living_room_switch:
