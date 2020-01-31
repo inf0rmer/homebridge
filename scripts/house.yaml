@@ -73,6 +73,8 @@ house_wake_up:
           - light.emmas_bedroom
         transition: 120
       service: light.turn_on
+    - delay:
+        seconds: 130
     - data:
         entity_id: group.dnd_house
       service: homeassistant.turn_off
