@@ -1,6 +1,4 @@
 binary_sensor:
-  - platform: huesensor
-
   - platform: workday
     country: DE
 
