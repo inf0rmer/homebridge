@@ -45,7 +45,6 @@ light_tv:
 
 presence:
   name: Someone is home
-  view: no
   entities:
     - binary_sensor.presence_bruno
     - binary_sensor.presence_sarah
@@ -53,7 +52,6 @@ presence:
 
 harmony_hub:
   name: Living Room Entertainment Control
-  control: hidden
   entities:
     - sensor.watch_tv
     - sensor.watch_netflix

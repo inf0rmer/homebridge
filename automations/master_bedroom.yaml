@@ -9,7 +9,7 @@
       from: "off"
       platform: state
       to: "on"
-    - entity_id: sensor.master_bedroom_sensor_light_level
+    - entity_id: sensor.zha_master_bedroom_sensor_light_level
       platform: state
   condition:
     - condition: state
@@ -20,7 +20,7 @@
       state: "off"
     - below: 20
       condition: numeric_state
-      entity_id: sensor.master_bedroom_sensor_light_level
+      entity_id: sensor.zha_master_bedroom_sensor_light_level
   action:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
@@ -45,7 +45,7 @@
 - id: master_bedroom_presence_on_motion
   alias: "[Master Bedroom] Presence On (Motion)"
   trigger:
-    - entity_id: binary_sensor.hk_master_bedroom_sensor_motion
+    - entity_id: binary_sensor.zha_master_bedroom_sensor_motion
       from: "off"
       platform: state
       to: "on"
@@ -61,7 +61,7 @@
 - id: master_bedroom_presence_off_motion
   alias: "[Master Bedroom] Presence Off (Motion)"
   trigger:
-    - entity_id: binary_sensor.hk_master_bedroom_sensor_motion
+    - entity_id: binary_sensor.zha_master_bedroom_sensor_motion
       from: "on"
       platform: state
       to: "off"
