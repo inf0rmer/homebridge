@@ -16,6 +16,8 @@ resources:
     type: module
   - url: /hacsfiles/group-card/group-card.js
     type: module
+  - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+    type: module
   - url: /hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js
     type: module
 preload_cards:
@@ -192,13 +194,13 @@ views:
             type: "custom:weather-card"
           - entity: alarm_control_panel.alexa_guard_a8bd5
             type: alarm-panel
-          # - entities:
-          #     - entity: sensor.home_sensor_average_temperature
-          #       name: Avg. Temperature
-          #     - entity: sensor.home_sensor_average_light_level
-          #       name: Avg. Light Level
-          #   type: "custom:mini-graph-card"
-          #   icon: "mdi:thermometer"
+          - entities:
+              - entity: sensor.home_sensor_average_temperature
+                name: Avg. Temperature
+              - entity: sensor.home_sensor_average_light_level
+                name: Avg. Light Level
+            type: "custom:mini-graph-card"
+            icon: "mdi:thermometer"
           - type: entity-filter
             entities:
               - binary_sensor.presence_bruno
@@ -442,12 +444,12 @@ views:
             show_header_toggle: false
             title: Blinds
             type: entities
-          # - entities:
-          #     - entity: sensor.zha_living_room_sensor_temperature
-          #       name: Temperature
-          #     - entity: sensor.zha_living_room_sensor_light_level
-          #       name: Light Level
-          #   type: "custom:mini-graph-card"
+          - entities:
+              - entity: sensor.zha_living_room_sensor_temperature
+                name: Temperature
+              - entity: sensor.zha_living_room_sensor_light_level
+                name: Light Level
+            type: "custom:mini-graph-card"
           - entity: media_player.spotify
             type: "custom:mini-media-player"
   - path: dining-room
@@ -545,12 +547,12 @@ views:
             show_header_toggle: false
             title: Lights
             type: entities
-          # - entities:
-          #     - entity: sensor.zha_dining_room_sensor_temperature
-          #       name: Temperature
-          #     - entity: sensor.zha_dining_room_sensor_light_level
-          #       name: Light Level
-          #   type: "custom:mini-graph-card"
+          - entities:
+              - entity: sensor.zha_dining_room_sensor_temperature
+                name: Temperature
+              - entity: sensor.zha_dining_room_sensor_light_level
+                name: Light Level
+            type: "custom:mini-graph-card"
           - entity: media_player.spotify
             type: "custom:mini-media-player"
   - path: master-bedroom
@@ -655,12 +657,12 @@ views:
             show_header_toggle: false
             title: Blinds
             type: entities
-          # - entities:
-          #     - entity: sensor.zha_master_bedroom_sensor_temperature
-          #       name: Temperature
-          #     - entity: sensor.zha_master_bedroom_sensor_light_level
-          #       name: Light Level
-          #   type: "custom:mini-graph-card"
+          - entities:
+              - entity: sensor.zha_master_bedroom_sensor_temperature
+                name: Temperature
+              - entity: sensor.zha_master_bedroom_sensor_light_level
+                name: Light Level
+            type: "custom:mini-graph-card"
           - entity: media_player.spotify
             type: "custom:mini-media-player"
 
@@ -795,12 +797,12 @@ views:
               - entity: switch.emmas_bedroom_string_lights
             title: Lights
             type: entities
-          # - entities:
-          #     - entity: sensor.zha_emmas_bedroom_sensor_temperature
-          #       name: Temperature
-          #     - entity: sensor.zha_emmas_bedroom_sensor_light_level
-          #       name: Light Level
-          #   type: "custom:mini-graph-card"
+          - entities:
+              - entity: sensor.zha_emmas_bedroom_sensor_temperature
+                name: Temperature
+              - entity: sensor.zha_emmas_bedroom_sensor_light_level
+                name: Light Level
+            type: "custom:mini-graph-card"
           - entity: media_player.spotify
             type: "custom:mini-media-player"
   - path: kitchen
@@ -897,12 +899,12 @@ views:
             show_header_toggle: false
             title: Lights
             type: entities
-          # - entities:
-          #     - entity: sensor.zha_kitchen_sensor_temperature
-          #       name: Temperature
-          #     - entity: sensor.zha_kitchen_sensor_light_level
-          #       name: Light Level
-          #   type: "custom:mini-graph-card"
+          - entities:
+              - entity: sensor.zha_kitchen_sensor_temperature
+                name: Temperature
+              - entity: sensor.zha_kitchen_sensor_light_level
+                name: Light Level
+            type: "custom:mini-graph-card"
           - entity: media_player.spotify
             type: "custom:mini-media-player"
   - path: hallway
@@ -999,12 +1001,12 @@ views:
             show_header_toggle: false
             title: Lights
             type: entities
-          # - entities:
-          #     - entity: sensor.hallway_sensor_average_temperature
-          #       name: Temperature
-          #     - entity: sensor.hallway_sensor_average_light_level
-          #       name: Light Level
-          #   type: "custom:mini-graph-card"
+          - entities:
+              - entity: sensor.hallway_sensor_average_temperature
+                name: Temperature
+              - entity: sensor.hallway_sensor_average_light_level
+                name: Light Level
+            type: "custom:mini-graph-card"
   - path: bathroom
     title: Bathroom
     panel: true
