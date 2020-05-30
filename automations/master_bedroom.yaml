@@ -170,3 +170,54 @@
     - data:
         entity_id: input_boolean.sleeping_master_bedroom
       service: input_boolean.turn_off
+
+- id: master_bedroom_bruno_goodnight
+  alias: "[Master Bedroom] Bruno's Goodnight"
+  trigger:
+    - event_data:
+        command: on
+        device_ieee: 00:17:88:01:06:06:69:1c
+      event_type: zha_event
+      platform: event
+    - event_data:
+        command: off_with_effect
+        device_ieee: 00:17:88:01:06:06:69:1c
+      event_type: zha_event
+      platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.bruno_good_night
+
+- id: master_bedroom_sarah_goodnight
+  alias: "[Master Bedroom] Sarah's Goodnight"
+  trigger:
+    - event_data:
+        command: on
+        device_ieee: 00:17:88:01:06:06:69:b6
+      event_type: zha_event
+      platform: event
+    - event_data:
+        command: off_with_effect
+        device_ieee: 00:17:88:01:06:06:69:b6
+      event_type: zha_event
+      platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.sarah_good_night
+
+- id: master_bedroom_force_goodnight
+  alias: "[Master Bedroom] Force Goodnight"
+  trigger:
+    - event_data:
+        command: stop
+        device_ieee: 00:17:88:01:06:06:69:1c
+      event_type: zha_event
+      platform: event
+    - event_data:
+        command: stop
+        device_ieee: 00:17:88:01:06:06:69:b6
+      event_type: zha_event
+      platform: event
+  action:
+    service: script.turn_on
+    entity_id: script.good_night
