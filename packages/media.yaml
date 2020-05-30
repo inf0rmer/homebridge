@@ -1,4 +1,3 @@
-media_player:
-  - platform: spotify
-    client_id: !env_var SPOTIFY_CLIENT_ID
-    client_secret: !env_var SPOTIFY_CLIENT_SECRET
+spotify:
+  client_id: !env_var SPOTIFY_CLIENT_ID
+  client_secret: !env_var SPOTIFY_CLIENT_SECRET
