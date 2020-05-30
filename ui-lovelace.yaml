@@ -1,27 +1,33 @@
 title: Home
 resources:
-  - url: /local/community/button-card/button-card.js?v=1
+  - url: /hacsfiles/button-card/button-card.js
     type: module
-  - url: /community_plugin/weather-card/weather-card.js
+  - url: /hacsfiles/weather-card/weather-card.js
     type: module
-  - url: /community_plugin/lovelace-xiaomi-vacuum-card/xiaomi-vacuum-card.js
+  - url: /hacsfiles/lovelace-xiaomi-vacuum-card/xiaomi-vacuum-card.js
     type: module
-  - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+  - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
     type: module
-  - url: /community_plugin/custom-header/custom-header.js
+  - url: /hacsfiles/custom-header/custom-header.js
     type: module
-  - url: /community_plugin/lovelace-card-tools/card-tools.js
+  - url: /hacsfiles/lovelace-card-tools/card-tools.js
     type: module
-  - url: /community_plugin/lovelace-layout-card/layout-card.js
+  - url: /hacsfiles/lovelace-layout-card/layout-card.js
     type: module
-  - url: /community_plugin/group-card/group-card.js
+  - url: /hacsfiles/group-card/group-card.js
     type: module
-  - url: /community_plugin/lovelace-card-preloader.js
+  - url: /hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js
     type: module
 preload_cards:
+  - custom:layout-card
+  - layout-card
   - weather-card
   - xiaomi-vacuum-card
   - mini-media-player
+  - entity-filter
+  - hui-entity-filter-card
+  - alarm-panel
+  - hui-alarm-panel-card
 custom_header:
   compact_mode: true
   hide_help: true
@@ -33,207 +39,428 @@ custom_header:
 views:
   - path: default_view
     title: House
+    panel: true
     cards:
-      - type: vertical-stack
+      - type: custom:layout-card
+        layout: horizontal
+        max_columns: 2
         cards:
-          - type: horizontal-stack
+          - type: vertical-stack
             cards:
-              - entity: group.dnd_house
-                icon: "mdi:weather-night"
-                show_state: false
-                name: Do Not Disturb
-                size: 25%
-                styles:
-                  card:
-                    - font-size: 12px
-                tap_action:
-                  action: call-service
-                  service: homeassistant.toggle
-                  service_data:
-                    entity_id: group.dnd_house
-                type: "custom:button-card"
-              - type: conditional
-                conditions:
-                  - entity: group.dnd_bedrooms
-                    state: "off"
-                card:
-                  entity: script.good_night
-                  icon: "mdi:sleep"
-                  show_state: false
-                  name: Good Night
-                  size: 25%
-                  styles:
+              - type: horizontal-stack
+                cards:
+                  - entity: group.dnd_house
+                    icon: "mdi:weather-night"
+                    show_state: false
+                    name: Do Not Disturb
+                    size: 25%
+                    styles:
+                      card:
+                        - font-size: 12px
+                    tap_action:
+                      action: call-service
+                      service: homeassistant.toggle
+                      service_data:
+                        entity_id: group.dnd_house
+                    type: "custom:button-card"
+                  - type: conditional
+                    conditions:
+                      - entity: group.dnd_bedrooms
+                        state: "off"
                     card:
-                      - font-size: 12px
-                  tap_action:
-                    action: call-service
-                    service: script.turn_on
-                    service_data:
-                      entity_id: script.good_night
-                  type: "custom:button-card"
-              - type: conditional
-                conditions:
-                  - entity: group.dnd_bedrooms
-                    state: "on"
-                card:
-                  entity: script.house_wake_up
-                  icon: "mdi:sleep-off"
-                  show_state: false
-                  name: Wake Up
-                  size: 25%
-                  styles:
+                      entity: script.good_night
+                      icon: "mdi:sleep"
+                      show_state: false
+                      name: Good Night
+                      size: 25%
+                      styles:
+                        card:
+                          - font-size: 12px
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.good_night
+                      type: "custom:button-card"
+                  - type: conditional
+                    conditions:
+                      - entity: group.dnd_bedrooms
+                        state: "on"
                     card:
-                      - font-size: 12px
-                  tap_action:
-                    action: call-service
-                    service: script.turn_on
-                    service_data:
-                      entity_id: script.house_wake_up
-                  type: "custom:button-card"
-              - type: conditional
-                conditions:
-                  - entity: vacuum.xiaomi_vacuum_cleaner
-                    state: docked
-                card:
-                  entity: script.house_start_cleaning
-                  icon: "mdi:broom"
-                  show_state: false
-                  name: Clean House
-                  size: 25%
-                  styles:
+                      entity: script.house_wake_up
+                      icon: "mdi:sleep-off"
+                      show_state: false
+                      name: Wake Up
+                      size: 25%
+                      styles:
+                        card:
+                          - font-size: 12px
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.house_wake_up
+                      type: "custom:button-card"
+                  - type: conditional
+                    conditions:
+                      - entity: vacuum.xiaomi_vacuum_cleaner
+                        state: docked
                     card:
-                      - font-size: 12px
-                  tap_action:
-                    action: call-service
-                    service: script.turn_on
-                    service_data:
-                      entity_id: script.house_start_cleaning
-                  type: "custom:button-card"
-              - type: conditional
-                conditions:
-                  - entity: vacuum.xiaomi_vacuum_cleaner
-                    state_not: docked
-                card:
-                  entity: script.house_stop_cleaning
-                  icon: "mdi:cancel"
-                  show_state: false
-                  name: Stop Cleaning
-                  size: 25%
-                  styles:
+                      entity: script.house_start_cleaning
+                      icon: "mdi:broom"
+                      show_state: false
+                      name: Clean House
+                      size: 25%
+                      styles:
+                        card:
+                          - font-size: 12px
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.house_start_cleaning
+                      type: "custom:button-card"
+                  - type: conditional
+                    conditions:
+                      - entity: vacuum.xiaomi_vacuum_cleaner
+                        state_not: docked
                     card:
-                      - font-size: 12px
-                      - color: red
-                    icon:
-                      - color: red
-                  tap_action:
-                    action: call-service
-                    service: script.turn_on
-                    service_data:
-                      entity_id: script.house_stop_cleaning
-                  type: "custom:button-card"
-          - type: horizontal-stack
-            cards:
-              - entity: lock.nello_ecf41382
-                icon: "mdi:office-building"
-                show_state: false
-                name: Open Building Door
-                size: 25%
-                styles:
-                  card:
-                    - font-size: 12px
-                tap_action:
-                  action: call-service
-                  service: lock.unlock
-                  service_data:
-                    entity_id: lock.nello_ecf41382
-                type: "custom:button-card"
-              - entity: lock.home_door
-                icon: "mdi:door"
-                show_state: false
-                name: Open Front Door
-                size: 25%
-                styles:
-                  card:
-                    - font-size: 12px
-                tap_action:
-                  action: call-service
-                  service: lock.open
-                  service_data:
-                    entity_id: lock.home_door
-                type: "custom:button-card"
-          - type: horizontal-stack
-            cards:
-              - entity: input_boolean.presence_someone
-                icon: "mdi:account-multiple"
-                show_state: false
-                name: Guest Mode
-                size: 10%
-                styles:
-                  card:
-                    - font-size: 12px
-                tap_action:
-                  action: call-service
-                  service: input_boolean.toggle
-                  service_data:
-                    entity_id: input_boolean.presence_someone
-                type: "custom:button-card"
-      - entity: weather.weather
-        type: "custom:weather-card"
-      - entity: alarm_control_panel.alexa_guard_a8bd5
-        type: alarm-panel
-      # - entities:
-      #     - entity: sensor.home_sensor_average_temperature
-      #       name: Avg. Temperature
-      #     - entity: sensor.home_sensor_average_light_level
-      #       name: Avg. Light Level
-      #   type: "custom:mini-graph-card"
-      #   icon: "mdi:thermometer"
-      - type: entity-filter
-        entities:
-          - binary_sensor.presence_bruno
-          - binary_sensor.presence_sarah
-          - binary_sensor.presence_someone
-        state_filter:
-          - "on"
-        card:
-          type: glance
-          title: Who's Home
-          show_state: false
-      - entities:
-          - lock.home_door
-          - lock.nello_ecf41382
-        title: Doors
-        show_header_toggle: false
-        type: entities
-      - entity: media_player.spotify
-        type: "custom:mini-media-player"
-      - type: "custom:xiaomi-vacuum-card"
-        entity: vacuum.xiaomi_vacuum_cleaner
-        image: false
-        name: Robot Vacuum
-      - entities:
-          - light.living_room
-          - light.dining_room
-          - light.master_bedroom
-          - light.emmas_bedroom
-          - light.kitchen
-          - light.balcony
-          - light.laundry_room
-          - light.hallway
-          - light.gaming_area
-          - light.bathroom
-          - light.closet
-        title: Lights
-        type: entities
+                      entity: script.house_stop_cleaning
+                      icon: "mdi:cancel"
+                      show_state: false
+                      name: Stop Cleaning
+                      size: 25%
+                      styles:
+                        card:
+                          - font-size: 12px
+                          - color: red
+                        icon:
+                          - color: red
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.house_stop_cleaning
+                      type: "custom:button-card"
+              - type: horizontal-stack
+                cards:
+                  - entity: lock.nello_ecf41382
+                    icon: "mdi:office-building"
+                    show_state: false
+                    name: Open Building Door
+                    size: 25%
+                    styles:
+                      card:
+                        - font-size: 12px
+                    tap_action:
+                      action: call-service
+                      service: lock.unlock
+                      service_data:
+                        entity_id: lock.nello_ecf41382
+                    type: "custom:button-card"
+                  - entity: lock.home_door
+                    icon: "mdi:door"
+                    show_state: false
+                    name: Open Front Door
+                    size: 25%
+                    styles:
+                      card:
+                        - font-size: 12px
+                    tap_action:
+                      action: call-service
+                      service: lock.open
+                      service_data:
+                        entity_id: lock.home_door
+                    type: "custom:button-card"
+              - type: horizontal-stack
+                cards:
+                  - entity: input_boolean.presence_someone
+                    icon: "mdi:account-multiple"
+                    show_state: false
+                    name: Guest Mode
+                    size: 10%
+                    styles:
+                      card:
+                        - font-size: 12px
+                    tap_action:
+                      action: call-service
+                      service: input_boolean.toggle
+                      service_data:
+                        entity_id: input_boolean.presence_someone
+                    type: "custom:button-card"
+          - entity: weather.weather
+            type: "custom:weather-card"
+          - entity: alarm_control_panel.alexa_guard_a8bd5
+            type: alarm-panel
+          # - entities:
+          #     - entity: sensor.home_sensor_average_temperature
+          #       name: Avg. Temperature
+          #     - entity: sensor.home_sensor_average_light_level
+          #       name: Avg. Light Level
+          #   type: "custom:mini-graph-card"
+          #   icon: "mdi:thermometer"
+          - type: entity-filter
+            entities:
+              - binary_sensor.presence_bruno
+              - binary_sensor.presence_sarah
+              - binary_sensor.presence_someone
+            state_filter:
+              - "on"
+            card:
+              type: glance
+              title: Who's Home
+              show_state: false
+          - entities:
+              - lock.home_door
+              - lock.nello_ecf41382
+            title: Doors
+            show_header_toggle: false
+            type: entities
+          - entity: media_player.spotify
+            type: "custom:mini-media-player"
+          - type: "custom:xiaomi-vacuum-card"
+            entity: vacuum.xiaomi_vacuum_cleaner
+            image: false
+            name: Robot Vacuum
+          - entities:
+              - light.living_room
+              - light.dining_room
+              - light.master_bedroom
+              - light.emmas_bedroom
+              - light.kitchen
+              - light.balcony
+              - light.laundry_room
+              - light.hallway
+              - light.gaming_area
+              - light.bathroom
+              - light.closet
+            title: Lights
+            type: entities
 
   - path: living-room
     title: Living Room
+    panel: true
     cards:
-      - type: vertical-stack
+      - type: custom:layout-card
+        layout: horizontal
+        max_columns: 2
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - entity: input_boolean.dnd_living_room
+                    icon: "mdi:weather-night"
+                    show_state: false
+                    name: Do Not Disturb
+                    size: 25%
+                    styles:
+                      card:
+                        - font-size: 12px
+                    tap_action:
+                      action: call-service
+                      service: input_boolean.toggle
+                      service_data:
+                        entity_id: input_boolean.dnd_living_room
+                    type: "custom:button-card"
+                  - type: conditional
+                    conditions:
+                      - entity: vacuum.xiaomi_vacuum_cleaner
+                        state: docked
+                    card:
+                      entity: script.clean_living_room
+                      icon: "mdi:broom"
+                      show_state: false
+                      name: Clean Living Room
+                      size: 25%
+                      styles:
+                        card:
+                          - font-size: 12px
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.clean_living_room
+                      type: "custom:button-card"
+                  - type: conditional
+                    conditions:
+                      - entity: vacuum.xiaomi_vacuum_cleaner
+                        state_not: docked
+                    card:
+                      entity: script.house_stop_cleaning
+                      icon: "mdi:cancel"
+                      show_state: false
+                      name: Stop Cleaning
+                      size: 25%
+                      styles:
+                        card:
+                          - font-size: 12px
+                          - color: red
+                        icon:
+                          - color: red
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.house_stop_cleaning
+                      type: "custom:button-card"
+              - type: horizontal-stack
+                cards:
+                  - entity: sensor.watch_tv
+                    icon: "mdi:television"
+                    show_state: false
+                    name: Watch TV
+                    size: 25%
+                    styles:
+                      card:
+                        - font-size: 12px
+                      icon:
+                        - color: >
+                            [[[
+                              if (entity.state == "True")
+                                return "var(--paper-item-icon-active-color)"
+                              else
+                                return "var(--paper-item-icon-color)"
+                            ]]]
+                    tap_action:
+                      action: call-service
+                      service: remote.turn_on
+                      service_data:
+                        entity_id: remote.harmony_hub
+                        activity: "Watch TV"
+                    type: "custom:button-card"
+                  - entity: sensor.watch_netflix
+                    icon: "mdi:netflix"
+                    show_state: false
+                    name: Watch Netflix
+                    size: 25%
+                    styles:
+                      card:
+                        - font-size: 12px
+                      icon:
+                        - color: >
+                            [[[
+                              if (entity.state == "True")
+                                return "var(--paper-item-icon-active-color)"
+                              else
+                                return "var(--paper-item-icon-color)"
+                            ]]]
+                    tap_action:
+                      action: call-service
+                      service: remote.turn_on
+                      service_data:
+                        entity_id: remote.harmony_hub
+                        activity: "Watch Netflix"
+                    type: "custom:button-card"
+                  - entity: sensor.watch_cartoons
+                    icon: "mdi:apple"
+                    show_state: false
+                    name: Watch Cartoons
+                    size: 25%
+                    styles:
+                      card:
+                        - font-size: 12px
+                      icon:
+                        - color: >
+                            [[[
+                              if (entity.state == "True")
+                                return "var(--paper-item-icon-active-color)"
+                              else
+                                return "var(--paper-item-icon-color)"
+                            ]]]
+                    tap_action:
+                      action: call-service
+                      service: remote.turn_on
+                      service_data:
+                        entity_id: remote.harmony_hub
+                        activity: "Watch Cartoons"
+                    type: "custom:button-card"
+                  - entity: sensor.listen_music
+                    icon: "mdi:music"
+                    show_state: false
+                    name: Listen to Music
+                    size: 25%
+                    styles:
+                      card:
+                        - font-size: 12px
+                      icon:
+                        - color: >
+                            [[[
+                              if (entity.state == "True")
+                                return "var(--paper-item-icon-active-color)"
+                              else
+                                return "var(--paper-item-icon-color)"
+                            ]]]
+                    tap_action:
+                      action: call-service
+                      service: remote.turn_on
+                      service_data:
+                        entity_id: remote.harmony_hub
+                        activity: "Listen to Music"
+                    type: "custom:button-card"
+              - type: horizontal-stack
+                cards:
+                  - entity: binary_sensor.presence_living_room
+                    name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
+                    label: "[[[return entity.attributes.reason]]]"
+                    show_label: true
+                    size: 10%
+                    styles:
+                      card:
+                        - font-size: 12px
+                      label:
+                        - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
+                        - font-size: 10px
+                    tap_action:
+                      action: call-service
+                      service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                      service_data:
+                        entity_id: group.presence_living_room
+                    type: "custom:button-card"
+          - entity: light.living_room
+            name: All Lights
+            theme: Backend-selected
+            type: light
+          - entities:
+              - entity: light.living_room_ceiling_sofa
+              - entity: light.living_room_ceiling_desk
+              - entity: light.living_room_standing_lamp_desk
+              - entity: group.light_tv
+              - entity: switch.christmas_tree
+                icon: "mdi:pine-tree"
+            show_header_toggle: false
+            title: Lights
+            type: entity-filter
+            state_filter:
+              - operator: "!="
+                value: "unavailable"
+          - entities:
+              - entity: cover.living_room_blinds
+                name: Whole Room
+              - entity: cover.living_room_desk_blind
+                name: Desk
+            show_header_toggle: false
+            title: Blinds
+            type: entities
+          # - entities:
+          #     - entity: sensor.zha_living_room_sensor_temperature
+          #       name: Temperature
+          #     - entity: sensor.zha_living_room_sensor_light_level
+          #       name: Light Level
+          #   type: "custom:mini-graph-card"
+          - entity: media_player.spotify
+            type: "custom:mini-media-player"
+  - path: dining-room
+    title: Dining Room
+    panel: true
+    cards:
+      - type: custom:layout-card
+        layout: horizontal
+        max_columns: 2
         cards:
           - type: horizontal-stack
             cards:
-              - entity: input_boolean.dnd_living_room
+              - entity: input_boolean.dnd_dining_room
                 icon: "mdi:weather-night"
                 show_state: false
                 name: Do Not Disturb
@@ -245,17 +472,17 @@ views:
                   action: call-service
                   service: input_boolean.toggle
                   service_data:
-                    entity_id: input_boolean.dnd_living_room
+                    entity_id: input_boolean.dnd_dining_room
                 type: "custom:button-card"
               - type: conditional
                 conditions:
                   - entity: vacuum.xiaomi_vacuum_cleaner
                     state: docked
                 card:
-                  entity: script.clean_living_room
+                  entity: script.clean_dining_room
                   icon: "mdi:broom"
                   show_state: false
-                  name: Clean Living Room
+                  name: Clean Dining Room
                   size: 25%
                   styles:
                     card:
@@ -264,7 +491,7 @@ views:
                     action: call-service
                     service: script.turn_on
                     service_data:
-                      entity_id: script.clean_living_room
+                      entity_id: script.clean_dining_room
                   type: "custom:button-card"
               - type: conditional
                 conditions:
@@ -290,101 +517,7 @@ views:
                   type: "custom:button-card"
           - type: horizontal-stack
             cards:
-              - entity: sensor.watch_tv
-                icon: "mdi:television"
-                show_state: false
-                name: Watch TV
-                size: 25%
-                styles:
-                  card:
-                    - font-size: 12px
-                  icon:
-                    - color: >
-                        [[[
-                          if (entity.state == "True")
-                            return "var(--paper-item-icon-active-color)"
-                          else
-                            return "var(--paper-item-icon-color)"
-                        ]]]
-                tap_action:
-                  action: call-service
-                  service: remote.turn_on
-                  service_data:
-                    entity_id: remote.harmony_hub
-                    activity: "Watch TV"
-                type: "custom:button-card"
-              - entity: sensor.watch_netflix
-                icon: "mdi:netflix"
-                show_state: false
-                name: Watch Netflix
-                size: 25%
-                styles:
-                  card:
-                    - font-size: 12px
-                  icon:
-                    - color: >
-                        [[[
-                          if (entity.state == "True")
-                            return "var(--paper-item-icon-active-color)"
-                          else
-                            return "var(--paper-item-icon-color)"
-                        ]]]
-                tap_action:
-                  action: call-service
-                  service: remote.turn_on
-                  service_data:
-                    entity_id: remote.harmony_hub
-                    activity: "Watch Netflix"
-                type: "custom:button-card"
-              - entity: sensor.watch_cartoons
-                icon: "mdi:apple"
-                show_state: false
-                name: Watch Cartoons
-                size: 25%
-                styles:
-                  card:
-                    - font-size: 12px
-                  icon:
-                    - color: >
-                        [[[
-                          if (entity.state == "True")
-                            return "var(--paper-item-icon-active-color)"
-                          else
-                            return "var(--paper-item-icon-color)"
-                        ]]]
-                tap_action:
-                  action: call-service
-                  service: remote.turn_on
-                  service_data:
-                    entity_id: remote.harmony_hub
-                    activity: "Watch Cartoons"
-                type: "custom:button-card"
-              - entity: sensor.listen_music
-                icon: "mdi:music"
-                show_state: false
-                name: Listen to Music
-                size: 25%
-                styles:
-                  card:
-                    - font-size: 12px
-                  icon:
-                    - color: >
-                        [[[
-                          if (entity.state == "True")
-                            return "var(--paper-item-icon-active-color)"
-                          else
-                            return "var(--paper-item-icon-color)"
-                        ]]]
-                tap_action:
-                  action: call-service
-                  service: remote.turn_on
-                  service_data:
-                    entity_id: remote.harmony_hub
-                    activity: "Listen to Music"
-                type: "custom:button-card"
-          - type: horizontal-stack
-            cards:
-              - entity: binary_sensor.presence_living_room
+              - entity: binary_sensor.presence_dining_room
                 name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
                 label: "[[[return entity.attributes.reason]]]"
                 show_label: true
@@ -399,539 +532,488 @@ views:
                   action: call-service
                   service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                   service_data:
-                    entity_id: group.presence_living_room
+                    entity_id: group.presence_dining_room
                 type: "custom:button-card"
-      - entity: light.living_room
-        name: All Lights
-        theme: Backend-selected
-        type: light
-      - entities:
-          - entity: light.living_room_ceiling_sofa
-          - entity: light.living_room_ceiling_desk
-          - entity: light.living_room_standing_lamp_desk
-          - entity: group.light_tv
-          - entity: switch.christmas_tree
-            icon: "mdi:pine-tree"
-        show_header_toggle: false
-        title: Lights
-        type: entity-filter
-        state_filter:
-          - operator: "!="
-            value: "unavailable"
-      - entities:
-          - entity: cover.living_room_blinds
-            name: Whole Room
-          - entity: cover.living_room_desk_blind
-            name: Desk
-        show_header_toggle: false
-        title: Blinds
-        type: entities
-      # - entities:
-      #     - entity: sensor.zha_living_room_sensor_temperature
-      #       name: Temperature
-      #     - entity: sensor.zha_living_room_sensor_light_level
-      #       name: Light Level
-      #   type: "custom:mini-graph-card"
-      - entity: media_player.spotify
-        type: "custom:mini-media-player"
-  - path: dining-room
-    title: Dining Room
-    cards:
-      - type: horizontal-stack
-        cards:
-          - entity: input_boolean.dnd_dining_room
-            icon: "mdi:weather-night"
-            show_state: false
-            name: Do Not Disturb
-            size: 25%
-            styles:
-              card:
-                - font-size: 12px
-            tap_action:
-              action: call-service
-              service: input_boolean.toggle
-              service_data:
-                entity_id: input_boolean.dnd_dining_room
-            type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: vacuum.xiaomi_vacuum_cleaner
-                state: docked
-            card:
-              entity: script.clean_dining_room
-              icon: "mdi:broom"
-              show_state: false
-              name: Clean Dining Room
-              size: 25%
-              styles:
-                card:
-                  - font-size: 12px
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.clean_dining_room
-              type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: vacuum.xiaomi_vacuum_cleaner
-                state_not: docked
-            card:
-              entity: script.house_stop_cleaning
-              icon: "mdi:cancel"
-              show_state: false
-              name: Stop Cleaning
-              size: 25%
-              styles:
-                card:
-                  - font-size: 12px
-                  - color: red
-                icon:
-                  - color: red
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.house_stop_cleaning
-              type: "custom:button-card"
-      - type: horizontal-stack
-        cards:
-          - entity: binary_sensor.presence_dining_room
-            name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
-            label: "[[[return entity.attributes.reason]]]"
-            show_label: true
-            size: 10%
-            styles:
-              card:
-                - font-size: 12px
-              label:
-                - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
-                - font-size: 10px
-            tap_action:
-              action: call-service
-              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
-              service_data:
-                entity_id: group.presence_dining_room
-            type: "custom:button-card"
-      - entity: light.dining_room
-        name: All Lights
-        theme: Backend-selected
-        type: light
-      - entities:
-          - entity: light.dining_room_ceiling_kitchen
-          - entity: light.dining_room_ceiling_table
-          - entity: switch.dining_room_cabinet
-        show_header_toggle: false
-        title: Lights
-        type: entities
-      # - entities:
-      #     - entity: sensor.zha_dining_room_sensor_temperature
-      #       name: Temperature
-      #     - entity: sensor.zha_dining_room_sensor_light_level
-      #       name: Light Level
-      #   type: "custom:mini-graph-card"
-      - entity: media_player.spotify
-        type: "custom:mini-media-player"
+          - entity: light.dining_room
+            name: All Lights
+            theme: Backend-selected
+            type: light
+          - entities:
+              - entity: light.dining_room_ceiling_kitchen
+              - entity: light.dining_room_ceiling_table
+              - entity: switch.dining_room_cabinet
+            show_header_toggle: false
+            title: Lights
+            type: entities
+          # - entities:
+          #     - entity: sensor.zha_dining_room_sensor_temperature
+          #       name: Temperature
+          #     - entity: sensor.zha_dining_room_sensor_light_level
+          #       name: Light Level
+          #   type: "custom:mini-graph-card"
+          - entity: media_player.spotify
+            type: "custom:mini-media-player"
   - path: master-bedroom
     title: Master Bedroom
+    panel: true
     cards:
-      - type: horizontal-stack
+      - type: custom:layout-card
+        layout: horizontal
+        max_columns: 2
         cards:
-          - entity: input_boolean.dnd_master_bedroom
-            icon: "mdi:weather-night"
-            show_state: false
-            name: Do Not Disturb
-            size: 25%
-            styles:
-              card:
-                - font-size: 12px
-            tap_action:
-              action: call-service
-              service: input_boolean.toggle
-              service_data:
-                entity_id: input_boolean.dnd_master_bedroom
-            type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: vacuum.xiaomi_vacuum_cleaner
-                state: docked
-            card:
-              entity: script.clean_master_bedroom
-              icon: "mdi:broom"
-              show_state: false
-              name: Clean Master Bedroom
-              size: 25%
-              styles:
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.dnd_master_bedroom
+                icon: "mdi:weather-night"
+                show_state: false
+                name: Do Not Disturb
+                size: 25%
+                styles:
+                  card:
+                    - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.dnd_master_bedroom
+                type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    state: docked
                 card:
-                  - font-size: 12px
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.clean_master_bedroom
-              type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: vacuum.xiaomi_vacuum_cleaner
-                state_not: docked
-            card:
-              entity: script.house_stop_cleaning
-              icon: "mdi:cancel"
-              show_state: false
-              name: Stop Cleaning
-              size: 25%
-              styles:
+                  entity: script.clean_master_bedroom
+                  icon: "mdi:broom"
+                  show_state: false
+                  name: Clean Master Bedroom
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.clean_master_bedroom
+                  type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    state_not: docked
                 card:
-                  - font-size: 12px
-                  - color: red
-                icon:
-                  - color: red
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.house_stop_cleaning
-              type: "custom:button-card"
-      - type: horizontal-stack
-        cards:
-          - entity: binary_sensor.presence_master_bedroom
-            name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
-            label: "[[[return entity.attributes.reason]]]"
-            show_label: true
-            size: 10%
-            styles:
-              card:
-                - font-size: 12px
-              label:
-                - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
-                - font-size: 10px
-            tap_action:
-              action: call-service
-              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
-              service_data:
-                entity_id: group.presence_master_bedroom
-            type: "custom:button-card"
-      - entity: light.master_bedroom
-        name: All Lights
-        theme: Backend-selected
-        type: light
-      - entities:
-          - entity: light.master_bedroom_ceiling
-          - entity: light.master_bedroom_lightstrip_left
-          - entity: light.master_bedroom_lightstrip_right
-          - entity: light.master_bedroom_bedside_lamp_1
-          - entity: light.master_bedroom_bedside_lamp_2
-        show_header_toggle: false
-        title: Lights
-        type: entities
-      - entities:
-          - entity: cover.master_bedroom_blind
-        show_header_toggle: false
-        title: Blinds
-        type: entities
-      # - entities:
-      #     - entity: sensor.zha_master_bedroom_sensor_temperature
-      #       name: Temperature
-      #     - entity: sensor.zha_master_bedroom_sensor_light_level
-      #       name: Light Level
-      #   type: "custom:mini-graph-card"
-      - entity: media_player.spotify
-        type: "custom:mini-media-player"
+                  entity: script.house_stop_cleaning
+                  icon: "mdi:cancel"
+                  show_state: false
+                  name: Stop Cleaning
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                      - color: red
+                    icon:
+                      - color: red
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.house_stop_cleaning
+                  type: "custom:button-card"
+          - type: horizontal-stack
+            cards:
+              - entity: binary_sensor.presence_master_bedroom
+                name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
+                label: "[[[return entity.attributes.reason]]]"
+                show_label: true
+                size: 10%
+                styles:
+                  card:
+                    - font-size: 12px
+                  label:
+                    - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
+                    - font-size: 10px
+                tap_action:
+                  action: call-service
+                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service_data:
+                    entity_id: group.presence_master_bedroom
+                type: "custom:button-card"
+          - entity: light.master_bedroom
+            name: All Lights
+            theme: Backend-selected
+            type: light
+          - entities:
+              - entity: light.master_bedroom_ceiling
+              - entity: light.master_bedroom_lightstrip_left
+              - entity: light.master_bedroom_lightstrip_right
+              - entity: light.master_bedroom_bedside_lamp_1
+              - entity: light.master_bedroom_bedside_lamp_2
+            show_header_toggle: false
+            title: Lights
+            type: entities
+          - entities:
+              - entity: cover.master_bedroom_blind
+            show_header_toggle: false
+            title: Blinds
+            type: entities
+          # - entities:
+          #     - entity: sensor.zha_master_bedroom_sensor_temperature
+          #       name: Temperature
+          #     - entity: sensor.zha_master_bedroom_sensor_light_level
+          #       name: Light Level
+          #   type: "custom:mini-graph-card"
+          - entity: media_player.spotify
+            type: "custom:mini-media-player"
 
   - path: emmas-bedroom
     title: Emma's Bedroom
+    panel: true
     cards:
-      - type: horizontal-stack
+      - type: custom:layout-card
+        layout: horizontal
+        max_columns: 2
         cards:
-          - entity: input_boolean.dnd_emmas_bedroom
-            icon: "mdi:weather-night"
-            show_state: false
-            name: Do Not Disturb
-            size: 25%
-            styles:
-              card:
-                - font-size: 12px
-            tap_action:
-              action: call-service
-              service: input_boolean.toggle
-              service_data:
-                entity_id: input_boolean.dnd_emmas_bedroom
-            type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: vacuum.xiaomi_vacuum_cleaner
-                state: docked
-            card:
-              entity: script.clean_emmas_bedroom
-              icon: "mdi:broom"
-              show_state: false
-              name: Clean Emma's Bedroom
-              size: 25%
-              styles:
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.dnd_emmas_bedroom
+                icon: "mdi:weather-night"
+                show_state: false
+                name: Do Not Disturb
+                size: 25%
+                styles:
+                  card:
+                    - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.dnd_emmas_bedroom
+                type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    state: docked
                 card:
-                  - font-size: 12px
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.clean_emmas_bedroom
-              type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: vacuum.xiaomi_vacuum_cleaner
-                state_not: docked
-            card:
-              entity: script.house_stop_cleaning
-              icon: "mdi:cancel"
-              show_state: false
-              name: Stop Cleaning
-              size: 25%
-              styles:
+                  entity: script.clean_emmas_bedroom
+                  icon: "mdi:broom"
+                  show_state: false
+                  name: Clean Emma's Bedroom
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.clean_emmas_bedroom
+                  type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    state_not: docked
                 card:
-                  - font-size: 12px
-                  - color: red
-                icon:
-                  - color: red
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.house_stop_cleaning
-              type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: input_boolean.sleeping_emmas_bedroom
-                state: "off"
-            card:
-              entity: script.emma_bedtime
-              icon: "mdi:sleep"
-              show_state: false
-              name: Emma's Bedtime
-              size: 25%
-              styles:
+                  entity: script.house_stop_cleaning
+                  icon: "mdi:cancel"
+                  show_state: false
+                  name: Stop Cleaning
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                      - color: red
+                    icon:
+                      - color: red
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.house_stop_cleaning
+                  type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.sleeping_emmas_bedroom
+                    state: "off"
                 card:
-                  - font-size: 12px
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.emma_bedtime
-              type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: input_boolean.sleeping_emmas_bedroom
-                state: "on"
-            card:
-              entity: input_boolean.sleeping_emmas_bedroom
-              icon: "mdi:sleep-off"
-              show_state: false
-              name: Wake Up Emma
-              size: 25%
-              styles:
+                  entity: script.emma_bedtime
+                  icon: "mdi:sleep"
+                  show_state: false
+                  name: Emma's Bedtime
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.emma_bedtime
+                  type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.sleeping_emmas_bedroom
+                    state: "on"
                 card:
-                  - font-size: 12px
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.emma_wake_up
-              type: "custom:button-card"
-      - type: horizontal-stack
-        cards:
-          - entity: binary_sensor.presence_emmas_bedroom
-            name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
-            label: "[[[return entity.attributes.reason]]]"
-            show_label: true
-            size: 10%
-            styles:
-              card:
-                - font-size: 12px
-              label:
-                - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
-                - font-size: 10px
-            tap_action:
-              action: call-service
-              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
-              service_data:
-                entity_id: group.presence_emmas_bedroom
-            type: "custom:button-card"
-      - entity: light.emmas_bedroom
-        name: All Lights
-        type: light
-      - entities:
-          - entity: light.emmas_bedroom_ceiling
-          - entity: light.emmas_bedroom_nightlight
-          - entity: switch.emmas_bedroom_string_lights
-        title: Lights
-        type: entities
-      # - entities:
-      #     - entity: sensor.zha_emmas_bedroom_sensor_temperature
-      #       name: Temperature
-      #     - entity: sensor.zha_emmas_bedroom_sensor_light_level
-      #       name: Light Level
-      #   type: "custom:mini-graph-card"
-      - entity: media_player.spotify
-        type: "custom:mini-media-player"
+                  entity: input_boolean.sleeping_emmas_bedroom
+                  icon: "mdi:sleep-off"
+                  show_state: false
+                  name: Wake Up Emma
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.emma_wake_up
+                  type: "custom:button-card"
+          - type: horizontal-stack
+            cards:
+              - entity: binary_sensor.presence_emmas_bedroom
+                name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
+                label: "[[[return entity.attributes.reason]]]"
+                show_label: true
+                size: 10%
+                styles:
+                  card:
+                    - font-size: 12px
+                  label:
+                    - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
+                    - font-size: 10px
+                tap_action:
+                  action: call-service
+                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service_data:
+                    entity_id: group.presence_emmas_bedroom
+                type: "custom:button-card"
+          - entity: light.emmas_bedroom
+            name: All Lights
+            type: light
+          - entities:
+              - entity: light.emmas_bedroom_ceiling
+              - entity: light.emmas_bedroom_nightlight
+              - entity: switch.emmas_bedroom_string_lights
+            title: Lights
+            type: entities
+          # - entities:
+          #     - entity: sensor.zha_emmas_bedroom_sensor_temperature
+          #       name: Temperature
+          #     - entity: sensor.zha_emmas_bedroom_sensor_light_level
+          #       name: Light Level
+          #   type: "custom:mini-graph-card"
+          - entity: media_player.spotify
+            type: "custom:mini-media-player"
   - path: kitchen
     title: Kitchen
+    panel: true
     cards:
-      - type: horizontal-stack
+      - type: custom:layout-card
+        layout: horizontal
+        max_columns: 2
         cards:
-          - entity: input_boolean.dnd_kitchen
-            icon: "mdi:weather-night"
-            show_state: false
-            name: Do Not Disturb
-            size: 25%
-            styles:
-              card:
-                - font-size: 12px
-            tap_action:
-              action: call-service
-              service: input_boolean.toggle
-              service_data:
-                entity_id: input_boolean.dnd_kitchen
-            type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: vacuum.xiaomi_vacuum_cleaner
-                state: docked
-            card:
-              entity: script.clean_kitchen
-              icon: "mdi:broom"
-              show_state: false
-              name: Clean Kitchen
-              size: 25%
-              styles:
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.dnd_kitchen
+                icon: "mdi:weather-night"
+                show_state: false
+                name: Do Not Disturb
+                size: 25%
+                styles:
+                  card:
+                    - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.dnd_kitchen
+                type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    state: docked
                 card:
-                  - font-size: 12px
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.clean_kitchen
-              type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: vacuum.xiaomi_vacuum_cleaner
-                state_not: docked
-            card:
-              entity: script.house_stop_cleaning
-              icon: "mdi:cancel"
-              show_state: false
-              name: Stop Cleaning
-              size: 25%
-              styles:
+                  entity: script.clean_kitchen
+                  icon: "mdi:broom"
+                  show_state: false
+                  name: Clean Kitchen
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.clean_kitchen
+                  type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    state_not: docked
                 card:
-                  - font-size: 12px
-                  - color: red
-                icon:
-                  - color: red
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.house_stop_cleaning
-              type: "custom:button-card"
-      - type: horizontal-stack
-        cards:
-          - entity: binary_sensor.presence_kitchen
-            name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
-            label: "[[[return entity.attributes.reason]]]"
-            show_label: true
-            size: 10%
-            styles:
-              card:
-                - font-size: 12px
-              label:
-                - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
-                - font-size: 10px
-            tap_action:
-              action: call-service
-              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
-              service_data:
-                entity_id: group.presence_kitchen
-            type: "custom:button-card"
-      - entity: light.kitchen
-        name: All Lights
-        type: light
-      - entities:
-          - entity: light.kitchen_counter
-          - entity: light.hue_ambiance_spot_1
-          - entity: light.hue_ambiance_spot_2
-        show_header_toggle: false
-        title: Lights
-        type: entities
-      # - entities:
-      #     - entity: sensor.zha_kitchen_sensor_temperature
-      #       name: Temperature
-      #     - entity: sensor.zha_kitchen_sensor_light_level
-      #       name: Light Level
-      #   type: "custom:mini-graph-card"
-      - entity: media_player.spotify
-        type: "custom:mini-media-player"
+                  entity: script.house_stop_cleaning
+                  icon: "mdi:cancel"
+                  show_state: false
+                  name: Stop Cleaning
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                      - color: red
+                    icon:
+                      - color: red
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.house_stop_cleaning
+                  type: "custom:button-card"
+          - type: horizontal-stack
+            cards:
+              - entity: binary_sensor.presence_kitchen
+                name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
+                label: "[[[return entity.attributes.reason]]]"
+                show_label: true
+                size: 10%
+                styles:
+                  card:
+                    - font-size: 12px
+                  label:
+                    - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
+                    - font-size: 10px
+                tap_action:
+                  action: call-service
+                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service_data:
+                    entity_id: group.presence_kitchen
+                type: "custom:button-card"
+          - entity: light.kitchen
+            name: All Lights
+            type: light
+          - entities:
+              - entity: light.kitchen_counter
+              - entity: light.hue_ambiance_spot_1
+              - entity: light.hue_ambiance_spot_2
+            show_header_toggle: false
+            title: Lights
+            type: entities
+          # - entities:
+          #     - entity: sensor.zha_kitchen_sensor_temperature
+          #       name: Temperature
+          #     - entity: sensor.zha_kitchen_sensor_light_level
+          #       name: Light Level
+          #   type: "custom:mini-graph-card"
+          - entity: media_player.spotify
+            type: "custom:mini-media-player"
   - path: hallway
     title: Hallway
+    panel: true
     cards:
-      - type: horizontal-stack
+      - type: custom:layout-card
+        layout: horizontal
+        max_columns: 2
         cards:
-          - entity: input_boolean.dnd_hallway
-            icon: "mdi:weather-night"
-            show_state: false
-            name: Do Not Disturb
-            size: 25%
-            styles:
-              card:
-                - font-size: 12px
-            tap_action:
-              action: call-service
-              service: input_boolean.toggle
-              service_data:
-                entity_id: input_boolean.dnd_hallway
-            type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: vacuum.xiaomi_vacuum_cleaner
-                state: docked
-            card:
-              entity: script.clean_hallway
-              icon: "mdi:broom"
-              show_state: false
-              name: Clean Hallway
-              size: 25%
-              styles:
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.dnd_hallway
+                icon: "mdi:weather-night"
+                show_state: false
+                name: Do Not Disturb
+                size: 25%
+                styles:
+                  card:
+                    - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.dnd_hallway
+                type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    state: docked
                 card:
-                  - font-size: 12px
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.clean_hallway
-              type: "custom:button-card"
-          - type: conditional
-            conditions:
-              - entity: vacuum.xiaomi_vacuum_cleaner
-                state_not: docked
-            card:
-              entity: script.house_stop_cleaning
-              icon: "mdi:cancel"
-              show_state: false
-              name: Stop Cleaning
-              size: 25%
-              styles:
+                  entity: script.clean_hallway
+                  icon: "mdi:broom"
+                  show_state: false
+                  name: Clean Hallway
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.clean_hallway
+                  type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    state_not: docked
                 card:
-                  - font-size: 12px
-                  - color: red
-                icon:
-                  - color: red
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.house_stop_cleaning
-              type: "custom:button-card"
-      - type: horizontal-stack
+                  entity: script.house_stop_cleaning
+                  icon: "mdi:cancel"
+                  show_state: false
+                  name: Stop Cleaning
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                      - color: red
+                    icon:
+                      - color: red
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.house_stop_cleaning
+                  type: "custom:button-card"
+          - type: horizontal-stack
+            cards:
+              - entity: binary_sensor.presence_hallway
+                name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
+                label: "[[[return entity.attributes.reason]]]"
+                show_label: true
+                size: 10%
+                styles:
+                  card:
+                    - font-size: 12px
+                  label:
+                    - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
+                    - font-size: 10px
+                tap_action:
+                  action: call-service
+                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service_data:
+                    entity_id: group.presence_hallway
+                type: "custom:button-card"
+          - entity: light.hallway
+            name: All Lights
+            theme: Backend-selected
+            type: light
+          - entities:
+              - entity: light.hallway_ceiling_bathroom
+              - entity: light.hallway_ceiling_front_door
+            show_header_toggle: false
+            title: Lights
+            type: entities
+          # - entities:
+          #     - entity: sensor.hallway_sensor_average_temperature
+          #       name: Temperature
+          #     - entity: sensor.hallway_sensor_average_light_level
+          #       name: Light Level
+          #   type: "custom:mini-graph-card"
+  - path: bathroom
+    title: Bathroom
+    panel: true
+    cards:
+      - type: custom:layout-card
+        layout: horizontal
+        max_columns: 2
         cards:
-          - entity: binary_sensor.presence_hallway
+          - entity: binary_sensor.presence_bathroom
             name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
             label: "[[[return entity.attributes.reason]]]"
             show_label: true
@@ -946,48 +1028,12 @@ views:
               action: call-service
               service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
               service_data:
-                entity_id: group.presence_hallway
+                entity_id: group.presence_bathroom
             type: "custom:button-card"
-      - entity: light.hallway
-        name: All Lights
-        theme: Backend-selected
-        type: light
-      - entities:
-          - entity: light.hallway_ceiling_bathroom
-          - entity: light.hallway_ceiling_front_door
-        show_header_toggle: false
-        title: Lights
-        type: entities
-      # - entities:
-      #     - entity: sensor.hallway_sensor_average_temperature
-      #       name: Temperature
-      #     - entity: sensor.hallway_sensor_average_light_level
-      #       name: Light Level
-      #   type: "custom:mini-graph-card"
-  - path: bathroom
-    title: Bathroom
-    cards:
-      - entity: binary_sensor.presence_bathroom
-        name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
-        label: "[[[return entity.attributes.reason]]]"
-        show_label: true
-        size: 10%
-        styles:
-          card:
-            - font-size: 12px
-          label:
-            - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
-            - font-size: 10px
-        tap_action:
-          action: call-service
-          service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
-          service_data:
-            entity_id: group.presence_bathroom
-        type: "custom:button-card"
-      - entity: light.bathroom
-        name: Light
-        theme: Backend-selected
-        type: light
+          - entity: light.bathroom
+            name: Light
+            theme: Backend-selected
+            type: light
   - path: balcony
     title: Balcony
     cards:
@@ -1024,49 +1070,59 @@ views:
             type: entities
   - path: laundry-room
     title: Laundry Room
+    panel: true
     cards:
-      - entity: binary_sensor.presence_laundry_room
-        name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
-        label: "[[[return entity.attributes.reason]]]"
-        show_label: true
-        size: 10%
-        styles:
-          card:
-            - font-size: 12px
-          label:
-            - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
-            - font-size: 10px
-        tap_action:
-          action: call-service
-          service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
-          service_data:
-            entity_id: group.presence_laundry_room
-        type: "custom:button-card"
-      - entity: light.laundry_room
-        name: Light
-        theme: Backend-selected
-        type: light
+      - type: custom:layout-card
+        layout: horizontal
+        max_columns: 2
+        cards:
+          - entity: binary_sensor.presence_laundry_room
+            name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
+            label: "[[[return entity.attributes.reason]]]"
+            show_label: true
+            size: 10%
+            styles:
+              card:
+                - font-size: 12px
+              label:
+                - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
+                - font-size: 10px
+            tap_action:
+              action: call-service
+              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+              service_data:
+                entity_id: group.presence_laundry_room
+            type: "custom:button-card"
+          - entity: light.laundry_room
+            name: Light
+            theme: Backend-selected
+            type: light
   - path: closet
     title: Closet
+    panel: true
     cards:
-      - entity: binary_sensor.presence_closet
-        name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
-        label: "[[[return entity.attributes.reason]]]"
-        show_label: true
-        size: 10%
-        styles:
-          card:
-            - font-size: 12px
-          label:
-            - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
-            - font-size: 10px
-        tap_action:
-          action: call-service
-          service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
-          service_data:
-            entity_id: group.presence_closet
-        type: "custom:button-card"
-      - entity: light.closet
-        name: Light
-        theme: Backend-selected
-        type: light
+      - type: custom:layout-card
+        layout: horizontal
+        max_columns: 2
+        cards:
+          - entity: binary_sensor.presence_closet
+            name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
+            label: "[[[return entity.attributes.reason]]]"
+            show_label: true
+            size: 10%
+            styles:
+              card:
+                - font-size: 12px
+              label:
+                - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
+                - font-size: 10px
+            tap_action:
+              action: call-service
+              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+              service_data:
+                entity_id: group.presence_closet
+            type: "custom:button-card"
+          - entity: light.closet
+            name: Light
+            theme: Backend-selected
+            type: light
