@@ -8,8 +8,7 @@ TOKEN = "token"
 SIDEPANEL_TITLE = "sidepanel_title"
 SIDEPANEL_ICON = "sidepanel_icon"
 APPDAEMON = "appdaemon"
-PYTHON_SCRIPT = "python_script"
-THEME = "theme"
+NETDAEMON = "netdaemon"
 
 # Options:
 COUNTRY = "country"
@@ -23,29 +22,43 @@ def hacs_base_config_schema(config: dict = {}) -> dict:
     if not config:
         config = {
             TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            SIDEPANEL_TITLE: "Community",
-            SIDEPANEL_ICON: "mdi:alpha-c-box",
-            APPDAEMON: False,
-            PYTHON_SCRIPT: False,
-            THEME: False,
         }
     return {
         vol.Required(TOKEN, default=config.get(TOKEN)): str,
-        vol.Optional(SIDEPANEL_TITLE, default=config.get(SIDEPANEL_TITLE)): str,
-        vol.Optional(SIDEPANEL_ICON, default=config.get(SIDEPANEL_ICON)): str,
-        vol.Optional(APPDAEMON, default=config.get(APPDAEMON)): bool,
-        vol.Optional(PYTHON_SCRIPT, default=config.get(PYTHON_SCRIPT)): bool,
-        vol.Optional(THEME, default=config.get(THEME)): bool,
     }
 
 
 def hacs_config_option_schema(options: dict = {}) -> dict:
     """Return a shcema for HACS configuration options."""
     if not options:
-        options = {COUNTRY: "ALL", DEBUG: False, RELEASE_LIMIT: 5, EXPERIMENTAL: False}
+        options = {
+            APPDAEMON: False,
+            COUNTRY: "ALL",
+            DEBUG: False,
+            EXPERIMENTAL: False,
+            NETDAEMON: False,
+            RELEASE_LIMIT: 5,
+            SIDEPANEL_ICON: "hacs:hacs",
+            SIDEPANEL_TITLE: "HACS",
+        }
     return {
-        vol.Optional("country", default=options.get(COUNTRY)): vol.In(LOCALE),
-        vol.Optional(DEBUG, default=options.get(DEBUG)): bool,
+        vol.Optional(SIDEPANEL_TITLE, default=options.get(SIDEPANEL_TITLE)): str,
+        vol.Optional(SIDEPANEL_ICON, default=options.get(SIDEPANEL_ICON)): str,
         vol.Optional(RELEASE_LIMIT, default=options.get(RELEASE_LIMIT)): int,
+        vol.Optional(COUNTRY, default=options.get(COUNTRY)): vol.In(LOCALE),
+        vol.Optional(APPDAEMON, default=options.get(APPDAEMON)): bool,
+        vol.Optional(NETDAEMON, default=options.get(NETDAEMON)): bool,
+        vol.Optional(DEBUG, default=options.get(DEBUG)): bool,
         vol.Optional(EXPERIMENTAL, default=options.get(EXPERIMENTAL)): bool,
     }
+
+
+def hacs_config_combined() -> dict:
+    """Combine the configuration options."""
+    base = hacs_base_config_schema()
+    options = hacs_config_option_schema()
+
+    for option in options:
+        base[option] = options[option]
+
+    return base
