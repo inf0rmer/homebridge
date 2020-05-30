@@ -13,6 +13,10 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !env_var TIMEZONE
 
+  external_url: "https://lgolhkhmo12h3lgg6cbbnsk0fi929n4i.ui.nabu.casa"
+
+  internal_url: "https://assistant.at.home"
+
   auth_providers:
     - type: homeassistant
 

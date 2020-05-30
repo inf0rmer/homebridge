@@ -218,7 +218,7 @@ views:
             title: Doors
             show_header_toggle: false
             type: entities
-          - entity: media_player.spotify
+          - entity: media_player.spotify_bruno_abrantes
             type: "custom:mini-media-player"
           - type: "custom:xiaomi-vacuum-card"
             entity: vacuum.xiaomi_vacuum_cleaner
@@ -450,7 +450,7 @@ views:
               - entity: sensor.zha_living_room_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
-          - entity: media_player.spotify
+          - entity: media_player.spotify_bruno_abrantes
             type: "custom:mini-media-player"
   - path: dining-room
     title: Dining Room
@@ -553,7 +553,7 @@ views:
               - entity: sensor.zha_dining_room_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
-          - entity: media_player.spotify
+          - entity: media_player.spotify_bruno_abrantes
             type: "custom:mini-media-player"
   - path: master-bedroom
     title: Master Bedroom
@@ -663,7 +663,7 @@ views:
               - entity: sensor.zha_master_bedroom_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
-          - entity: media_player.spotify
+          - entity: media_player.spotify_bruno_abrantes
             type: "custom:mini-media-player"
 
   - path: emmas-bedroom
@@ -803,7 +803,7 @@ views:
               - entity: sensor.zha_emmas_bedroom_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
-          - entity: media_player.spotify
+          - entity: media_player.spotify_bruno_abrantes
             type: "custom:mini-media-player"
   - path: kitchen
     title: Kitchen
@@ -905,7 +905,7 @@ views:
               - entity: sensor.zha_kitchen_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
-          - entity: media_player.spotify
+          - entity: media_player.spotify_bruno_abrantes
             type: "custom:mini-media-player"
   - path: hallway
     title: Hallway
