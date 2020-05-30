@@ -23,6 +23,9 @@ good_night:
         entity_id: group.presence_other_rooms
       service: homeassistant.turn_off
     - data:
+        entity_id: group.presence_living_room
+      service: homeassistant.turn_off
+    - data:
         entity_id: group.all_lights
       service: homeassistant.turn_off
     - data:
@@ -86,9 +89,6 @@ house_wake_up:
     - data:
         entity_id: group.presence_bedrooms
       service: homeassistant.turn_off
-    - data:
-        entity_id: group.all_covers
-      service: cover.open_cover
 
 house_nobody_home:
   alias: "[House] Nobody Home"
