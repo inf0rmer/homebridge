@@ -61,7 +61,7 @@
 - id: house_sarah_arrive_home
   alias: "[House] Sarah comes home"
   trigger:
-    - entity_id: device_tracker.sarah_pimentels_iphone
+    - entity_id: person.sarah_abrantes
       from: "not_home"
       platform: state
       to: "home"
@@ -73,7 +73,7 @@
 - id: house_sarah_leave_home
   alias: "[House] Sarah leaves home"
   trigger:
-    - entity_id: device_tracker.sarah_pimentels_iphone
+    - entity_id: person.sarah_abrantes
       from: "home"
       platform: state
       to: "not_home"
@@ -85,7 +85,7 @@
 - id: house_bruno_arrive_home
   alias: "[House] Bruno comes home"
   trigger:
-    - entity_id: device_tracker.bruno_s_iphone
+    - entity_id: person.bruno_abrantes
       from: "not_home"
       platform: state
       to: "home"
@@ -97,7 +97,7 @@
 - id: house_bruno_leave_home
   alias: "[House] Bruno leaves home"
   trigger:
-    - entity_id: device_tracker.bruno_s_iphone
+    - entity_id: person.bruno_abrantes
       from: "home"
       platform: state
       to: "not_home"
