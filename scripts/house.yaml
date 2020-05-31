@@ -42,9 +42,9 @@ good_night:
     - data:
         entity_id: group.all_covers
       service: cover.close_cover
-    - data:
-        entity_id: lock.home_door
-      service: lock.lock
+    # - data:
+    #     entity_id: lock.home_door
+    #   service: lock.lock
     - data:
         entity_id:
           - media_player.everywhere
@@ -121,9 +121,9 @@ house_nobody_home:
     - data:
         entity_id: remote.harmony_hub
       service: remote.turn_off
-    - data:
-        entity_id: lock.home_door
-      service: lock.lock
+    # - data:
+    #     entity_id: lock.home_door
+    #   service: lock.lock
     - data:
         entity_id: group.all_covers
       service: cover.close_cover

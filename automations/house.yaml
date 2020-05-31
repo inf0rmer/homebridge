@@ -286,21 +286,21 @@
 #         target: media_player.everywhere
 #       service: notify.alexa_media
 
-- id: house_guest_mode_on
-  alias: "[House] Turn on Guest Mode"
-  trigger:
-    - entity_id: lock.home_door
-      from: "locked"
-      platform: state
-      to: "unlocked"
-  condition:
-    - condition: state
-      entity_id: binary_sensor.someone_home
-      state: "off"
-  action:
-    - data:
-        entity_id: input_boolean.presence_someone
-      service: input_boolean.turn_on
+# - id: house_guest_mode_on
+#   alias: "[House] Turn on Guest Mode"
+#   trigger:
+#     - entity_id: lock.home_door
+#       from: "locked"
+#       platform: state
+#       to: "unlocked"
+#   condition:
+#     - condition: state
+#       entity_id: binary_sensor.someone_home
+#       state: "off"
+#   action:
+#     - data:
+#         entity_id: input_boolean.presence_someone
+#       service: input_boolean.turn_on
 
 - id: house_guest_mode_off
   alias: "[House] Turn off Guest Mode"
