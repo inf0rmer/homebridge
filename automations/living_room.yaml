@@ -215,6 +215,64 @@
         entity_id: input_boolean.presence_living_room_motion
       service: input_boolean.turn_off
 
+- id: living_room_presence_on_brunos_macbook
+  alias: "[Living Room] Presence On (Bruno's Macbook)"
+  trigger:
+    - entity_id: device_tracker.brunos_macbook
+      platform: state
+      to: "home"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room_brunos_macbook
+      service: input_boolean.turn_on
+
+- id: living_room_presence_off_brunos_macbook
+  alias: "[Living Room] Presence Off (Bruno's Macbook)"
+  trigger:
+    - entity_id: device_tracker.brunos_macbook
+      from: "home"
+      platform: state
+      to: "not_home"
+  action:
+    - delay:
+        minutes: 5
+    - data:
+        entity_id: input_boolean.presence_living_room_brunos_macbook
+      service: input_boolean.turn_off
+
+- id: living_room_presence_on_brunos_pc
+  alias: "[Living Room] Presence On (Bruno's PC)"
+  trigger:
+    - entity_id: device_tracker.brunos_pc
+      platform: state
+      to: "home"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room_brunos_pc
+      service: input_boolean.turn_on
+
+- id: living_room_presence_off_brunos_pc
+  alias: "[Living Room] Presence Off (Bruno's PC)"
+  trigger:
+    - entity_id: device_tracker.brunos_pc
+      from: "home"
+      platform: state
+      to: "not_home"
+  action:
+    - delay:
+        minutes: 5
+    - data:
+        entity_id: input_boolean.presence_living_room_brunos_pc
+      service: input_boolean.turn_off
+
 - id: living_room_presence_on_manual_switch
   alias: "[Living Room] Presence On (Switch)"
   trigger:
