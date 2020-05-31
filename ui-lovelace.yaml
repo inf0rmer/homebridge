@@ -160,20 +160,20 @@ views:
                       service_data:
                         entity_id: lock.nello_ecf41382
                     type: "custom:button-card"
-                  - entity: lock.home_door
-                    icon: "mdi:door"
-                    show_state: false
-                    name: Open Front Door
-                    size: 25%
-                    styles:
-                      card:
-                        - font-size: 12px
-                    tap_action:
-                      action: call-service
-                      service: lock.open
-                      service_data:
-                        entity_id: lock.home_door
-                    type: "custom:button-card"
+                  # - entity: lock.home_door
+                  #   icon: "mdi:door"
+                  #   show_state: false
+                  #   name: Open Front Door
+                  #   size: 25%
+                  #   styles:
+                  #     card:
+                  #       - font-size: 12px
+                  #   tap_action:
+                  #     action: call-service
+                  #     service: lock.open
+                  #     service_data:
+                  #       entity_id: lock.home_door
+                  #   type: "custom:button-card"
               - type: horizontal-stack
                 cards:
                   - entity: input_boolean.presence_someone
@@ -213,7 +213,7 @@ views:
               title: Who's Home
               show_state: false
           - entities:
-              - lock.home_door
+              #- lock.home_door
               - lock.nello_ecf41382
             title: Doors
             show_header_toggle: false
