@@ -90,6 +90,25 @@ house_wake_up:
         entity_id: group.presence_bedrooms
       service: homeassistant.turn_off
 
+house_wake_up_no_delay:
+  alias: "[House] Wake Up (No Delay)"
+  sequence:
+    - data:
+        entity_id:
+          - media_player.everywhere
+          - media_player.emma_s_bedroom_echo_dot
+        volume_level: 0.4
+      service: media_player.volume_set
+    - data:
+        entity_id: group.dnd_house
+      service: homeassistant.turn_off
+    - data:
+        entity_id: group.sleeping_bedrooms
+      service: homeassistant.turn_off
+    - data:
+        entity_id: group.presence_bedrooms
+      service: homeassistant.turn_off
+
 house_nobody_home:
   alias: "[House] Nobody Home"
   sequence:
