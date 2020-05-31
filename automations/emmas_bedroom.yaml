@@ -75,75 +75,6 @@
         entity_id: input_boolean.presence_emmas_bedroom_motion
       service: input_boolean.turn_off
 
-- id: emmas_bedroom_presence_on_manual_switch
-  alias: "[Emma's Bedroom] Presence On (Switch)"
-  trigger:
-    - entity_id: sensor.emmas_bedroom_switch
-      platform: state
-      to: "1_click_up"
-    - entity_id: sensor.emmas_bedroom_switch
-      platform: state
-      to: "1_hold_up"
-  action:
-    - data:
-        entity_id: input_boolean.presence_emmas_bedroom_switch
-      service: input_boolean.turn_on
-
-- id: emmas_bedroom_presence_off_manual_switch
-  alias: "[Emma's Bedroom] Presence Off (Switch)"
-  trigger:
-    - entity_id: sensor.emmas_bedroom_switch
-      platform: state
-      to: "4_click_up"
-    - entity_id: sensor.emmas_bedroom_switch
-      platform: state
-      to: "4_hold_up"
-  action:
-    - data:
-        entity_id: input_boolean.dnd_emmas_bedroom
-      service: input_boolean.turn_off
-    - data:
-        entity_id: input_boolean.presence_emmas_bedroom_switch
-      service: input_boolean.turn_off
-    - data:
-        entity_id: light.emmas_bedroom
-      service: light.turn_off
-
-- id: emmas_bedroom_manual_switch_dnd_on
-  alias: "[Emma's Bedroom] Manual Switch Turn On DnD"
-  trigger:
-    - entity_id: sensor.emmas_bedroom_switch
-      platform: state
-      to: "1_click_up"
-    - entity_id: sensor.emmas_bedroom_switch
-      platform: state
-      to: "1_hold_up"
-    - entity_id: sensor.emmas_bedroom_switch
-      platform: state
-      to: "2_click_up"
-    - entity_id: sensor.emmas_bedroom_switch
-      platform: state
-      to: "2_hold_up"
-    - entity_id: sensor.emmas_bedroom_switch
-      platform: state
-      to: "3_click_up"
-    - entity_id: sensor.emmas_bedroom_switch
-      platform: state
-      to: "3_hold_up"
-  condition:
-    - condition: state
-      entity_id: input_boolean.dnd_emmas_bedroom
-      state: "off"
-  action:
-    - delay:
-        seconds: 3
-    - condition: state
-      entity_id: binary_sensor.presence_emmas_bedroom
-      state: "on"
-    - data:
-        entity_id: input_boolean.dnd_emmas_bedroom
-      service: input_boolean.turn_on
-
 - id: emmas_bedroom_presence_on_sleeping
   alias: "[Emma's Bedroom] Presence On (Sleeping)"
   trigger:
@@ -169,3 +100,101 @@
     - data:
         entity_id: input_boolean.sleeping_emmas_bedroom
       service: input_boolean.turn_off
+
+- id: emmas_bedroom_presence_on_manual_switch
+  alias: "[Emma's Bedroom] Presence On (Switch)"
+  trigger:
+    - event_data:
+        command: "on"
+        device_ieee: 00:17:88:01:04:ac:4f:d1
+      event_type: zha_event
+      platform: event
+  action:
+    - data:
+        entity_id: input_boolean.presence_emmas_bedroom_switch
+      service: input_boolean.turn_on
+    - data_template:
+        entity_id: light.emmas_bedroom
+        kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_emmas_bedroom', 'brightness') | int }}"
+        transition: 3
+      service: light.turn_on
+
+- id: emmas_bedroom_presence_off_manual_switch
+  alias: "[Emma's Bedroom] Presence Off (Switch)"
+  trigger:
+    - event_data:
+        command: off_with_effect
+        device_ieee: 00:17:88:01:04:ac:4f:d1
+      event_type: zha_event
+      platform: event
+  action:
+    - data:
+        entity_id: input_boolean.dnd_emmas_bedroom
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.presence_emmas_bedroom_switch
+      service: input_boolean.turn_off
+    - data:
+        entity_id: light.emmas_bedroom
+      service: light.turn_off
+
+- id: emmas_bedroom_manual_switch_brightness_up
+  alias: "[Emma's Bedroom] Manual Switch Brightness Up"
+  trigger:
+    - event_data:
+        command: step
+        device_ieee: 00:17:88:01:04:ac:4f:d1
+      event_type: zha_event
+      platform: event
+  condition:
+    - condition: template
+      value_template: "{%if trigger.event.data.args[0] == 0%}true{%else%}false{%endif%}"
+    - condition: state
+      entity_id: binary_sensor.presence_emmas_bedroom
+      state: "on"
+  action:
+    - service: light.turn_on
+      entity_id: light.emmas_bedroom
+      data:
+        brightness_step: 50
+
+- id: emmas_bedroom_manual_switch_brightness_down
+  alias: "[Emma's Bedroom] Manual Switch Brightness Down"
+  trigger:
+    - event_data:
+        command: step
+        device_ieee: 00:17:88:01:04:ac:4f:d1
+      event_type: zha_event
+      platform: event
+  condition:
+    - condition: template
+      value_template: "{%if trigger.event.data.args[0] == 1%}true{%else%}false{%endif%}"
+    - condition: state
+      entity_id: binary_sensor.presence_emmas_bedroom
+      state: "on"
+  action:
+    - service: light.turn_on
+      entity_id: light.emmas_bedroom
+      data:
+        brightness_step: -50
+
+- id: emmas_bedroom_manual_switch_dnd_on
+  alias: "[Emma's Bedroom] Manual Switch Turn On DnD"
+  trigger:
+    - event_data:
+        command: step
+        device_ieee: 00:17:88:01:04:ac:4f:d1
+      event_type: zha_event
+      platform: event
+  condition:
+    - condition: state
+      entity_id: input_boolean.dnd_emmas_bedroom
+      state: "off"
+  action:
+    - condition: state
+      entity_id: binary_sensor.presence_emmas_bedroom
+      state: "on"
+    - data:
+        entity_id: input_boolean.dnd_emmas_bedroom
+      service: input_boolean.turn_on
