@@ -52,9 +52,6 @@ lovelace:
 # Enables configuration UI
 config:
 
-http:
-  base_url: !env_var HTTP_BASE_URL
-
 websocket_api:
 
 # Checks for available updates
