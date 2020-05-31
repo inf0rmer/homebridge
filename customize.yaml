@@ -43,7 +43,7 @@ input.presence_someone:
   hidden: true
 
 person.bruno_abrantes:
-  entity_picture: "/local/bruno_abrantes.jpg"
+  entity_picture: "/local/persons/bruno_abrantes.jpg"
 
 person.sarah_abrantes:
-  entity_picture: "/local/sarah_abrantes.jpg"
+  entity_picture: "/local/persons/sarah_abrantes.jpg"

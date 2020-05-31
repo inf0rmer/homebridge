@@ -202,16 +202,18 @@ views:
             type: "custom:mini-graph-card"
             icon: "mdi:thermometer"
           - type: entity-filter
-            entities:
-              - binary_sensor.presence_bruno
-              - binary_sensor.presence_sarah
-              - binary_sensor.presence_someone
-            state_filter:
-              - "on"
+            show_empty: false
             card:
               type: glance
               title: Who's Home
               show_state: false
+              show_name: false
+            show_header_toggle: false
+            state_filter:
+              - home
+            entities:
+              - person.bruno_abrantes
+              - person.sarah_abrantes
           - entities:
               #- lock.home_door
               - lock.nello_ecf41382
