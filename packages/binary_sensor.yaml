@@ -40,12 +40,16 @@ binary_sensor:
           - input_boolean.presence_living_room_motion
           - input_boolean.presence_living_room_switch
           - input_boolean.presence_living_room_tv
+          - device_tracker.brunos_macbook
+          - device_tracker.brunos_pc
           - group.presence_living_room
         attribute_templates:
           reason: >
-            {% for entity in states.group.presence_living_room.attributes.entity_id if is_state(entity, 'on') %}
+            {% for entity in states.group.presence_living_room.attributes.entity_id %}
+            {% if is_state(entity, 'on') or is_state(entity, 'home') %}
             {%- if loop.first %}{% elif loop.last %} and {% else %}, {% endif -%}
             {{ states[entity.split('.')[0]][entity.split('.')[1]].name.split(' ') | last }}
+            {% endif %}
             {%- endfor %}
       presence_dining_room:
         friendly_name: Presence Dining Room

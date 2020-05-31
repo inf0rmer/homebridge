@@ -89,6 +89,8 @@ presence_living_room:
     - input_boolean.presence_living_room_motion
     - input_boolean.presence_living_room_switch
     - input_boolean.presence_living_room_tv
+    - device_tracker.brunos_macbook
+    - device_tracker.brunos_pc
 
 presence_dining_room:
   entities:
