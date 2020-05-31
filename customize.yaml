@@ -41,3 +41,9 @@ input.motion_dining_room:
   hidden: true
 input.presence_someone:
   hidden: true
+
+person.bruno_abrantes:
+  entity_picture: "/local/bruno_abrantes.jpg"
+
+person.sarah_abrantes:
+  entity_picture: "/local/sarah_abrantes.jpg"
