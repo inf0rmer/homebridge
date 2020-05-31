@@ -89,7 +89,7 @@ views:
                       - entity: group.dnd_bedrooms
                         state: "on"
                     card:
-                      entity: script.house_wake_up
+                      entity: script.house_wake_up_no_delay
                       icon: "mdi:sleep-off"
                       show_state: false
                       name: Wake Up
@@ -101,7 +101,7 @@ views:
                         action: call-service
                         service: script.turn_on
                         service_data:
-                          entity_id: script.house_wake_up
+                          entity_id: script.house_wake_up_no_delay
                       type: "custom:button-card"
                   - type: conditional
                     conditions:
