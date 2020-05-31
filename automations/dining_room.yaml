@@ -197,3 +197,16 @@
     - data:
         entity_id: input_boolean.dnd_dining_room
       service: input_boolean.turn_on
+
+- id: dining_room_wake_up_tablet
+  alias: "[Dining Room] Wake Up Tablet"
+  trigger:
+    - entity_id: binary_sensor.presence_dining_room
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data:
+        title: "Wake up"
+        message: ""
+      service: notify.mobile_app_brunos_ipad
