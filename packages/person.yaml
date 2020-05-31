@@ -1,0 +1,12 @@
+person:
+  - name: Bruno Abrantes
+    id: bruno_abrantes
+    user_id: 1925b27b219e4b818d4116296dcd0e74
+    device_trackers:
+      - device_tracker.bruno_s_iphone
+
+  - name: Sarah Abrantes
+    id: sarah_abrantes
+    user_id: 5251085ea39b440d80425cd4cae8a005
+    device_trackers:
+      - device_tracker.sarah_pimentels_iphone
