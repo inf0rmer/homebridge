@@ -40,7 +40,6 @@ binary_sensor:
           - input_boolean.presence_living_room_motion
           - input_boolean.presence_living_room_switch
           - input_boolean.presence_living_room_tv
-          - input_boolean.presence_living_room_brunos_macbook
           - input_boolean.presence_living_room_brunos_pc
           - group.presence_living_room
         attribute_templates:

@@ -23,7 +23,6 @@ input_boolean:
   presence_living_room_motion:
   presence_living_room_switch:
   presence_living_room_tv:
-  presence_living_room_brunos_macbook:
   presence_living_room_brunos_pc:
   presence_dining_room_motion:
   presence_dining_room_switch:

@@ -1,5 +1,4 @@
 device_tracker:
-  - platform: nmap_tracker
+  - platform: ping
     hosts:
-      - 192.168.88.28
-      - 192.168.86.178
+      brunos_pc: 192.168.86.178
