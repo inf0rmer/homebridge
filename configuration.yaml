@@ -112,3 +112,6 @@ alexa_media:
         - "Bruno's Alexa Apps"
         - "Bruno's Fire TV stick"
         - "Living Room"
+
+airvisual:
+  api_key: !env_var AIRVISUAL_API_KEY
