@@ -37,9 +37,9 @@
   alias: "[Bathroom] Presence On (Door)"
   trigger:
     - entity_id: binary_sensor.bathroom_door_sensor
-      from: "off"
+      from: "on"
       platform: state
-      to: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: binary_sensor.someone_home
@@ -53,9 +53,9 @@
   alias: "[Bathroom] Presence Off (Door)"
   trigger:
     - entity_id: binary_sensor.bathroom_door_sensor
-      from: "on"
+      from: "off"
       platform: state
-      to: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: binary_sensor.someone_home
