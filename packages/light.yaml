@@ -1,0 +1,6 @@
+light:
+  - platform: group
+    name: Dining Room
+    entities:
+      - light.dining_room_ceiling_table
+      - light.dining_room_ceiling_kitchen
