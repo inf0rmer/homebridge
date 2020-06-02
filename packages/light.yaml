@@ -4,3 +4,9 @@ light:
     entities:
       - light.dining_room_ceiling_table
       - light.dining_room_ceiling_kitchen
+
+  - platform: group
+    name: Hallway
+    entities:
+      - light.hallway_ceiling_bathroom
+      - light.hallway_ceiling_front_door
