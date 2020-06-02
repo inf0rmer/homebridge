@@ -1,8 +1,8 @@
 ############
 # Bathroom #
 ############
-- id: bathroom_presence_on
-  alias: "[Bathroom] Presence On"
+- id: bathroom_presence_on_light
+  alias: "[Bathroom] Presence On (Light)"
   trigger:
     - entity_id: light.bathroom
       from: "off"
@@ -17,8 +17,8 @@
         entity_id: input_boolean.presence_bathroom_light
       service: input_boolean.turn_on
 
-- id: bathroom_presence_off
-  alias: "[Bathroom] Presence Off"
+- id: bathroom_presence_off_light
+  alias: "[Bathroom] Presence Off (Light)"
   trigger:
     - entity_id: light.bathroom
       from: "on"
@@ -32,3 +32,63 @@
     - data:
         entity_id: input_boolean.presence_bathroom_light
       service: input_boolean.turn_off
+
+- id: bathroom_presence_on_door
+  alias: "[Bathroom] Presence On (Door)"
+  trigger:
+    - entity_id: binary_sensor.bathroom_door_sensor
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom_door
+      service: input_boolean.turn_on
+
+- id: bathroom_presence_off_door
+  alias: "[Bathroom] Presence Off (Door)"
+  trigger:
+    - entity_id: binary_sensor.bathroom_door_sensor
+      from: "on"
+      platform: state
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom_door
+      service: input_boolean.turn_off
+
+- id: bathroom_lights_on
+  alias: "[Bathroom] Lights On"
+  trigger:
+    - entity_id: binary_sensor.presence_bathroom
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+  action:
+    - data:
+        entity_id: light.bathroom
+      service: light.turn_on
+
+- id: bathroom_lights_off
+  alias: "[Bathroom] Lights Off"
+  trigger:
+    - entity_id: binary_sensor.presence_bathroom
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: light.bathroom
+      service: light.turn_off

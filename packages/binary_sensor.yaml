@@ -136,7 +136,8 @@ binary_sensor:
         value_template: >-
           {{ is_state('group.presence_bathroom', 'on') }}
         entity_id:
-          - input_boolean.presence_bathroom_motion
+          - input_boolean.presence_bathroom_light
+          - input_boolean.presence_bathroom_door
           - group.presence_bathroom
         attribute_templates:
           reason: >
