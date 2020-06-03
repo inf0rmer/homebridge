@@ -12,6 +12,13 @@ light:
       - light.emmas_bedroom_nightlight
 
   - platform: group
+    name: Kitchen
+    entities:
+      - light.kitchen_ceiling_1
+      - light.kitchen_ceiling_2
+      - light.kitchen_counter
+
+  - platform: group
     name: Hallway
     entities:
       - light.hallway_ceiling_bathroom
