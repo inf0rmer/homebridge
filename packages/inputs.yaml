@@ -38,6 +38,7 @@ input_boolean:
   presence_balcony_door:
   presence_bathroom_light:
   presence_bathroom_door:
+  presence_bathroom_shower:
   presence_closet_door:
 
   presence_bruno:
