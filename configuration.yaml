@@ -35,6 +35,47 @@ frontend:
 # Lovelace
 lovelace:
   mode: yaml
+  # Include external resources only add when mode is yaml, otherwise manage in the resources in the lovelace configuration panel.
+  resources:
+    - url: /hacsfiles/button-card/button-card.js
+      type: module
+    - url: /hacsfiles/weather-card/weather-card.js
+      type: module
+    - url: /hacsfiles/lovelace-xiaomi-vacuum-card/xiaomi-vacuum-card.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+    - url: /hacsfiles/custom-header/custom-header.js
+      type: module
+    - url: /hacsfiles/lovelace-card-tools/card-tools.js
+      type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
+    - url: /hacsfiles/group-card/group-card.js
+      type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /hacsfiles/lovelace-battery-entity/battery-entity.js
+      type: module
+    - url: /hacsfiles/zha-network-card/zha-network-card.js
+      type: module
+    - url: /hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js
+      type: module
+  # Add more dashboards
+  dashboards:
+    overview: # Needs to contain a hyphen (-)
+      mode: yaml
+      filename: ui-overview.yaml
+      title: Overview
+      icon: mdi:view-dashboard
+      show_in_sidebar: true
+      require_admin: false
+    admin:
+      mode: yaml
+      title: Admin
+      show_in_sidebar: true
+      filename: ui-admin.yaml
+      require_admin: true
 
 # Recorder
 # recorder:
