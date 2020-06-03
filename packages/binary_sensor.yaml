@@ -24,7 +24,7 @@ binary_sensor:
         friendly_name: Motion Sensor Hallway Combined
         device_class: motion
         value_template: >-
-          {{ is_state('binary_sensor.zha_hallway_kitchen_sensor_motion', 'on') or is_state('binary_sensor.zha_hallway_sensor_motion', 'on') }}
+          {{ is_state('binary_sensor.hallway_kitchen_sensor_motion', 'on') or is_state('binary_sensor.hallway_sensor_motion', 'on') }}
 
       balcony_combined_sensor_door:
         friendly_name: Door Sensor Balcony Combined
