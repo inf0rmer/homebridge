@@ -32,8 +32,8 @@ all_occupancy_sensors:
 light_kitchen_ceiling:
   name: Light Kitchen Ceiling
   entities:
-    - light.hue_ambiance_spot_1
-    - light.hue_ambiance_spot_2
+    - light.kitchen_ceiling_1
+    - light.kitchen_ceiling_2
 
 light_tv:
   name: Light TV
