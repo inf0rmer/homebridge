@@ -47,3 +47,8 @@ light:
     name: Laundry Room
     entities:
       - light.laundry_room_ceiling
+
+  - platform: group
+    name: Balcony
+    entities:
+      - light.balcony_main
