@@ -426,9 +426,9 @@ views:
             title: Blinds
             type: entities
           - entities:
-              - entity: sensor.zha_living_room_sensor_temperature
+              - entity: sensor.living_room_sensor_temperature
                 name: Temperature
-              - entity: sensor.zha_living_room_sensor_light_level
+              - entity: sensor.living_room_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
           - entity: media_player.spotify_bruno_abrantes
@@ -529,9 +529,9 @@ views:
             title: Lights
             type: entities
           - entities:
-              - entity: sensor.zha_dining_room_sensor_temperature
+              - entity: sensor.dining_room_sensor_temperature
                 name: Temperature
-              - entity: sensor.zha_dining_room_sensor_light_level
+              - entity: sensor.dining_room_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
           - entity: media_player.spotify_bruno_abrantes
@@ -639,9 +639,9 @@ views:
             title: Blinds
             type: entities
           - entities:
-              - entity: sensor.zha_master_bedroom_sensor_temperature
+              - entity: sensor.master_bedroom_sensor_temperature
                 name: Temperature
-              - entity: sensor.zha_master_bedroom_sensor_light_level
+              - entity: sensor.master_bedroom_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
           - entity: media_player.spotify_bruno_abrantes
@@ -779,9 +779,9 @@ views:
             title: Lights
             type: entities
           - entities:
-              - entity: sensor.zha_emmas_bedroom_sensor_temperature
+              - entity: sensor.emmas_bedroom_sensor_temperature
                 name: Temperature
-              - entity: sensor.zha_emmas_bedroom_sensor_light_level
+              - entity: sensor.emmas_bedroom_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
           - entity: media_player.spotify_bruno_abrantes
@@ -881,9 +881,9 @@ views:
             title: Lights
             type: entities
           - entities:
-              - entity: sensor.zha_kitchen_sensor_temperature
+              - entity: sensor.kitchen_sensor_temperature
                 name: Temperature
-              - entity: sensor.zha_kitchen_sensor_light_level
+              - entity: sensor.kitchen_sensor_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
           - entity: media_player.spotify_bruno_abrantes

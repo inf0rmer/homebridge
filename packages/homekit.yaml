@@ -10,26 +10,26 @@ homekit:
       - script
       - vacuum
     include_entities:
-      - sensor.zha_hallway_kitchen_sensor_temperature
-      - sensor.zha_hallway_kitchen_sensor_light_level
-      - sensor.zha_hallway_kitchen_sensor_motion
-      - sensor.zha_hallway_sensor_temperature
-      - sensor.zha_hallway_sensor_light_level
-      - sensor.zha_hallway_sensor_motion
-      - sensor.zha_kitchen_sensor_temperature
-      - sensor.zha_kitchen_sensor_light_level
+      - sensor.hallway_kitchen_sensor_temperature
+      - sensor.hallway_kitchen_sensor_light_level
+      - sensor.hallway_kitchen_sensor_motion
+      - sensor.hallway_sensor_temperature
+      - sensor.hallway_sensor_light_level
+      - sensor.hallway_sensor_motion
+      - sensor.kitchen_sensor_temperature
+      - sensor.kitchen_sensor_light_level
       - sensor.kitchen_sensor_motion
-      - sensor.zha_living_room_sensor_temperature
-      - sensor.zha_living_room_sensor_light_level
-      - sensor.zha_living_room_sensor_motion
-      - sensor.zha_dining_room_sensor_temperature
-      - sensor.zha_dining_room_sensor_light_level
-      - sensor.zha_dining_room_sensor_motion
-      - sensor.zha_master_bedroom_sensor_temperature
-      - sensor.zha_master_bedroom_sensor_light_level
-      - sensor.zha_master_bedroom_sensor_motion
-      - sensor.zha_emmas_bedroom_sensor_temperature
-      - sensor.zha_emmas_bedroom_sensor_light_level
+      - sensor.living_room_sensor_temperature
+      - sensor.living_room_sensor_light_level
+      - sensor.living_room_sensor_motion
+      - sensor.dining_room_sensor_temperature
+      - sensor.dining_room_sensor_light_level
+      - sensor.dining_room_sensor_motion
+      - sensor.master_bedroom_sensor_temperature
+      - sensor.master_bedroom_sensor_light_level
+      - sensor.master_bedroom_sensor_motion
+      - sensor.emmas_bedroom_sensor_temperature
+      - sensor.emmas_bedroom_sensor_light_level
       - sensor.emmas_bedroom_sensor_motion
       - sensor.home_sensor_average_temperature
       - input_boolean.dnd_living_room

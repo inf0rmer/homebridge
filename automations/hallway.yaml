@@ -9,7 +9,7 @@
       from: "off"
       platform: state
       to: "on"
-    - entity_id: sensor.zha_hallway_sensor_light_level
+    - entity_id: sensor.hallway_sensor_light_level
       platform: state
   condition:
     - condition: state
