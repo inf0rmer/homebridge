@@ -4,3 +4,25 @@ light:
     entities:
       - light.dining_room_ceiling_table
       - light.dining_room_ceiling_kitchen
+
+  - platform: group
+    name: Emma's Bedroom
+    entities:
+      - light.emmas_bedroom_ceiling
+      - light.emmas_bedroom_nightlight
+
+  - platform: group
+    name: Hallway
+    entities:
+      - light.hallway_ceiling_bathroom
+      - light.hallway_ceiling_front_door
+
+  - platform: group
+    name: Bathroom
+    entities:
+      - light.bathroom_ceiling
+
+  - platform: group
+    name: Closet
+    entities:
+      - light.closet_ceiling
