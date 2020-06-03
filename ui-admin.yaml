@@ -2,20 +2,27 @@ title: Admin
 preload_cards:
   - custom:layout-card
   - layout-card
-  - custom:auto_entities
+  - custom:auto-entities
   - custom:zha-network-card
   - custom:battery-entity
 views:
   - path: default_view
-    panel: true
     title: General
     cards:
       - type: "custom:auto-entities"
+        id: low_battery
+        show_empty: false
         card:
-          type: "custom:battery-entity"
+          title: ❗ Low Battery
+          type: entities
+          show_header_toggle: false
         filter:
           include:
-            - entity_id: "sensor.*_battery"
+            - domain: sensor
+              entity_id: "*battery*"
+              state: "<= 30"
+              options:
+                type: "custom:battery-entity"
 
   - path: zigbee
     panel: true
