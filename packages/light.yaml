@@ -6,6 +6,15 @@ light:
       - light.dining_room_ceiling_kitchen
 
   - platform: group
+    name: Master Bedroom
+    entities:
+      - light.master_bedroom_bedside_lamp_1
+      - light.master_bedroom_bedside_lamp_2
+      - light.master_bedroom_ceiling
+      - light.master_bedroom_lightstrip_left
+      - light.master_bedroom_lightstrip_right
+
+  - platform: group
     name: Emmas Bedroom
     entities:
       - light.emmas_bedroom_ceiling
