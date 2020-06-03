@@ -896,8 +896,8 @@ views:
             type: light
           - entities:
               - entity: light.kitchen_counter
-              - entity: light.hue_ambiance_spot_1
-              - entity: light.hue_ambiance_spot_2
+              - entity: light.kitchen_ceiling_1
+              - entity: light.kitchen_ceiling_2
             show_header_toggle: false
             title: Lights
             type: entities
