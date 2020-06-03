@@ -9,13 +9,13 @@ all_light_switches:
 all_motion_sensors:
   name: All Motion Sensors
   entities:
-    - binary_sensor.hk_dining_room_motion_sensor
-    - binary_sensor.hk_living_room_motion_sensor
-    - binary_sensor.hk_master_bedroom_motion_sensor
-    - binary_sensor.hk_emmas_bedroom_motion_sensor
-    - binary_sensor.hk_hallway_motion_sensor
-    - binary_sensor.hk_kitchen_motion_sensor
-    - binary_sensor.hk_hallway_kitchen_motion_sensor
+    - binary_sensor.zha_dining_room_motion_sensor
+    - binary_sensor.zha_living_room_motion_sensor
+    - binary_sensor.zha_master_bedroom_motion_sensor
+    - binary_sensor.zha_emmas_bedroom_motion_sensor
+    - binary_sensor.zha_hallway_motion_sensor
+    - binary_sensor.zha_kitchen_motion_sensor
+    - binary_sensor.zha_hallway_kitchen_motion_sensor
 
 all_occupancy_sensors:
   name: All Occupancy Sensors
@@ -32,8 +32,8 @@ all_occupancy_sensors:
 light_kitchen_ceiling:
   name: Light Kitchen Ceiling
   entities:
-    - light.hue_ambiance_spot_1
-    - light.hue_ambiance_spot_2
+    - light.kitchen_ceiling_1
+    - light.kitchen_ceiling_2
 
 light_tv:
   name: Light TV
