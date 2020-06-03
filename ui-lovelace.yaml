@@ -1034,7 +1034,7 @@ views:
               service_data:
                 entity_id: group.presence_bathroom
             type: "custom:button-card"
-          - entity: light.bathroom
+          - entity: light.bathroom_ceiling
             name: Light
             theme: Backend-selected
             type: light
