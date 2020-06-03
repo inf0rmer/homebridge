@@ -6,7 +6,7 @@ light:
       - light.dining_room_ceiling_kitchen
 
   - platform: group
-    name: Emma's Bedroom
+    name: Emmas Bedroom
     entities:
       - light.emmas_bedroom_ceiling
       - light.emmas_bedroom_nightlight
