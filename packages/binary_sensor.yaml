@@ -5,14 +5,14 @@ binary_sensor:
   - platform: trend
     sensors:
       # Tracks 3 humidity readings over 10 minutes. If the change is greater than 10%, evals to true. (10/(60*10))
-      - presence_bathroom_shower_on:
+      presence_bathroom_shower_on:
         max_samples: 3
         entity_id: sensor.bathroom_humidity
         sample_duration: 600
         min_gradient: 0.01666
         # Tracks 2 humidity readings over 5 minutes. If the change decrease is greater than 5%, evals to true. (-5/(60*5))
         # Bumped samples down from 4 to 2, because it was staying on way too long.
-      - presence_bathroom_shower_on:
+      presence_bathroom_shower_on:
         max_samples: 2
         entity_id: sensor.bathroom_humidity
         sample_duration: 300
