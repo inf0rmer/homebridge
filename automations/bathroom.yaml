@@ -65,6 +65,38 @@
         entity_id: input_boolean.presence_bathroom_door
       service: input_boolean.turn_off
 
+- id: bathroom_presence_on_shower
+  alias: "[Bathroom] Presence On (Shower)"
+  trigger:
+    - entity_id: binary_sensor.presence_bathroom_shower_on
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom_shower
+      service: input_boolean.turn_on
+
+- id: bathroom_presence_off_shower
+  alias: "[Bathroom] Presence Off (Shower)"
+  trigger:
+    - entity_id: binary_sensor.presence_bathroom_shower_off
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom_shower
+      service: input_boolean.turn_off
+
 - id: bathroom_lights_on
   alias: "[Bathroom] Lights On"
   trigger:
