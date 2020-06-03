@@ -9,13 +9,13 @@ all_light_switches:
 all_motion_sensors:
   name: All Motion Sensors
   entities:
-    - binary_sensor.zha_dining_room_motion_sensor
-    - binary_sensor.zha_living_room_motion_sensor
-    - binary_sensor.zha_master_bedroom_motion_sensor
-    - binary_sensor.zha_emmas_bedroom_motion_sensor
-    - binary_sensor.zha_hallway_motion_sensor
-    - binary_sensor.zha_kitchen_motion_sensor
-    - binary_sensor.zha_hallway_kitchen_motion_sensor
+    - binary_sensor.zha_dining_room_sensor_motion
+    - binary_sensor.zha_living_room_sensor_motion
+    - binary_sensor.zha_master_bedroom_sensor_motion
+    - binary_sensor.zha_emmas_bedroom_sensor_motion
+    - binary_sensor.zha_hallway_sensor_motion
+    - binary_sensor.zha_kitchen_sensor_motion
+    - binary_sensor.zha_hallway_kitchen_sensor_motion
 
 all_occupancy_sensors:
   name: All Occupancy Sensors
