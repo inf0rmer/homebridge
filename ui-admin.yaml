@@ -2,52 +2,25 @@ title: Admin
 preload_cards:
   - custom:layout-card
   - layout-card
+  - custom:auto_entities
   - custom:zha-network-card
   - custom:battery-entity
 views:
   - path: default_view
     panel: true
+    title: General
     cards:
-      - type: entities
-        entities:
-          - type: "custom:battery-entity"
-            entity: sensor.balcony_door_sensor_battery
-          - type: "custom:battery-entity"
-            entity: sensor.balcony_door_sensor_2_battery
-          - type: "custom:battery-entity"
-            entity: sensor.bathroom_door_sensor_battery
-          - type: "custom:battery-entity"
-            entity: sensor.front_door_sensor_battery
-          - type: "custom:battery-entity"
-            entity: sensor.closet_door_sensor_battery
-          - type: "custom:battery-entity"
-            entity: sensor.dining_room_wall_switch_battery
-          - type: "custom:battery-entity"
-            entity: sensor.living_room_wall_switch_battery
-          - type: "custom:battery-entity"
-            entity: sensor.dining_room_kitchen_wall_switch_battery
-          - type: "custom:battery-entity"
-            entity: sensor.emmas_bedroom_wall_switch_battery
-          - type: "custom:battery-entity"
-            entity: sensor.master_bedroom_wall_switch_battery
-          - type: "custom:battery-entity"
-            entity: sensor.brunos_bedside_button_battery\
-          - type: "custom:battery-entity"
-            entity: sensor.sarahs_bedside_button_battery
-          - type: "custom:battery-entity"
-            entity: sensor.dining_room_sensor_battery
-          - type: "custom:battery-entity"
-            entity: sensor.emmas_bedroom_sensor_battery
-          - type: "custom:battery-entity"
-            entity: sensor.hallway_kitchen_sensor_battery
-          - type: "custom:battery-entity"
-            entity: sensor.hallway_sensor_battery
-          - type: "custom:battery-entity"
-            entity: sensor.kitchen_sensor_battery
-          - type: "custom:battery-entity"
-            entity: sensor.living_room_sensor_battery
-          - type: "custom:battery-entity"
-            entity: sensor.master_bedroom_sensor_battery
+      - type: "custom:auto-entities"
+        card:
+          type: "custom:battery-entity"
+        filter:
+          include:
+            - entity_id: "sensor.*_battery"
+
+  - path: zigbee
+    panel: true
+    title: Zigbee Mesh
+    cards:
       - type: "custom:zha-network-card"
         clickable: true
         columns:
