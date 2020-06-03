@@ -63,16 +63,17 @@ lovelace:
       type: module
   # Add more dashboards
   dashboards:
-    overview: # Needs to contain a hyphen (-)
+    lovelace-overview: # Needs to contain a hyphen (-)
       mode: yaml
       filename: ui-overview.yaml
       title: Overview
       icon: mdi:view-dashboard
       show_in_sidebar: true
       require_admin: false
-    admin:
+    lovelace-admin:
       mode: yaml
       title: Admin
+      icon: mdi:wrench
       show_in_sidebar: true
       filename: ui-admin.yaml
       require_admin: true
