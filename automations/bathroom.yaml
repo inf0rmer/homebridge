@@ -96,31 +96,30 @@
     - data:
         entity_id: input_boolean.presence_bathroom_shower
       service: input_boolean.turn_off
+# - id: bathroom_lights_on
+#   alias: "[Bathroom] Lights On"
+#   trigger:
+#     - entity_id: binary_sensor.presence_bathroom
+#       from: "off"
+#       platform: state
+#       to: "on"
+#   condition:
+#     - condition: state
+#       entity_id: sun.sun
+#       state: below_horizon
+#   action:
+#     - data:
+#         entity_id: light.bathroom
+#       service: light.turn_on
 
-- id: bathroom_lights_on
-  alias: "[Bathroom] Lights On"
-  trigger:
-    - entity_id: binary_sensor.presence_bathroom
-      from: "off"
-      platform: state
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: below_horizon
-  action:
-    - data:
-        entity_id: light.bathroom
-      service: light.turn_on
-
-- id: bathroom_lights_off
-  alias: "[Bathroom] Lights Off"
-  trigger:
-    - entity_id: binary_sensor.presence_bathroom
-      from: "on"
-      platform: state
-      to: "off"
-  action:
-    - data:
-        entity_id: light.bathroom
-      service: light.turn_off
+# - id: bathroom_lights_off
+#   alias: "[Bathroom] Lights Off"
+#   trigger:
+#     - entity_id: binary_sensor.presence_bathroom
+#       from: "on"
+#       platform: state
+#       to: "off"
+#   action:
+#     - data:
+#         entity_id: light.bathroom
+#       service: light.turn_off
