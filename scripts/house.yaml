@@ -2,9 +2,6 @@ good_night:
   alias: "[House] Good Night"
   sequence:
     - data:
-        entity_id: remote.harmony_hub
-      service: remote.turn_off
-    - data:
         entity_id: group.dnd_bedrooms
       service: homeassistant.turn_on
     - data:
@@ -25,6 +22,11 @@ good_night:
     - data:
         entity_id: group.presence_living_room
       service: homeassistant.turn_off
+    - data:
+        entity_id: remote.harmony_hub
+      service: remote.turn_off
+    - delay:
+        seconds: 15
     - service: light.turn_off
       entity_id: all
     - data:
