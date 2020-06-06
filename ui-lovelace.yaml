@@ -1022,7 +1022,7 @@ views:
               - entity: light.bathroom_vanity
             show_header_toggle: false
             title: Lights
-            type: entity
+            type: entities
   - path: balcony
     title: Balcony
     cards:
