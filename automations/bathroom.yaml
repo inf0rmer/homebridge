@@ -65,16 +65,31 @@
         entity_id: input_boolean.presence_bathroom_shower
       service: input_boolean.turn_off
 
-- id: bathroom_lights_adjust_brightness
-  alias: "[Bathroom] Lights Adjust Brightness"
+- id: bathroom_light_ceiling_adjust_brightness
+  alias: "[Bathroom] Ceiling Light Adjust Brightness"
   trigger:
-    - entity_id: light.bathroom
+    - entity_id: light.bathroom_ceiling
       from: "off"
       platform: state
       to: "on"
   action:
     - data_template:
-        entity_id: light.bathroom
+        entity_id: light.bathroom_ceiling
+        kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_bathroom', 'brightness') | int }}"
+        transition: 3
+      service: light.turn_on
+
+- id: bathroom_light_vanity_adjust_brightness
+  alias: "[Bathroom] Vanity Light Adjust Brightness"
+  trigger:
+    - entity_id: light.bathroom_vanity
+      from: "off"
+      platform: state
+      to: "on"
+  action:
+    - data_template:
+        entity_id: light.bathroom_vanity
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_bathroom', 'brightness') | int }}"
         transition: 3

@@ -1013,10 +1013,19 @@ views:
               service_data:
                 entity_id: group.presence_bathroom
             type: "custom:button-card"
-          - entity: light.bathroom_ceiling
+          - entity: light.bathroom
             name: Light
             theme: Backend-selected
             type: light
+          - entities:
+              - entity: light.bathroom_ceiling
+              - entity: light.bathroom_vanity
+            show_header_toggle: false
+            title: Lights
+            type: entity-filter
+            state_filter:
+              - operator: "!="
+                value: "unavailable"
   - path: balcony
     title: Balcony
     cards:
