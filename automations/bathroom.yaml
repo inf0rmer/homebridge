@@ -1,38 +1,6 @@
 ############
 # Bathroom #
 ############
-- id: bathroom_presence_on_light
-  alias: "[Bathroom] Presence On (Light)"
-  trigger:
-    - entity_id: light.bathroom
-      from: "off"
-      platform: state
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: binary_sensor.someone_home
-      state: "on"
-  action:
-    - data:
-        entity_id: input_boolean.presence_bathroom_light
-      service: input_boolean.turn_on
-
-- id: bathroom_presence_off_light
-  alias: "[Bathroom] Presence Off (Light)"
-  trigger:
-    - entity_id: light.bathroom
-      from: "on"
-      platform: state
-      to: "off"
-  condition:
-    - condition: state
-      entity_id: input_boolean.dnd_bathroom
-      state: "off"
-  action:
-    - data:
-        entity_id: input_boolean.presence_bathroom_light
-      service: input_boolean.turn_off
-
 - id: bathroom_presence_on_door
   alias: "[Bathroom] Presence On (Door)"
   trigger:
@@ -96,6 +64,22 @@
     - data:
         entity_id: input_boolean.presence_bathroom_shower
       service: input_boolean.turn_off
+
+- id: bathroom_lights_adjust_brightness
+  alias: "[Bathroom] Lights Adjust Brightness"
+  trigger:
+    - entity_id: light.bathroom
+      from: "off"
+      platform: state
+      to: "on"
+    action:
+      - data_template:
+        entity_id: light.bathroom
+        kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_bathroom', 'brightness') | int }}"
+        transition: 3
+      service: light.turn_on
+
 # - id: bathroom_lights_on
 #   alias: "[Bathroom] Lights On"
 #   trigger:
