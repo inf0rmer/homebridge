@@ -1,6 +1,52 @@
 ############
 # Bathroom #
 ############
+- id: bathroom_presence_on_switch
+  alias: "[Bathroom] Presence On (Switch)"
+  trigger:
+    - entity_id: light.switch_bathroom_ceiling
+      from: "off"
+      platform: state
+      to: "on"
+    - entity_id: light.bathroom_vanity
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom_switch
+      service: input_boolean.turn_on
+
+- id: bathroom_presence_off_switch
+  alias: "[Bathroom] Presence Off (Switch)"
+  trigger:
+    - entity_id: light.switch_bathroom_ceiling
+      from: "on"
+      platform: state
+      to: "off"
+    - entity_id: light.bathroom_vanity
+      from: "on"
+      platform: state
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+    - condition: state
+      entity_id: light.switch_bathroom_ceiling
+      state: "off"
+    - condition: state
+      entity_id: light.switch_bathroom_vanity
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom_switch
+      service: input_boolean.turn_off
+
 - id: bathroom_presence_on_door
   alias: "[Bathroom] Presence On (Door)"
   trigger:

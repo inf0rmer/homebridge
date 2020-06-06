@@ -36,17 +36,17 @@ switch:
     lights_ct:
       - light.kitchen
 
-  # - platform: circadian_lighting
-  #   name: bathroom
-  #   min_brightness: 35
-  #   sleep_entity: group.sleeping_bedrooms
-  #   sleep_brightness: 15
-  #   sleep_colortemp: 2000
-  #   sleep_state: "on"
-  #   disable_entity: input_boolean.dnd_bathroom
-  #   disable_state: "on"
-  #   lights_ct:
-  #     - light.bathroom
+  - platform: circadian_lighting
+    name: bathroom
+    min_brightness: 35
+    sleep_entity: group.sleeping_bedrooms
+    sleep_brightness: 15
+    sleep_colortemp: 2000
+    sleep_state: "on"
+    disable_entity: input_boolean.dnd_bathroom
+    disable_state: "on"
+    lights_ct:
+      - light.bathroom_ceiling
 
   - platform: circadian_lighting
     name: hallway

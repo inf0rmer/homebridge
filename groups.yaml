@@ -126,7 +126,7 @@ presence_balcony:
 
 presence_bathroom:
   entities:
-    - input_boolean.presence_bathroom_light
+    - input_boolean.presence_bathroom_switch
     - input_boolean.presence_bathroom_door
     - input_boolean.presence_bathroom_shower
 

@@ -36,7 +36,7 @@ input_boolean:
   presence_hallway_motion:
   presence_laundry_room_light:
   presence_balcony_door:
-  presence_bathroom_light:
+  presence_bathroom_switch:
   presence_bathroom_door:
   presence_bathroom_shower:
   presence_closet_door:
