@@ -1018,14 +1018,11 @@ views:
             theme: Backend-selected
             type: light
           - entities:
-              - entity: light.bathroom_ceiling
+              - entity: light.switch_bathroom_ceiling
               - entity: light.bathroom_vanity
             show_header_toggle: false
             title: Lights
-            type: entity-filter
-            state_filter:
-              - operator: "!="
-                value: "unavailable"
+            type: entity
   - path: balcony
     title: Balcony
     cards:
