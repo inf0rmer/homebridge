@@ -40,7 +40,7 @@
       entity_id: light.switch_bathroom_ceiling
       state: "off"
     - condition: state
-      entity_id: light.switch_bathroom_vanity
+      entity_id: light.bathroom_vanity
       state: "off"
   action:
     - data:
