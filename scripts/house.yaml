@@ -47,9 +47,9 @@ good_night:
     - data:
         entity_id: group.all_covers
       service: cover.close_cover
-    # - data:
-    #     entity_id: lock.home_door
-    #   service: lock.lock
+    - data:
+        entity_id: lock.front_door
+      service: lock.lock
     - data:
         entity_id:
           - media_player.everywhere
@@ -123,11 +123,15 @@ house_nobody_home:
         entity_id: group.all_light_switches
       service: homeassistant.turn_off
     - data:
+        entity_id: lock.front_door
+      service: lock.lock
+    - data:
         entity_id: remote.harmony_hub
       service: remote.turn_off
-    # - data:
-    #     entity_id: lock.home_door
-    #   service: lock.lock
+    - delay:
+        seconds: 15
+    - service: light.turn_off
+      entity_id: all
     - data:
         entity_id: group.all_covers
       service: cover.close_cover
