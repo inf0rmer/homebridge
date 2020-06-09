@@ -17,7 +17,7 @@
       data_template:
         name: >
           {% if states.sun.sun.state == "above_horizon" %}
-            ios-light-mode-dark-blue
+            default
           {% else %}
-            ios-dark-mode-dark-blue
+            midnight
           {% endif %}
