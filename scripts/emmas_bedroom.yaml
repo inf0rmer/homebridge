@@ -57,4 +57,5 @@ clean_emmas_bedroom:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         zone:
           - [21332, 28462, 25382, 32162]
+        repeats: 1
       service: xiaomi_miio.vacuum_clean_zone
