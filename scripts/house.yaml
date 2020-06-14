@@ -154,7 +154,7 @@ house_stop_cleaning:
   sequence:
     - data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
-      service: vacuum.return_to_base
+      service: vacuum.pause
     - delay:
         seconds: 5
     - data:
