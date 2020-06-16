@@ -164,20 +164,6 @@
         entity_id: group.dnd_other_rooms
       service: input_boolean.turn_off
 
-- id: house_wake_up
-  alias: "[House] Wake Up"
-  trigger:
-    platform: time
-    at: "10:00:00"
-  condition:
-    - condition: state
-      entity_id: group.dnd_bedrooms
-      state: "off"
-  action:
-    - data:
-        entity_id: script.house_wake_up
-      service: script.turn_on
-
 - id: house_sunset
   alias: "[House] Sunset"
   trigger:
