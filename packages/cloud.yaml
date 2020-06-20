@@ -5,6 +5,8 @@ cloud:
         - lock
         - script
         - cover
+      exclude_domains:
+        - light
       include_entities:
         - switch.balcony_plug
         - switch.dining_room_cabinet
