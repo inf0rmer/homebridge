@@ -98,10 +98,17 @@
       from: "on"
       platform: state
       to: "off"
+    - entity_id: input_boolean.presence_dining_room_assistant
+      from: "on"
+      platform: state
+      to: "off"
   action:
     - data:
         entity_id: input_boolean.presence_dining_room_assistant
       service: input_boolean.turn_off
+    - data:
+        entity_id: light.dining_room_assistant
+      service: light.turn_off
 
 - id: dining_room_presence_on_manual_switch
   alias: "[Dining Room] Presence On (Switch)"

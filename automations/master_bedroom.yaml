@@ -99,10 +99,17 @@
       from: "on"
       platform: state
       to: "off"
+    - entity_id: input_boolean.presence_master_bedroom_assistant
+      from: "on"
+      platform: state
+      to: "off"
   action:
     - data:
         entity_id: input_boolean.presence_master_bedroom_assistant
       service: input_boolean.turn_off
+    - data:
+        entity_id: light.master_bedroom_assistant
+      service: light.turn_off
 
 - id: master_bedroom_presence_on_sleeping
   alias: "[Master Bedroom] Presence On (Sleeping)"

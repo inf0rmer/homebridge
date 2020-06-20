@@ -99,7 +99,14 @@
       from: "on"
       platform: state
       to: "off"
+    - entity_id: input_boolean.presence_kitchen_assistant
+      from: "on"
+      platform: state
+      to: "off"
   action:
     - data:
         entity_id: input_boolean.presence_kitchen_assistant
       service: input_boolean.turn_off
+    - data:
+        entity_id: light.kitchen_assistant
+      service: light.turn_off
