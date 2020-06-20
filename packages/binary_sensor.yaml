@@ -97,7 +97,7 @@ binary_sensor:
           - input_boolean.presence_master_bedroom_motion
           - input_boolean.presence_master_bedroom_switch
           - input_boolean.presence_master_bedroom_sleeping
-          - input_boolean.presence_lmaster_bedroom_assistant
+          - input_boolean.presence_master_bedroom_assistant
           - group.presence_master_bedroom
         attribute_templates:
           reason: >
