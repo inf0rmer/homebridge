@@ -32,3 +32,31 @@
     - data:
         entity_id: input_boolean.presence_laundry_room_light
       service: input_boolean.turn_off
+
+- id: laundry_room_presence_on_assistant
+  alias: "[Laundry Room] Presence On (Assistant)"
+  trigger:
+    - entity_id: light.laundry_room_assistant
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_laundry_room_assistant
+      service: input_boolean.turn_on
+
+- id: laundry_room_presence_off_assistant
+  alias: "[Laundry Room] Presence Off (Assistant)"
+  trigger:
+    - entity_id: light.laundry_room_assistant
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_laundry_room_assistant
+      service: input_boolean.turn_off

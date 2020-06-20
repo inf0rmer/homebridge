@@ -111,6 +111,34 @@
         entity_id: input_boolean.presence_bathroom_shower
       service: input_boolean.turn_off
 
+- id: bathroom_presence_on_assistant
+  alias: "[Bathroom] Presence On (Assistant)"
+  trigger:
+    - entity_id: light.bathroom_assistant
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom_assistant
+      service: input_boolean.turn_on
+
+- id: bathroom_presence_off_assistant
+  alias: "[Bathroom] Presence Off (Assistant)"
+  trigger:
+    - entity_id: light.bathroom_assistant
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_bathroom_assistant
+      service: input_boolean.turn_off
+
 - id: bathroom_light_ceiling_adjust_brightness
   alias: "[Bathroom] Ceiling Light Adjust Brightness"
   trigger:

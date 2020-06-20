@@ -75,3 +75,31 @@
     - data:
         entity_id: input_boolean.presence_kitchen_motion
       service: input_boolean.turn_off
+
+- id: kitchen_presence_on_assistant
+  alias: "[Kitchen] Presence On (Assistant)"
+  trigger:
+    - entity_id: light.kitchen_assistant
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_kitchen_assistant
+      service: input_boolean.turn_on
+
+- id: kitchen_presence_off_assistant
+  alias: "[Kitchen] Presence Off (Assistant)"
+  trigger:
+    - entity_id: light.kitchen_assistant
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_kitchen_assistant
+      service: input_boolean.turn_off

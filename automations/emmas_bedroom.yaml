@@ -75,6 +75,34 @@
         entity_id: input_boolean.presence_emmas_bedroom_motion
       service: input_boolean.turn_off
 
+- id: emmas_bedroom_presence_on_assistant
+  alias: "[Emma's Bedroom] Presence On (Assistant)"
+  trigger:
+    - entity_id: light.emmas_bedroom_assistant
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_emmas_bedroom_assistant
+      service: input_boolean.turn_on
+
+- id: emmas_bedroom_presence_off_assistant
+  alias: "[Emma's Bedroom] Presence Off (Assistant)"
+  trigger:
+    - entity_id: light.emmas_bedroom_assistant
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_emmas_bedroom_assistant
+      service: input_boolean.turn_off
+
 - id: emmas_bedroom_presence_on_sleeping
   alias: "[Emma's Bedroom] Presence On (Sleeping)"
   trigger:

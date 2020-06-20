@@ -191,6 +191,34 @@
         entity_id: input_boolean.presence_living_room_motion
       service: input_boolean.turn_off
 
+- id: living_room_presence_on_assistant
+  alias: "[Living Room] Presence On (Assistant)"
+  trigger:
+    - entity_id: light.living_room_assistant
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room_assistant
+      service: input_boolean.turn_on
+
+- id: living_room_presence_off_assistant
+  alias: "[Living Room] Presence Off (Assistant)"
+  trigger:
+    - entity_id: light.living_room_assistant
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room_assistant
+      service: input_boolean.turn_off
+
 - id: living_room_presence_on_brunos_pc
   alias: "[Living Room] Presence On (Bruno's PC)"
   trigger:

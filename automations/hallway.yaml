@@ -39,8 +39,8 @@
         transition: 5
       service: light.turn_off
 
-- id: hallway_presence_on
-  alias: "[Hallway] Presence On"
+- id: hallway_presence_on_motion
+  alias: "[Hallway] Presence On (Motion)"
   trigger:
     - entity_id: binary_sensor.hallway_combined_sensor_motion
       from: "off"
@@ -55,8 +55,8 @@
         entity_id: input_boolean.presence_hallway_motion
       service: input_boolean.turn_on
 
-- id: hallway_presence_off
-  alias: "[Hallway] Presence Off"
+- id: hallway_presence_off_motion
+  alias: "[Hallway] Presence Off (Motion)"
   trigger:
     - entity_id: binary_sensor.hallway_combined_sensor_motion
       from: "on"
@@ -71,4 +71,32 @@
   action:
     - data:
         entity_id: input_boolean.presence_hallway_motion
+      service: input_boolean.turn_off
+
+- id: hallway_presence_on_assistant
+  alias: "[Hallway] Presence On (Assistant)"
+  trigger:
+    - entity_id: light.hallway_assistant
+      from: "off"
+      platform: state
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.someone_home
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_hallway_assistant
+      service: input_boolean.turn_on
+
+- id: hallway_presence_off_assistant
+  alias: "[Hallway] Presence Off (Assistant)"
+  trigger:
+    - entity_id: light.hallway_assistant
+      from: "on"
+      platform: state
+      to: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_hallway_assistant
       service: input_boolean.turn_off
