@@ -1,4 +1,58 @@
 light:
+  - platform: template
+    lights:
+      living_room_assistant:
+        friendly_name: "Living Room"
+        turn_on:
+        turn_off:
+        set_level:
+
+      dining_room_assistant:
+        friendly_name: "Dining Room"
+        turn_on:
+        turn_off:
+        set_level:
+
+      master_bedroom_assistant:
+        friendly_name: "Master Bedroom"
+        turn_on:
+        turn_off:
+        set_level:
+
+      emmas_bedroom_assistant:
+        friendly_name: "Emma's Bedroom"
+        turn_on:
+        turn_off:
+        set_level:
+
+      kitchen_assistant:
+        friendly_name: "Kitchen"
+        turn_on:
+        turn_off:
+        set_level:
+
+      hallway_assistant:
+        friendly_name: "Hallway"
+        turn_on:
+        turn_off:
+        set_level:
+
+      laundry_room_assistant:
+        friendly_name: "Laundry Room"
+        turn_on:
+        turn_off:
+        set_level:
+
+      bathroom_assistant:
+        friendly_name: "Bathroom"
+        turn_on:
+        turn_off:
+
+      balcony_assistant:
+        friendly_name: "Balcony"
+        turn_on:
+        turn_off:
+
   - platform: group
     name: Dining Room
     entities:

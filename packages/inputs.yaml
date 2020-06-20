@@ -43,6 +43,7 @@ input_boolean:
   presence_laundry_room_light:
   presence_laundry_room_assistant:
   presence_balcony_door:
+  presence_balcony_assistant:
   presence_bathroom_switch:
   presence_bathroom_door:
   presence_bathroom_shower:

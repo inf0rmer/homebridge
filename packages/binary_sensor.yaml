@@ -63,6 +63,7 @@ binary_sensor:
           - input_boolean.presence_living_room_switch
           - input_boolean.presence_living_room_tv
           - input_boolean.presence_living_room_brunos_pc
+          - input_boolean.presence_living_room_assistant
           - group.presence_living_room
         attribute_templates:
           reason: >
@@ -78,6 +79,7 @@ binary_sensor:
         entity_id:
           - input_boolean.presence_dining_room_motion
           - input_boolean.presence_dining_room_switch
+          - input_boolean.presence_dining_room_assistant
           - group.presence_dining_room
         attribute_templates:
           reason: >
@@ -95,6 +97,7 @@ binary_sensor:
           - input_boolean.presence_master_bedroom_motion
           - input_boolean.presence_master_bedroom_switch
           - input_boolean.presence_master_bedroom_sleeping
+          - input_boolean.presence_lmaster_bedroom_assistant
           - group.presence_master_bedroom
         attribute_templates:
           reason: >
@@ -111,6 +114,7 @@ binary_sensor:
           - input_boolean.presence_emmas_bedroom_motion
           - input_boolean.presence_emmas_bedroom_switch
           - input_boolean.presence_emmas_bedroom_sleeping
+          - input_boolean.presence_emmas_bedroom_assistant
           - group.presence_emmas_bedroom
         attribute_templates:
           reason: >
@@ -125,6 +129,7 @@ binary_sensor:
           {{ is_state('group.presence_kitchen', 'on') }}
         entity_id:
           - input_boolean.presence_kitchen_motion
+          - input_boolean.presence_kitchen_assistant
           - group.presence_kitchen
         attribute_templates:
           reason: >
@@ -139,6 +144,7 @@ binary_sensor:
           {{ is_state('group.presence_hallway', 'on') }}
         entity_id:
           - input_boolean.presence_hallway_motion
+          - input_boolean.presence_hallway_assistant
           - group.presence_hallway
         attribute_templates:
           reason: >
@@ -155,6 +161,7 @@ binary_sensor:
           - input_boolean.presence_bathroom_switch
           - input_boolean.presence_bathroom_door
           - input_boolean.presence_bathroom_shower
+          - input_boolean.presence_bathroom_assistant
           - group.presence_bathroom
         attribute_templates:
           reason: >
@@ -169,6 +176,7 @@ binary_sensor:
           {{ is_state('group.presence_laundry_room', 'on') }}
         entity_id:
           - input_boolean.presence_laundry_room_motion
+          - input_boolean.presence_laundry_room_assistant
           - group.presence_laundry_room
         attribute_templates:
           reason: >
@@ -183,6 +191,7 @@ binary_sensor:
           {{ is_state('group.presence_balcony', 'on') }}
         entity_id:
           - input_boolean.presence_balcony_door
+          - input_boolean.presence_balcony_assistant
           - group.presence_balcony
         attribute_templates:
           reason: >

@@ -17,14 +17,14 @@ cloud:
         - input_boolean.dnd_master_bedroom
         - input_boolean.dnd_emmas_bedroom
         - input_boolean.dnd_hallway
-        - input_boolean.presence_living_room_assistant
-        - input_boolean.presence_dining_room_assistant
-        - input_boolean.presence_master_bedroom_assistant
-        - input_boolean.presence_emmas_bedroom_assistant
-        - input_boolean.presence_kitchen_assistant
-        - input_boolean.presence_hallway_assistant
-        - input_boolean.presence_laundry_room_assistant
-        - input_boolean.presence_bathroom_assistant
+        - light.presence_living_room_assistant
+        - light.presence_dining_room_assistant
+        - light.presence_master_bedroom_assistant
+        - light.presence_emmas_bedroom_assistant
+        - light.presence_kitchen_assistant
+        - light.presence_hallway_assistant
+        - light.presence_laundry_room_assistant
+        - light.presence_bathroom_assistant
 
   google_actions:
     filter:
