@@ -24,21 +24,29 @@ input_boolean:
   presence_living_room_switch:
   presence_living_room_tv:
   presence_living_room_brunos_pc:
+  presence_living_room_assistant:
   presence_dining_room_motion:
   presence_dining_room_switch:
+  presence_dining_room_assistant:
   presence_master_bedroom_motion:
   presence_master_bedroom_switch:
   presence_master_bedroom_sleeping:
+  presence_master_bedroom_assistant:
   presence_emmas_bedroom_motion:
   presence_emmas_bedroom_switch:
   presence_emmas_bedroom_sleeping:
+  presence_emmas_bedroom_assistant:
   presence_kitchen_motion:
+  presence_kitchen_assistant:
   presence_hallway_motion:
+  presence_hallway_assistant:
   presence_laundry_room_light:
+  presence_laundry_room_assistant:
   presence_balcony_door:
   presence_bathroom_switch:
   presence_bathroom_door:
   presence_bathroom_shower:
+  presence_bathroom_assistant:
   presence_closet_door:
 
   presence_bruno:
