@@ -1,0 +1,4 @@
+climate:
+  - platform: harmony_ac
+    remote_entity: remote.harmony_hub
+    device_id: presence_living_room_bayesian
