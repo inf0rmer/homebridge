@@ -3,18 +3,10 @@ homekit:
   filter:
     include_domains:
       - lock
-      - script
-      - cover
     include_entities:
       - switch.balcony_plug
       - switch.dining_room_cabinet
       - switch.christmas_tree
-      - switch.homelab
-      - input_boolean.dnd_living_room
-      - input_boolean.dnd_dining_room
-      - input_boolean.dnd_master_bedroom
-      - input_boolean.dnd_emmas_bedroom
-      - input_boolean.dnd_hallway
       - light.living_room_assistant
       - light.dining_room_assistant
       - light.master_bedroom_assistant
@@ -37,13 +29,3 @@ homekit:
       name: Building Door
     sensor.home_sensor_average_temperature:
       name: Avg. Home Temperature
-    input_boolean.dnd_living_room:
-      name: Living Room Do Not Disturb
-    input_boolean.dnd_dining_room:
-      name: Dining Room Do Not Disturb
-    input_boolean.dnd_master_bedroom:
-      name: Master Bedroom Do Not Disturb
-    input_boolean.dnd_emmas_bedroom:
-      name: Emma's Bedroom Do Not Disturb
-    input_boolean.dnd_hallway:
-      name: Hallway Do Not Disturb
