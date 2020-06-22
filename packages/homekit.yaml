@@ -1,5 +1,4 @@
 homekit:
-  port: 31827
   filter:
     include_domains:
       - lock
