@@ -1,29 +1,28 @@
 homekit:
   port: 31827
   filter:
-    filter:
-      include_domains:
-        - lock
-        - script
-        - cover
-      include_entities:
-        - switch.balcony_plug
-        - switch.dining_room_cabinet
-        - switch.christmas_tree
-        - switch.homelab
-        - input_boolean.dnd_living_room
-        - input_boolean.dnd_dining_room
-        - input_boolean.dnd_master_bedroom
-        - input_boolean.dnd_emmas_bedroom
-        - input_boolean.dnd_hallway
-        - light.living_room_assistant
-        - light.dining_room_assistant
-        - light.master_bedroom_assistant
-        - light.emmas_bedroom_assistant
-        - light.kitchen_assistant
-        - light.hallway_assistant
-        - light.laundry_room_assistant
-        - light.bathroom_assistant
+    include_domains:
+      - lock
+      - script
+      - cover
+    include_entities:
+      - switch.balcony_plug
+      - switch.dining_room_cabinet
+      - switch.christmas_tree
+      - switch.homelab
+      - input_boolean.dnd_living_room
+      - input_boolean.dnd_dining_room
+      - input_boolean.dnd_master_bedroom
+      - input_boolean.dnd_emmas_bedroom
+      - input_boolean.dnd_hallway
+      - light.living_room_assistant
+      - light.dining_room_assistant
+      - light.master_bedroom_assistant
+      - light.emmas_bedroom_assistant
+      - light.kitchen_assistant
+      - light.hallway_assistant
+      - light.laundry_room_assistant
+      - light.bathroom_assistant
 
   entity_config:
     switch.balcony_plug:
