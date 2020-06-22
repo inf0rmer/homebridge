@@ -21,6 +21,7 @@ binary_sensor:
   - platform: bayesian
     name: "Living Room Presence Bayesian"
     probability_threshold: 0.9
+    prior: 0.5
     observations:
       - entity_id: input_boolean.presence_living_room_motion
         prob_given_true: 0.7
