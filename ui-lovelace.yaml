@@ -425,8 +425,6 @@ views:
             show_header_toggle: false
             title: Blinds
             type: entities
-          - type: thermostat
-            entity: climate.harmony_climate_controller
           - entities:
               - entity: sensor.living_room_sensor_temperature
                 name: Temperature
