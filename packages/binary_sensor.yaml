@@ -44,7 +44,171 @@ binary_sensor:
         platform: state
         to_state: "on"
       - entity_id: input_boolean.presence_living_room_assistant
-        prob_given_true: 0.7
+        prob_given_true: 1.0
+        prob_given_false: 0.6
+        platform: state
+        to_state: "on"
+
+  - platform: bayesian
+    name: presence_dining_room_bayesian
+    probability_threshold: 0.8
+    prior: 0.5
+    observations:
+      - entity_id: input_boolean.presence_dining_room_motion
+        prob_given_true: 0.8
+        prob_given_false: 0.4
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_dining_room_switch
+        prob_given_true: 1.0
+        prob_given_false: 0.1
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_dining_room_assistant
+        prob_given_true: 1.0
+        prob_given_false: 0.6
+        platform: state
+        to_state: "on"
+
+  - platform: bayesian
+    name: presence_master_bedroom_bayesian
+    probability_threshold: 0.8
+    prior: 0.5
+    observations:
+      - entity_id: input_boolean.presence_master_bedroom_motion
+        prob_given_true: 0.8
+        prob_given_false: 0.4
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_master_bedroom_switch
+        prob_given_true: 1.0
+        prob_given_false: 0.1
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_master_bedroom_assistant
+        prob_given_true: 1.0
+        prob_given_false: 0.6
+        platform: state
+        to_state: "on"
+
+  - platform: bayesian
+    name: presence_emmas_bedroom_bayesian
+    probability_threshold: 0.8
+    prior: 0.5
+    observations:
+      - entity_id: input_boolean.presence_emmas_bedroom_motion
+        prob_given_true: 0.8
+        prob_given_false: 0.4
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_emmas_bedroom_switch
+        prob_given_true: 1.0
+        prob_given_false: 0.1
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_emmas_bedroom_assistant
+        prob_given_true: 1.0
+        prob_given_false: 0.6
+        platform: state
+        to_state: "on"
+
+  - platform: bayesian
+    name: presence_kitchen_bayesian
+    probability_threshold: 0.8
+    prior: 0.5
+    observations:
+      - entity_id: input_boolean.presence_kitchen_motion
+        prob_given_true: 1.0
+        prob_given_false: 0.4
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_kitchen_assistant
+        prob_given_true: 1.0
+        prob_given_false: 0.6
+        platform: state
+        to_state: "on"
+
+  - platform: bayesian
+    name: presence_hallway_bayesian
+    probability_threshold: 0.8
+    prior: 0.5
+    observations:
+      - entity_id: input_boolean.presence_hallway_motion
+        prob_given_true: 1.0
+        prob_given_false: 0.4
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_hallway_assistant
+        prob_given_true: 1.0
+        prob_given_false: 0.6
+        platform: state
+        to_state: "on"
+
+  - platform: bayesian
+    name: presence_bathroom_bayesian
+    probability_threshold: 0.8
+    prior: 0.5
+    observations:
+      - entity_id: input_boolean.presence_bathroom_switch
+        prob_given_true: 1.0
+        prob_given_false: 0.4
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_bathroom_door
+        prob_given_true: 0.8
+        prob_given_false: 0.1
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_bathroom_shower
+        prob_given_true: 0.9
+        prob_given_false: 0.1
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_bathroom_assistant
+        prob_given_true: 1.0
+        prob_given_false: 0.6
+        platform: state
+        to_state: "on"
+
+  - platform: bayesian
+    name: presence_balcony_bayesian
+    probability_threshold: 0.8
+    prior: 0.5
+    observations:
+      - entity_id: input_boolean.presence_balcony_door
+        prob_given_true: 0.9
+        prob_given_false: 0.5
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_balcony_assistant
+        prob_given_true: 1.0
+        prob_given_false: 0.6
+        platform: state
+        to_state: "on"
+
+  - platform: bayesian
+    name: presence_laundry_room_bayesian
+    probability_threshold: 0.8
+    prior: 0.5
+    observations:
+      - entity_id: input_boolean.presence_laundry_room_assistant
+        prob_given_true: 1.0
+        prob_given_false: 0.6
+        platform: state
+        to_state: "on"
+
+  - platform: bayesian
+    name: presence_closet_bayesian
+    probability_threshold: 0.8
+    prior: 0.5
+    observations:
+      - entity_id: input_boolean.presence_balcony_door
+        prob_given_true: 0.9
+        prob_given_false: 0.5
+        platform: state
+        to_state: "on"
+      - entity_id: input_boolean.presence_closet_assistant
+        prob_given_true: 1.0
         prob_given_false: 0.6
         platform: state
         to_state: "on"
@@ -99,12 +263,7 @@ binary_sensor:
         friendly_name: Presence Dining Room
         device_class: occupancy
         value_template: >-
-          {{ is_state('group.presence_dining_room', 'on') }}
-        entity_id:
-          - input_boolean.presence_dining_room_motion
-          - input_boolean.presence_dining_room_switch
-          - input_boolean.presence_dining_room_assistant
-          - group.presence_dining_room
+          {{ is_state('binary_sensor.presence_dining_room_bayesian', 'on') }}
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_dining_room.attributes.entity_id if is_state(entity, 'on') %}
@@ -116,13 +275,7 @@ binary_sensor:
         friendly_name: Presence Master Bedroom
         device_class: occupancy
         value_template: >-
-          {{ is_state('group.presence_master_bedroom', 'on') }}
-        entity_id:
-          - input_boolean.presence_master_bedroom_motion
-          - input_boolean.presence_master_bedroom_switch
-          - input_boolean.presence_master_bedroom_sleeping
-          - input_boolean.presence_master_bedroom_assistant
-          - group.presence_master_bedroom
+          {{ is_state('binary_sensor.presence_master_bedroom_bayesian', 'on') }}
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_master_bedroom.attributes.entity_id if is_state(entity, 'on') %}
@@ -133,13 +286,7 @@ binary_sensor:
         friendly_name: Presence Emma's Bedroom
         device_class: occupancy
         value_template: >-
-          {{ is_state('group.presence_emmas_bedroom', 'on') }}
-        entity_id:
-          - input_boolean.presence_emmas_bedroom_motion
-          - input_boolean.presence_emmas_bedroom_switch
-          - input_boolean.presence_emmas_bedroom_sleeping
-          - input_boolean.presence_emmas_bedroom_assistant
-          - group.presence_emmas_bedroom
+          {{ is_state('binary_sensor.presence_emmas_bedroom_bayesian', 'on') }}
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_emmas_bedroom.attributes.entity_id if is_state(entity, 'on') %}
@@ -150,11 +297,7 @@ binary_sensor:
         friendly_name: Presence Kitchen
         device_class: occupancy
         value_template: >-
-          {{ is_state('group.presence_kitchen', 'on') }}
-        entity_id:
-          - input_boolean.presence_kitchen_motion
-          - input_boolean.presence_kitchen_assistant
-          - group.presence_kitchen
+          {{ is_state('binary_sensor.presence_kitchen_bayesian', 'on') }}
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_kitchen.attributes.entity_id if is_state(entity, 'on') %}
@@ -165,11 +308,7 @@ binary_sensor:
         friendly_name: Presence Hallway
         device_class: occupancy
         value_template: >-
-          {{ is_state('group.presence_hallway', 'on') }}
-        entity_id:
-          - input_boolean.presence_hallway_motion
-          - input_boolean.presence_hallway_assistant
-          - group.presence_hallway
+          {{ is_state('binary_sensor.presence_hallway_bayesian', 'on') }}
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_hallway.attributes.entity_id if is_state(entity, 'on') %}
@@ -180,13 +319,7 @@ binary_sensor:
         friendly_name: Presence Bathroom
         device_class: occupancy
         value_template: >-
-          {{ is_state('group.presence_bathroom', 'on') }}
-        entity_id:
-          - input_boolean.presence_bathroom_switch
-          - input_boolean.presence_bathroom_door
-          - input_boolean.presence_bathroom_shower
-          - input_boolean.presence_bathroom_assistant
-          - group.presence_bathroom
+          {{ is_state('binary_sensor.presence_bathroom_bayesian', 'on') }}
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_bathroom.attributes.entity_id if is_state(entity, 'on') %}
@@ -197,11 +330,7 @@ binary_sensor:
         friendly_name: Presence Laundry Room
         device_class: presence
         value_template: >-
-          {{ is_state('group.presence_laundry_room', 'on') }}
-        entity_id:
-          - input_boolean.presence_laundry_room_motion
-          - input_boolean.presence_laundry_room_assistant
-          - group.presence_laundry_room
+          {{ is_state('binary_sensor.presence_laundry_room_bayesian', 'on') }}
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_laundry_room.attributes.entity_id if is_state(entity, 'on') %}
@@ -212,11 +341,7 @@ binary_sensor:
         friendly_name: Presence Balcony
         device_class: occupancy
         value_template: >-
-          {{ is_state('group.presence_balcony', 'on') }}
-        entity_id:
-          - input_boolean.presence_balcony_door
-          - input_boolean.presence_balcony_assistant
-          - group.presence_balcony
+          {{ is_state('binary_sensor.presence_balcony_bayesian', 'on') }}
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_balcony.attributes.entity_id if is_state(entity, 'on') %}
@@ -227,10 +352,7 @@ binary_sensor:
         friendly_name: Presence Closet
         device_class: occupancy
         value_template: >-
-          {{ is_state('group.presence_closet', 'on') }}
-        entity_id:
-          - input_boolean.presence_closet_motion
-          - group.presence_closet
+          {{ is_state('binary_sensor.presence_closet_bayesian', 'on') }}
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_closet.attributes.entity_id if is_state(entity, 'on') %}
