@@ -19,12 +19,12 @@ binary_sensor:
         min_gradient: -0.016666
 
   - platform: bayesian
-    name: "Living Room Presence Bayesian"
-    probability_threshold: 0.9
+    name: presence_living_room_bayesian
+    probability_threshold: 0.8
     prior: 0.5
     observations:
       - entity_id: input_boolean.presence_living_room_motion
-        prob_given_true: 0.7
+        prob_given_true: 0.8
         prob_given_false: 0.4
         platform: state
         to_state: "on"
@@ -88,14 +88,7 @@ binary_sensor:
         friendly_name: Presence Living Room
         device_class: occupancy
         value_template: >-
-          {{ is_state('group.presence_living_room', 'on') }}
-        entity_id:
-          - input_boolean.presence_living_room_motion
-          - input_boolean.presence_living_room_switch
-          - input_boolean.presence_living_room_tv
-          - input_boolean.presence_living_room_brunos_pc
-          - input_boolean.presence_living_room_assistant
-          - group.presence_living_room
+          {{ is_state('binary_sensor.presence_living_room_bayesian', 'on') }}
         attribute_templates:
           reason: >
             {% for entity in states.group.presence_living_room.attributes.entity_id if is_state(entity, 'on') %}
