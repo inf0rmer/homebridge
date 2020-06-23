@@ -172,7 +172,7 @@ binary_sensor:
 
   - platform: bayesian
     name: presence_balcony_bayesian
-    probability_threshold: 0.9
+    probability_threshold: 0.8
     prior: 0.5
     observations:
       - entity_id: input_boolean.presence_balcony_door
