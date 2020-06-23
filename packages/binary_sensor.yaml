@@ -202,7 +202,7 @@ binary_sensor:
     probability_threshold: 0.8
     prior: 0.5
     observations:
-      - entity_id: input_boolean.presence_balcony_door
+      - entity_id: input_boolean.presence_closet_door
         prob_given_true: 1.0
         prob_given_false: 0.1
         platform: state
