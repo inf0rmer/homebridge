@@ -418,14 +418,6 @@ views:
               - operator: "!="
                 value: "unavailable"
           - entities:
-              - entity: cover.living_room_blinds
-                name: Whole Room
-              - entity: cover.living_room_desk_blind
-                name: Desk
-            show_header_toggle: false
-            title: Blinds
-            type: entities
-          - entities:
               - entity: sensor.living_room_sensor_temperature
                 name: Temperature
               - entity: sensor.living_room_sensor_light_level
