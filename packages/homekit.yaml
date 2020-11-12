@@ -2,6 +2,7 @@ homekit:
   filter:
     include_domains:
       - lock
+      - script
     include_entities:
       - switch.balcony_plug
       - switch.dining_room_cabinet
