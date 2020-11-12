@@ -4,7 +4,6 @@ preload_cards:
   - layout-card
   - custom:auto-entities
   - custom:zha-network-card
-  - custom:battery-entity
 views:
   - path: default_view
     title: General
@@ -21,8 +20,6 @@ views:
             - domain: sensor
               entity_id: "*battery*"
               state: "<= 30"
-              options:
-                type: "custom:battery-entity"
 
   - path: zigbee
     panel: true
