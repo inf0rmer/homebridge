@@ -9,14 +9,6 @@ preload_cards:
   - hui-entity-filter-card
   - alarm-panel
   - hui-alarm-panel-card
-custom_header:
-  compact_mode: true
-  hide_help: true
-  hide_config: true
-  hide_unused: true
-  voice_hide: true
-  options_hide: true
-  chevrons: false
 views:
   - path: default_view
     title: House
