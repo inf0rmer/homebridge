@@ -360,7 +360,7 @@
   alias: "[Living Room] Manual Presence Off"
   trigger:
     - event_data:
-        command: off_with_effect
+        command: stop
         device_ieee: 00:17:88:01:06:e9:47:b2
       event_type: zha_event
       platform: event
