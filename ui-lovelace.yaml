@@ -386,7 +386,7 @@ views:
                         - font-size: 10px
                     tap_action:
                       action: call-service
-                      service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                      service: '[[[ if (states["input_boolean.presence_living_room_switch"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                       service_data:
                         entity_id: input_boolean.presence_living_room_switch
                     hold_action:
@@ -500,7 +500,7 @@ views:
                     - font-size: 10px
                 tap_action:
                   action: call-service
-                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service: '[[[ if (states["input_boolean.presence_dining_room_switch"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                   service_data:
                     entity_id: input_boolean.presence_dining_room_switch
                 hold_action:
@@ -608,7 +608,7 @@ views:
                     - font-size: 10px
                 tap_action:
                   action: call-service
-                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service: '[[[ if (states["input_boolean.presence_master_bedroom_switch"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                   service_data:
                     entity_id: input_boolean.presence_master_bedroom_switch
                 hold_action:
@@ -762,7 +762,7 @@ views:
                     - font-size: 10px
                 tap_action:
                   action: call-service
-                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service: '[[[ if (states["input_boolean.presence_emmas_bedroom_switch"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                   service_data:
                     entity_id: input_boolean.presence_emmas_bedroom_switch
                 hold_action:
@@ -868,7 +868,7 @@ views:
                     - font-size: 10px
                 tap_action:
                   action: call-service
-                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service: '[[[ if (states["input_boolean.presence_kitchen_switch"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                   service_data:
                     entity_id: input_boolean.presence_kitchen_switch
                 hold_action:
@@ -975,7 +975,7 @@ views:
                     - font-size: 10px
                 tap_action:
                   action: call-service
-                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service: '[[[ if (states["input_boolean.presence_hallway_switch"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
                   service_data:
                     entity_id: input_boolean.presence_hallway_switch
                 hold_action:
@@ -1021,7 +1021,7 @@ views:
                 - font-size: 10px
             tap_action:
               action: call-service
-              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+              service: '[[[ if (states["input_boolean.presence_bathroom_switch"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
               service_data:
                 entity_id: input_boolean.presence_bathroom_switch
             hold_action:
@@ -1060,7 +1060,7 @@ views:
                 - font-size: 10px
             tap_action:
               action: call-service
-              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+              service: '[[[ if (states["input_boolean.presence_balcony_switch"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
               service_data:
                 entity_id: input_boolean.presence_balcony_switch
             hold_action:
@@ -1100,7 +1100,7 @@ views:
                 - font-size: 10px
             tap_action:
               action: call-service
-              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+              service: '[[[ if (states["input_boolean.presence_laundry_room_switch"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
               service_data:
                 entity_id: input_boolean.presence_laundry_room_switch
             hold_action:
@@ -1134,7 +1134,7 @@ views:
                 - font-size: 10px
             tap_action:
               action: call-service
-              service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+              service: '[[[ if (states["input_boolean.presence_closet_switch"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
               service_data:
                 entity_id: input_boolean.presence_closet_switch
             hold_action:
