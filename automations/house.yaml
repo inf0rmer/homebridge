@@ -34,30 +34,6 @@
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.return_to_base
 
-- id: house_alexa_guard_arm
-  alias: "[House] Alexa Home Guard - Arm"
-  trigger:
-    - entity_id: binary_sensor.someone_home
-      from: "on"
-      platform: state
-      to: "off"
-  action:
-    - data:
-        entity_id: alarm_control_panel.alexa_guard_a8bd5
-      service: alarm_control_panel.alarm_arm_away
-
-- id: house_alexa_guard_disarm
-  alias: "[House] Alexa Home Guard - Disarm"
-  trigger:
-    - entity_id: binary_sensor.someone_home
-      from: "off"
-      platform: state
-      to: "on"
-  action:
-    - data:
-        entity_id: alarm_control_panel.alexa_guard_a8bd5
-      service: alarm_control_panel.alarm_disarm
-
 - id: house_sarah_arrive_home
   alias: "[House] Sarah comes home"
   trigger:

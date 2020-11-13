@@ -163,8 +163,6 @@ views:
                     type: "custom:button-card"
           - entity: weather.weather
             type: "custom:weather-card"
-          - entity: alarm_control_panel.alexa_guard_a8bd5
-            type: alarm-panel
           - entities:
               - entity: sensor.home_sensor_average_temperature
                 name: Avg. Temperature
