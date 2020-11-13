@@ -136,17 +136,5 @@ hacs:
 
 circadian_lighting:
 
-alexa_media:
-  accounts:
-    - email: !env_var AMAZON_USER
-      password: !env_var AMAZON_PASSWORD
-      url: amazon.com
-      exclude_devices:
-        - "This Device"
-        - "Sarah's Alexa Apps"
-        - "Bruno's Alexa Apps"
-        - "Bruno's Fire TV stick"
-        - "Living Room"
-
 airvisual:
   api_key: !env_var AIRVISUAL_API_KEY
