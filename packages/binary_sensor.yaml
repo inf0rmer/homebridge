@@ -45,7 +45,7 @@ binary_sensor:
         to_state: "on"
       - entity_id: input_boolean.presence_living_room_assistant
         prob_given_true: 1.0
-        prob_given_false: 0.6
+        prob_given_false: 0.1
         platform: state
         to_state: "on"
 
@@ -66,7 +66,7 @@ binary_sensor:
         to_state: "on"
       - entity_id: input_boolean.presence_dining_room_assistant
         prob_given_true: 1.0
-        prob_given_false: 0.6
+        prob_given_false: 0.1
         platform: state
         to_state: "on"
 
@@ -87,7 +87,7 @@ binary_sensor:
         to_state: "on"
       - entity_id: input_boolean.presence_master_bedroom_assistant
         prob_given_true: 1.0
-        prob_given_false: 0.6
+        prob_given_false: 0.1
         platform: state
         to_state: "on"
 
@@ -108,7 +108,7 @@ binary_sensor:
         to_state: "on"
       - entity_id: input_boolean.presence_emmas_bedroom_assistant
         prob_given_true: 1.0
-        prob_given_false: 0.6
+        prob_given_false: 0.1
         platform: state
         to_state: "on"
 
@@ -140,7 +140,7 @@ binary_sensor:
         to_state: "on"
       - entity_id: input_boolean.presence_hallway_assistant
         prob_given_true: 1.0
-        prob_given_false: 0.6
+        prob_given_false: 0.1
         platform: state
         to_state: "on"
 
@@ -166,7 +166,7 @@ binary_sensor:
         to_state: "on"
       - entity_id: input_boolean.presence_bathroom_assistant
         prob_given_true: 1.0
-        prob_given_false: 0.6
+        prob_given_false: 0.1
         platform: state
         to_state: "on"
 
@@ -182,7 +182,7 @@ binary_sensor:
         to_state: "on"
       - entity_id: input_boolean.presence_balcony_assistant
         prob_given_true: 1.0
-        prob_given_false: 0.2
+        prob_given_false: 0.1
         platform: state
         to_state: "on"
 
@@ -193,7 +193,7 @@ binary_sensor:
     observations:
       - entity_id: input_boolean.presence_laundry_room_assistant
         prob_given_true: 1.0
-        prob_given_false: 0.6
+        prob_given_false: 0.1
         platform: state
         to_state: "on"
 
@@ -209,7 +209,7 @@ binary_sensor:
         to_state: "on"
       - entity_id: input_boolean.presence_closet_assistant
         prob_given_true: 1.0
-        prob_given_false: 0.6
+        prob_given_false: 0.1
         platform: state
         to_state: "on"
 
