@@ -369,3 +369,11 @@
       platform: state
       to: "off"
   action:
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_on
+    - delay:
+        minutes: 15
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_off
