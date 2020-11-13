@@ -25,15 +25,6 @@ emma_bedtime:
     - data:
         entity_id: input_boolean.presence_emmas_bedroom
       service: input_boolean.turn_on
-    - data:
-        entity_id: media_player.emma_s_bedroom_echo_dot
-        media_content_id: "lullabies"
-        media_content_type: routine
-      service: media_player.play_media
-    - data:
-        entity_id: media_player.emma_s_bedroom_echo_dot
-        volume_level: 0.3
-      service: media_player.volume_set
 
 emma_wake_up:
   alias: "[Emma's Bedroom] Wake Up"

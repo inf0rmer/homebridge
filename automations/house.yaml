@@ -162,35 +162,6 @@
         volume_level: 0.3
       service: media_player.volume_set
 
-- id: house_someone_arrives_from_work
-  alias: "[House] Bruno or Sarah come home before night when no one else is home"
-  trigger:
-    - entity_id: input_boolean.presence_bruno
-      from: "off"
-      platform: state
-      to: "on"
-    - entity_id: input_boolean.presence_sarah
-      from: "off"
-      platform: state
-      to: "on"
-  condition:
-    - condition: state
-      entity_id: binary_sensor.someone_home
-      state: "off"
-    - condition: time
-      before: "20:00"
-      after: "16:30"
-  action:
-    - data:
-        entity_id: media_player.living_room_echo_dot
-        media_content_id: "welcomehome"
-        media_content_type: routine
-      service: media_player.play_media
-    - data:
-        entity_id: media_player.everywhere
-        volume_level: 0.3
-      service: media_player.volume_set
-
 - id: house_someone_arrives
   alias: "[House] Anyone comes home before sunset"
   trigger:
