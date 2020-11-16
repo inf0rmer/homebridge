@@ -28,7 +28,8 @@ good_night:
       entity_id: light.emmas_bedroom
     - data:
         entity_id: remote.harmony_hub
-      service: remote.turn_off
+        activity: PowerOff
+      service: remote.turn_on
     - delay:
         seconds: 15
     - service: light.turn_off
