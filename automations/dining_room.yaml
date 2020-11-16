@@ -158,6 +158,9 @@
         entity_id: input_boolean.presence_dining_room_switch
       service: input_boolean.turn_off
     - data:
+        entity_id: input_boolean.presence_dining_room_motion
+      service: input_boolean.turn_off
+    - data:
         entity_id: light.dining_room
       service: light.turn_off
 
