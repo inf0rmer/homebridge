@@ -46,6 +46,9 @@
     - data:
         entity_id: input_boolean.presence_bathroom_switch
       service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.presence_bathroom_assistant
+      service: input_boolean.turn_off
 
 - id: bathroom_presence_on_door
   alias: "[Bathroom] Presence On (Door)"

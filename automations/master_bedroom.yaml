@@ -212,6 +212,9 @@
         entity_id: input_boolean.presence_master_bedroom_motion
       service: input_boolean.turn_off
     - data:
+        entity_id: input_boolean.presence_master_bedroom_assistant
+      service: input_boolean.turn_off
+    - data:
         entity_id: light.master_bedroom
       service: light.turn_off
 
