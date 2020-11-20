@@ -52,7 +52,7 @@
   action:
     - data:
         entity_id: input_boolean.house_was_cleaned
-      service: input_boolean.turn_off
+      service: input_boolean.turn_on
 
 - id: house_sarah_arrive_home
   alias: "[House] Sarah comes home"
