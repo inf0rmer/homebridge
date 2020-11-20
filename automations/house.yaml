@@ -10,10 +10,15 @@
       from: "on"
       platform: state
       to: "off"
+    - platform: time
+      at: "08:00:00"
   condition:
     - condition: state
       entity_id: sun.sun
       state: above_horizon
+    - condition: state
+      entity_id: input_boolean.house_was_cleaned
+      state: "off"
   action:
     - data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
@@ -33,6 +38,21 @@
     - data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.return_to_base
+
+- id: house_finished_cleaning
+  alias: "[House] Finished Cleaning"
+  trigger:
+    - entity_id: vacuum.xiaomi_vacuum_cleaner
+      platform: state
+      to: "docked"
+  condition:
+    - condition: state
+      entity_id: input_boolean.house_was_cleaned
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.house_was_cleaned
+      service: input_boolean.turn_off
 
 - id: house_sarah_arrive_home
   alias: "[House] Sarah comes home"
@@ -138,6 +158,9 @@
   action:
     - data:
         entity_id: group.dnd_other_rooms
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.house_was_cleaned
       service: input_boolean.turn_off
 
 - id: house_sunset
