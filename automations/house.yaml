@@ -1,8 +1,8 @@
 ###############
 # House #
 ###############
-- id: house_start_cleaning
-  alias: "[House] Start Cleaning"
+- id: house_start_cleaning_when_away
+  alias: "[House] Start Cleaning When Away"
   trigger:
     - entity_id: binary_sensor.someone_home
       for:
@@ -19,6 +19,27 @@
     - condition: state
       entity_id: input_boolean.house_was_cleaned
       state: "off"
+  action:
+    - data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      service: vacuum.start
+
+- id: house_start_cleaning_morning
+  alias: "[House] Start Cleaning Every Morning"
+  trigger:
+    - platform: time
+      at: "08:00:00"
+  condition:
+    - condition: state
+      entity_id: input_boolean.house_was_cleaned
+      state: "off"
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
   action:
     - data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
