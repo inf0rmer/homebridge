@@ -280,6 +280,32 @@
         transition: 3
       service: light.turn_on
 
+- id: living_room_presence_toggle_on_manual_remote
+  alias: "[Living Room] Presence On (Remote)"
+  trigger:
+    - event_data:
+        command: "toggle"
+        device_ieee: cc:cc:cc:ff:fe:97:36:84
+      event_type: zha_event
+      platform: event
+  condition:
+    - condition: state
+      entity_id: light.living_room
+      state: "off"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room_switch
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.dnd_living_room
+      service: input_boolean.turn_off
+    - data_template:
+        entity_id: light.living_room
+        kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
+        transition: 3
+      service: light.turn_on
+
 - id: living_room_presence_off_manual_switch
   alias: "[Living Room] Presence Off (Switch)"
   trigger:
@@ -302,12 +328,48 @@
         entity_id: light.living_room
       service: light.turn_off
 
+- id: living_room_presence_toggle_off_manual_remote
+  alias: "[Living Room] Presence Off (Remote)"
+  trigger:
+    - event_data:
+        command: "toggle"
+        device_ieee: cc:cc:cc:ff:fe:97:36:84
+      event_type: zha_event
+      platform: event
+  condition:
+    - condition: state
+      entity_id: light.living_room
+      state: "on"
+  action:
+    - data:
+        entity_id: input_boolean.presence_living_room_switch
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.presence_living_room_motion
+      service: input_boolean.turn_off
+    - data:
+        entity_id: input_boolean.presence_living_room_assistant
+      service: input_boolean.turn_off
+    - data:
+        entity_id: light.living_room
+      service: light.turn_off
+
 - id: living_room_manual_switch_brightness_up
   alias: "[Living Room] Manual Switch Brightness Up"
   trigger:
     - event_data:
         command: step
         device_ieee: 00:17:88:01:06:e9:47:b2
+      event_type: zha_event
+      platform: event
+    - event_data:
+        command: step_with_on_off
+        device_ieee: cc:cc:cc:ff:fe:97:36:84
+      event_type: zha_event
+      platform: event
+    - event_data:
+        command: move_with_on_off
+        device_ieee: cc:cc:cc:ff:fe:97:36:84
       event_type: zha_event
       platform: event
   condition:
@@ -328,6 +390,23 @@
     - event_data:
         command: step
         device_ieee: 00:17:88:01:06:e9:47:b2
+      event_type: zha_event
+      platform: event
+    - event_data:
+        command: step
+        device_ieee: cc:cc:cc:ff:fe:97:36:84
+        args:
+          - 1
+          - 43
+          - 5
+      event_type: zha_event
+      platform: event
+    - event_data:
+        command: move
+        device_ieee: cc:cc:cc:ff:fe:97:36:84
+        args:
+          - 1
+          - 84
       event_type: zha_event
       platform: event
   condition:
