@@ -163,6 +163,35 @@ views:
                     type: "custom:button-card"
               - type: horizontal-stack
                 cards:
+                  - type: entity-filter
+                    show_empty: false
+                    card:
+                      type: glance
+                      title: Who's Home
+                      show_state: false
+                      show_name: false
+                    show_header_toggle: false
+                    state_filter:
+                      - home
+                    entities:
+                      - person.bruno_abrantes
+                      - person.sarah_abrantes
+              - type: horizontal-stack
+                cards:
+                  - entities:
+                      - lock.front_door
+                      - lock.nello_ecf41382
+                    title: Doors
+                    show_header_toggle: false
+                    type: entities
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:xiaomi-vacuum-card"
+                    entity: vacuum.xiaomi_vacuum_cleaner
+                    image: false
+                    name: Robot Vacuum
+              - type: horizontal-stack
+                cards:
                   - entities:
                       - light.living_room
                       - light.dining_room
@@ -194,37 +223,8 @@ views:
                     icon: "mdi:thermometer"
               - type: horizontal-stack
                 cards:
-                  - type: entity-filter
-                    show_empty: false
-                    card:
-                      type: glance
-                      title: Who's Home
-                      show_state: false
-                      show_name: false
-                    show_header_toggle: false
-                    state_filter:
-                      - home
-                    entities:
-                      - person.bruno_abrantes
-                      - person.sarah_abrantes
-              - type: horizontal-stack
-                cards:
-                  - entities:
-                      - lock.front_door
-                      - lock.nello_ecf41382
-                    title: Doors
-                    show_header_toggle: false
-                    type: entities
-              - type: horizontal-stack
-                cards:
                   - entity: media_player.spotify_bruno_abrantes
                     type: "custom:mini-media-player"
-              - type: horizontal-stack
-                cards:
-                  - type: "custom:xiaomi-vacuum-card"
-                    entity: vacuum.xiaomi_vacuum_cleaner
-                    image: false
-                    name: Robot Vacuum
 
   - path: living-room
     title: Living Room
