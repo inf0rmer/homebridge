@@ -183,6 +183,8 @@ views:
                 cards:
                   - entity: weather.weather
                     type: "custom:weather-card"
+              - type: horizontal-stack
+                cards:
                   - entities:
                       - entity: sensor.home_sensor_average_temperature
                         name: Avg. Temperature
