@@ -39,7 +39,6 @@
         - tue
         - wed
         - thu
-        - fri
   action:
     - data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
