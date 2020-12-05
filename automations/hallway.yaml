@@ -36,7 +36,7 @@
   action:
     - data:
         entity_id: light.hallway
-        transition: 5
+        transition: 3
       service: light.turn_off
 
 - id: hallway_presence_on_motion

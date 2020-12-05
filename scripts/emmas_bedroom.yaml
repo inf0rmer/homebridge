@@ -20,7 +20,7 @@ emma_bedtime:
           - 255
           - 30
           - 30
-        transition: 5
+        transition: 3
       service: light.turn_on
     - data:
         entity_id: input_boolean.presence_emmas_bedroom

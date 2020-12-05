@@ -39,7 +39,7 @@
   action:
     - data:
         entity_id: light.kitchen
-        transition: 5
+        transition: 3
       service: light.turn_off
 
 - id: kitchen_presence_on_motion
