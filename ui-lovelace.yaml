@@ -1009,6 +1009,10 @@ views:
             show_header_toggle: false
             title: Lights
             type: entities
+          - entities:
+              - entity: sensor.bathroom_sensor_temperature
+                name: Temperature
+            type: "custom:mini-graph-card"
   - path: balcony
     title: Balcony
     cards:
