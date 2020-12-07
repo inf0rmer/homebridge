@@ -10,8 +10,6 @@ sensor.home_sensor_average_temperature:
 lock.nello_ecf41382:
   friendly_name: Building Door
 
-switch.emmas_bedroom_string_lights:
-  icon: mdi:lightbulb
 switch.dining_room_cabinet:
   icon: mdi:lightbulb
 switch.balcony_plug:

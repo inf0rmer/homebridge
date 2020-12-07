@@ -747,7 +747,6 @@ views:
           - entities:
               - entity: light.emmas_bedroom_ceiling
               - entity: light.emmas_bedroom_nightlight
-              - entity: switch.emmas_bedroom_string_lights
             title: Lights
             type: entities
           - entities:

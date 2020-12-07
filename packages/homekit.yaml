@@ -23,8 +23,6 @@ homekit:
       name: Dining Room Cabinet Plug
     switch.christmas_tree:
       name: Christmas Tree
-    switch.emmas_bedroom_string_lights:
-      name: Emma's Bedroom String Lights
     lock.nello_ecf41382:
       name: Building Door
     sensor.home_sensor_average_temperature:

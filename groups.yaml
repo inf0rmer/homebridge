@@ -3,7 +3,6 @@ all_light_switches:
   entities:
     - switch.balcony_plug
     - switch.dining_room_cabinet
-    - switch.emmas_bedroom_string_lights
     - switch.christmas_tree
 
 all_motion_sensors:
