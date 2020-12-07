@@ -9,8 +9,6 @@
       from: "off"
       platform: state
       to: "on"
-    - entity_id: sensor.master_bedroom_sensor_light_level
-      platform: state
   condition:
     - condition: state
       entity_id: binary_sensor.presence_master_bedroom
@@ -18,9 +16,6 @@
     - condition: state
       entity_id: input_boolean.dnd_master_bedroom
       state: "off"
-    - below: 20
-      condition: numeric_state
-      entity_id: sensor.master_bedroom_sensor_light_level
   action:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
