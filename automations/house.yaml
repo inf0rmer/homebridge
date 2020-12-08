@@ -177,9 +177,6 @@
     - data:
         entity_id: group.dnd_other_rooms
       service: input_boolean.turn_off
-    - data:
-        entity_id: input_boolean.house_was_cleaned
-      service: input_boolean.turn_off
 
 - id: house_sunset
   alias: "[House] Sunset"
@@ -259,6 +256,16 @@
 #         message: Someone is at the door downstairs
 #         target: media_player.everywhere
 #       service: notify.alexa_media
+
+- id: house_reset
+  alias: "[House] Reset"
+  trigger:
+    platform: time
+    at: '00:00:00'
+  action:
+    - data:
+        entity_id: input_boolean.house_was_cleaned
+      service: input_boolean.turn_off
 
 - id: house_guest_mode_on
   alias: "[House] Turn on Guest Mode"
