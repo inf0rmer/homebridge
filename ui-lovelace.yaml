@@ -374,6 +374,7 @@ views:
               - entity: light.living_room_ceiling_desk
               - entity: light.living_room_standing_lamp_desk
               - entity: group.light_tv
+              - entity: light.gaming_area
               - entity: switch.christmas_tree
                 icon: "mdi:pine-tree"
             show_header_toggle: false

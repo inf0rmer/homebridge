@@ -1,0 +1,16 @@
+##########
+# Office #
+##########
+
+- id: office_work_start
+  alias: "[Office] Start Working"
+  sequence:
+    - data:
+        entity_id: input_boolean.presence_living_room_switch
+      service: input_boolean.turn_on
+    - data:
+        entity_id: input_boolean.presence_dining_room_switch
+      service: input_boolean.turn_on
+    - data:
+        entity_id: light.gaming_area
+      service: light.turn_on
