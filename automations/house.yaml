@@ -62,6 +62,7 @@
   trigger:
     - entity_id: vacuum.xiaomi_vacuum_cleaner
       platform: state
+      from: "returning"
       to: "docked"
   condition:
     - condition: state
