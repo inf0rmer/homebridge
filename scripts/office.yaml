@@ -2,7 +2,7 @@
 # Office #
 ##########
 
-- id: office_work_start
+office_work_start:
   alias: "[Office] Start Working"
   sequence:
     - data:
