@@ -124,7 +124,7 @@ binary_sensor:
         to_state: "on"
       - entity_id: input_boolean.presence_kitchen_assistant
         prob_given_true: 1.0
-        prob_given_false: 0.6
+        prob_given_false: 0.2
         platform: state
         to_state: "on"
 
