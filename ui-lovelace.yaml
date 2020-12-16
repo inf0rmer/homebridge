@@ -4,6 +4,7 @@ preload_cards:
   - layout-card
   - weather-card
   - xiaomi-vacuum-card
+  - xiaomi-vacuum-map-card
   - mini-media-player
   - entity-filter
   - hui-entity-filter-card
@@ -190,6 +191,12 @@ views:
                     entity: vacuum.xiaomi_vacuum_cleaner
                     image: false
                     name: Robot Vacuum
+              - type: horizontal-stack
+                cards:
+                  - type: custom:xiaomi-vacuum-map-card
+                    entity: vacuum.xiaomi_vacuum_cleaner
+                    map_image: '/local/custom_lovelace/xiaomi_vacuum_map_card/map.png'
+                    camera_calibration: true
               - type: horizontal-stack
                 cards:
                   - entities:
