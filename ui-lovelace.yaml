@@ -193,12 +193,6 @@ views:
                     name: Robot Vacuum
               - type: horizontal-stack
                 cards:
-                  - type: custom:xiaomi-vacuum-map-card
-                    entity: vacuum.xiaomi_vacuum_cleaner
-                    map_image: '/local/custom_lovelace/xiaomi_vacuum_map_card/map.png'
-                    camera_calibration: true
-              - type: horizontal-stack
-                cards:
                   - entities:
                       - light.living_room
                       - light.dining_room
