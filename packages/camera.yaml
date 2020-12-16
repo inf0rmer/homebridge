@@ -3,7 +3,7 @@ camera:
     host: 192.168.87.85
     token: !env_var XIAOMI_VACUUM_TOKEN
     username: !env_var XIAOMI_CLOUD_USERNAME
-    password: !env_var XIAOMI_VACUUM_PASSWORD
+    password: !env_var XIAOMI_CLOUD_PASSWORD
     draw: ['all']
     attributes:
       - calibration_points  
