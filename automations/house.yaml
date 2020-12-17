@@ -194,12 +194,6 @@
         entity_id:
           - scene.sunset
       service: scene.turn_on
-    - data:
-        entity_id:
-          - media_player.everywhere
-          - media_player.emma_s_bedroom_echo_dot
-        volume_level: 0.3
-      service: media_player.volume_set
 
 - id: house_someone_arrives
   alias: "[House] Anyone comes home before sunset"
@@ -233,12 +227,6 @@
         entity_id:
           - scene.sunset
       service: scene.turn_on
-    - data:
-        entity_id:
-          - media_player.everywhere
-          - media_player.emma_s_bedroom_echo_dot
-        volume_level: 0.3
-      service: media_player.volume_set
 
 # - id: building_door_bell_ring
 #   alias: "[House] Building Door Bell Ring"
