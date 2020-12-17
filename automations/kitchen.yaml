@@ -20,7 +20,6 @@
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_kitchen', 'brightness') | int }}"
-        transition: 3
         entity_id: light.kitchen
       service: light.turn_on
 
@@ -34,7 +33,6 @@
   action:
     - data:
         entity_id: light.kitchen
-        transition: 3
       service: light.turn_off
 
 - id: kitchen_presence_on_motion

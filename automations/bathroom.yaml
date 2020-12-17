@@ -198,5 +198,4 @@
         entity_id: light.bathroom_ceiling
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_bathroom', 'brightness') | int }}"
-        transition: 3
       service: light.turn_on

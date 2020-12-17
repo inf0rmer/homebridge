@@ -103,7 +103,6 @@
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
-        transition: 3
       service: light.turn_on
 
 - id: living_room_lights_off
@@ -116,7 +115,6 @@
   action:
     - data:
         entity_id: light.living_room
-        transition: 3
       service: light.turn_off
 
 - id: living_room_presence_on_tv
@@ -272,7 +270,6 @@
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
-        transition: 3
       service: light.turn_on
 
 - id: living_room_presence_toggle_on_manual_remote
@@ -298,7 +295,6 @@
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
-        transition: 3
       service: light.turn_on
 
 - id: living_room_presence_off_manual_switch

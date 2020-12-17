@@ -21,7 +21,6 @@
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_hallway', 'brightness') | int }}"
         entity_id: light.hallway
-        transition: 3
       service: light.turn_on
 
 - id: hallway_lights_off
@@ -34,7 +33,6 @@
   action:
     - data:
         entity_id: light.hallway
-        transition: 3
       service: light.turn_off
 
 - id: hallway_presence_on_motion

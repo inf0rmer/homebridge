@@ -20,7 +20,6 @@
         entity_id: light.dining_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_dining_room', 'brightness') | int }}"
-        transition: 3
       service: light.turn_on
 
 - id: dining_room_lights_off
@@ -33,7 +32,6 @@
   action:
     - data:
         entity_id: light.dining_room
-        transition: 3
       service: light.turn_off
 
 - id: dining_room_presence_on_motion
@@ -132,7 +130,6 @@
         entity_id: light.dining_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_dining_room', 'brightness') | int }}"
-        transition: 3
       service: light.turn_on
 
 - id: dining_room_presence_off_manual_switch

@@ -20,7 +20,6 @@
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_emmas_bedroom', 'brightness') | int }}"
         entity_id: light.emmas_bedroom
-        transition: 3
       service: light.turn_on
 
 - id: emmas_bedroom_lights_off
@@ -33,7 +32,6 @@
   action:
     - data:
         entity_id: light.emmas_bedroom
-        transition: 3
       service: light.turn_off
 
 - id: emmas_bedroom_presence_on_motion
@@ -153,7 +151,6 @@
         entity_id: light.emmas_bedroom
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_emmas_bedroom', 'brightness') | int }}"
-        transition: 3
       service: light.turn_on
 
 - id: emmas_bedroom_presence_off_manual_switch
