@@ -11,10 +11,10 @@ preload_cards:
 views:
   - path: default_view
     title: House
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - type: vertical-stack
@@ -227,10 +227,10 @@ views:
 
   - path: living-room
     title: Living Room
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - type: vertical-stack
@@ -393,10 +393,10 @@ views:
  
   - path: dining-room
     title: Dining Room
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - type: horizontal-stack
@@ -502,10 +502,10 @@ views:
   
   - path: master-bedroom
     title: Master Bedroom
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - type: horizontal-stack
@@ -618,10 +618,10 @@ views:
 
   - path: emmas-bedroom
     title: Emma's Bedroom
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - type: horizontal-stack
@@ -762,10 +762,10 @@ views:
 
   - path: kitchen
     title: Kitchen
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - type: horizontal-stack
@@ -870,10 +870,10 @@ views:
 
   - path: hallway
     title: Hallway
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - type: horizontal-stack
@@ -976,10 +976,10 @@ views:
 
   - path: bathroom
     title: Bathroom
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - entity: binary_sensor.presence_bathroom
@@ -1021,10 +1021,10 @@ views:
 
   - path: balcony
     title: Balcony
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - entity: binary_sensor.presence_balcony
@@ -1062,10 +1062,10 @@ views:
 
   - path: laundry-room
     title: Laundry Room
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - entity: binary_sensor.presence_laundry_room
@@ -1097,10 +1097,10 @@ views:
 
   - path: closet
     title: Closet
-    panel: true
+    panel: false
     cards:
       - type: grid
-        columns: 2
+        columns: 1
         square: false
         cards:
           - entity: binary_sensor.presence_closet
