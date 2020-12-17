@@ -1,7 +1,5 @@
 title: Home
 preload_cards:
-  - custom:layout-card
-  - layout-card
   - weather-card
   - xiaomi-vacuum-card
   - xiaomi-vacuum-map-card
@@ -15,9 +13,9 @@ views:
     title: House
     panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - type: vertical-stack
             cards:
@@ -231,9 +229,9 @@ views:
     title: Living Room
     panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - type: vertical-stack
             cards:
@@ -392,13 +390,14 @@ views:
             type: "custom:mini-graph-card"
           - entity: media_player.spotify_bruno_abrantes
             type: "custom:mini-media-player"
+ 
   - path: dining-room
     title: Dining Room
     panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - type: horizontal-stack
             cards:
@@ -500,13 +499,14 @@ views:
             type: "custom:mini-graph-card"
           - entity: media_player.spotify_bruno_abrantes
             type: "custom:mini-media-player"
+  
   - path: master-bedroom
     title: Master Bedroom
     panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - type: horizontal-stack
             cards:
@@ -620,9 +620,9 @@ views:
     title: Emma's Bedroom
     panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - type: horizontal-stack
             cards:
@@ -759,13 +759,14 @@ views:
             type: "custom:mini-graph-card"
           - entity: media_player.spotify_bruno_abrantes
             type: "custom:mini-media-player"
+
   - path: kitchen
     title: Kitchen
     panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - type: horizontal-stack
             cards:
@@ -866,13 +867,14 @@ views:
             type: "custom:mini-graph-card"
           - entity: media_player.spotify_bruno_abrantes
             type: "custom:mini-media-player"
+
   - path: hallway
     title: Hallway
     panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - type: horizontal-stack
             cards:
@@ -971,13 +973,14 @@ views:
               - entity: sensor.hallway_sensor_average_light_level
                 name: Light Level
             type: "custom:mini-graph-card"
+
   - path: bathroom
     title: Bathroom
     panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - entity: binary_sensor.presence_bathroom
             name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
@@ -1015,12 +1018,14 @@ views:
               - entity: sensor.bathroom_sensor_temperature
                 name: Temperature
             type: "custom:mini-graph-card"
+
   - path: balcony
     title: Balcony
+    panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - entity: binary_sensor.presence_balcony
             name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
@@ -1054,13 +1059,14 @@ views:
             show_header_toggle: false
             title: Lights
             type: entities
+
   - path: laundry-room
     title: Laundry Room
     panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - entity: binary_sensor.presence_laundry_room
             name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
@@ -1088,13 +1094,14 @@ views:
             name: Light
             theme: Backend-selected
             type: light
+
   - path: closet
     title: Closet
     panel: true
     cards:
-      - type: custom:layout-card
-        layout: horizontal
-        max_columns: 2
+      - type: grid
+        columns: 2
+        square: false
         cards:
           - entity: binary_sensor.presence_closet
             name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'

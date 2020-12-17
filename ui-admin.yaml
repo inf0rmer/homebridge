@@ -1,7 +1,5 @@
 title: Admin
 preload_cards:
-  - custom:layout-card
-  - layout-card
   - custom:auto-entities
   - custom:zha-network-card
 views:

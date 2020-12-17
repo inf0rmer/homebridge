@@ -49,8 +49,6 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-card-tools/card-tools.js
       type: module
-    - url: /hacsfiles/lovelace-layout-card/layout-card.js
-      type: module
     - url: /hacsfiles/group-card/group-card.js
       type: module
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
