@@ -120,6 +120,9 @@
       service: light.turn_off
     - delay:
         seconds: 5
+    - condition: state
+      entity_id: binary_sensor.presence_living_room
+      state: "off"
     - data:
         entity_id: light.living_room
       service: light.turn_off
