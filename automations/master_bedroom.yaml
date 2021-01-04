@@ -46,29 +46,15 @@
   action:
     - data:
         entity_id: light.master_bedroom_ceiling
-        transition: 5
+        transition: 2
       service: light.turn_off
     - data:
         entity_id: light.master_bedroom_bedside
-        transition: 5
+        transition: 2
       service: light.turn_off
     - data:
         entity_id: light.master_bedroom_lightstrips
-        transition: 5
-      service: light.turn_off
-    - delay:
-        seconds: 5
-    - condition: state
-      entity_id: binary_sensor.presence_master_bedroom
-      state: "off"
-    - data:
-        entity_id: light.master_bedroom_ceiling
-      service: light.turn_off
-    - data:
-        entity_id: light.master_bedroom_bedside
-      service: light.turn_off
-    - data:
-        entity_id: light.master_bedroom_lightstrips
+        transition: 2
       service: light.turn_off
 
 - id: master_bedroom_presence_on_motion
