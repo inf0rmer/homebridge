@@ -17,6 +17,9 @@
       entity_id: input_boolean.dnd_hallway
       state: "off"
   action:
+    - data:
+        entity_id: switch.circadian_lighting_hallway
+      service: switch.turn_on
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_hallway', 'brightness') | int }}"
@@ -32,6 +35,9 @@
       platform: state
       to: "off"
   action:
+    - data:
+        entity_id: switch.circadian_lighting_hallway
+      service: switch.turn_off
     - data:
         entity_id: light.hallway
         transition: 2

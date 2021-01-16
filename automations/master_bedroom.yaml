@@ -17,6 +17,9 @@
       entity_id: input_boolean.dnd_master_bedroom
       state: "off"
   action:
+    - data:
+        entity_id: switch.circadian_lighting_master_bedroom
+      service: switch.turn_on
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_master_bedroom', 'brightness') | int }}"
@@ -44,6 +47,9 @@
       platform: state
       to: "off"
   action:
+    - data:
+        entity_id: switch.circadian_lighting_master_bedroom
+      service: switch.turn_off
     - data:
         entity_id: light.master_bedroom_ceiling
         transition: 2
@@ -204,6 +210,9 @@
     - data:
         entity_id: input_boolean.dnd_master_bedroom
       service: input_boolean.turn_off
+    - data:
+        entity_id: switch.circadian_lighting_master_bedroom
+      service: switch.turn_on
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_master_bedroom', 'brightness') | int }}"
@@ -241,6 +250,9 @@
     - data:
         entity_id: input_boolean.presence_master_bedroom_assistant
       service: input_boolean.turn_off
+    - data:
+        entity_id: switch.circadian_lighting_master_bedroom
+      service: switch.turn_off
     - data:
         entity_id: light.master_bedroom_ceiling
       service: light.turn_off

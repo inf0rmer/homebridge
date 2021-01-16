@@ -99,6 +99,9 @@
       entity_id: input_boolean.dnd_living_room
       state: "off"
   action:
+    - data:
+        entity_id: switch.circadian_lighting_living_room
+      service: switch.turn_on
     - data_template:
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
@@ -114,6 +117,9 @@
       platform: state
       to: "off"
   action:
+    - data:
+        entity_id: switch.circadian_lighting_living_room
+      service: switch.turn_off
     - data:
         entity_id: light.living_room
         transition: 2
@@ -268,6 +274,9 @@
     - data:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_off
+    - data:
+        entity_id: switch.circadian_lighting_living_room
+      service: switch.turn_on
     - data_template:
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
@@ -293,6 +302,9 @@
     - data:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_off
+    - data:
+        entity_id: switch.circadian_lighting_living_room
+      service: switch.turn_on
     - data_template:
         entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
@@ -317,6 +329,9 @@
     - data:
         entity_id: input_boolean.presence_living_room_assistant
       service: input_boolean.turn_off
+    - data:
+        entity_id: switch.circadian_lighting_living_room
+      service: switch.turn_off
     - data:
         entity_id: light.living_room
       service: light.turn_off
@@ -343,6 +358,9 @@
     - data:
         entity_id: input_boolean.presence_living_room_assistant
       service: input_boolean.turn_off
+    - data:
+        entity_id: switch.circadian_lighting_living_room
+      service: switch.turn_off
     - data:
         entity_id: light.living_room
       service: light.turn_off
