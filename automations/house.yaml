@@ -26,7 +26,7 @@
   alias: "[House] Start Cleaning Every Weekday Morning"
   trigger:
     - platform: time
-      at: "08:00:00"
+      at: "07:45:00"
   condition:
     - condition: state
       entity_id: input_boolean.house_was_cleaned

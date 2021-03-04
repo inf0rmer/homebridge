@@ -79,7 +79,7 @@ house_wake_up:
         entity_id: group.sleeping_bedrooms
       service: homeassistant.turn_off
     - delay:
-        minutes: 45
+        minutes: 5
     - data:
         entity_id: group.presence_bedrooms
       service: homeassistant.turn_off
