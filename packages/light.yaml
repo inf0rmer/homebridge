@@ -60,6 +60,21 @@ light:
       - light.dining_room_ceiling_kitchen
 
   - platform: group
+    name: Gaming Area
+    entities:
+      - light.desk_lightstrip
+
+  - platform: group
+    name: Living Room
+    entities:
+      - light.living_room_ceiling_desk
+      - light.living_room_ceiling_sofa
+      - light.living_room_standing_lamp_desk
+      - light.tv_upper
+      - light.tv_right
+      - light.tv_left
+
+  - platform: group
     name: Master Bedroom
     entities:
       - light.master_bedroom_bedside_lamp_1
