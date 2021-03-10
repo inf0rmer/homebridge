@@ -141,7 +141,7 @@
       service: switch.turn_on
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_dining_room', 'brightness') | int }}"\
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_dining_room', 'brightness') | int }}"
       target:
         entity_id: light.dining_room
       service: light.turn_on
