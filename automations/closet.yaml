@@ -13,7 +13,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_closet_door
       service: input_boolean.turn_on
 
@@ -29,7 +29,7 @@
       entity_id: input_boolean.dnd_closet
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_closet_door
       service: input_boolean.turn_off
 
@@ -41,7 +41,7 @@
       platform: state
       to: "on"
   action:
-    - data:
+    - target:
         entity_id: light.closet
       service: light.turn_on
 
@@ -53,6 +53,6 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: light.closet
       service: light.turn_off

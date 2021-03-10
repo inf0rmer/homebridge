@@ -13,7 +13,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_balcony_door
       service: input_boolean.turn_on
 
@@ -45,7 +45,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_balcony_assistant
       service: input_boolean.turn_on
 
@@ -61,10 +61,10 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_balcony_assistant
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: light.balcony_assistant
       service: light.turn_off
 
@@ -80,10 +80,10 @@
       entity_id: sun.sun
       state: below_horizon
   action:
-    - data:
+    - target:
         entity_id: light.balcony
       service: light.turn_on
-    - data:
+    - target:
         entity_id: switch.balcony_plug
       service: switch.turn_on
 
@@ -95,7 +95,7 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: light.balcony
       service: light.turn_off
 
@@ -110,9 +110,9 @@
       entity_id: binary_sensor.presence_balcony
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: light.balcony
       service: light.turn_on
-    - data:
+    - target:
         entity_id: switch.balcony_plug
       service: switch.turn_on

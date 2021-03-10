@@ -18,7 +18,7 @@
       entity_id: input_boolean.house_was_cleaned
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.start
 
@@ -38,7 +38,7 @@
         - wed
         - thu
   action:
-    - data:
+    - target:
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.start
 
@@ -53,7 +53,7 @@
     - condition: template
       value_template: '{{not is_state("vacuum.xiaomi_vacuum_cleaner", "docked")}}'
   action:
-    - data:
+    - target:
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.return_to_base
 
@@ -69,7 +69,7 @@
       entity_id: input_boolean.house_was_cleaned
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.house_was_cleaned
       service: input_boolean.turn_on
 
@@ -81,7 +81,7 @@
       platform: state
       to: "home"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_sarah
       service: input_boolean.turn_on
 
@@ -93,7 +93,7 @@
       platform: state
       to: "not_home"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_sarah
       service: input_boolean.turn_off
 
@@ -105,7 +105,7 @@
       platform: state
       to: "home"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_bruno
       service: input_boolean.turn_on
 
@@ -117,7 +117,7 @@
       platform: state
       to: "not_home"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_bruno
       service: input_boolean.turn_off
 
@@ -163,7 +163,7 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: script.house_nobody_home
       service: script.turn_on
 
@@ -175,7 +175,7 @@
       from: below_horizon
       to: above_horizon
   action:
-    - data:
+    - target:
         entity_id: group.dnd_other_rooms
       service: input_boolean.turn_off
 
@@ -190,7 +190,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id:
           - scene.sunset
       service: scene.turn_on
@@ -207,7 +207,7 @@
       entity_id: sun.sun
       state: above_horizon
   action:
-    - data:
+    - target:
         entity_id: group.all_covers
       service: cover.open_cover
 
@@ -223,7 +223,7 @@
       entity_id: sun.sun
       state: below_horizon
   action:
-    - data:
+    - target:
         entity_id:
           - scene.sunset
       service: scene.turn_on
@@ -252,7 +252,7 @@
     platform: time
     at: '00:00:00'
   action:
-    - data:
+    - target:
         entity_id: input_boolean.house_was_cleaned
       service: input_boolean.turn_off
 
@@ -268,7 +268,7 @@
       entity_id: binary_sensor.someone_home
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_someone
       service: input_boolean.turn_on
 
@@ -282,6 +282,6 @@
       platform: "state"
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_someone
       service: input_boolean.turn_off

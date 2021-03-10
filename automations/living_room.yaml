@@ -21,9 +21,10 @@
     - data:
         command: PowerToggle
         device: "64739991"
+      target:
         entity_id: remote.harmony_hub
       service: remote.send_command
-    - data:
+    - target:
         entity_id: input_boolean.living_room_watch_tv_fan_automation
       service: input_boolean.turn_on
 
@@ -46,9 +47,10 @@
     - data:
         command: PowerToggle
         device: "64739991"
+      target:
         entity_id: remote.harmony_hub
       service: remote.send_command
-    - data:
+    - target:
         entity_id: input_boolean.living_room_watch_tv_fan_automation
       service: input_boolean.turn_off
 
@@ -64,7 +66,7 @@
       platform: state
       to: "True"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_on
 
@@ -80,7 +82,7 @@
       platform: state
       to: "False"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_off
 
@@ -99,14 +101,15 @@
       entity_id: input_boolean.dnd_living_room
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_living_room
       service: switch.turn_on
     - data_template:
-        entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
         transition: 3
+      target:
+        entity_id: light.living_room
       service: light.turn_on
 
 - id: living_room_lights_off
@@ -117,12 +120,13 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_living_room
       service: switch.turn_off
     - data:
-        entity_id: light.living_room
         transition: 2
+      target:
+        entity_id: light.living_room
       service: light.turn_off
 
 - id: living_room_presence_on_tv
@@ -137,7 +141,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_tv
       service: input_boolean.turn_on
 
@@ -151,7 +155,7 @@
   action:
     - delay:
         minutes: 5
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_tv
       service: input_boolean.turn_off
 
@@ -167,7 +171,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_motion
       service: input_boolean.turn_on
 
@@ -188,7 +192,7 @@
       entity_id: input_boolean.dnd_living_room
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_motion
       service: input_boolean.turn_off
 
@@ -204,10 +208,10 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_assistant
       service: input_boolean.turn_on
-    - data:
+    - target:
         entity_id: input_boolean.dnd_dining_room
       service: input_boolean.turn_off
 
@@ -223,10 +227,10 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_assistant
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: light.living_room_assistant
       service: light.turn_off
 
@@ -241,7 +245,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_brunos_pc
       service: input_boolean.turn_on
 
@@ -255,7 +259,7 @@
   action:
     - delay:
         minutes: 5
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_brunos_pc
       service: input_boolean.turn_off
 
@@ -268,19 +272,20 @@
       event_type: zha_event
       platform: event
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_switch
       service: input_boolean.turn_on
-    - data:
+    - target:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_living_room
       service: switch.turn_on
     - data_template:
-        entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
+      target:
+        entity_id: light.living_room
       service: light.turn_on
 
 - id: living_room_presence_toggle_on_manual_remote
@@ -296,19 +301,20 @@
       entity_id: light.living_room
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_switch
       service: input_boolean.turn_on
-    - data:
+    - target:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_living_room
       service: switch.turn_on
     - data_template:
-        entity_id: light.living_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_living_room', 'brightness') | int }}"
+      target:
+        entity_id: light.living_room
       service: light.turn_on
 
 - id: living_room_presence_off_manual_switch
@@ -320,19 +326,19 @@
       event_type: zha_event
       platform: event
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_switch
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_motion
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_assistant
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_living_room
       service: switch.turn_off
-    - data:
+    - target:
         entity_id: light.living_room
       service: light.turn_off
 
@@ -349,19 +355,19 @@
       entity_id: light.living_room
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_switch
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_motion
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: input_boolean.presence_living_room_assistant
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_living_room
       service: switch.turn_off
-    - data:
+    - target:
         entity_id: light.living_room
       service: light.turn_off
 
@@ -391,7 +397,8 @@
       state: "on"
   action:
     - service: light.turn_on
-      entity_id: light.living_room
+      target:
+        entity_id: light.living_room
       data:
         brightness_step: 50
 
@@ -428,7 +435,8 @@
       state: "on"
   action:
     - service: light.turn_on
-      entity_id: light.living_room
+      target:
+        entity_id: light.living_room
       data:
         brightness_step: -50
 
@@ -448,7 +456,7 @@
     - condition: state
       entity_id: binary_sensor.presence_living_room
       state: "on"
-    - data:
+    - target:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_on
 
@@ -465,11 +473,11 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_on
     - delay:
         minutes: 15
-    - data:
+    - target:
         entity_id: input_boolean.dnd_living_room
       service: input_boolean.turn_off

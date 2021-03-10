@@ -17,12 +17,13 @@
       state: "off"
   action:
     - data_template:
-        entity_id: light.dining_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_dining_room', 'brightness') | int }}"
         transition: 3
+      target:
+        entity_id: light.dining_room
       service: light.turn_on
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_dining_room
       service: switch.turn_on
 
@@ -34,12 +35,13 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_dining_room
       service: switch.turn_off
     - data:
-        entity_id: light.dining_room
         transition: 2
+      target:
+        entity_id: light.dining_room
       service: light.turn_off
 
 - id: dining_room_presence_on_motion
@@ -54,7 +56,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_dining_room_motion
       service: input_boolean.turn_on
 
@@ -72,7 +74,7 @@
       entity_id: input_boolean.dnd_dining_room
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_dining_room_motion
       service: input_boolean.turn_off
 
@@ -88,10 +90,10 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_dining_room_assistant
       service: input_boolean.turn_on
-    - data:
+    - target:
         entity_id: input_boolean.dnd_dining_room
       service: input_boolean.turn_off
 
@@ -107,10 +109,10 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_dining_room_assistant
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: light.dining_room_assistant
       service: light.turn_off
 
@@ -128,19 +130,20 @@
       event_type: zha_event
       platform: event
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_dining_room_switch
       service: input_boolean.turn_on
-    - data:
+    - target:
         entity_id: input_boolean.dnd_dining_room
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_dining_room
       service: switch.turn_on
     - data_template:
-        entity_id: light.dining_room
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
-        brightness_pct: "{{ state_attr('switch.circadian_lighting_dining_room', 'brightness') | int }}"
+        brightness_pct: "{{ state_attr('switch.circadian_lighting_dining_room', 'brightness') | int }}"\
+      target:
+        entity_id: light.dining_room
       service: light.turn_on
 
 - id: dining_room_presence_off_manual_switch
@@ -157,19 +160,19 @@
       event_type: zha_event
       platform: event
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_dining_room_switch
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: input_boolean.presence_dining_room_motion
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: input_boolean.presence_dining_room_assistant
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_dining_room
       service: switch.turn_off
-    - data:
+    - target:
         entity_id: light.dining_room
       service: light.turn_off
 
@@ -194,7 +197,8 @@
       state: "on"
   action:
     - service: light.turn_on
-      entity_id: light.dining_room
+      target:
+        entity_id: light.dining_room
       data:
         brightness_step: 50
 
@@ -219,7 +223,8 @@
       state: "on"
   action:
     - service: light.turn_on
-      entity_id: light.dining_room
+      target:
+        entity_id: light.dining_room
       data:
         brightness_step: -50
 
@@ -244,7 +249,7 @@
     - condition: state
       entity_id: binary_sensor.presence_dining_room
       state: "on"
-    - data:
+    - target:
         entity_id: input_boolean.dnd_dining_room
       service: input_boolean.turn_on
 
@@ -266,12 +271,12 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.dnd_dining_room
       service: input_boolean.turn_on
     - delay:
         minutes: 15
-    - data:
+    - target:
         entity_id: input_boolean.dnd_dining_room
       service: input_boolean.turn_off
 

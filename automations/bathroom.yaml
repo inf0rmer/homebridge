@@ -16,10 +16,10 @@
       entity_id: input_boolean.dnd_bathroom
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: light.bathroom_vanity
       service: light.turn_on
-    - data:
+    - target:
         entity_id: light.switch_bathroom_ceiling
       service: light.turn_on
 
@@ -31,10 +31,10 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: light.bathroom_vanity
       service: light.turn_off
-    - data:
+    - target:
         entity_id: light.switch_bathroom_ceiling
       service: light.turn_off
 
@@ -54,7 +54,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_bathroom_switch
       service: input_boolean.turn_on
 
@@ -80,10 +80,10 @@
       entity_id: light.bathroom_vanity
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_bathroom_switch
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: input_boolean.presence_bathroom_assistant
       service: input_boolean.turn_off
 
@@ -99,7 +99,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_bathroom_door
       service: input_boolean.turn_on
 
@@ -115,7 +115,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_bathroom_door
       service: input_boolean.turn_off
 
@@ -131,7 +131,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_bathroom_shower
       service: input_boolean.turn_on
 
@@ -147,7 +147,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_bathroom_shower
       service: input_boolean.turn_off
 
@@ -163,7 +163,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_bathroom_assistant
       service: input_boolean.turn_on
 
@@ -179,10 +179,10 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_bathroom_assistant
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: light.bathroom_assistant
       service: light.turn_off
 
@@ -195,7 +195,8 @@
       to: "on"
   action:
     - data_template:
-        entity_id: light.bathroom_ceiling
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_bathroom', 'brightness') | int }}"
       service: light.turn_on
+      target:
+        entity_id: light.bathroom_ceiling

@@ -17,14 +17,15 @@
       entity_id: input_boolean.dnd_kitchen
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_kitchen
       service: switch.turn_on
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_kitchen', 'brightness') | int }}"
-        entity_id: light.kitchen
         transition: 3
+      target:
+        entity_id: light.kitchen
       service: light.turn_on
 
 - id: kitchen_lights_off
@@ -35,12 +36,13 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: switch.circadian_lighting_kitchen
       service: switch.turn_off
     - data:
-        entity_id: light.kitchen
         transition: 2
+      target:
+        entity_id: light.kitchen
       service: light.turn_off
 
 - id: kitchen_presence_on_motion
@@ -55,7 +57,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_kitchen_motion
       service: input_boolean.turn_on
 
@@ -73,7 +75,7 @@
       entity_id: input_boolean.dnd_kitchen
       state: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_kitchen_motion
       service: input_boolean.turn_off
 
@@ -89,7 +91,7 @@
       entity_id: binary_sensor.someone_home
       state: "on"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_kitchen_assistant
       service: input_boolean.turn_on
 
@@ -105,9 +107,9 @@
       platform: state
       to: "off"
   action:
-    - data:
+    - target:
         entity_id: input_boolean.presence_kitchen_assistant
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: light.kitchen_assistant
       service: light.turn_off
