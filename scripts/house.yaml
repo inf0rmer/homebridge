@@ -1,25 +1,25 @@
 good_night:
   alias: "[House] Good Night"
   sequence:
-    - data:
+    - target:
         entity_id: group.dnd_bedrooms
       service: homeassistant.turn_on
-    - data:
+    - target:
         entity_id: input_boolean.sarah_good_night_pressed
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: input_boolean.bruno_good_night_pressed
       service: input_boolean.turn_off
-    - data:
+    - target:
         entity_id: group.presence_bedrooms
       service: homeassistant.turn_on
-    - data:
+    - target:
         entity_id: group.sleeping_bedrooms
       service: homeassistant.turn_on
-    - data:
+    - target:
         entity_id: group.presence_other_rooms
       service: homeassistant.turn_off
-    - data:
+    - target:
         entity_id: group.presence_living_room
       service: homeassistant.turn_off
     - service: light.turn_off
@@ -27,28 +27,31 @@ good_night:
     - service: light.turn_off
       entity_id: light.emmas_bedroom
     - data:
-        entity_id: remote.harmony_hub
         activity: PowerOff
+      target:
+        entity_id: remote.harmony_hub
       service: remote.turn_on
     - delay:
         seconds: 15
     - service: light.turn_off
-      entity_id: all
-    - data:
+      target:
+        entity_id: all
+    - target:
         entity_id: group.all_light_switches
       service: homeassistant.turn_off
     - data:
         brightness: 30
-        entity_id: light.emmas_bedroom_nightlight
         rgb_color:
           - 255
           - 30
           - 30
+      target:
+        entity_id: light.emmas_bedroom_nightlight
       service: light.turn_on
-    - data:
+    - target:
         entity_id: group.all_covers
       service: cover.close_cover
-    - data:
+    - target:
         entity_id: lock.front_door
       service: lock.lock
 
@@ -58,6 +61,7 @@ house_wake_up:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: 1
+      target:
         entity_id:
           - light.master_bedroom
           - light.emmas_bedroom
@@ -65,35 +69,36 @@ house_wake_up:
     - data_template:
         kelvin: "{{ state_attr('sensor.circadian_values', 'colortemp') | int }}"
         brightness_pct: "{{ state_attr('switch.circadian_lighting_master_bedroom', 'brightness') | int }}"
+        transition: 120
+      target:
         entity_id:
           - light.master_bedroom
           - light.emmas_bedroom
-        transition: 120
       service: light.turn_on
     - delay:
         seconds: 130
-    - data:
+    - target:
         entity_id: group.dnd_house
       service: homeassistant.turn_off
-    - data:
+    - target:
         entity_id: group.sleeping_bedrooms
       service: homeassistant.turn_off
     - delay:
         minutes: 5
-    - data:
+    - target:
         entity_id: group.presence_bedrooms
       service: homeassistant.turn_off
 
 house_wake_up_no_delay:
   alias: "[House] Wake Up (No Delay)"
   sequence:
-    - data:
+    - target:
         entity_id: group.dnd_house
       service: homeassistant.turn_off
-    - data:
+    - target:
         entity_id: group.sleeping_bedrooms
       service: homeassistant.turn_off
-    - data:
+    - target:
         entity_id: group.presence_bedrooms
       service: homeassistant.turn_off
 
@@ -101,45 +106,54 @@ house_nobody_home:
   alias: "[House] Nobody Home"
   sequence:
     - service: light.turn_off
-      entity_id: all
-    - data:
+      target:
+        entity_id: all
+    - target:
         entity_id: group.all_light_switches
       service: homeassistant.turn_off
-    - data:
+    - target:
         entity_id: lock.front_door
       service: lock.lock
-    - data:
+    - target:
         entity_id: remote.harmony_hub
       service: remote.turn_off
     - delay:
         seconds: 15
     - service: light.turn_off
       entity_id: all
-    - data:
+    - target:
         entity_id: group.all_covers
       service: cover.close_cover
-    - data:
-        entity_id: group.presence_other_rooms
-      service: homeassistant.turn_off
-    - data:
-        entity_id: group.presence_bedrooms
+    - target:
+        entity_id: 
+          - group.presence_balcony
+          - group.presence_bathroom
+          - group.presence_closet
+          - group.presence_balcony
+          - group.presence_dining_room
+          - group.presence_emmas_bedroom
+          - group.presence_hallway
+          - group.presence_kitchen
+          - group.presence_laundry_room
+          - group.presence_living_room
+          - group.presence_master_bedroom
       service: homeassistant.turn_off
 
 house_start_cleaning:
   alias: "[House] Start Cleaning"
   sequence:
-    - data:
+    - target:
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.start
 
 house_stop_cleaning:
   alias: "[House] Stop Cleaning"
   sequence:
-    - data:
+    - target:
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.pause
     - delay:
         seconds: 5
-    - data:
+    - target:
         entity_id: vacuum.xiaomi_vacuum_cleaner
       service: vacuum.return_to_base
