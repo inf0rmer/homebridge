@@ -200,7 +200,7 @@ views:
                       - light.balcony
                       - light.laundry_room
                       - light.hallway
-                      - light.office_desk_lightstrip
+                      - light.office
                       - light.bathroom
                       - light.closet
                     title: Lights
