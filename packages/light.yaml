@@ -52,17 +52,18 @@ light:
         friendly_name: "Balcony"
         turn_on:
         turn_off:
+  
+  - platform: group
+    name: Office
+    entities:
+      - light.office_desk_lightstrip
+      - light.office_key_light
 
   - platform: group
     name: Dining Room
     entities:
       - light.dining_room_ceiling_table
       - light.dining_room_ceiling_kitchen
-
-  - platform: group
-    name: Gaming Area
-    entities:
-      - light.office_desk_lightstrip
 
   - platform: group
     name: Living Room
