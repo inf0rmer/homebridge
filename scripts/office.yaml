@@ -12,5 +12,5 @@ office_work_start:
         entity_id: input_boolean.presence_dining_room_switch
       service: input_boolean.turn_on
     - data:
-        entity_id: light.gaming_area
+        entity_id: light.office_desk_lightstrip
       service: light.turn_on

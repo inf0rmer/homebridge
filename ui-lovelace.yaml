@@ -200,7 +200,7 @@ views:
                       - light.balcony
                       - light.laundry_room
                       - light.hallway
-                      - light.gaming_area
+                      - light.office_desk_lightstrip
                       - light.bathroom
                       - light.closet
                     title: Lights
@@ -373,7 +373,6 @@ views:
               - entity: light.living_room_ceiling_desk
               - entity: light.living_room_standing_lamp_desk
               - entity: group.light_tv
-              - entity: light.gaming_area
               - entity: switch.christmas_tree
                 icon: "mdi:pine-tree"
             show_header_toggle: false
@@ -382,6 +381,114 @@ views:
             state_filter:
               - operator: "!="
                 value: "unavailable"
+          - entities:
+              - entity: sensor.living_room_sensor_temperature
+                name: Temperature
+              - entity: sensor.living_room_sensor_light_level
+                name: Light Level
+            type: "custom:mini-graph-card"
+          - entity: media_player.spotify_bruno_abrantes
+            type: "custom:mini-media-player"
+
+  - path: office
+    title: Office
+    panel: false
+    cards:
+      - type: grid
+        columns: 1
+        square: false
+        cards:
+          - type: horizontal-stack
+            cards:
+              - entity: input_boolean.dnd_living_room
+                icon: "mdi:weather-night"
+                show_state: false
+                name: Do Not Disturb
+                size: 25%
+                styles:
+                  card:
+                    - font-size: 12px
+                tap_action:
+                  action: call-service
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.dnd_living_room
+                type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    state: docked
+                card:
+                  entity: script.clean_living_room
+                  icon: "mdi:broom"
+                  show_state: false
+                  name: Clean Dining Room
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.clean_living_room
+                  type: "custom:button-card"
+              - type: conditional
+                conditions:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    state_not: docked
+                card:
+                  entity: script.house_stop_cleaning
+                  icon: "mdi:cancel"
+                  show_state: false
+                  name: Stop Cleaning
+                  size: 25%
+                  styles:
+                    card:
+                      - font-size: 12px
+                      - color: red
+                    icon:
+                      - color: red
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.house_stop_cleaning
+                  type: "custom:button-card"
+          - type: horizontal-stack
+            cards:
+              - entity: binary_sensor.presence_living_room
+                name: '[[[ if (entity.state == "on") return "Occupied"; else return "Free" ]]]'
+                label: "[[[return entity.attributes.reason]]]"
+                show_label: true
+                size: 10%
+                styles:
+                  card:
+                    - font-size: 12px
+                  label:
+                    - color: '[[[ if (states["sun.sun"].state == "above_horizon") return "#666"; else return "#ccc" ]]]'
+                    - font-size: 10px
+                tap_action:
+                  action: call-service
+                  service: '[[[ if (states["input_boolean.presence_living_room_assistant"].state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service_data:
+                    entity_id: input_boolean.presence_living_room_assistant
+                hold_action:
+                  action: call-service
+                  service: '[[[ if (entity.state == "on") return "homeassistant.turn_off"; else return "homeassistant.turn_on" ]]]'
+                  service_data:
+                    entity_id: group.presence_living_room
+                type: "custom:button-card"
+          - entity: light.office
+            name: All Lights
+            theme: Backend-selected
+            type: light
+          - entities:
+              - entity: light.office_desk_lightstrip
+              - entity: light.office_key_light
+            show_header_toggle: false
+            title: Lights
+            type: entities
           - entities:
               - entity: sensor.living_room_sensor_temperature
                 name: Temperature

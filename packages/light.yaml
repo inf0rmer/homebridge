@@ -62,7 +62,7 @@ light:
   - platform: group
     name: Gaming Area
     entities:
-      - light.desk_lightstrip
+      - light.office_desk_lightstrip
 
   - platform: group
     name: Living Room

@@ -3,7 +3,7 @@
     switch.balcony_plug: true
     switch.dining_room_cabinet: true
     switch.christmas_tree: true
-    light.gaming_area:
+    light.office_desk_lightstrip:
       state: true
     group.all_covers:
       state: "closed"
