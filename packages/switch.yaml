@@ -18,6 +18,7 @@ switch:
     sleep_state: "on"
     disable_entity: input_boolean.dnd_living_room
     disable_state: "on"
+    disable_brightness_adjust: true
     lights_ct:
       - light.office_desk_lightstrip
       - light.office_key_light
